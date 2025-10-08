@@ -1,8 +1,8 @@
-## Nombre de la aplicacion: 
+# 🎓  Nombre de la aplicacion: 
 - EduMatch
-## Descripcion de la aplicacion:
+## 📘 Descripcion de la aplicacion:
 - Usualmente, padres de familia requieren de profesores en diferentes campos de la educación para sus hijos, quienes tienen problemas de aprendizaje o han descuidado sus estudios. Sin embargo, lograr encontrar un profesor y este logre influir confianza en los padres de familia con el fin de brindar clases particulares, resulta una tarea más complicada de lo que debería ser. Es por este problema que proponemos una aplicación web que permita no solo la búsqueda sencilla de profesores en cualquier área de la enseñanza, con su respectiva carta de presentación y perfil profesional, sino que también permita a los profesores publicar en esta plataforma contenido digital gratuito y/o de pago de enseñanza tales como cursos en video, entre otros. Y, si se desea, los padres de familia puedan saber la ubicación en la ciudad donde estos profesores pueden ofrecer sus servicios.
-## Aclaraciones:
+## 🧩 Aclaraciones:
 - Los profesores pueden ser estudiantes o profesionales en sus áreas respectivas.
 - Verificar la formación mediante Senecyt para los profesionales
 - Verificación similar a la de Linked In o GitHub estudiantil para estudiantes de Universidad
@@ -24,7 +24,7 @@
 - Los profesores reciben calificaciones.
 - El costo de hora/clase puede ser fija para clases particulares.
 - Cada profesor tiene la oportunidad de ofrecer clases particulares a un precio configurable por este mismo.
-## Conclusiones:
+## 📌 Conclusiones:
 ### Miguel Avilez
 -
 -
@@ -34,7 +34,7 @@
 ### Steven Tintin
 -
 -
-## Recomendaciones:
+## 💡Recomendaciones:
 ### Miguel Avilez
 -
 -
