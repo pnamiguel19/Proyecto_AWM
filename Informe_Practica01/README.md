@@ -24,24 +24,24 @@
 - Los profesores reciben calificaciones.
 - El costo de hora/clase puede ser fija para clases particulares.
 - Cada profesor tiene la oportunidad de ofrecer clases particulares a un precio configurable por este mismo.
-# Conclusiones:
-# Miguel Avilez
+## Conclusiones:
+### Miguel Avilez
 -
 -
-# Jannys Garrido
+### Jannys Garrido
 -
 -
-# Steven Tintin
+### Steven Tintin
 -
 -
-# Recomendaciones:
-# Miguel Avilez
+## Recomendaciones:
+### Miguel Avilez
 -
 -
-# Jannys Garrido
+### Jannys Garrido
 -
 -
-# Steven Tintin
+### Steven Tintin
 -
 -
 
