@@ -25,7 +25,7 @@
 - El costo de hora/clase puede ser fija para clases particulares.
 - Cada profesor tiene la oportunidad de ofrecer clases particulares a un precio configurable por este mismo, 
 
-## Conclusiones:
+# Conclusiones:
 # Miguel Avilez
 -
 -
@@ -35,7 +35,7 @@
 # Steven Tintin
 -
 -
-## Recomendaciones:
+# Recomendaciones:
 # Miguel Avilez
 -
 -
