@@ -41,8 +41,8 @@ Los usuarios priorizan la formación profesional y la reputación del profesor, 
 - EduMatch facilita la conexión entre padres de familia y profesores, ofreciendo una solución práctica y confiable para encontrar clases particulares en diversas áreas.
 - La plataforma promueve la educación personalizada mediante el uso de tecnología, brindando confianza, accesibilidad y nuevas oportunidades de enseñanza.
 ### Jannys Garrido
--
--
+- La aplicación EduMatch demuestra la viabilidad de una plataforma integral que optimiza el proceso de búsqueda, contacto y gestión de tutorías personalizadas, ofreciendo un entorno confiable tanto para padres y estudiantes que buscan apoyo académico,
+- La aplicación EduMatch brinda a los docentes una plataforma confiable y estructurada para ofrecer sus servicios educativos, permitiéndoles gestionar su perfil profesional, disponibilidad, tarifas y comunicación con los padres de manera eficiente.
 ### Steven Tintin
 -
 -
@@ -51,8 +51,8 @@ Los usuarios priorizan la formación profesional y la reputación del profesor, 
 - Implementar un sistema de verificación y reputación sólido para garantizar la confiabilidad tanto de los profesores como de los usuarios.
 - Desarrollar una interfaz intuitiva y moderna, que priorice la experiencia del usuario y la facilidad de uso en dispositivos móviles.
 ### Jannys Garrido
--
--
+- Implementa un sistema de puntuación más visual y comentarios destacados, para que los usuarios elijan docentes con mayor confianza.
+- Implementa medidas de seguridad y validación de datos, como cifrado de contraseñas y verificación de identidad.
 ### Steven Tintin
 -
 -
