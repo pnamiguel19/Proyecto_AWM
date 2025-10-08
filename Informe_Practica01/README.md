@@ -24,10 +24,22 @@
 - Los profesores reciben calificaciones.
 - El costo de hora/clase puede ser fija para clases particulares.
 - Cada profesor tiene la oportunidad de ofrecer clases particulares a un precio configurable por este mismo.
+
+## 📝 Encuesta previa al desarrollo de EduMatch
+### 1️⃣ ¿Has tenido dificultades para encontrar profesores particulares confiables?
+La mayoría tiene dificultades para hallar profesores confiables, lo que valida la necesidad de una plataforma como EduMatch.
+### 2️⃣ ¿Qué medio utilizas actualmente para buscar profesores particulares?
+Predominan los métodos informales, lo que evidencia una oportunidad para ofrecer un servicio centralizado y seguro.
+### 3️⃣ ¿Preferirías clases presenciales o virtuales?
+Existe una clara preferencia por clases presenciales, aunque algunos usuarios valoran la flexibilidad de la modalidad virtual.
+### 4️⃣ ¿Qué aspectos valoras más al elegir un profesor?
+Los usuarios priorizan la formación profesional y la reputación del profesor, más que el precio o la disponibilidad.
+
+
 ## 📌 Conclusiones:
 ### Miguel Avilez
--
--
+- EduMatch facilita la conexión entre padres de familia y profesores, ofreciendo una solución práctica y confiable para encontrar clases particulares en diversas áreas.
+- La plataforma promueve la educación personalizada mediante el uso de tecnología, brindando confianza, accesibilidad y nuevas oportunidades de enseñanza.
 ### Jannys Garrido
 -
 -
@@ -36,8 +48,8 @@
 -
 ## 💡Recomendaciones:
 ### Miguel Avilez
--
--
+- Implementar un sistema de verificación y reputación sólido para garantizar la confiabilidad tanto de los profesores como de los usuarios.
+- Desarrollar una interfaz intuitiva y moderna, que priorice la experiencia del usuario y la facilidad de uso en dispositivos móviles.
 ### Jannys Garrido
 -
 -
