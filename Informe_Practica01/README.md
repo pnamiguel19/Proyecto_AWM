@@ -6,7 +6,7 @@
 - Usualmente, padres de familia requieren de profesores, en diferentes campos de la educación, para sus hijos, quienes tienen problemas de aprendizaje o han descuidado sus estudios. Sin embargo, lograr encontrar un profesor que influya confianza en los padres de familia que ofrezca clases particulares, resulta una tarea más complicada de lo que debería ser. Es por este problema que proponemos una aplicación web que permita no solo la búsqueda sencilla de profesores en cualquier área de la enseñanza, con su respectiva carta de presentación y perfil profesional, sino que también permita a los profesores publicar en esta plataforma contenido digital gratuito y/o de pago de enseñanza tales como cursos en video, entre otros. Y, si se desea, los padres de familia puedan saber la ubicación en la ciudad donde estos profesores pueden ofrecer sus servicios.
 ## 🧩 Aclaraciones:
 - Los profesores pueden ser estudiantes o profesionales en sus áreas respectivas.
--- Verificar la formación mediante Senecyt para los profesionales
+- - Verificar la formación mediante Senecyt para los profesionales
 - Verificación similar a la de Linked In o GitHub estudiantil para estudiantes de Universidad
 - En la plataforma estarán disponibles los contenidos de manera gratuita o de pago (similarmente a lo que se reliza en only fans)
 - Los usuarios finales principalmente pueden ser padres de familia de estudiantes colegiales o en semestres tempranos de la universidad, sin embargo, también pueden ser estos mismos estudiantes los usuarios finales.
