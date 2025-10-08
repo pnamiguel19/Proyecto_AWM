@@ -53,7 +53,7 @@ Los usuarios priorizan la formación profesional y la reputación del profesor, 
 ### Jannys Garrido
 - La aplicación EduMatch demuestra la viabilidad de una plataforma integral que optimiza el proceso de búsqueda, contacto y gestión de tutorías personalizadas, ofreciendo un entorno confiable tanto para padres y estudiantes que buscan apoyo académico,
 - La aplicación EduMatch brinda a los docentes una plataforma confiable y estructurada para ofrecer sus servicios educativos, permitiéndoles gestionar su perfil profesional, disponibilidad, tarifas y comunicación con los padres de manera eficiente.
-### Steven Tintin
+### Steven Tintín
 - La aplicación es plataforma web y móvil tipo marketplace educativo, donde se conectan profesores particulares y padres de familia o estudiantes en cualquier área de la educación y encaja en el dominio de educación / cultura / sociedad en donde se plantea una solución para 2 problemas que ocurren en la sociedad quiteña, aunque podría expandirse a todo el país, para estudiantes encontrar fácilmente un profesor particular, mientras que para los profesores buscar por su propia cuenta potenciales clientes.
 - El ganche inicial de la aplicación es la busqueda fácil de profesores de confianza, sin embargo la razón por la que los usuarios finales se quedarán con esta aplicación es el sistema de agendamiento, pues permite a los profesores enfocarse únicamente en la enseñanza, pues la app ya les consigue los clientes. Es decir, los profesores pueden gestionar mejor su tiempo gracias a esta app, y por lo tanto generar más ingresos personales, por ende profesores de calidad se quedarán en esta app, lo que atraerá más estudiantes, y viceversa.
 ## 💡Recomendaciones:
@@ -63,7 +63,7 @@ Los usuarios priorizan la formación profesional y la reputación del profesor, 
 ### Jannys Garrido
 - Implementa un sistema de puntuación más visual y comentarios destacados, para que los usuarios elijan docentes con mayor confianza.
 - Implementa medidas de seguridad y validación de datos, como cifrado de contraseñas y verificación de identidad.
-### Steven Tintin
+### Steven Tintín
 - Investigar o idear un sistema de agendamiento tal que en la propia aplicación profesor y usuario final puedan concretar con facilidad una cita, de manera puntual, es decir, según el contexto de cada cita.
 - Centrar el desarrollo de la aplicación en el sistema de agendamiento, sin descuidar lo demás propuesto en la aplicación.
 
