@@ -1,1 +1,103 @@
+/* ===== RESET Y VARIABLES ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary-cyan:#00D9E1;
+  --primary-dark:#008B8B;
+  --accent-yellow:#FFD700;
+  --text-dark:#2C3E50;
+  --gray-light:#ECF0F1;
+  --gray-medium:#BDC3C7;
+  --white:#FFFFFF;
+  --shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
+  line-height:1.6;color:var(--text-dark);background-color:var(--gray-light)
+}
+
+/* ===== HEADER NAVIGATION ===== */
+.header{background:linear-gradient(135deg,var(--primary-cyan) 0%,var(--primary-dark) 100%);box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
+.header__container{max-width:1400px;margin:0 auto;padding:1rem 2rem}
+.header__top{display:flex;justify-content:space-between;align-items:center;gap:2rem;margin-bottom:1rem}
+.logo{display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none;font-size:1.8rem;font-weight:700}
+.logo__icon{font-size:2.5rem}
+.search-bar{flex:1;max-width:600px;position:relative}
+.search-bar__input{width:100%;padding:.875rem 3rem .875rem 1.25rem;border:none;border-radius:50px;font-size:1rem;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:box-shadow .3s}
+.search-bar__input:focus{outline:none;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.search-bar__button{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:transparent;border:none;cursor:pointer;padding:.5rem;color:var(--primary-dark);font-size:1.5rem}
+.header__actions{display:flex;gap:1rem;align-items:center}
+.header__link{color:var(--white);text-decoration:none;font-size:.9rem;transition:opacity .3s}
+.header__link:hover,.header__link:focus{opacity:.8;text-decoration:underline}
+
+/* ===== NAVIGATION FILTERS ===== */
+.nav-filters{display:flex;justify-content:center;gap:2rem;padding:1rem 0;border-top:1px solid rgba(255,255,255,.2)}
+.nav-filters__item{text-align:center;color:var(--white)}
+.nav-filters__button{background:none;border:none;color:var(--white);font-size:1.1rem;font-weight:600;cursor:pointer;padding:.5rem 1rem;transition:.3s;border-radius:8px}
+.nav-filters__button:hover,.nav-filters__button:focus{background:rgba(255,255,255,.2);outline:2px solid var(--white)}
+.nav-filters__subtitle{font-size:.85rem;opacity:.9;margin-top:.25rem}
+
+/* ===== MAIN CONTENT ===== */
+.main{max-width:1200px;margin:2rem auto;padding:0 2rem}
+.booking-card{background:var(--white);border-radius:12px;padding:2.5rem;box-shadow:var(--shadow)}
+.booking-card__title{font-size:1.75rem;margin-bottom:2rem;color:var(--text-dark)}
+
+/* ===== FORM SECTIONS ===== */
+.form-section{margin-bottom:2rem}
+.form-section__label{display:block;font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:var(--text-dark)}
+.button-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.button-option{padding:1rem 1.5rem;border:2px solid var(--gray-medium);background:var(--white);border-radius:8px;cursor:pointer;font-size:1rem;font-weight:500;transition:.3s;text-align:center}
+.button-option:hover{border-color:var(--primary-cyan);transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,217,225,.2)}
+.button-option:focus{outline:none;border-color:var(--primary-cyan);box-shadow:0 0 0 3px rgba(0,217,225,.2)}
+.button-option--selected{background:var(--accent-yellow);border-color:var(--accent-yellow);font-weight:700}
+.text-input{width:100%;padding:1rem;border:2px solid var(--gray-medium);border-radius:8px;font-size:1rem;font-family:inherit;resize:vertical;min-height:100px;transition:border-color .3s}
+.text-input:focus{outline:none;border-color:var(--primary-cyan);box-shadow:0 0 0 3px rgba(0,217,225,.1)}
+.submit-button{background:var(--accent-yellow);color:var(--text-dark);border:none;padding:.875rem 3rem;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:.3s;display:block;margin:0 0 0 auto}
+.submit-button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,215,0,.4)}
+.submit-button:focus{outline:none;box-shadow:0 0 0 3px rgba(255,215,0,.5)}
+
+/* ===== SCHEDULE TABLE ===== */
+.schedule-table{width:100%;border-collapse:collapse;margin-top:1rem;overflow-x:auto;display:block}
+.schedule-table table{width:100%;min-width:600px}
+.schedule-table th,.schedule-table td{border:1px solid var(--gray-medium);padding:.75rem;text-align:center}
+.schedule-table th{background:var(--primary-cyan);color:var(--white);font-weight:600;position:sticky;top:0}
+.schedule-table td{background:var(--white);cursor:pointer;transition:background-color .2s}
+.schedule-table td:hover{background:rgba(0,217,225,.1)}
+.schedule-table td.selected{background:var(--accent-yellow);font-weight:700}
+.schedule-table__time{background:var(--gray-light);font-weight:600}
+
+/* ===== LOCATION SECTION ===== */
+.location-options{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem}
+.radio-option{display:flex;align-items:center;gap:.75rem;padding:.75rem;border:2px solid var(--gray-medium);border-radius:8px;cursor:pointer;transition:.3s}
+.radio-option:hover{border-color:var(--primary-cyan);background:rgba(0,217,225,.05)}
+.radio-option input[type="radio"]{width:1.25rem;height:1.25rem;cursor:pointer}
+.radio-option label{cursor:pointer;font-size:1rem}
+.address-input{display:flex;align-items:center;gap:1rem;margin-top:1rem}
+.address-input__icon{color:var(--primary-dark);font-size:1.5rem}
+.address-input input{flex:1;padding:.875rem 1rem;border:2px solid var(--gray-medium);border-radius:8px;font-size:1rem}
+.address-input input:focus{outline:none;border-color:var(--primary-cyan)}
+
+/* ===== FORM ACTIONS ===== */
+.form-actions{display:flex;gap:1rem;justify-content:flex-end;margin-top:2rem}
+.button--secondary{background:#FF6B35;color:var(--white)}
+.button--secondary:hover{background:#E85D2D}
+.button--primary{background:var(--accent-yellow)}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width:768px){
+  .header__top{flex-direction:column;gap:1rem}
+  .search-bar{max-width:100%}
+  .nav-filters{flex-direction:column;gap:1rem}
+  .booking-card{padding:1.5rem}
+  .button-group{grid-template-columns:1fr}
+  .form-actions{flex-direction:column}
+  .submit-button{width:100%;margin:0}
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0
+}
 
