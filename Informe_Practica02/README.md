@@ -15,8 +15,8 @@
 - La elaboración de los mockups permitió visualizar de forma clara la estructura, el flujo de interacción y la experiencia del usuario dentro de EduMatch. Se evidenció la coherencia entre los casos de uso, las historias de usuario y los requisitos funcionales, garantizando una base sólida para la siguiente etapa de desarrollo e implementación.
 - Los mockups iniciales reflejan un diseño intuitivo, visualmente atractivo y adaptable, enfocado en la facilidad de navegación tanto para estudiantes como para profesores. La aplicación promueve la inclusión digital mediante la integración de modalidades presenciales y virtuales, permitiendo un acceso flexible y eficiente al aprendizaje.
 ### Steven Tintín
--
--
+- Se realizó una optimización en el sistema de agendamiento, quitamos el flujo que contemplaba negociación de lugar y hora para migrar a reserva auto-confirmada con reglas explícitas: duración mínima 120 min, buffer presencial de +1 h antes y +1 h después, validación de solapes y elección de lugar en mapa. Esto simplifica la UX, reduce tiempos muertos y mejora la confiabilidad del calendario (actualizamos UC6, eliminamos UC7, agregamos holdStartAt/holdEndAt y la restricción anti-solape).
+- Se consolidaron artefactos clave: diagramas de casos de uso (general y por actor, con colores), UML de clases y estados, y backlog en Word con historias priorizadas (P1/P2). Resultado: alcance del MVP claro y listo para planificar sprints con menos ambigüedad.
 ## 💡Recomendaciones:
 ### Miguel Avilez
 - Se recomienda realizar una validación temprana con usuarios reales, como padres de familia y profesores, para obtener retroalimentación sobre la usabilidad y el diseño de la aplicación antes de su implementación final.
@@ -25,6 +25,6 @@
 - Se recomienda incorporar elementos interactivos, como notificaciones visuales y confirmaciones de cita, para mejorar la interacción y reducir posibles errores. Además, incluir un sistema de ayuda o guía rápida podría facilitar el uso de la plataforma por usuarios nuevos.
 - Se sugiere realizar pruebas piloto con un grupo reducido de padres, estudiantes y profesores para evaluar la comprensión de las interfaces y la efectividad del sistema de agendamiento. Esta retroalimentación temprana permitirá realizar ajustes en la interfaz antes de la implementación final.
 ### Steven Tintín
--
--
+- Completar casos de uso e historias de usuario para Profesor y Administrador, es decir, añadir los que faltan (p. ej., gestionar cancelaciones, reportes, revisión de verificaciones, suspensión de contenido/usuarios).
+- Ampliar la documentación con todos los diagramas clave como los son casos de uso (por actor y módulo), secuencia (búsqueda, reserva, pagos, verificación), actividad (flujo de reserva) y estado (ciclo de vida de la cita).
 
