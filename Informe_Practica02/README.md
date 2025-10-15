@@ -9,8 +9,8 @@
 
 ## 📌 Conclusiones:
 ### Miguel Avilez
--
--
+- En sintesis, la elaboración de los casos de uso, historias de usuario, diagramas UML y mockups permitió obtener una visión clara y estructurada del funcionamiento de la aplicación EduMatch. Estas herramientas facilitaron la identificación de los principales actores, sus interacciones con el sistema y los procesos necesarios para cumplir los objetivos funcionales. Gracias a ello, se logró alinear los requerimientos del usuario con el diseño técnico y visual de la aplicación, garantizando coherencia entre la experiencia del usuario y la lógica de desarrollo.
+- Además, este proceso contribuyó significativamente a fortalecer la planificación y validación del proyecto, ya que permitió anticipar posibles mejoras en la interfaz y en la usabilidad antes de la implementación. Los diagramas UML y los mockups ayudaron a visualizar el flujo de navegación y las relaciones entre componentes, mientras que las historias de usuario facilitaron la priorización de funcionalidades esenciales.
 ### Jannys Garrido
 -
 -
@@ -19,8 +19,8 @@
 -
 ## 💡Recomendaciones:
 ### Miguel Avilez
--
--
+- Se recomienda realizar una validación temprana con usuarios reales, como padres de familia y profesores, para obtener retroalimentación sobre la usabilidad y el diseño de la aplicación antes de su implementación final.
+- También sería conveniente implementar un sistema de retroalimentación continua dentro de la plataforma, para que los usuarios puedan sugerir mejoras o reportar inconvenientes, promoviendo así la evolución constante.
 ### Jannys Garrido
 -
 -
