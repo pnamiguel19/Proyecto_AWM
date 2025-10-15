@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Encuentra los mejores profesores particulares para tus clases. Profesores destacados y recomendados por estudiantes." />
+    <title>EduMatch - Encuentra tu Profesor Ideal</title>
+    <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header" role="banner">
+    <div class="container">
+      <div class="header__top">
+        <!-- Logo -->
+        <a href="/" class="logo" aria-label="EduMatch - Ir a inicio">
+          <span class="logo__icon" aria-hidden="true">🎓</span>
+          <span>EduMatch</span>
+        </a>
+
+        <!-- Barra de búsqueda -->
+        <form class="search-form" role="search" aria-label="Búsqueda de clases">
+          <label for="search-input" class="sr-only">Buscar clases, profesores o materias</label>
+          <input
+            type="search"
+            id="search-input"
+            class="search-form__input"
+            placeholder="Buscar clases, profesores..."
+            autocomplete="off"
+          />
+          <button type="submit" class="search-form__button" aria-label="Realizar búsqueda">
+            🔍
+          </button>
+        </form>
+
+        <!-- Navegación principal -->
+        <nav class="header-nav" aria-label="Navegación principal">
+          <a href="#funcionamiento" class="header-nav__link">¿Cómo funciona?</a>
+          <a href="#registro" class="header-nav__link">Regístrate</a>
+          <a href="#pedidos" class="header-nav__link">Pedidos</a>
+        </nav>
+      </div>
+
+      <!-- Filtros de navegación -->
+      <nav class="filters-nav" aria-label="Filtros de búsqueda">
+        <div class="filter">
+          <button class="filter__button" aria-label="Filtrar por materia">Materia</button>
+          <p class="filter__subtitle">¿Qué quieres aprender?</p>
+        </div>
+        <div class="filter">
+          <button class="filter__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+          <p class="filter__subtitle">¿En qué grado te encuentras?</p>
+        </div>
+        <div class="filter">
+          <button class="filter__button" aria-label="Filtrar por modalidad">Modalidad</button>
+          <p class="filter__subtitle">¿Cómo quieres recibir tu clase?</p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main" id="main-content">
+    <div class="container">
+      <!-- CATEGORÍA 1: PROFESORES DESTACADOS -->
+      <section class="category-section category-section--cyan" aria-labelledby="destacados-title">
+        <header class="category-header">
+          <h2 class="category-title" id="destacados-title">Profesores destacados</h2>
+        </header>
+
+        <ul class="teachers-grid">
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Juan - Física">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Juan, Física</h3>
+              <p class="teacher-subject">Bachillerato</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de María - Matemáticas">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">María, Matemáticas</h3>
+              <p class="teacher-subject">Primaria y Secundaria</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Carlos - Química">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Carlos, Química</h3>
+              <p class="teacher-subject">Bachillerato</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CATEGORÍA 2: MÁS RECOMENDADOS -->
+      <section class="category-section category-section--yellow" aria-labelledby="recomendados-title">
+        <header class="category-header">
+          <h2 class="category-title" id="recomendados-title">Los más recomendados por padres y estudiantes</h2>
+        </header>
+
+        <ul class="teachers-grid">
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Ana - Inglés">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Ana, Inglés</h3>
+              <p class="teacher-subject">Todos los niveles</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Pedro - Historia">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Pedro, Historia</h3>
+              <p class="teacher-subject">Secundaria y Bachillerato</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Laura - Biología">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Laura, Biología</h3>
+              <p class="teacher-subject">Bachillerato</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CATEGORÍA 3: EXPERTOS EN BUENOS RESULTADOS -->
+      <section class="category-section category-section--orange" aria-labelledby="expertos-title">
+        <header class="category-header">
+          <h2 class="category-title" id="expertos-title">Expertos en buenos resultados</h2>
+        </header>
+
+        <ul class="teachers-grid">
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Diego - Programación">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Diego, Programación</h3>
+              <p class="teacher-subject">Bachillerato y Universidad</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Sofía - Literatura">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Sofía, Literatura</h3>
+              <p class="teacher-subject">Secundaria y Bachillerato</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Roberto - Economía">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Roberto, Economía</h3>
+              <p class="teacher-subject">Bachillerato y Universidad</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CATEGORÍA 4: MÁS EXPERTOS (Cyan de nuevo) -->
+      <section class="category-section category-section--cyan" aria-labelledby="expertos2-title">
+        <header class="category-header">
+          <h2 class="category-title" id="expertos2-title">Expertos en buenos resultados</h2>
+        </header>
+
+        <ul class="teachers-grid">
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Gabriela - Francés">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Gabriela, Francés</h3>
+              <p class="teacher-subject">Todos los niveles</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Miguel - Música">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Miguel, Música</h3>
+              <p class="teacher-subject">Piano y Guitarra</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="teacher-card">
+            <a href="profile.html" class="teacher-card__link" aria-label="Ver perfil de Valentina - Dibujo">
+              <span class="sr-only">Ver perfil completo</span>
+            </a>
+            <div class="teacher-avatar">
+              <span class="teacher-avatar__icon" aria-hidden="true">😊</span>
+            </div>
+            <div class="teacher-info">
+              <h3 class="teacher-name">Valentina, Dibujo</h3>
+              <p class="teacher-subject">Arte y Diseño</p>
+              <p class="teacher-price">$5 por hora</p>
+              <div class="teacher-rating" role="img" aria-label="Calificación 4.8 de 5">
+                <span class="rating-value">4.8</span>
+                <span class="star-icon" aria-hidden="true">★</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
