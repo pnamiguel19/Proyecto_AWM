@@ -12,8 +12,8 @@
 - En sintesis, la elaboración de los casos de uso, historias de usuario, diagramas UML y mockups permitió obtener una visión clara y estructurada del funcionamiento de la aplicación EduMatch. Estas herramientas facilitaron la identificación de los principales actores, sus interacciones con el sistema y los procesos necesarios para cumplir los objetivos funcionales. Gracias a ello, se logró alinear los requerimientos del usuario con el diseño técnico y visual de la aplicación, garantizando coherencia entre la experiencia del usuario y la lógica de desarrollo.
 - Además, este proceso contribuyó significativamente a fortalecer la planificación y validación del proyecto, ya que permitió anticipar posibles mejoras en la interfaz y en la usabilidad antes de la implementación. Los diagramas UML y los mockups ayudaron a visualizar el flujo de navegación y las relaciones entre componentes, mientras que las historias de usuario facilitaron la priorización de funcionalidades esenciales.
 ### Jannys Garrido
--
--
+- La elaboración de los mockups permitió visualizar de forma clara la estructura, el flujo de interacción y la experiencia del usuario dentro de EduMatch. Se evidenció la coherencia entre los casos de uso, las historias de usuario y los requisitos funcionales, garantizando una base sólida para la siguiente etapa de desarrollo e implementación.
+- Los mockups iniciales reflejan un diseño intuitivo, visualmente atractivo y adaptable, enfocado en la facilidad de navegación tanto para estudiantes como para profesores. La aplicación promueve la inclusión digital mediante la integración de modalidades presenciales y virtuales, permitiendo un acceso flexible y eficiente al aprendizaje.
 ### Steven Tintín
 -
 -
@@ -22,8 +22,8 @@
 - Se recomienda realizar una validación temprana con usuarios reales, como padres de familia y profesores, para obtener retroalimentación sobre la usabilidad y el diseño de la aplicación antes de su implementación final.
 - También sería conveniente implementar un sistema de retroalimentación continua dentro de la plataforma, para que los usuarios puedan sugerir mejoras o reportar inconvenientes, promoviendo así la evolución constante.
 ### Jannys Garrido
--
--
+- Se recomienda incorporar elementos interactivos, como notificaciones visuales y confirmaciones de cita, para mejorar la interacción y reducir posibles errores. Además, incluir un sistema de ayuda o guía rápida podría facilitar el uso de la plataforma por usuarios nuevos.
+- Se sugiere realizar pruebas piloto con un grupo reducido de padres, estudiantes y profesores para evaluar la comprensión de las interfaces y la efectividad del sistema de agendamiento. Esta retroalimentación temprana permitirá realizar ajustes en la interfaz antes de la implementación final.
 ### Steven Tintín
 -
 -
