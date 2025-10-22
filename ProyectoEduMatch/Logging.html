@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - EduMatch</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="styles/pages/loggin.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Logo -->
+        <div class="logo-centered">
+            <div class="logo__icon" aria-hidden="true">🎓</div>
+            <div class="logo__text">EduMatch</div>
+        </div>
+
+        <!-- Título -->
+        <h1 class="auth-title">Iniciar sesión</h1>
+        <p class="auth-subtitle">Accede a tu cuenta para continuar</p>
+
+        <!-- Formulario -->
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">
+                    Correo electrónico 
+                    <span class="required">*</span>
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    placeholder="ejemplo@correo.com"
+                    aria-required="true"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="password">
+                    Contraseña 
+                    <span class="required">*</span>
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    placeholder="Ingresa tu contraseña"
+                    aria-required="true"
+                >
+            </div>
+
+            <!-- Opciones del formulario -->
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <span>Recordarme</span>
+                </label>
+                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <!-- Botón principal -->
+            <button type="submit" class="btn-yellow">
+                Iniciar sesión
+            </button>
+
+            <!-- Divider -->
+            <div class="divider">o continúa con</div>
+
+            <!-- Social Login -->
+            <div class="social-login">
+                <button type="button" class="btn-social" aria-label="Continuar con Google">
+                    <span aria-hidden="true">G</span>
+                    Google
+                </button>
+                <button type="button" class="btn-social" aria-label="Continuar con Facebook">
+                    <span aria-hidden="true">f</span>
+                    Facebook
+                </button>
+            </div>
+
+            <!-- Registro -->
+            <div class="register-link">
+                ¿No tienes cuenta? <a href="#">Regístrate aquí</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            // Aquí iría la lógica de autenticación
+            console.log('Login attempt:', { email, password });
+            
+            // Simulación de login exitoso
+            alert('Inicio de sesión exitoso');
+        });
+    </script>
+</body>
+</html>

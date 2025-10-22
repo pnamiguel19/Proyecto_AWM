@@ -1,0 +1,46 @@
+/* ================================
+   DOCUMENTS SUMMARY
+==================================*/
+.documents-summary {
+    background: linear-gradient(135deg, rgba(0, 217, 225, 0.1), rgba(0, 139, 139, 0.1));
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-cyan);
+    margin-top: 2rem;
+}
+
+.documents-summary h4 {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.summary-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--white);
+    border-radius: 8px;
+}
+
+.summary-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.summary-status {
+    font-weight: 600;
+    color: var(--error);
+}
+
+@media (max-width: 768px) {
+    .documents-summary {
+        padding: 1.5rem;
+    }
+}

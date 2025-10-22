@@ -1,0 +1,49 @@
+/* ================================
+   SUMMARY CARD
+==================================*/
+.summary-card {
+    background: var(--gray-light);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-cyan);
+    margin-bottom: 2rem;
+}
+
+.summary-card h3 {
+    color: var(--primary-cyan);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.summary-label {
+    font-weight: 600;
+    min-width: 150px;
+}
+
+.summary-value {
+    color: var(--text-gray);
+}
+
+@media (max-width: 768px) {
+    .summary-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .summary-label {
+        min-width: auto;
+    }
+}

@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil del Profesor</title>
-      <link rel="stylesheet" href="css/profileprofesor.css">
+    <title>Perfil del Profesor - EduMatch</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    
+    <!-- Layout -->
+    <link rel="stylesheet" href="styles/layout/container.css">
+    
+    <!-- Components -->
+    <link rel="stylesheet" href="styles/components/header.css">
+    <link rel="stylesheet" href="styles/components/buttons.css">
+    <link rel="stylesheet" href="styles/components/badges.css">
+    <link rel="stylesheet" href="styles/components/profile-card.css">
+    <link rel="stylesheet" href="styles/components/sections.css">
+    <link rel="stylesheet" href="styles/components/reviews.css">
+    <link rel="stylesheet" href="styles/components/map.css">
+    
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="styles/pages/profileprofesor.css">
 </head>
 <body>
   <!-- HEADER -->
@@ -18,39 +37,39 @@
         </a>
 
         <!-- Barra de búsqueda -->
-        <form class="search-form" role="search" aria-label="Búsqueda de clases">
+        <form class="search-bar" role="search" aria-label="Búsqueda de clases">
           <label for="search-input" class="sr-only">Buscar clases, profesores o materias</label>
           <input
             type="search"
             id="search-input"
-            class="search-form__input"
+            class="search-bar__input"
             placeholder="Buscar clases, profesores..."
             autocomplete="off"
           />
-          <button type="submit" class="search-form__button" aria-label="Realizar búsqueda">🔍</button>
+          <button type="submit" class="search-bar__button" aria-label="Realizar búsqueda">🔍</button>
         </form>
 
         <!-- Navegación principal -->
-        <nav class="header-nav" aria-label="Navegación principal">
-          <a href="#funcionamiento" class="header-nav__link">¿Cómo funciona?</a>
-          <a href="#registro" class="header-nav__link">Regístrate</a>
-          <a href="#postula" class="header-nav__link">Postúlate</a>
+        <nav class="header__actions" aria-label="Navegación principal">
+          <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
+          <a href="#registro" class="header__link">Regístrate</a>
+          <a href="#postula" class="header__link">Postúlate</a>
         </nav>
       </div>
 
       <!-- Filtros de navegación -->
-      <nav class="filters-nav" aria-label="Filtros de búsqueda">
-        <div class="filter">
-          <button class="filter__button" aria-label="Filtrar por materia">Materia</button>
-          <p class="filter__subtitle">¿Qué quieres aprender?</p>
+      <nav class="nav-filters" aria-label="Filtros de búsqueda">
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+          <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
         </div>
-        <div class="filter">
-          <button class="filter__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
-          <p class="filter__subtitle">¿En qué grado te encuentras?</p>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+          <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
         </div>
-        <div class="filter">
-          <button class="filter__button" aria-label="Filtrar por modalidad">Modalidad</button>
-          <p class="filter__subtitle">¿Cómo quieres recibir tu clase?</p>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+          <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
         </div>
       </nav>
     </div>
@@ -100,13 +119,13 @@
 
               <!-- Botones de acción -->
               <div class="action-buttons">
-                <button class="btn btn--primary" aria-label="Agendar clase con Juan García">
+                <button class="btn btn-primary" aria-label="Agendar clase con Juan García">
                   <span aria-hidden="true">📅</span> Agendar tu clase
                 </button>
-                <button class="btn btn--secondary" aria-label="Ver más cursos disponibles">
+                <button class="btn btn-secondary" aria-label="Ver más cursos disponibles">
                   <span aria-hidden="true">📚</span> Más cursos disponibles
                 </button>
-                <button class="btn btn--outline" aria-label="Ver carpeta profesional">
+                <button class="btn btn-outline" aria-label="Ver carpeta profesional">
                   <span aria-hidden="true">📁</span> Carpeta profesional
                 </button>
               </div>
@@ -124,7 +143,6 @@
             </header>
             <div class="video-wrapper">
               <div class="video-placeholder" aria-label="Video placeholder">▶️</div>
-              <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Video de presentación de Juan García" allowfullscreen></iframe> -->
             </div>
             <p class="video-caption">
               Conoce más sobre mi metodología de enseñanza y cómo puedo ayudarte a alcanzar tus objetivos académicos
@@ -146,202 +164,195 @@
                   <span class="course__detail"><span aria-hidden="true">📍</span> Virtual/Presencial</span>
                 </div>
               </li>
-              <!-- Agrega más cursos aquí -->
             </ul>
           </section>
-
-          <!-- Aquí puedes seguir con “Sobre mí”, “Experiencia”, “Reseñas”, “Mapa”, etc. -->
         </div>
-        
       </div>
     </div>
+
+    <!-- SECCIÓN DE RESEÑAS (Ancho completo) -->
+    <section class="reviews-section" aria-labelledby="reviews-title">
+      <div class="container">
+        <header class="reviews-header">
+          <h3 class="reviews-title" id="reviews-title">
+            <span aria-hidden="true">⭐</span>
+            Lo que dicen mis estudiantes
+          </h3>
+          <div class="reviews-stats">
+            <span class="reviews-average" aria-label="Calificación promedio 4.8">4.8</span>
+            <div class="reviews-stats__info">
+              <div class="stars" role="img" aria-label="4.8 de 5 estrellas">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star star--empty">★</span>
+              </div>
+              <p class="reviews-percentage">El 98% lo recomienda</p>
+            </div>
+          </div>
+        </header>
+
+        <ul class="reviews-grid">
+          <li class="review-card">
+            <div class="review-card__header">
+              <div class="review-avatar" aria-hidden="true">👤</div>
+              <div class="review-user">
+                <h4 class="review-user__name">María Fernández</h4>
+                <div class="stars" role="img" aria-label="5 de 5 estrellas">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+            <time class="review-card__date" datetime="2024-09-15">Hace 1 mes</time>
+            <p class="review-card__text">
+              Excelente profesor. Explica de manera clara y siempre está dispuesto a resolver dudas. 
+              Gracias a sus clases mejoré notablemente en física y pude aprobar mi examen de ingreso.
+            </p>
+          </li>
+
+          <li class="review-card">
+            <div class="review-card__header">
+              <div class="review-avatar" aria-hidden="true">👤</div>
+              <div class="review-user">
+                <h4 class="review-user__name">Carlos Rodríguez</h4>
+                <div class="stars" role="img" aria-label="5 de 5 estrellas">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+            <time class="review-card__date" datetime="2024-08-20">Hace 2 meses</time>
+            <p class="review-card__text">
+              Sus clases son muy dinámicas y usa ejemplos de la vida real que hacen fácil entender 
+              conceptos complicados. Lo recomiendo totalmente.
+            </p>
+          </li>
+
+          <li class="review-card">
+            <div class="review-card__header">
+              <div class="review-avatar" aria-hidden="true">👤</div>
+              <div class="review-user">
+                <h4 class="review-user__name">Ana Martínez</h4>
+                <div class="stars" role="img" aria-label="4 de 5 estrellas">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star star--empty">★</span>
+                </div>
+              </div>
+            </div>
+            <time class="review-card__date" datetime="2024-07-10">Hace 3 meses</time>
+            <p class="review-card__text">
+              Muy paciente y dedicado. Me ayudó a prepararme para mi examen final y obtuve una 
+              excelente calificación. Sus métodos de enseñanza son efectivos.
+            </p>
+          </li>
+
+          <li class="review-card">
+            <div class="review-card__header">
+              <div class="review-avatar" aria-hidden="true">👤</div>
+              <div class="review-user">
+                <h4 class="review-user__name">Diego López</h4>
+                <div class="stars" role="img" aria-label="5 de 5 estrellas">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+            <time class="review-card__date" datetime="2024-06-25">Hace 4 meses</time>
+            <p class="review-card__text">
+              El mejor profesor de física que he tenido. Hace que las clases sean interesantes y 
+              siempre está disponible para responder preguntas fuera del horario de clase.
+            </p>
+          </li>
+
+          <li class="review-card">
+            <div class="review-card__header">
+              <div class="review-avatar" aria-hidden="true">👤</div>
+              <div class="review-user">
+                <h4 class="review-user__name">Sofía Ramírez</h4>
+                <div class="stars" role="img" aria-label="5 de 5 estrellas">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+            <time class="review-card__date" datetime="2024-05-15">Hace 5 meses</time>
+            <p class="review-card__text">
+              Increíble profesor. Tiene mucha paciencia y se adapta al ritmo de aprendizaje de cada 
+              estudiante. Mis notas mejoraron significativamente.
+            </p>
+          </li>
+
+          <li class="review-card">
+            <div class="review-card__header">
+              <div class="review-avatar" aria-hidden="true">👤</div>
+              <div class="review-user">
+                <h4 class="review-user__name">Pedro Sánchez</h4>
+                <div class="stars" role="img" aria-label="4 de 5 estrellas">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star star--empty">★</span>
+                </div>
+              </div>
+            </div>
+            <time class="review-card__date" datetime="2024-04-08">Hace 6 meses</time>
+            <p class="review-card__text">
+              Muy profesional y conocedor de su materia. Sus explicaciones son claras y siempre 
+              trae material de apoyo muy útil para las clases.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE MAPA (Ancho completo) -->
+    <section class="map-section" aria-labelledby="map-title">
+      <div class="container">
+        <header class="section__header">
+          <span aria-hidden="true">📍</span>
+          <h3 class="section__title" id="map-title">Ubicación para clases presenciales</h3>
+        </header>
+
+        <div class="map-address">
+          <span class="map-address__icon" aria-hidden="true">📌</span>
+          <div class="map-address__text">
+            <strong>Dirección:</strong> Av. 6 de Diciembre N34-120 y Av. Ignacio de Veintimilla, Quito, Ecuador
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.799152796609!2d-78.48838668523688!3d-0.18005369987180655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a10aa48c943%3A0x44f3448c143cd11c!2sUniversidad%20Central%20del%20Ecuador!5e0!3m2!1ses!2sec!4v1635789012345!5m2!1ses!2sec"
+            title="Ubicación de Juan García para clases presenciales en Quito, Ecuador"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-gray);">
+          Las clases presenciales se realizan en esta ubicación o puedo desplazarme dentro de Quito 
+          según tus necesidades. También ofrezco clases virtuales mediante plataformas como Zoom o Google Meet.
+        </p>
+      </div>
+    </section>
   </main>
-         <!-- SECCIÓN DE RESEÑAS (Ancho completo) -->
-        <section class="reviews-section" aria-labelledby="reviews-title">
-            <div class="container">
-                <header class="reviews-header">
-                    <h3 class="reviews-title" id="reviews-title">
-                        <span aria-hidden="true">⭐</span>
-                        Lo que dicen mis estudiantes
-                    </h3>
-                    <div class="reviews-stats">
-                        <span class="reviews-average" aria-label="Calificación promedio 4.8">4.8</span>
-                        <div class="reviews-stats__info">
-                            <div class="stars" role="img" aria-label="4.8 de 5 estrellas">
-                                <span class="star">★</span>
-                                <span class="star">★</span>
-                                <span class="star">★</span>
-                                <span class="star">★</span>
-                                <span class="star star--empty">★</span>
-                            </div>
-                            <p class="reviews-percentage">El 98% lo recomienda</p>
-                        </div>
-                    </div>
-                </header>
-
-                <ul class="reviews-grid">
-                    <li class="review-card">
-                        <div class="review-card__header">
-                            <div class="review-avatar" aria-hidden="true">👤</div>
-                            <div class="review-user">
-                                <h4 class="review-user__name">María Fernández</h4>
-                                <div class="stars" role="img" aria-label="5 de 5 estrellas">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                </div>
-                            </div>
-                        </div>
-                        <time class="review-card__date" datetime="2024-09-15">Hace 1 mes</time>
-                        <p class="review-card__text">
-                            Excelente profesor. Explica de manera clara y siempre está dispuesto a resolver dudas. 
-                            Gracias a sus clases mejoré notablemente en física y pude aprobar mi examen de ingreso.
-                        </p>
-                    </li>
-
-                    <li class="review-card">
-                        <div class="review-card__header">
-                            <div class="review-avatar" aria-hidden="true">👤</div>
-                            <div class="review-user">
-                                <h4 class="review-user__name">Carlos Rodríguez</h4>
-                                <div class="stars" role="img" aria-label="5 de 5 estrellas">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                </div>
-                            </div>
-                        </div>
-                        <time class="review-card__date" datetime="2024-08-20">Hace 2 meses</time>
-                        <p class="review-card__text">
-                            Sus clases son muy dinámicas y usa ejemplos de la vida real que hacen fácil entender 
-                            conceptos complicados. Lo recomiendo totalmente.
-                        </p>
-                    </li>
-
-                    <li class="review-card">
-                        <div class="review-card__header">
-                            <div class="review-avatar" aria-hidden="true">👤</div>
-                            <div class="review-user">
-                                <h4 class="review-user__name">Ana Martínez</h4>
-                                <div class="stars" role="img" aria-label="4 de 5 estrellas">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star star--empty">★</span>
-                                </div>
-                            </div>
-                        </div>
-                        <time class="review-card__date" datetime="2024-07-10">Hace 3 meses</time>
-                        <p class="review-card__text">
-                            Muy paciente y dedicado. Me ayudó a prepararme para mi examen final y obtuve una 
-                            excelente calificación. Sus métodos de enseñanza son efectivos.
-                        </p>
-                    </li>
-
-                    <li class="review-card">
-                        <div class="review-card__header">
-                            <div class="review-avatar" aria-hidden="true">👤</div>
-                            <div class="review-user">
-                                <h4 class="review-user__name">Diego López</h4>
-                                <div class="stars" role="img" aria-label="5 de 5 estrellas">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                </div>
-                            </div>
-                        </div>
-                        <time class="review-card__date" datetime="2024-06-25">Hace 4 meses</time>
-                        <p class="review-card__text">
-                            El mejor profesor de física que he tenido. Hace que las clases sean interesantes y 
-                            siempre está disponible para responder preguntas fuera del horario de clase.
-                        </p>
-                    </li>
-
-                    <li class="review-card">
-                        <div class="review-card__header">
-                            <div class="review-avatar" aria-hidden="true">👤</div>
-                            <div class="review-user">
-                                <h4 class="review-user__name">Sofía Ramírez</h4>
-                                <div class="stars" role="img" aria-label="5 de 5 estrellas">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                </div>
-                            </div>
-                        </div>
-                        <time class="review-card__date" datetime="2024-05-15">Hace 5 meses</time>
-                        <p class="review-card__text">
-                            Increíble profesor. Tiene mucha paciencia y se adapta al ritmo de aprendizaje de cada 
-                            estudiante. Mis notas mejoraron significativamente.
-                        </p>
-                    </li>
-
-                    <li class="review-card">
-                        <div class="review-card__header">
-                            <div class="review-avatar" aria-hidden="true">👤</div>
-                            <div class="review-user">
-                                <h4 class="review-user__name">Pedro Sánchez</h4>
-                                <div class="stars" role="img" aria-label="4 de 5 estrellas">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star star--empty">★</span>
-                                </div>
-                            </div>
-                        </div>
-                        <time class="review-card__date" datetime="2024-04-08">Hace 6 meses</time>
-                        <p class="review-card__text">
-                            Muy profesional y conocedor de su materia. Sus explicaciones son claras y siempre 
-                            trae material de apoyo muy útil para las clases.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- SECCIÓN DE MAPA (Ancho completo) -->
-        <section class="map-section" aria-labelledby="map-title">
-            <div class="container">
-                <header class="section__header">
-                    <span aria-hidden="true">📍</span>
-                    <h3 class="section__title" id="map-title">Ubicación para clases presenciales</h3>
-                </header>
-
-                <div class="map-address">
-                    <span class="map-address__icon" aria-hidden="true">📌</span>
-                    <div class="map-address__text">
-                        <strong>Dirección:</strong> Av. 6 de Diciembre N34-120 y Av. Ignacio de Veintimilla, Quito, Ecuador
-                    </div>
-                </div>
-
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.799152796609!2d-78.48838668523688!3d-0.18005369987180655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a10aa48c943%3A0x44f3448c143cd11c!2sUniversidad%20Central%20del%20Ecuador!5e0!3m2!1ses!2sec!4v1635789012345!5m2!1ses!2sec"
-                        title="Ubicación de Juan García para clases presenciales en Quito, Ecuador"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
-                </div>
-
-                <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-gray);">
-                    Las clases presenciales se realizan en esta ubicación o puedo desplazarme dentro de Quito 
-                    según tus necesidades. También ofrezco clases virtuales mediante plataformas como Zoom o Google Meet.
-                </p>
-            </div>
-        </section>
-    </div>
-</main>
-
-  <script src="js/perfil.js" defer></script>
 </body>
 </html>
