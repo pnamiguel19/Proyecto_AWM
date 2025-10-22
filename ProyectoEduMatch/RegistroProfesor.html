@@ -7,28 +7,51 @@
     <link rel="stylesheet" href="css/registrod.css">
 </head>
 <body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header-container">
-            <a href="/" class="logo">
-                <span class="logo-icon">🎓</span>
-                <span class="logo-text">EduMatch</span>
-            </a>
-            <nav class="header-nav">
-                <a href="#" class="nav-link">Inicio</a>
-                <a href="#" class="nav-link">¿Cómo funciona?</a>
-                <a href="#" class="nav-link">Iniciar sesión</a>
-            </nav>
-        </div>
-    </header>
+    <!-- HEADER CON NAVEGACIÓN -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <div class="header__top">
+        <a href="/" class="logo" aria-label="EduMatch - Inicio">
+          <span class="logo__icon" aria-hidden="true">🎓</span>
+          <span>EduMatch</span>
+        </a>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Únete a EduMatch</h1>
-            <p class="hero-subtitle">Comparte tu conocimiento y conecta con estudiantes que necesitan tu experiencia</p>
+        <form class="search-bar" role="search" aria-label="Búsqueda principal">
+          <label for="main-search" class="sr-only">Buscar clases o profesores</label>
+          <input
+            type="search"
+            id="main-search"
+            class="search-bar__input"
+            placeholder="Buscar clases, profesores..."
+            aria-label="Campo de búsqueda"
+          />
+          <button type="submit" class="search-bar__button" aria-label="Buscar">🔍</button>
+        </form>
+
+        <nav class="header__actions" aria-label="Acciones de usuario">
+          <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
+          <a href="#registro" class="header__link">Regístrate</a>
+          <a href="#postula" class="header__link">Postúlate</a>
+        </nav>
+      </div>
+
+      <!-- FILTROS DE NAVEGACIÓN -->
+      <nav class="nav-filters" aria-label="Filtros de búsqueda">
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+          <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
         </div>
-    </section>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+          <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+        </div>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+          <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+        </div>
+      </nav>
+    </div>
+  </header>
 
     <!-- MAIN CONTENT -->
     <main class="main-container">
