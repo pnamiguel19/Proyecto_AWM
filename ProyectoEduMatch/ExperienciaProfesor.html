@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases y Materias - EduMatch</title>
+    <link rel="stylesheet" href="css/experienciap.css">
+</head>
+<body>
+    <!-- HEADER CON NAVEGACIÓN -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <div class="header__top">
+        <a href="/" class="logo" aria-label="EduMatch - Inicio">
+          <span class="logo__icon" aria-hidden="true">🎓</span>
+          <span>EduMatch</span>
+        </a>
+
+        <form class="search-bar" role="search" aria-label="Búsqueda principal">
+          <input
+            type="search"
+            id="main-search"
+            class="search-bar__input"
+            placeholder="Buscar clases, profesores..."
+            aria-label="Campo de búsqueda"
+          />
+          <button type="submit" class="search-bar__button" aria-label="Buscar">🔍</button>
+        </form>
+
+        <nav class="header__actions" aria-label="Acciones de usuario">
+          <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
+          <a href="#registro" class="header__link">Regístrate</a>
+          <a href="#postula" class="header__link">Postúlate</a>
+        </nav>
+      </div>
+
+      <!-- FILTROS DE NAVEGACIÓN -->
+      <nav class="nav-filters" aria-label="Filtros de búsqueda">
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+          <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+        </div>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+          <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+        </div>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+          <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Clases y Materias</h1>
+            <p class="hero-subtitle">Define qué enseñas y cómo conectarás con tus estudiantes</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <!-- PROGRESS BAR -->
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 50%;"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Información Personal</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Formación</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Clases</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Horario</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Confirmación</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM CONTAINER -->
+        <div class="form-container">
+            <form id="clasesForm">
+                <div class="step-header">
+                    <h2>📚 Clases que Impartes</h2>
+                    <p>Esta información ayudará a los estudiantes a encontrarte fácilmente</p>
+                </div>
+
+                <!-- MATERIAS -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3 class="section-title">📖 Materias que Enseñas</h3>
+                        <span class="required-badge">* Obligatorio</span>
+                    </div>
+                    <p class="section-description">
+                        Selecciona todas las materias en las que puedes dar clases. Los estudiantes te encontrarán según estas materias.
+                    </p>
+
+                    <div class="subjects-grid">
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Matemáticas">
+                            <div class="subject-content">
+                                <span class="subject-icon">🔢</span>
+                                <span class="subject-name">Matemáticas</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Física">
+                            <div class="subject-content">
+                                <span class="subject-icon">⚛️</span>
+                                <span class="subject-name">Física</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Química">
+                            <div class="subject-content">
+                                <span class="subject-icon">🧪</span>
+                                <span class="subject-name">Química</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Biología">
+                            <div class="subject-content">
+                                <span class="subject-icon">🧬</span>
+                                <span class="subject-name">Biología</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Inglés">
+                            <div class="subject-content">
+                                <span class="subject-icon">🗣️</span>
+                                <span class="subject-name">Inglés</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Lengua y Literatura">
+                            <div class="subject-content">
+                                <span class="subject-icon">📚</span>
+                                <span class="subject-name">Lengua y Literatura</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Historia">
+                            <div class="subject-content">
+                                <span class="subject-icon">🏛️</span>
+                                <span class="subject-name">Historia</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Geografía">
+                            <div class="subject-content">
+                                <span class="subject-icon">🌍</span>
+                                <span class="subject-name">Geografía</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Programación">
+                            <div class="subject-content">
+                                <span class="subject-icon">💻</span>
+                                <span class="subject-name">Programación</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Música">
+                            <div class="subject-content">
+                                <span class="subject-icon">🎵</span>
+                                <span class="subject-name">Música</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Arte">
+                            <div class="subject-content">
+                                <span class="subject-icon">🎨</span>
+                                <span class="subject-name">Arte</span>
+                            </div>
+                        </label>
+
+                        <label class="subject-card">
+                            <input type="checkbox" name="subjects" value="Educación Física">
+                            <div class="subject-content">
+                                <span class="subject-icon">⚽</span>
+                                <span class="subject-name">Educación Física</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="selection-counter">
+                        <span id="subjectsCount">0</span> materias seleccionadas
+                    </div>
+                </div>
+
+                <!-- NIVELES EDUCATIVOS -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3 class="section-title">🎯 Niveles Educativos</h3>
+                        <span class="required-badge">* Obligatorio</span>
+                    </div>
+                    <p class="section-description">
+                        ¿A qué niveles educativos puedes dar clases? Selecciona todos los que apliquen.
+                    </p>
+
+                    <div class="levels-grid">
+                        <label class="level-card">
+                            <input type="checkbox" name="levels" value="Primaria">
+                            <div class="level-content">
+                                <span class="level-icon">👶</span>
+                                <div class="level-info">
+                                    <span class="level-name">Primaria</span>
+                                    <span class="level-description">1° a 6° grado (6-12 años)</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="level-card">
+                            <input type="checkbox" name="levels" value="Secundaria">
+                            <div class="level-content">
+                                <span class="level-icon">👦</span>
+                                <div class="level-info">
+                                    <span class="level-name">Secundaria</span>
+                                    <span class="level-description">7° a 10° grado (12-15 años)</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="level-card">
+                            <input type="checkbox" name="levels" value="Bachillerato">
+                            <div class="level-content">
+                                <span class="level-icon">👨‍🎓</span>
+                                <div class="level-info">
+                                    <span class="level-name">Bachillerato</span>
+                                    <span class="level-description">1° a 3° bachillerato (15-18 años)</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="level-card">
+                            <input type="checkbox" name="levels" value="Universidad">
+                            <div class="level-content">
+                                <span class="level-icon">🎓</span>
+                                <div class="level-info">
+                                    <span class="level-name">Universidad</span>
+                                    <span class="level-description">Educación superior</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="selection-counter">
+                        <span id="levelsCount">0</span> niveles seleccionados
+                    </div>
+                </div>
+
+                <!-- MODALIDAD -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3 class="section-title">💡 Modalidad de Enseñanza</h3>
+                        <span class="required-badge">* Obligatorio</span>
+                    </div>
+                    <p class="section-description">
+                        ¿Cómo prefieres dar tus clases? Puedes seleccionar ambas modalidades.
+                    </p>
+
+                    <div class="modality-grid">
+                        <label class="modality-card">
+                            <input type="checkbox" name="modality" value="Presencial">
+                            <div class="modality-content">
+                                <span class="modality-icon">🏠</span>
+                                <div class="modality-info">
+                                    <span class="modality-name">Presencial</span>
+                                    <span class="modality-description">Clases en tu domicilio o del estudiante</span>
+                                </div>
+                            </div>
+                            <div class="modality-badge">En persona</div>
+                        </label>
+
+                        <label class="modality-card">
+                            <input type="checkbox" name="modality" value="Virtual">
+                            <div class="modality-content">
+                                <span class="modality-icon">💻</span>
+                                <div class="modality-info">
+                                    <span class="modality-name">Virtual</span>
+                                    <span class="modality-description">Clases en línea vía Zoom, Meet, etc.</span>
+                                </div>
+                            </div>
+                            <div class="modality-badge">En línea</div>
+                        </label>
+                    </div>
+
+                    <div class="selection-counter">
+                        <span id="modalityCount">0</span> modalidades seleccionadas
+                    </div>
+                </div>
+
+                <!-- PRECIOS Y DETALLES -->
+                <div class="section-card">
+                    <h3 class="section-title">💰 Información de Precios</h3>
+                    <p class="section-description">
+                        Define tus tarifas base. Podrás ajustar precios específicos por materia más adelante.
+                    </p>
+
+                    <div class="pricing-grid">
+                        <div class="input-group">
+                            <label for="pricePerHour">Precio por Hora (USD) *</label>
+                            <input type="number" id="pricePerHour" required min="5" max="200" placeholder="15">
+                            <small class="input-hint">Tarifa estándar por hora de clase</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="minClassDuration">Duración Mínima (minutos) *</label>
+                            <select id="minClassDuration" required>
+                                <option value="">Selecciona duración</option>
+                                <option value="30">30 minutos</option>
+                                <option value="45">45 minutos</option>
+                                <option value="60">60 minutos</option>
+                                <option value="90">90 minutos</option>
+                                <option value="120">120 minutos</option>
+                            </select>
+                            <small class="input-hint">Tiempo mínimo por clase</small>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="classDescription">Descripción de tus Clases *</label>
+                        <textarea id="classDescription" required rows="5" 
+                            placeholder="Describe cómo son tus clases, tu metodología de enseñanza, qué materiales utilizas, cómo ayudas a los estudiantes a aprender..."></textarea>
+                        <small class="input-hint">Mínimo 100 caracteres - Esto aparecerá en tu perfil público</small>
+                    </div>
+                </div>
+
+                <!-- RESUMEN DE SELECCIÓN -->
+                <div class="selection-summary">
+                    <h4>📊 Resumen de tu Perfil de Enseñanza</h4>
+                    <div class="summary-content">
+                        <div class="summary-section">
+                            <strong>Materias:</strong>
+                            <div id="selectedSubjects" class="summary-tags">
+                                <span class="empty-state">No has seleccionado materias</span>
+                            </div>
+                        </div>
+                        <div class="summary-section">
+                            <strong>Niveles:</strong>
+                            <div id="selectedLevels" class="summary-tags">
+                                <span class="empty-state">No has seleccionado niveles</span>
+                            </div>
+                        </div>
+                        <div class="summary-section">
+                            <strong>Modalidad:</strong>
+                            <div id="selectedModality" class="summary-tags">
+                                <span class="empty-state">No has seleccionado modalidad</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAVIGATION -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                        ← Anterior
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Siguiente →
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <span class="notification-icon">✅</span>
+            <span class="notification-message">Información guardada</span>
+        </div>
+    </div>
+
+    <script>
+        // Contadores y actualizaciones en tiempo real
+        const subjectsCheckboxes = document.querySelectorAll('input[name="subjects"]');
+        const levelsCheckboxes = document.querySelectorAll('input[name="levels"]');
+        const modalityCheckboxes = document.querySelectorAll('input[name="modality"]');
+
+        // Actualizar contador de materias
+        subjectsCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                updateCounter('subjects', 'subjectsCount', 'selectedSubjects');
+            });
+        });
+
+        // Actualizar contador de niveles
+        levelsCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                updateCounter('levels', 'levelsCount', 'selectedLevels');
+            });
+        });
+
+        // Actualizar contador de modalidad
+        modalityCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                updateCounter('modality', 'modalityCount', 'selectedModality');
+            });
+        });
+
+        // Función para actualizar contadores y resumen
+        function updateCounter(name, counterId, summaryId) {
+            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+            const count = checkboxes.length;
+            document.getElementById(counterId).textContent = count;
+
+            // Actualizar resumen
+            const summaryContainer = document.getElementById(summaryId);
+            if (count === 0) {
+                summaryContainer.innerHTML = '<span class="empty-state">No has seleccionado opciones</span>';
+            } else {
+                summaryContainer.innerHTML = '';
+                checkboxes.forEach(checkbox => {
+                    const tag = document.createElement('span');
+                    tag.className = 'summary-tag';
+                    tag.textContent = checkbox.value;
+                    summaryContainer.appendChild(tag);
+                });
+            }
+        }
+
+        // Validación y continuar
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            // Validar materias
+            const selectedSubjects = document.querySelectorAll('input[name="subjects"]:checked');
+            if (selectedSubjects.length === 0) {
+                showNotification('Debes seleccionar al menos una materia', 'error');
+                return;
+            }
+
+            // Validar niveles
+            const selectedLevels = document.querySelectorAll('input[name="levels"]:checked');
+            if (selectedLevels.length === 0) {
+                showNotification('Debes seleccionar al menos un nivel educativo', 'error');
+                return;
+            }
+
+            // Validar modalidad
+            const selectedModality = document.querySelectorAll('input[name="modality"]:checked');
+            if (selectedModality.length === 0) {
+                showNotification('Debes seleccionar al menos una modalidad', 'error');
+                return;
+            }
+
+            // Validar precio
+            const price = document.getElementById('pricePerHour').value;
+            if (!price || price < 5) {
+                showNotification('Ingresa un precio válido (mínimo $5)', 'error');
+                return;
+            }
+
+            // Validar duración
+            if (!document.getElementById('minClassDuration').value) {
+                showNotification('Selecciona una duración mínima', 'error');
+                return;
+            }
+
+            // Validar descripción
+            const description = document.getElementById('classDescription').value;
+            if (!description || description.length < 100) {
+                showNotification('La descripción debe tener al menos 100 caracteres', 'error');
+                return;
+            }
+
+            // Todo validado
+            showNotification('¡Información guardada! Continuando...', 'success');
+            setTimeout(() => {
+                console.log('Ir al paso 4');
+                // window.location.href = 'horario.html';
+            }, 1500);
+        });
+
+        // Mostrar notificación
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const icon = type === 'success' ? '✅' : '⚠️';
+            notification.querySelector('.notification-icon').textContent = icon;
+            notification.querySelector('.notification-message').textContent = message;
+            notification.classList.add('show', type);
+            
+            setTimeout(() => {
+                notification.classList.remove('show', type);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

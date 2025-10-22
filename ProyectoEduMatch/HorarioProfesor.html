@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario - EduMatch</title>
+    <link rel="stylesheet" href="css/horariop.css">
+</head>
+<body>
+    <!-- HEADER CON NAVEGACIÓN -->
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="/" class="logo" aria-label="EduMatch - Inicio">
+                    <span class="logo__icon" aria-hidden="true">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <form class="search-bar" role="search" aria-label="Búsqueda principal">
+                    <input type="search" id="main-search" class="search-bar__input"
+                        placeholder="Buscar clases, profesores..." aria-label="Campo de búsqueda" />
+                    <button type="submit" class="search-bar__button" aria-label="Buscar">🔍</button>
+                </form>
+
+                <nav class="header__actions" aria-label="Acciones de usuario">
+                    <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
+                    <a href="#registro" class="header__link">Regístrate</a>
+                    <a href="#postula" class="header__link">Postúlate</a>
+                </nav>
+            </div>
+
+            <!-- FILTROS DE NAVEGACIÓN -->
+            <nav class="nav-filters" aria-label="Filtros de búsqueda">
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+                    <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+                    <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+                    <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Tu Horario de Clases</h1>
+            <p class="hero-subtitle">Define tu disponibilidad para conectar con estudiantes</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <!-- PROGRESS BAR -->
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%;"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Información Personal</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Formación</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Clases</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Horario</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Confirmación</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCHEDULE CONTAINER -->
+        <div class="schedule-container">
+            <div class="schedule-header">
+                <h2>📅 Disponibilidad Semanal</h2>
+                <p>Haz clic en las casillas para marcar las horas en las que puedes dar clases</p>
+            </div>
+
+            <!-- SCHEDULE GRID -->
+            <div class="schedule-grid">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                        <!-- Se llenará con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SCHEDULE LEGEND -->
+            <div class="schedule-legend">
+                <h3 class="legend-title">Leyenda</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color available"></div>
+                        <span class="legend-text">Disponible</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color unavailable"></div>
+                        <span class="legend-text">No Disponible</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM NAVIGATION -->
+            <div class="form-navigation">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    ← Anterior
+                </button>
+                <button type="button" class="btn btn-primary" id="nextBtn">
+                    Siguiente →
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <span class="notification-icon">✅</span>
+            <span class="notification-message">Horario guardado correctamente</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scheduleBody = document.getElementById('scheduleBody');
+            const startHour = 7;
+            const endHour = 22;
+            const selectedSlots = new Set();
+
+            // Generar las filas del horario
+            for (let hour = startHour; hour <= endHour; hour++) {
+                const row = document.createElement('tr');
+                
+                // Columna de hora
+                const timeCell = document.createElement('td');
+                timeCell.innerHTML = `<div class="time-slot">${hour}:00</div>`;
+                row.appendChild(timeCell);
+
+                // Columnas de días
+                for (let day = 0; day < 7; day++) {
+                    const cell = document.createElement('td');
+                    const scheduleCell = document.createElement('div');
+                    scheduleCell.className = 'schedule-cell';
+                    scheduleCell.dataset.hour = hour;
+                    scheduleCell.dataset.day = day;
+                    
+                    // Evento de clic para seleccionar/deseleccionar
+                    scheduleCell.addEventListener('click', function() {
+                        const slotId = hour + '-' + day;
+                        if (selectedSlots.has(slotId)) {
+                            selectedSlots.delete(slotId);
+                            this.classList.remove('selected');
+                        } else {
+                            selectedSlots.add(slotId);
+                            this.classList.add('selected');
+                        }
+                    });
+
+                    cell.appendChild(scheduleCell);
+                    row.appendChild(cell);
+                }
+
+                scheduleBody.appendChild(row);
+            }
+
+            // Manejo del botón siguiente
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                if (selectedSlots.size === 0) {
+                    showNotification('Debes seleccionar al menos un horario disponible', 'error');
+                    return;
+                }
+
+                // Guardar el horario y mostrar notificación
+                showNotification('¡Horario guardado! Continuando...', 'success');
+                setTimeout(() => {
+                    // Aquí iría la redirección a la siguiente página
+                    console.log('Slots seleccionados:', Array.from(selectedSlots));
+                }, 1500);
+            });
+
+            // Función para mostrar notificaciones
+            function showNotification(message, type) {
+                const notification = document.getElementById('notification');
+                const messageElement = notification.querySelector('.notification-message');
+                const iconElement = notification.querySelector('.notification-icon');
+
+                messageElement.textContent = message;
+                iconElement.textContent = type === 'success' ? '✅' : '⚠️';
+                
+                notification.className = 'notification show ' + type;
+                
+                setTimeout(() => {
+                    notification.classList.remove('show', type);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

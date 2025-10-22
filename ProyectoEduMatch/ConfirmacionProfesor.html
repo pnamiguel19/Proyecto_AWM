@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación - EduMatch</title>
+    <link rel="stylesheet" href="css/confirmacionp.css">
+</head>
+<body>
+    <!-- HEADER CON NAVEGACIÓN -->
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="/" class="logo" aria-label="EduMatch - Inicio">
+                    <span class="logo__icon" aria-hidden="true">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <form class="search-bar" role="search" aria-label="Búsqueda principal">
+                    <input type="search" id="main-search" class="search-bar__input"
+                        placeholder="Buscar clases, profesores..." aria-label="Campo de búsqueda" />
+                    <button type="submit" class="search-bar__button" aria-label="Buscar">🔍</button>
+                </form>
+
+                <nav class="header__actions" aria-label="Acciones de usuario">
+                    <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
+                    <a href="#registro" class="header__link">Regístrate</a>
+                    <a href="#postula" class="header__link">Postúlate</a>
+                </nav>
+            </div>
+
+            <!-- FILTROS DE NAVEGACIÓN -->
+            <nav class="nav-filters" aria-label="Filtros de búsqueda">
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+                    <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+                    <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+                    <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Confirmación Final</h1>
+            <p class="hero-subtitle">Revisa y acepta los términos para completar tu registro</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <!-- PROGRESS BAR -->
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Información Personal</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Formación</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Clases</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Horario</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Confirmación</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONFIRMATION CONTAINER -->
+        <div class="confirmation-container">
+            <div class="confirmation-header">
+                <h2>✅ Último Paso</h2>
+                <p>Por favor, lee y acepta los términos para completar tu registro como profesor en EduMatch</p>
+            </div>
+
+            <!-- TERMS SECTION -->
+            <div class="terms-section">
+                <div class="terms-content">
+                    <h3>Términos y Condiciones del Profesor</h3>
+                    
+                    <div class="terms-scroll">
+                        <p><strong>1. Veracidad de la Información</strong></p>
+                        <p>Confirmo que toda la información proporcionada en mi perfil, incluyendo mi formación académica, experiencia y credenciales, es verdadera y precisa. Entiendo que cualquier información falsa puede resultar en la terminación inmediata de mi cuenta.</p>
+
+                        <p><strong>2. Calidad de Enseñanza</strong></p>
+                        <p>Me comprometo a mantener los más altos estándares de calidad en la enseñanza, preparándome adecuadamente para cada clase y siguiendo las mejores prácticas pedagógicas.</p>
+
+                        <p><strong>3. Responsabilidades</strong></p>
+                        <ul>
+                            <li>Mantener actualizada mi disponibilidad horaria</li>
+                            <li>Responder a las solicitudes de clases en un tiempo razonable</li>
+                            <li>Cumplir con los horarios acordados para las clases</li>
+                            <li>Mantener una comunicación profesional con los estudiantes</li>
+                        </ul>
+
+                        <p><strong>4. Política de Cancelaciones</strong></p>
+                        <p>Entiendo que debo notificar con al menos 24 horas de anticipación cualquier cancelación de clase, salvo emergencias justificadas.</p>
+
+                        <p><strong>5. Propiedad Intelectual</strong></p>
+                        <p>Respetaré los derechos de propiedad intelectual y no utilizaré materiales protegidos por derechos de autor sin la debida autorización.</p>
+
+                        <p><strong>6. Privacidad y Confidencialidad</strong></p>
+                        <p>Me comprometo a mantener la confidencialidad de la información de los estudiantes y no compartir sus datos personales con terceros.</p>
+
+                        <p><strong>7. Normativas de la Plataforma</strong></p>
+                        <p>Acepto seguir todas las políticas y directrices de EduMatch, incluyendo las actualizaciones futuras de estos términos.</p>
+                    </div>
+                </div>
+
+                <!-- CONFIRMATION CHECKBOXES -->
+                <div class="confirmation-checks">
+                    <label class="check-container">
+                        <input type="checkbox" id="termsCheck">
+                        <span class="checkmark"></span>
+                        <span class="check-text">He leído y acepto los términos y condiciones de EduMatch</span>
+                    </label>
+
+                    <label class="check-container">
+                        <input type="checkbox" id="dataCheck">
+                        <span class="checkmark"></span>
+                        <span class="check-text">Confirmo que toda la información proporcionada es verídica y precisa</span>
+                    </label>
+
+                    <label class="check-container">
+                        <input type="checkbox" id="updatesCheck">
+                        <span class="checkmark"></span>
+                        <span class="check-text">Deseo recibir actualizaciones y noticias importantes de EduMatch</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- FORM NAVIGATION -->
+            <div class="form-navigation">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    ← Anterior
+                </button>
+                <button type="button" class="btn btn-primary" id="completeBtn" disabled>
+                    Completar Registro
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <span class="notification-icon">✅</span>
+            <span class="notification-message">Registro completado exitosamente</span>
+        </div>
+    </div>
+
+    <script>
+        // Manejar estados de checkboxes y botón de completar
+        const termsCheck = document.getElementById('termsCheck');
+        const dataCheck = document.getElementById('dataCheck');
+        const completeBtn = document.getElementById('completeBtn');
+
+        function updateButtonState() {
+            completeBtn.disabled = !(termsCheck.checked && dataCheck.checked);
+        }
+
+        termsCheck.addEventListener('change', updateButtonState);
+        dataCheck.addEventListener('change', updateButtonState);
+
+        // Manejar completar registro
+        completeBtn.addEventListener('click', function() {
+            if (!termsCheck.checked || !dataCheck.checked) {
+                showNotification('Debes aceptar los términos y confirmar la información', 'error');
+                return;
+            }
+
+            showNotification('¡Registro completado exitosamente!', 'success');
+            setTimeout(() => {
+                // Aquí iría la redirección al dashboard o perfil
+                console.log('Registro completado');
+            }, 1500);
+        });
+
+        // Función para mostrar notificaciones
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const messageElement = notification.querySelector('.notification-message');
+            const iconElement = notification.querySelector('.notification-icon');
+
+            messageElement.textContent = message;
+            iconElement.textContent = type === 'success' ? '✅' : '⚠️';
+            
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show', type);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

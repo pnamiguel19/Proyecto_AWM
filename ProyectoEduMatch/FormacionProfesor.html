@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación Académica - EduMatch</title>
+    <link rel="stylesheet" href="css/formaciond.css">
+</head>
+<body>
+<!-- HEADER CON NAVEGACIÓN -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <div class="header__top">
+        <a href="/" class="logo" aria-label="EduMatch - Inicio">
+          <span class="logo__icon" aria-hidden="true">🎓</span>
+          <span>EduMatch</span>
+        </a>
+
+        <form class="search-bar" role="search" aria-label="Búsqueda principal">
+          <input
+            type="search"
+            id="main-search"
+            class="search-bar__input"
+            placeholder="Buscar clases, profesores..."
+            aria-label="Campo de búsqueda"
+          />
+          <button type="submit" class="search-bar__button" aria-label="Buscar">🔍</button>
+        </form>
+
+        <nav class="header__actions" aria-label="Acciones de usuario">
+          <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
+          <a href="#registro" class="header__link">Regístrate</a>
+          <a href="#postula" class="header__link">Postúlate</a>
+        </nav>
+      </div>
+
+      <!-- FILTROS DE NAVEGACIÓN -->
+      <nav class="nav-filters" aria-label="Filtros de búsqueda">
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+          <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+        </div>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+          <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+        </div>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+          <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <!-- PROGRESS BAR -->
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 25%;"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Información Personal</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Formación</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Clases</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Horario</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Confirmación</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM CONTAINER -->
+        <div class="form-container">
+            <form id="formacionForm">
+                <div class="step-header">
+                    <h2>🎓 Formación Académica y Títulos</h2>
+                    <p>Sube tus documentos que avalen tu formación y experiencia como docente</p>
+                </div>
+
+                <!-- INFORMACIÓN BÁSICA -->
+                <div class="section-card">
+                    <h3 class="section-title">📋 Información Académica</h3>
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="degree">Título Universitario *</label>
+                            <input type="text" id="degree" required placeholder="Ej: Licenciatura en Física">
+                            <small class="input-hint">Título principal con el que enseñarás</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="university">Universidad *</label>
+                            <input type="text" id="university" required placeholder="Universidad Central del Ecuador">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="graduationYear">Año de Graduación *</label>
+                            <input type="number" id="graduationYear" required placeholder="2018" min="1950" max="2025">
+                        </div>
+                        <div class="input-group">
+                            <label for="experience">Años de Experiencia Docente *</label>
+                            <select id="experience" required>
+                                <option value="">Selecciona tu experiencia</option>
+                                <option value="0-1">Menos de 1 año</option>
+                                <option value="1-3">1 a 3 años</option>
+                                <option value="3-5">3 a 5 años</option>
+                                <option value="5-10">5 a 10 años</option>
+                                <option value="10+">Más de 10 años</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOCUMENTOS ACADÉMICOS -->
+                <div class="section-card">
+                    <h3 class="section-title">📄 Documentos Académicos</h3>
+                    <p class="section-description">
+                        Sube documentos que avalen tu formación académica (títulos, diplomas, certificados)
+                    </p>
+
+                    <div class="upload-section">
+                        <div class="upload-card">
+                            <div class="upload-header">
+                                <span class="upload-icon-large">🎓</span>
+                                <h4>Título Universitario</h4>
+                                <p>Copia de tu título profesional</p>
+                            </div>
+                            <div class="file-upload-area" id="tituloUpload">
+                                <input type="file" id="tituloFile" accept=".pdf" hidden>
+                                <label for="tituloFile" class="upload-label">
+                                    <span class="upload-icon">📎</span>
+                                    <span class="upload-text">Click para subir</span>
+                                    <small>PDF - Máx 10MB</small>
+                                </label>
+                            </div>
+                            <div id="tituloPreview" class="file-preview"></div>
+                        </div>
+
+                        <div class="upload-card">
+                            <div class="upload-header">
+                                <span class="upload-icon-large">📜</span>
+                                <h4>Cédula Profesional</h4>
+                                <p>Documento oficial de ejercicio profesional</p>
+                            </div>
+                            <div class="file-upload-area" id="cedulaUpload">
+                                <input type="file" id="cedulaFile" accept=".pdf" hidden>
+                                <label for="cedulaFile" class="upload-label">
+                                    <span class="upload-icon">📎</span>
+                                    <span class="upload-text">Click para subir</span>
+                                    <small>PDF - Máx 10MB</small>
+                                </label>
+                            </div>
+                            <div id="cedulaPreview" class="file-preview"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CERTIFICACIONES ADICIONALES -->
+                <div class="section-card">
+                    <h3 class="section-title">⭐ Certificaciones Adicionales (Opcional)</h3>
+                    <p class="section-description">
+                        Cursos, diplomados, especializaciones u otros documentos que fortalezcan tu perfil
+                    </p>
+
+                    <div id="certificacionesList" class="certificaciones-list">
+                        <div class="certificacion-item">
+                            <div class="certificacion-info">
+                                <div class="input-group">
+                                    <label>Nombre de la Certificación</label>
+                                    <input type="text" class="cert-name" placeholder="Ej: Diplomado en Pedagogía Digital">
+                                </div>
+                                <div class="input-group">
+                                    <label>Institución</label>
+                                    <input type="text" class="cert-institution" placeholder="Ej: Universidad Nacional">
+                                </div>
+                            </div>
+                            <div class="certificacion-upload">
+                                <div class="file-upload-area small">
+                                    <input type="file" class="cert-file" accept=".pdf" hidden>
+                                    <label class="upload-label">
+                                        <span class="upload-icon">📎</span>
+                                        <span class="upload-text">Subir PDF</span>
+                                    </label>
+                                </div>
+                                <div class="cert-preview"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-add-cert" id="addCertBtn">
+                        ➕ Agregar Otra Certificación
+                    </button>
+                </div>
+
+                <!-- EXPERIENCIA LABORAL -->
+                <div class="section-card">
+                    <h3 class="section-title">💼 Experiencia Docente</h3>
+                    
+                    <div class="input-group">
+                        <label for="teachingExperience">Describe tu Experiencia como Docente *</label>
+                        <textarea id="teachingExperience" required rows="5" 
+                            placeholder="Menciona instituciones donde has trabajado, materias que has impartido, logros destacados, metodologías que utilizas..."></textarea>
+                        <small class="input-hint">Mínimo 100 caracteres</small>
+                    </div>
+                </div>
+
+                <!-- RESUMEN DE DOCUMENTOS -->
+                <div class="documents-summary" id="documentsSummary">
+                    <h4>📊 Resumen de Documentos Cargados</h4>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <span class="summary-label">Título Universitario:</span>
+                            <span class="summary-status" id="tituloStatus">❌ Pendiente</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Cédula Profesional:</span>
+                            <span class="summary-status" id="cedulaStatus">❌ Pendiente</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Certificaciones Adicionales:</span>
+                            <span class="summary-status" id="certsStatus">0 documentos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAVIGATION -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                        ← Anterior
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Siguiente →
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <span class="notification-icon">✅</span>
+            <span class="notification-message">Documento cargado exitosamente</span>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let uploadedDocs = {
+            titulo: null,
+            cedula: null,
+            certificaciones: []
+        };
+
+        // Upload de Título
+        document.getElementById('tituloFile').addEventListener('change', function(e) {
+            handleFileUpload(e.target.files[0], 'titulo', 'tituloPreview', 'tituloStatus');
+        });
+
+        // Upload de Cédula
+        document.getElementById('cedulaFile').addEventListener('change', function(e) {
+            handleFileUpload(e.target.files[0], 'cedula', 'cedulaPreview', 'cedulaStatus');
+        });
+
+        // Función para manejar uploads
+        function handleFileUpload(file, type, previewId, statusId) {
+            if (!file) return;
+
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification('El archivo no debe superar 10MB', 'error');
+                return;
+            }
+
+            if (file.type !== 'application/pdf') {
+                showNotification('Solo se permiten archivos PDF', 'error');
+                return;
+            }
+
+            uploadedDocs[type] = file;
+            
+            const preview = document.getElementById(previewId);
+            preview.innerHTML = `
+                <div class="file-item">
+                    <span class="file-icon">📄</span>
+                    <div class="file-info">
+                        <span class="file-name">${file.name}</span>
+                        <span class="file-size">${(file.size / 1024).toFixed(2)} KB</span>
+                    </div>
+                    <button type="button" class="btn-remove" onclick="removeFile('${type}', '${previewId}', '${statusId}')">
+                        ✕
+                    </button>
+                </div>
+            `;
+
+            document.getElementById(statusId).innerHTML = '✅ Cargado';
+            document.getElementById(statusId).style.color = '#27AE60';
+            
+            showNotification('Documento cargado exitosamente', 'success');
+        }
+
+        // Remover archivo
+        function removeFile(type, previewId, statusId) {
+            uploadedDocs[type] = null;
+            document.getElementById(previewId).innerHTML = '';
+            document.getElementById(statusId).innerHTML = '❌ Pendiente';
+            document.getElementById(statusId).style.color = '#E74C3C';
+        }
+
+        // Agregar certificación
+        let certCount = 1;
+        document.getElementById('addCertBtn').addEventListener('click', function() {
+            if (certCount >= 5) {
+                showNotification('Máximo 5 certificaciones permitidas', 'error');
+                return;
+            }
+
+            certCount++;
+            const container = document.getElementById('certificacionesList');
+            const newCert = document.createElement('div');
+            newCert.className = 'certificacion-item';
+            newCert.innerHTML = `
+                <div class="certificacion-info">
+                    <div class="input-group">
+                        <label>Nombre de la Certificación</label>
+                        <input type="text" class="cert-name" placeholder="Ej: Diplomado en Pedagogía Digital">
+                    </div>
+                    <div class="input-group">
+                        <label>Institución</label>
+                        <input type="text" class="cert-institution" placeholder="Ej: Universidad Nacional">
+                    </div>
+                </div>
+                <div class="certificacion-upload">
+                    <div class="file-upload-area small">
+                        <input type="file" class="cert-file" accept=".pdf" hidden>
+                        <label class="upload-label">
+                            <span class="upload-icon">📎</span>
+                            <span class="upload-text">Subir PDF</span>
+                        </label>
+                    </div>
+                    <div class="cert-preview"></div>
+                </div>
+                <button type="button" class="btn-remove-cert" onclick="this.parentElement.remove(); certCount--;">
+                    🗑️ Eliminar
+                </button>
+            `;
+            container.appendChild(newCert);
+        });
+
+        // Validar y continuar
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (!document.getElementById('degree').value) {
+                showNotification('Completa el título universitario', 'error');
+                return;
+            }
+            if (!document.getElementById('university').value) {
+                showNotification('Completa la universidad', 'error');
+                return;
+            }
+            if (!document.getElementById('graduationYear').value) {
+                showNotification('Completa el año de graduación', 'error');
+                return;
+            }
+            if (!document.getElementById('experience').value) {
+                showNotification('Selecciona tu experiencia', 'error');
+                return;
+            }
+            if (!document.getElementById('teachingExperience').value || 
+                document.getElementById('teachingExperience').value.length < 100) {
+                showNotification('Describe tu experiencia (mínimo 100 caracteres)', 'error');
+                return;
+            }
+            if (!uploadedDocs.titulo) {
+                showNotification('Debes subir tu título universitario', 'error');
+                return;
+            }
+
+            // Todo validado, continuar al paso 3
+            showNotification('¡Información guardada! Continuando...', 'success');
+            setTimeout(() => {
+                // Aquí redirigirías al paso 3
+                console.log('Ir al paso 3');
+            }, 1500);
+        });
+
+        // Mostrar notificación
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const icon = type === 'success' ? '✅' : '⚠️';
+            notification.querySelector('.notification-icon').textContent = icon;
+            notification.querySelector('.notification-message').textContent = message;
+            notification.classList.add('show', type);
+            
+            setTimeout(() => {
+                notification.classList.remove('show', type);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
