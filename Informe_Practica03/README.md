@@ -15,8 +15,8 @@
 - El proyecto presenta una base sólida tanto en diseño como en experiencia de usuario. La interfaz cuenta con un aspecto visual atractivo y coherente gracias a una paleta de colores bien definida en tonos cyan, naranja y amarillo. La interfaz de usuario se encuentra lista para producción y garantiza una experiencia visual y funcional destacable.
 - EduMatch posee un alto potencial de crecimiento dentro del mercado educativo digital. Su público objetivo que son estudiantes en busca de clases particulares y profesores que desean generar ingresos adicionales, es claro y está bien definido. El modelo de negocio basado en comisiones por transacción, similar al de plataformas como Uber o Airbnb, ha demostrado ser rentable y sostenible.
 ### Steven Tintín
-- 
-- 
+- Se concluye que es posible construir una maqueta web estática, robusta y fiel al diseño visual (mockup) utilizando exclusivamente HTML5 y CSS3. La aplicación de etiquetas semánticas de HTML5 (como <header>, <main>, <nav>) fue fundamental, ya que no solo define la estructura del documento, sino que también simplifica la aplicación de estilos CSS y sienta las bases indispensables para la accesibilidad.
+- Esta práctica demostró la importancia de planificar la estructura modular del proyecto y utilizar un sistema de control de versiones (Git) desde el inicio. Para un trabajo grupal, mantener el código organizado en archivos separados y documentar los commits no es opcional, sino esencial para integrar las diferentes vistas de forma eficiente, evitar conflictos y asegurar que el diseño responsivo (Tarea 3) se aplique de manera coherente en todo el sitio.
 ## 💡Recomendaciones:
 ### Miguel Avilez
 - Se recomienda diseñar los mockups con herramientas que permitan interactividad básica, para comprender mejor la navegación y flujo del usuario antes de programar.
@@ -25,7 +25,7 @@
 - Se recomienda implementar un sistema de horarios interactivo que reemplace los actuales toggles por una cuadrícula semanal dinámica, en la cual los profesores puedan seleccionar bloques de 30 o 60 minutos con un solo clic, utilizando un código de colores que diferencie los horarios disponibles, ocupados y no laborables.
 - Se recomienda fortalecer la funcionalidad de búsqueda y emparejamiento entre estudiantes y profesores mediante un sistema inteligente que analice la disponibilidad, especialidad y nivel académico de los docentes. Este sistema permitirá filtrar los resultados según criterios como materia, modalidad de enseñanza, precio por hora o idioma, mostrando en tiempo real los horarios disponibles a través de una interfaz visual intuitiva.
 ### Steven Tintín
-- 
-- 
+- Priorizar la maquetación de las vistas estáticas faltantes que son cruciales para el flujo del profesor y administrador, como las páginas de "Perfil de Usuario" o "Configuración de cuenta".
+- Refinar el diseño responsivo de las vistas ya creadas, probando y ajustando específicamente interfaces importantes como "inicio de sesión".
 
 
