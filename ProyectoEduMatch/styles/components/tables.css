@@ -1,3 +1,53 @@
+/* ===== SCHEDULE TABLE ===== */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    overflow-x: auto;
+    display: block;
+}
+
+.schedule-table table {
+    width: 100%;
+    min-width: 600px;
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid var(--gray-medium);
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.schedule-table th {
+    background: var(--primary-cyan);
+    color: var(--white);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+.schedule-table td {
+    background: var(--white);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.schedule-table td:hover {
+    background: rgba(0, 217, 225, 0.1);
+}
+
+.schedule-table td.selected {
+    background: var(--accent-yellow);
+    font-weight: 700;
+}
+
+.schedule-table__time {
+    background: var(--gray-light);
+    font-weight: 600;
+}
+
+/* ===== TABLE CONTAINER (para otras tablas) ===== */
 .table-container {
     background: var(--bg-primary);
     border-radius: var(--border-radius-lg);

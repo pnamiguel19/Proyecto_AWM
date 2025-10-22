@@ -1,5 +1,10 @@
 :root {
-    /* Colores principales */
+    /* Colores principales - AgendamientoClase */
+    --primary-cyan: #00D9E1;
+    --primary-dark: #008B8B;
+    --accent-yellow: #FFD700;
+    
+    /* Colores del sistema anterior */
     --primary-color: #2563eb;
     --primary-hover: #1d4ed8;
     --secondary-color: #10b981;
@@ -12,19 +17,28 @@
     --bg-secondary: #f3f4f6;
     --bg-dark: #1f2937;
     --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-gradient-cyan: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-dark) 100%);
     
     /* Colores de texto */
+    --text-dark: #2C3E50;
     --text-primary: #1f2937;
     --text-secondary: #6b7280;
     --text-light: #9ca3af;
     --text-white: #ffffff;
+    --white: #FFFFFF;
     
-    /* Bordes */
+    /* Grises */
+    --gray-light: #ECF0F1;
+    --gray-medium: #BDC3C7;
     --border-color: #e5e7eb;
+    
+    /* Bordes y radios */
     --border-radius: 8px;
     --border-radius-lg: 12px;
+    --border-radius-full: 50px;
     
     /* Sombras */
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -37,7 +51,7 @@
     --spacing-xl: 2rem;
     
     /* Fuentes */
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
