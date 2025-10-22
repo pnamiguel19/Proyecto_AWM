@@ -88,3 +88,25 @@
     align-items: center;
     justify-content: center;
 }
+
+/* ================================
+   BUTTON FULL WIDTH
+==================================*/
+.btn-full {
+    width: 100%;
+}
+
+/* ================================
+   BUTTON YELLOW (LOGIN PRIMARY)
+==================================*/
+.btn-yellow {
+    background: var(--accent-yellow);
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.btn-yellow:hover {
+    background: #FFC107;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}

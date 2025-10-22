@@ -530,6 +530,130 @@
     background: #c0392b;
 }
 
+/* ================================
+   FORM OPTIONS
+==================================*/
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-cyan);
+}
+
+.forgot-password {
+    color: var(--primary-cyan);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+}
+
+/* ================================
+   DIVIDER
+==================================*/
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    color: var(--text-gray);
+    font-size: 0.875rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-medium);
+}
+
+.divider::before {
+    margin-right: 1rem;
+}
+
+.divider::after {
+    margin-left: 1rem;
+}
+
+/* ================================
+   SOCIAL LOGIN
+==================================*/
+.social-login {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-social {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    background: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.btn-social:hover {
+    border-color: var(--primary-cyan);
+    background: rgba(0, 217, 225, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn-social span {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* ================================
+   REGISTER LINK
+==================================*/
+.register-link {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+}
+
+.register-link a {
+    color: var(--primary-cyan);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+}
+
 @media (max-width: 768px) {
     .button-group {
         grid-template-columns: 1fr;
@@ -562,5 +686,17 @@
     
     .certificacion-info {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .social-login {
+        flex-direction: column;
     }
 }
