@@ -4,64 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - EduMatch</title>
-    <link rel="stylesheet" href="css/RegistroUsuario.css">
-
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="styles/pages/RegistroUsuario.css">
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <div class="logo-icon">🎓</div>
-            <div class="logo-text">EduMatch</div>
+    <div class="auth-container">
+        <!-- Logo -->
+        <div class="logo-centered">
+            <div class="logo__icon" aria-hidden="true">🎓</div>
+            <div class="logo__text">EduMatch</div>
         </div>
 
-        <h1>Crear cuenta</h1>
-        <p class="subtitle">Completa tus datos para comenzar</p>
+        <!-- Título -->
+        <h1 class="auth-title">Crear cuenta</h1>
+        <p class="auth-subtitle">Completa tus datos para comenzar</p>
 
+        <!-- Formulario -->
         <form id="registroForm">
+            <!-- Nombre y Apellido -->
             <div class="form-row">
                 <div class="form-group">
-                    <label for="nombre">Nombre <span class="required">*</span></label>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Juan">
+                    <label for="nombre">
+                        Nombre 
+                        <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        name="nombre" 
+                        required 
+                        placeholder="Juan"
+                        aria-required="true"
+                    >
                 </div>
                 <div class="form-group">
-                    <label for="apellido">Apellido <span class="required">*</span></label>
-                    <input type="text" id="apellido" name="apellido" required placeholder="Pérez">
+                    <label for="apellido">
+                        Apellido 
+                        <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="apellido" 
+                        name="apellido" 
+                        required 
+                        placeholder="Pérez"
+                        aria-required="true"
+                    >
                 </div>
             </div>
 
+            <!-- Correo electrónico -->
             <div class="form-group">
-                <label for="email">Correo electrónico <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                <label for="email">
+                    Correo electrónico 
+                    <span class="required">*</span>
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    placeholder="ejemplo@correo.com"
+                    aria-required="true"
+                >
             </div>
 
+            <!-- Teléfono -->
             <div class="form-group">
                 <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="+593 99 123 4567">
+                <input 
+                    type="tel" 
+                    id="telefono" 
+                    name="telefono" 
+                    placeholder="+593 99 123 4567"
+                >
             </div>
 
+            <!-- Ciudad -->
             <div class="form-group">
                 <label for="ciudad">Ciudad</label>
-                <input type="text" id="ciudad" name="ciudad" placeholder="Quito">
+                <input 
+                    type="text" 
+                    id="ciudad" 
+                    name="ciudad" 
+                    placeholder="Quito"
+                >
             </div>
 
+            <!-- Contraseña -->
             <div class="form-group">
-                <label for="password">Contraseña <span class="required">*</span></label>
-                <input type="password" id="password" name="password" required placeholder="Mínimo 8 caracteres">
+                <label for="password">
+                    Contraseña 
+                    <span class="required">*</span>
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    placeholder="Mínimo 8 caracteres"
+                    aria-required="true"
+                >
             </div>
 
+            <!-- Confirmar contraseña -->
             <div class="form-group">
-                <label for="confirm-password">Confirmar contraseña <span class="required">*</span></label>
-                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Repite tu contraseña">
+                <label for="confirm-password">
+                    Confirmar contraseña 
+                    <span class="required">*</span>
+                </label>
+                <input 
+                    type="password" 
+                    id="confirm-password" 
+                    name="confirm-password" 
+                    required 
+                    placeholder="Repite tu contraseña"
+                    aria-required="true"
+                >
             </div>
 
-            <button type="submit" class="btn-primary">Registrarse</button>
+            <!-- Botón de registro -->
+            <button type="submit" class="btn-yellow">
+                Registrarse
+            </button>
 
+            <!-- Link de inicio de sesión -->
             <div class="login-link">
-                ¿Ya tienes cuenta? <a href="#">Inicia sesión</a>
+                ¿Ya tienes cuenta? <a href="Logging.html">Inicia sesión</a>
             </div>
         </form>
     </div>
-
-
 </body>
 </html>
