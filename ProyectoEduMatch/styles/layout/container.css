@@ -43,3 +43,46 @@
         padding: 1.5rem;
     }
 }
+
+/* ===== MAIN CONTAINER ===== */
+.main-container {
+    max-width: 1000px;
+    margin: -2rem auto 4rem;
+    padding: 0 1.5rem;
+}
+
+/* ===== CONFIRMATION CONTAINER ===== */
+.confirmation-container {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.confirmation-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--gray-light);
+}
+
+.confirmation-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-header p {
+    color: var(--text-gray);
+    font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        margin: -1rem auto 2rem;
+        padding: 0 1rem;
+    }
+    
+    .confirmation-container {
+        padding: 1.5rem;
+    }
+}

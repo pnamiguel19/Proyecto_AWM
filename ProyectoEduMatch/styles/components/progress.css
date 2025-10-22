@@ -1,0 +1,95 @@
+/* ================================
+   PROGRESS BAR & STEPS
+==================================*/
+.progress-wrapper {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--gray-medium);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-cyan), var(--primary-dark));
+    transition: width 0.5s ease;
+}
+
+.progress-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.step {
+    text-align: center;
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.step.active,
+.step.completed {
+    opacity: 1;
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    background: var(--gray-medium);
+    color: var(--text-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0 auto 0.5rem;
+    transition: var(--transition);
+}
+
+.step.active .step-number {
+    background: var(--primary-cyan);
+    color: var(--white);
+    box-shadow: 0 0 0 4px rgba(0, 217, 225, 0.2);
+    transform: scale(1.1);
+}
+
+.step.completed .step-number {
+    background: var(--success);
+    color: var(--white);
+}
+
+.step-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-gray);
+}
+
+.step.active .step-label {
+    color: var(--primary-cyan);
+}
+
+@media (max-width: 768px) {
+    .progress-steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .step-label {
+        font-size: 0.75rem;
+    }
+}

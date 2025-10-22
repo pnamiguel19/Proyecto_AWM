@@ -1,7 +1,8 @@
 :root {
-    /* Colores principales - AgendamientoClase */
+    /* Colores principales */
     --primary-cyan: #00D9E1;
     --primary-dark: #008B8B;
+    --accent-orange: #FF7F3E;
     --accent-yellow: #FFD700;
     
     /* Colores del sistema anterior */
@@ -10,7 +11,9 @@
     --secondary-color: #10b981;
     --danger-color: #ef4444;
     --warning-color: #f59e0b;
-    --success-color: #10b981;
+    --success-color: #27AE60;
+    --success: #27AE60;
+    --error: #E74C3C;
     
     /* Colores de fondo */
     --bg-primary: #ffffff;
@@ -21,6 +24,7 @@
     
     /* Colores de texto */
     --text-dark: #2C3E50;
+    --text-gray: #5A6C7D;
     --text-primary: #1f2937;
     --text-secondary: #6b7280;
     --text-light: #9ca3af;
@@ -33,15 +37,18 @@
     --border-color: #e5e7eb;
     
     /* Bordes y radios */
-    --border-radius: 8px;
+    --border-radius: 12px;
     --border-radius-lg: 12px;
     --border-radius-full: 50px;
     
     /* Sombras */
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    
+    /* Transición */
+    --transition: all 0.3s ease;
     
     /* Espaciado */
     --spacing-xs: 0.25rem;
