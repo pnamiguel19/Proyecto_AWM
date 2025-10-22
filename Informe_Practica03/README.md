@@ -9,8 +9,8 @@
 
 ## 📌 Conclusiones:
 ### Miguel Avilez
-- 
-- 
+- En sintesis, realizar mockups antes de desarrollar una aplicación permite definir claramente la disposición de los elementos y la interacción del usuario con la interfaz. Esta práctica ayuda a detectar inconsistencias y mejoras de diseño en etapas tempranas, reduciendo costos y tiempos de desarrollo. Además, facilita la comunicación entre el equipo de diseño y desarrollo, asegurando que ambos compartan una misma visión del producto final.
+- Construir la estructura en HTML y aplicar estilos con CSS proporciona una base sólida y estéticamente coherente para la aplicación. HTML define el contenido y la organización de los elementos, mientras que CSS mejora la presentación visual y la adaptabilidad. Esta combinación favorece la experiencia del usuario y permite crear interfaces modernas, accesibles y fácilmente mantenibles a lo largo del tiempo.
 ### Jannys Garrido
 - El proyecto presenta una base sólida tanto en diseño como en experiencia de usuario. La interfaz cuenta con un aspecto visual atractivo y coherente gracias a una paleta de colores bien definida en tonos cyan, naranja y amarillo. La interfaz de usuario se encuentra lista para producción y garantiza una experiencia visual y funcional destacable.
 - EduMatch posee un alto potencial de crecimiento dentro del mercado educativo digital. Su público objetivo que son estudiantes en busca de clases particulares y profesores que desean generar ingresos adicionales, es claro y está bien definido. El modelo de negocio basado en comisiones por transacción, similar al de plataformas como Uber o Airbnb, ha demostrado ser rentable y sostenible.
@@ -19,8 +19,8 @@
 - 
 ## 💡Recomendaciones:
 ### Miguel Avilez
-- 
-- 
+- Se recomienda diseñar los mockups con herramientas que permitan interactividad básica, para comprender mejor la navegación y flujo del usuario antes de programar.
+- Es importante mantener una separación clara entre el contenido (HTML) y la presentación (CSS), utilizando buenas prácticas como clases semánticas y hojas de estilo externas para facilitar el mantenimiento del código.
 ### Jannys Garrido
 - Se recomienda implementar un sistema de horarios interactivo que reemplace los actuales toggles por una cuadrícula semanal dinámica, en la cual los profesores puedan seleccionar bloques de 30 o 60 minutos con un solo clic, utilizando un código de colores que diferencie los horarios disponibles, ocupados y no laborables.
 - Se recomienda fortalecer la funcionalidad de búsqueda y emparejamiento entre estudiantes y profesores mediante un sistema inteligente que analice la disponibilidad, especialidad y nivel académico de los docentes. Este sistema permitirá filtrar los resultados según criterios como materia, modalidad de enseñanza, precio por hora o idioma, mostrando en tiempo real los horarios disponibles a través de una interfaz visual intuitiva.
