@@ -86,3 +86,255 @@
 .stat-card.danger .stat-icon {
     color: var(--danger-color);
 }
+
+/* ================================
+   SECTION CARDS
+==================================*/
+.section-card {
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: var(--gray-light);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-cyan);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.35rem;
+    color: var(--text-dark);
+}
+
+.section-description {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* ================================
+   SUBJECTS GRID
+==================================*/
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.subject-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.subject-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.subject-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border: 3px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    min-height: 120px;
+}
+
+.subject-icon {
+    font-size: 2.5rem;
+}
+
+.subject-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.subject-card:hover .subject-content {
+    border-color: var(--primary-cyan);
+    background: rgba(0, 217, 225, 0.05);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.subject-card input[type="checkbox"]:checked + .subject-content {
+    border-color: var(--primary-dark);
+    background: rgba(0, 139, 139, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+/* ================================
+   LEVELS GRID
+==================================*/
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.level-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.level-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.level-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border: 3px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.level-content .level-icon {
+    font-size: 2.5rem;
+    color: var(--text-gray);
+}
+
+.level-content .level-info {
+    flex: 1;
+}
+
+.level-content .level-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.level-content .level-description {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+    display: block;
+}
+
+.level-card:hover .level-content {
+    border-color: var(--primary-cyan);
+    background: rgba(0, 217, 225, 0.05);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.level-card input[type="checkbox"]:checked + .level-content {
+    border-color: var(--primary-dark);
+    background: rgba(0, 139, 139, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+/* ================================
+   MODALITY GRID
+==================================*/
+.modality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modality-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.modality-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.modality-content {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 2rem;
+    background: var(--white);
+    border: 3px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.modality-content .modality-icon {
+    font-size: 2.75rem;
+    color: var(--primary-dark);
+}
+
+.modality-content .modality-info {
+    flex: 1;
+}
+
+.modality-content .modality-name {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.modality-content .modality-description {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    display: block;
+}
+
+.modality-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-yellow);
+    color: var(--text-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.modality-card:hover .modality-content {
+    border-color: var(--primary-cyan);
+    background: rgba(0, 217, 225, 0.05);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.modality-card input[type="checkbox"]:checked + .modality-content {
+    border-color: var(--primary-dark);
+    background: rgba(0, 139, 139, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+    .subjects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .levels-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modality-grid {
+        grid-template-columns: 1fr;
+    }
+}

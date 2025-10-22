@@ -4,53 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clases y Materias - EduMatch</title>
-    <link rel="stylesheet" href="css/experienciaProfesor.css">
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    
+    <!-- Layout -->
+    <link rel="stylesheet" href="styles/layout/container.css">
+    
+    <!-- Components -->
+    <link rel="stylesheet" href="styles/components/header.css">
+    <link rel="stylesheet" href="styles/components/hero.css">
+    <link rel="stylesheet" href="styles/components/progress.css">
+    <link rel="stylesheet" href="styles/components/forms.css">
+    <link rel="stylesheet" href="styles/components/buttons.css">
+    <link rel="stylesheet" href="styles/components/cards.css">
+    <link rel="stylesheet" href="styles/components/badges.css">
+    <link rel="stylesheet" href="styles/components/notifications.css">
+    
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="styles/pages/experienciaProfesor.css">
 </head>
 <body>
     <!-- HEADER CON NAVEGACIÓN -->
-  <header class="header" role="banner">
-    <div class="header__container">
-      <div class="header__top">
-        <a href="/" class="logo" aria-label="EduMatch - Inicio">
-          <span class="logo__icon" aria-hidden="true">🎓</span>
-          <span>EduMatch</span>
-        </a>
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="/" class="logo" aria-label="EduMatch - Inicio">
+                    <span class="logo__icon" aria-hidden="true">🎓</span>
+                    <span>EduMatch</span>
+                </a>
 
-        <form class="search-bar" role="search" aria-label="Búsqueda principal">
-          <input
-            type="search"
-            id="main-search"
-            class="search-bar__input"
-            placeholder="Buscar clases, profesores..."
-            aria-label="Campo de búsqueda"
-          />
-          <button type="submit" class="search-bar__button" aria-label="Buscar">🔍</button>
-        </form>
+                <form class="search-bar" role="search" aria-label="Búsqueda principal">
+                    <input
+                        type="search"
+                        id="main-search"
+                        class="search-bar__input"
+                        placeholder="Buscar clases, profesores..."
+                        aria-label="Campo de búsqueda"
+                    />
+                    <button type="submit" class="search-bar__button" aria-label="Buscar">🔍</button>
+                </form>
 
-        <nav class="header__actions" aria-label="Acciones de usuario">
-          <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
-          <a href="#registro" class="header__link">Regístrate</a>
-          <a href="#postula" class="header__link">Postúlate</a>
-        </nav>
-      </div>
+                <nav class="header__actions" aria-label="Acciones de usuario">
+                    <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
+                    <a href="#registro" class="header__link">Regístrate</a>
+                    <a href="#postula" class="header__link">Postúlate</a>
+                </nav>
+            </div>
 
-      <!-- FILTROS DE NAVEGACIÓN -->
-      <nav class="nav-filters" aria-label="Filtros de búsqueda">
-        <div class="nav-filters__item">
-          <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
-          <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+            <!-- FILTROS DE NAVEGACIÓN -->
+            <nav class="nav-filters" aria-label="Filtros de búsqueda">
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+                    <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+                    <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+                    <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+                </div>
+            </nav>
         </div>
-        <div class="nav-filters__item">
-          <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
-          <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
-        </div>
-        <div class="nav-filters__item">
-          <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
-          <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
-        </div>
-      </nav>
-    </div>
-  </header>
+    </header>
 
     <!-- HERO -->
     <section class="hero">

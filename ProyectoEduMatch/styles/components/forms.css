@@ -258,6 +258,85 @@
     border-top: 2px solid var(--gray-light);
 }
 
+/* ================================
+   FORM CONTAINER
+==================================*/
+.form-container {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.step-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--gray-light);
+}
+
+.step-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.step-header p {
+    color: var(--text-gray);
+    font-size: 1.05rem;
+}
+
+/* ================================
+   PRICING AND DETAILS
+==================================*/
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 0 4px rgba(0, 217, 225, 0.1);
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.input-hint {
+    display: block;
+    color: var(--text-gray);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
 @media (max-width: 768px) {
     .button-group {
         grid-template-columns: 1fr;
@@ -274,5 +353,13 @@
     
     .form-navigation {
         flex-direction: column;
+    }
+    
+    .form-container {
+        padding: 1.5rem;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
     }
 }
