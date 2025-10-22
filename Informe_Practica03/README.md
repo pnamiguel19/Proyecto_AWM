@@ -12,8 +12,8 @@
 - 
 - 
 ### Jannys Garrido
-- 
-- 
+- El proyecto presenta una base sólida tanto en diseño como en experiencia de usuario. La interfaz cuenta con un aspecto visual atractivo y coherente gracias a una paleta de colores bien definida en tonos cyan, naranja y amarillo. La interfaz de usuario se encuentra lista para producción y garantiza una experiencia visual y funcional destacable.
+- EduMatch posee un alto potencial de crecimiento dentro del mercado educativo digital. Su público objetivo que son estudiantes en busca de clases particulares y profesores que desean generar ingresos adicionales, es claro y está bien definido. El modelo de negocio basado en comisiones por transacción, similar al de plataformas como Uber o Airbnb, ha demostrado ser rentable y sostenible.
 ### Steven Tintín
 - 
 - 
@@ -22,8 +22,8 @@
 - 
 - 
 ### Jannys Garrido
-- 
-- 
+- Se recomienda implementar un sistema de horarios interactivo que reemplace los actuales toggles por una cuadrícula semanal dinámica, en la cual los profesores puedan seleccionar bloques de 30 o 60 minutos con un solo clic, utilizando un código de colores que diferencie los horarios disponibles, ocupados y no laborables.
+- Se recomienda fortalecer la funcionalidad de búsqueda y emparejamiento entre estudiantes y profesores mediante un sistema inteligente que analice la disponibilidad, especialidad y nivel académico de los docentes. Este sistema permitirá filtrar los resultados según criterios como materia, modalidad de enseñanza, precio por hora o idioma, mostrando en tiempo real los horarios disponibles a través de una interfaz visual intuitiva.
 ### Steven Tintín
 - 
 - 
