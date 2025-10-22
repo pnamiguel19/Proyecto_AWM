@@ -86,3 +86,18 @@
         padding: 1.5rem;
     }
 }
+
+/* ================================
+   UTILITY CONTAINERS
+==================================*/
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
