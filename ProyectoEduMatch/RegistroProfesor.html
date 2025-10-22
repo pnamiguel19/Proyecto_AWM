@@ -3,505 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduMatch - Registro de Docente</title>
-    
-    <!-- CSS Styles -->
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/components.css">
-    <link rel="stylesheet" href="styles/pages.css">
+    <title>Registro de Docente - EduMatch</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- HEADER CON NAVEGACIÓN -->
-    <header class="header" role="banner">
-        <div class="header__container">
-            <div class="header__top">
-                <a href="/" class="logo" aria-label="EduMatch - Inicio">
-                    <span class="logo__icon" aria-hidden="true">🎓</span>
-                    <span>EduMatch</span>
-                </a>
-
-                <form class="search-bar" role="search" aria-label="Búsqueda principal">
-                    <label for="main-search" class="sr-only">Buscar clases o profesores</label>
-                    <input 
-                        type="search" 
-                        id="main-search"
-                        class="search-bar__input" 
-                        placeholder="Buscar clases, profesores..."
-                    >
-                    <button type="submit" class="search-bar__button" aria-label="Buscar">
-                        🔍
-                    </button>
-                </form>
-
-                <nav class="header__actions" aria-label="Acciones de usuario">
-                    <a href="#funcionamiento" class="header__link">¿Cómo funciona?</a>
-                    <a href="#registro" class="header__link">Regístrate</a>
-                    <a href="#postula" class="header__link">Postúlate</a>
-                </nav>
-            </div>
-
-            <nav class="nav-filters" aria-label="Filtros de búsqueda">
-                <div class="nav-filters__item">
-                    <button class="nav-filters__button">Materia</button>
-                    <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
-                </div>
-                <div class="nav-filters__item">
-                    <button class="nav-filters__button">Nivel Educativo</button>
-                    <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
-                </div>
-                <div class="nav-filters__item">
-                    <button class="nav-filters__button">Modalidad</button>
-                    <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
-                </div>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">EduMatch</span>
+            </a>
+            <nav class="header-nav">
+                <a href="#" class="nav-link">Inicio</a>
+                <a href="#" class="nav-link">¿Cómo funciona?</a>
+                <a href="#" class="nav-link">Iniciar sesión</a>
             </nav>
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main" id="main-content" role="main">
-        <!-- INDICADOR DE PROGRESO -->
-        <div class="progress-container">
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Únete a EduMatch</h1>
+            <p class="hero-subtitle">Comparte tu conocimiento y conecta con estudiantes que necesitan tu experiencia</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <!-- PROGRESS BAR -->
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
             <div class="progress-steps">
-                <div class="progress-line" id="progressLine" style="width: 0%"></div>
-                
-                <div class="progress-step progress-step--active" data-step="1">
-                    <div class="progress-step__circle">1</div>
-                    <span class="progress-step__label">Información Personal</span>
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Información Personal</div>
                 </div>
-                <div class="progress-step" data-step="2">
-                    <div class="progress-step__circle">2</div>
-                    <span class="progress-step__label">Formación</span>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Formación</div>
                 </div>
-                <div class="progress-step" data-step="3">
-                    <div class="progress-step__circle">3</div>
-                    <span class="progress-step__label">Clases</span>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Clases</div>
                 </div>
-                <div class="progress-step" data-step="4">
-                    <div class="progress-step__circle">4</div>
-                    <span class="progress-step__label">Disponibilidad</span>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Horario</div>
                 </div>
-                <div class="progress-step" data-step="5">
-                    <div class="progress-step__circle">5</div>
-                    <span class="progress-step__label">Confirmación</span>
+                <div class="step" data-step="5">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Confirmación</div>
                 </div>
             </div>
         </div>
 
-        <!-- FORMULARIO DE REGISTRO -->
-        <article class="registration-card">
-            <header class="registration-card__header">
-                <h1 class="registration-card__title">Conviértete en Profesor de EduMatch</h1>
-                <p class="registration-card__subtitle">
-                    Completa tu perfil profesional y comienza a enseñar
-                </p>
-            </header>
-
-            <form id="registrationForm" novalidate>
+        <!-- REGISTRATION FORM -->
+        <div class="form-container">
+            <form id="registrationForm">
+                
                 <!-- PASO 1: INFORMACIÓN PERSONAL -->
-                <section class="form-section active" data-step="1">
-                    <h2 class="form-section__title">👤 Información Personal</h2>
+                <section class="form-step active" data-step="1">
+                    <div class="step-header">
+                        <h2>👤 Información Personal</h2>
+                        <p>Cuéntanos sobre ti para crear tu perfil de docente</p>
+                    </div>
 
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="firstName" class="form-label form-label--required">Nombres</label>
-                            <input type="text" id="firstName" class="form-input" placeholder="Juan Carlos" required>
-                            <span class="error-message">Este campo es requerido</span>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="firstName">Nombres *</label>
+                            <input type="text" id="firstName" required placeholder="Ej: María José">
                         </div>
-
-                        <div class="form-group">
-                            <label for="lastName" class="form-label form-label--required">Apellidos</label>
-                            <input type="text" id="lastName" class="form-input" placeholder="García Pérez" required>
-                            <span class="error-message">Este campo es requerido</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="form-label form-label--required">Correo Electrónico</label>
-                            <input type="email" id="email" class="form-input" placeholder="tucorreo@ejemplo.com" required>
-                            <span class="error-message">Ingresa un correo válido</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone" class="form-label form-label--required">Teléfono</label>
-                            <input type="tel" id="phone" class="form-input" placeholder="+593 999 999 999" required>
-                            <span class="error-message">Este campo es requerido</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="birthdate" class="form-label form-label--required">Fecha de Nacimiento</label>
-                            <input type="date" id="birthdate" class="form-input" required>
-                            <span class="error-message">Este campo es requerido</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dni" class="form-label form-label--required">Cédula/DNI</label>
-                            <input type="text" id="dni" class="form-input" placeholder="1234567890" required>
-                            <span class="error-message">Este campo es requerido</span>
-                        </div>
-
-                        <div class="form-group form-group--full">
-                            <label for="address" class="form-label form-label--required">Dirección Completa</label>
-                            <input type="text" id="address" class="form-input" 
-                                   placeholder="Calle, Número, Ciudad, Código Postal" required>
-                            <span class="form-hint">Ejemplo: Av. 10 de Agosto N37-123, Quito, Ecuador, 170143</span>
-                            <span class="error-message">Este campo es requerido</span>
-                        </div>
-
-                        <div class="form-group form-group--full">
-                            <label class="form-label">Vista previa del mapa</label>
-                            <div class="map-container" id="mapContainer">
-                                <div class="map-placeholder" id="mapPlaceholder">📍 Ingresa tu dirección para ver el mapa</div>
-                            </div>
-                        </div>
-
-                        <div class="form-group form-group--full">
-                            <label for="bio" class="form-label form-label--required">Sobre mí</label>
-                            <textarea id="bio" class="form-textarea" 
-                                      placeholder="Cuéntanos sobre tu experiencia, metodología de enseñanza y qué te apasiona de educar..." required></textarea>
-                            <span class="form-hint">Mínimo 100 caracteres</span>
-                            <span class="error-message">Debes escribir al menos 100 caracteres</span>
-                        </div>
-
-                        <div class="form-group form-group--full">
-                            <label class="form-label form-label--required">Fotos de perfil (Hasta 3 fotos)</label>
-                            <div class="file-upload">
-                                <input type="file" id="profilePhotos" class="file-upload__input" accept="image/*" multiple>
-                                <label for="profilePhotos" class="file-upload__label">
-                                    <span class="file-upload__icon">📷</span>
-                                    <div class="file-upload__text">
-                                        <strong>Click para subir</strong> o arrastra tus fotos aquí
-                                        <br>
-                                        <small>JPG, PNG - Máx 5MB cada una</small>
-                                    </div>
-                                </label>
-                            </div>
-                            <div id="photoPreview" class="file-preview"></div>
-                        </div>
-
-                        <div class="form-group form-group--full">
-                            <label for="videoUrl" class="form-label">Video de presentación (Opcional)</label>
-                            <input type="url" id="videoUrl" class="form-input" 
-                                   placeholder="https://youtube.com/watch?v=...">
-                            <span class="form-hint">Enlace de YouTube o Vimeo</span>
+                        <div class="input-group">
+                            <label for="lastName">Apellidos *</label>
+                            <input type="text" id="lastName" required placeholder="Ej: García Pérez">
                         </div>
                     </div>
-                </section>
 
-                <!-- PASO 2: FORMACIÓN ACADÉMICA -->
-                <section class="form-section" data-step="2">
-                    <h2 class="form-section__title">🎓 Formación Académica y Experiencia</h2>
-
-                    <div class="form-grid">
-                        <div class="form-group form-group--full">
-                            <label for="degree" class="form-label form-label--required">Título Universitario</label>
-                            <input type="text" id="degree" class="form-input" 
-                                   placeholder="Licenciatura en Física" required>
-                            <span class="error-message">Este campo es requerido</span>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" required placeholder="tu@email.com">
                         </div>
-
-                        <div class="form-group">
-                            <label for="university" class="form-label form-label--required">Universidad</label>
-                            <input type="text" id="university" class="form-input" 
-                                   placeholder="Universidad Central del Ecuador" required>
-                            <span class="error-message">Este campo es requerido</span>
+                        <div class="input-group">
+                            <label for="phone">Teléfono *</label>
+                            <input type="tel" id="phone" required placeholder="+593 999 999 999">
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="graduationYear" class="form-label form-label--required">Año de Graduación</label>
-                            <input type="number" id="graduationYear" class="form-input" 
-                                   placeholder="2018" min="1950" max="2025" required>
-                            <span class="error-message">Este campo es requerido</span>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="birthdate">Fecha de Nacimiento *</label>
+                            <input type="date" id="birthdate" required>
                         </div>
-
-                        <div class="form-group form-group--full">
-                            <label for="experience" class="form-label form-label--required">Años de Experiencia</label>
-                            <select id="experience" class="form-select" required>
-                                <option value="">Selecciona tu experiencia</option>
-                                <option value="0-1">Menos de 1 año</option>
-                                <option value="1-3">1 a 3 años</option>
-                                <option value="3-5">3 a 5 años</option>
-                                <option value="5-10">5 a 10 años</option>
-                                <option value="10+">Más de 10 años</option>
-                            </select>
-                            <span class="error-message">Selecciona una opción</span>
+                        <div class="input-group">
+                            <label for="dni">Cédula/DNI *</label>
+                            <input type="text" id="dni" required placeholder="1234567890">
                         </div>
+                    </div>
 
-                        <div class="form-group form-group--full">
-                            <label for="teachingExperience" class="form-label form-label--required">
-                                Describe tu experiencia como docente
+                    <div class="input-group full-width">
+                        <label for="address">Dirección Completa *</label>
+                        <input type="text" id="address" required placeholder="Calle, Número, Ciudad">
+                        <small class="input-hint">Ingresa tu dirección donde puedes dar clases presenciales</small>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="bio">Sobre mí *</label>
+                        <textarea id="bio" required rows="4" placeholder="Cuéntanos sobre tu experiencia, metodología de enseñanza y qué te apasiona de educar..." minlength="100"></textarea>
+                        <small class="input-hint">Mínimo 100 caracteres</small>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Fotos de Perfil (Hasta 3) *</label>
+                        <div class="file-upload-area" id="photoUpload">
+                            <input type="file" id="profilePhotos" accept="image/*" multiple hidden>
+                            <label for="profilePhotos" class="upload-label">
+                                <span class="upload-icon">📷</span>
+                                <span class="upload-text">Click para subir fotos</span>
+                                <small>JPG, PNG - Máx 5MB cada una</small>
                             </label>
-                            <textarea id="teachingExperience" class="form-textarea" 
-                                      placeholder="Menciona instituciones donde has trabajado, logros destacados, metodologías que utilizas..." required></textarea>
-                            <span class="error-message">Este campo es requerido</span>
                         </div>
+                        <div id="photoPreview" class="photo-preview"></div>
+                    </div>
 
-                        <div class="form-group form-group--full">
-                            <label class="form-label">Certificaciones o documentos (Opcional)</label>
-                            <div class="file-upload">
-                                <input type="file" id="certificates" class="file-upload__input" accept=".pdf,.jpg,.png" multiple>
-                                <label for="certificates" class="file-upload__label">
-                                    <span class="file-upload__icon">📄</span>
-                                    <div class="file-upload__text">
-                                        <strong>Subir certificaciones</strong>
-                                        <br>
-                                        <small>PDF, JPG, PNG - Máx 10MB</small>
-                                    </div>
-                                </label>
-                            </div>
+                    <div class="input-group full-width">
+                        <label for="videoUrl">Video de Presentación (Opcional)</label>
+                        <input type="url" id="videoUrl" placeholder="https://youtube.com/watch?v=...">
+                        <small class="input-hint">Enlace de YouTube o Vimeo</small>
+                    </div>
+                </section>
+
+                <!-- PASO 2: FORMACIÓN -->
+                <section class="form-step" data-step="2">
+                    <div class="step-header">
+                        <h2>🎓 Formación Académica</h2>
+                        <p>Comparte tu formación y experiencia profesional</p>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="degree">Título Universitario *</label>
+                        <input type="text" id="degree" required placeholder="Ej: Licenciatura en Física">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="university">Universidad *</label>
+                            <input type="text" id="university" required placeholder="Universidad Central del Ecuador">
+                        </div>
+                        <div class="input-group">
+                            <label for="graduationYear">Año de Graduación *</label>
+                            <input type="number" id="graduationYear" required placeholder="2018" min="1950" max="2025">
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="experience">Años de Experiencia *</label>
+                        <select id="experience" required>
+                            <option value="">Selecciona tu experiencia</option>
+                            <option value="0-1">Menos de 1 año</option>
+                            <option value="1-3">1 a 3 años</option>
+                            <option value="3-5">3 a 5 años</option>
+                            <option value="5-10">5 a 10 años</option>
+                            <option value="10+">Más de 10 años</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="teachingExperience">Experiencia como Docente *</label>
+                        <textarea id="teachingExperience" required rows="4" placeholder="Menciona instituciones donde has trabajado, logros destacados, metodologías que utilizas..."></textarea>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Certificaciones (Opcional)</label>
+                        <div class="file-upload-area">
+                            <input type="file" id="certificates" accept=".pdf,.jpg,.png" multiple hidden>
+                            <label for="certificates" class="upload-label">
+                                <span class="upload-icon">📄</span>
+                                <span class="upload-text">Subir certificados</span>
+                                <small>PDF, JPG, PNG - Máx 10MB</small>
+                            </label>
                         </div>
                     </div>
                 </section>
 
-                <!-- PASO 3: CLASES Y MATERIAS -->
-                <section class="form-section" data-step="3">
-                    <h2 class="form-section__title">📚 Clases que Impartes</h2>
+                <!-- PASO 3: CLASES -->
+                <section class="form-step" data-step="3">
+                    <div class="step-header">
+                        <h2>📚 Clases que Impartes</h2>
+                        <p>Define las materias y cursos que ofreces</p>
+                    </div>
 
-                    <div class="form-group form-group--full">
-                        <label class="form-label form-label--required">Materias que enseñas</label>
-                        <div class="checkbox-grid" id="subjectsGrid">
-                            <label class="checkbox-label">
+                    <div class="input-group full-width">
+                        <label>Materias que Enseñas *</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Matemáticas">
                                 <span>Matemáticas</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Física">
                                 <span>Física</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Química">
                                 <span>Química</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Biología">
                                 <span>Biología</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Inglés">
                                 <span>Inglés</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Lengua">
                                 <span>Lengua y Literatura</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Historia">
                                 <span>Historia</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="subjects" value="Programación">
                                 <span>Programación</span>
                             </label>
                         </div>
-                        <span class="error-message">Selecciona al menos una materia</span>
                     </div>
 
-                    <div class="form-group form-group--full">
-                        <label class="form-label form-label--required">Niveles educativos</label>
+                    <div class="input-group full-width">
+                        <label>Niveles Educativos *</label>
                         <div class="checkbox-grid">
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="levels" value="Primaria">
                                 <span>Primaria</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="levels" value="Secundaria">
                                 <span>Secundaria</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="levels" value="Bachillerato">
                                 <span>Bachillerato</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="levels" value="Universidad">
                                 <span>Universidad</span>
                             </label>
                         </div>
-                        <span class="error-message">Selecciona al menos un nivel</span>
                     </div>
 
-                    <div class="form-group form-group--full">
-                        <label class="form-label form-label--required">Modalidad de enseñanza</label>
+                    <div class="input-group full-width">
+                        <label>Modalidad de Enseñanza *</label>
                         <div class="checkbox-grid">
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="modality" value="Presencial">
                                 <span>Presencial</span>
                             </label>
-                            <label class="checkbox-label">
+                            <label class="checkbox-item">
                                 <input type="checkbox" name="modality" value="Virtual">
                                 <span>Virtual</span>
                             </label>
                         </div>
-                        <span class="error-message">Selecciona al menos una modalidad</span>
                     </div>
 
-                    <div id="coursesList" class="course-list">
-                        <div class="course-item-builder">
-                            <div class="course-item-builder__header">
-                                <h4 class="course-item-builder__title">Clase #1</h4>
-                            </div>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label class="form-label form-label--required">Nombre del curso</label>
-                                    <input type="text" class="form-input course-name" 
-                                           placeholder="Ej: Física General" required>
+                    <div class="courses-section">
+                        <h3>Tus Cursos</h3>
+                        <div id="coursesList">
+                            <div class="course-card">
+                                <div class="course-header">
+                                    <h4>Clase #1</h4>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label form-label--required">Duración (minutos)</label>
-                                    <input type="number" class="form-input course-duration" 
-                                           placeholder="60" min="30" max="180" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label form-label--required">Precio (USD)</label>
-                                    <input type="number" class="form-input course-price" 
-                                           placeholder="15" min="5" max="200" required>
-                                </div>
-                                <div class="form-group form-group--full">
-                                    <label class="form-label">Descripción breve</label>
-                                    <textarea class="form-textarea course-description" 
-                                              placeholder="Describe los temas que cubrirás en esta clase..."></textarea>
+                                <div class="course-body">
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label>Nombre del Curso *</label>
+                                            <input type="text" class="course-name" required placeholder="Ej: Física General">
+                                        </div>
+                                        <div class="input-group">
+                                            <label>Duración (min) *</label>
+                                            <input type="number" class="course-duration" required placeholder="60" min="30" max="180">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label>Precio (USD) *</label>
+                                            <input type="number" class="course-price" required placeholder="15" min="5" max="200">
+                                        </div>
+                                        <div class="input-group">
+                                            <label>Descripción</label>
+                                            <input type="text" class="course-description" placeholder="Breve descripción...">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <button type="button" class="btn-add" id="addCourseBtn">+ Agregar Otra Clase</button>
                     </div>
-
-                    <button type="button" class="btn-add-course" id="addCourseBtn">
-                        ➕ Agregar otra clase
-                    </button>
                 </section>
 
-                <!-- PASO 4: DISPONIBILIDAD -->
-                <section class="form-section" data-step="4">
-                    <h2 class="form-section__title">📅 Horario de Disponibilidad</h2>
+                <!-- PASO 4: HORARIO -->
+                <section class="form-step" data-step="4">
+                    <div class="step-header">
+                        <h2>📅 Disponibilidad</h2>
+                        <p>Define tu horario de disponibilidad para dar clases</p>
+                    </div>
 
-                    <p class="form-hint" style="margin-bottom: 1.5rem;">
-                        Selecciona los días y horarios en los que estás disponible para dar clases
-                    </p>
-
-                    <div class="schedule-builder">
+                    <div class="schedule-container">
                         <div class="schedule-day">
-                            <div class="schedule-day__name">Lunes</div>
-                            <div class="schedule-day__times">
-                                <input type="time" class="form-input time-input" value="08:00">
-                                <span>-</span>
-                                <input type="time" class="form-input time-input" value="18:00">
+                            <div class="day-header">
+                                <span class="day-name">Lunes</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="day-toggle" checked data-day="lunes">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <button type="button" class="schedule-day__toggle active" data-day="lunes"></button>
+                            <div class="day-times">
+                                <input type="time" value="08:00" class="time-input">
+                                <span>-</span>
+                                <input type="time" value="18:00" class="time-input">
+                            </div>
                         </div>
 
                         <div class="schedule-day">
-                            <div class="schedule-day__name">Martes</div>
-                            <div class="schedule-day__times">
-                                <input type="time" class="form-input time-input" value="08:00">
-                                <span>-</span>
-                                <input type="time" class="form-input time-input" value="18:00">
+                            <div class="day-header">
+                                <span class="day-name">Martes</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="day-toggle" checked data-day="martes">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <button type="button" class="schedule-day__toggle active" data-day="martes"></button>
+                            <div class="day-times">
+                                <input type="time" value="08:00" class="time-input">
+                                <span>-</span>
+                                <input type="time" value="18:00" class="time-input">
+                            </div>
                         </div>
 
                         <div class="schedule-day">
-                            <div class="schedule-day__name">Miércoles</div>
-                            <div class="schedule-day__times">
-                                <input type="time" class="form-input time-input" value="08:00">
-                                <span>-</span>
-                                <input type="time" class="form-input time-input" value="18:00">
+                            <div class="day-header">
+                                <span class="day-name">Miércoles</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="day-toggle" checked data-day="miercoles">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <button type="button" class="schedule-day__toggle active" data-day="miercoles"></button>
+                            <div class="day-times">
+                                <input type="time" value="08:00" class="time-input">
+                                <span>-</span>
+                                <input type="time" value="18:00" class="time-input">
+                            </div>
                         </div>
 
                         <div class="schedule-day">
-                            <div class="schedule-day__name">Jueves</div>
-                            <div class="schedule-day__times">
-                                <input type="time" class="form-input time-input" value="08:00">
-                                <span>-</span>
-                                <input type="time" class="form-input time-input" value="18:00">
+                            <div class="day-header">
+                                <span class="day-name">Jueves</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="day-toggle" checked data-day="jueves">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <button type="button" class="schedule-day__toggle active" data-day="jueves"></button>
+                            <div class="day-times">
+                                <input type="time" value="08:00" class="time-input">
+                                <span>-</span>
+                                <input type="time" value="18:00" class="time-input">
+                            </div>
                         </div>
 
                         <div class="schedule-day">
-                            <div class="schedule-day__name">Viernes</div>
-                            <div class="schedule-day__times">
-                                <input type="time" class="form-input time-input" value="08:00">
-                                <span>-</span>
-                                <input type="time" class="form-input time-input" value="18:00">
+                            <div class="day-header">
+                                <span class="day-name">Viernes</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="day-toggle" checked data-day="viernes">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <button type="button" class="schedule-day__toggle active" data-day="viernes"></button>
+                            <div class="day-times">
+                                <input type="time" value="08:00" class="time-input">
+                                <span>-</span>
+                                <input type="time" value="18:00" class="time-input">
+                            </div>
                         </div>
 
                         <div class="schedule-day">
-                            <div class="schedule-day__name">Sábado</div>
-                            <div class="schedule-day__times">
-                                <input type="time" class="form-input time-input" value="08:00">
-                                <span>-</span>
-                                <input type="time" class="form-input time-input" value="14:00">
+                            <div class="day-header">
+                                <span class="day-name">Sábado</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="day-toggle" data-day="sabado">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <button type="button" class="schedule-day__toggle" data-day="sabado"></button>
+                            <div class="day-times disabled">
+                                <input type="time" value="08:00" class="time-input">
+                                <span>-</span>
+                                <input type="time" value="14:00" class="time-input">
+                            </div>
                         </div>
 
                         <div class="schedule-day">
-                            <div class="schedule-day__name">Domingo</div>
-                            <div class="schedule-day__times">
-                                <input type="time" class="form-input time-input" value="08:00">
-                                <span>-</span>
-                                <input type="time" class="form-input time-input" value="14:00">
+                            <div class="day-header">
+                                <span class="day-name">Domingo</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="day-toggle" data-day="domingo">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <button type="button" class="schedule-day__toggle" data-day="domingo"></button>
+                            <div class="day-times disabled">
+                                <input type="time" value="08:00" class="time-input">
+                                <span>-</span>
+                                <input type="time" value="14:00" class="time-input">
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- PASO 5: CONFIRMACIÓN -->
-                <section class="form-section" data-step="5">
-                    <h2 class="form-section__title">✅ Confirma tu Información</h2>
-
-                    <div id="confirmationSummary" style="background: var(--gray-light); padding: 2rem; border-radius: 8px;">
-                        <!-- Se llenará dinámicamente con JavaScript -->
+                <section class="form-step" data-step="5">
+                    <div class="step-header">
+                        <h2>✅ Confirma tu Información</h2>
+                        <p>Revisa cuidadosamente antes de enviar</p>
                     </div>
 
-                    <div class="form-group form-group--full" style="margin-top: 2rem;">
-                        <label class="checkbox-label">
+                    <div class="summary-card" id="summaryContent">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label class="checkbox-item terms">
                             <input type="checkbox" id="termsAccept" required>
-                            <span>
-                                Acepto los <a href="#" style="color: var(--primary-cyan); font-weight: 600;">términos y condiciones</a> 
-                                y la <a href="#" style="color: var(--primary-cyan); font-weight: 600;">política de privacidad</a> 
-                                de EduMatch
-                            </span>
+                            <span>Acepto los <a href="#">términos y condiciones</a> y la <a href="#">política de privacidad</a> de EduMatch</span>
                         </label>
-                        <span class="error-message">Debes aceptar los términos</span>
                     </div>
                 </section>
 
-                <!-- BOTONES DE NAVEGACIÓN -->
-                <div class="form-actions">
-                    <button type="button" class="btn btn--secondary" id="prevBtn" style="display: none;">
+                <!-- FORM NAVIGATION -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
                         ← Anterior
                     </button>
-                    <button type="button" class="btn btn--primary" id="nextBtn">
+                    <button type="button" class="btn btn-primary" id="nextBtn">
                         Siguiente →
                     </button>
-                    <button type="submit" class="btn btn--primary" id="submitBtn" style="display: none;">
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
                         🎉 Completar Registro
                     </button>
                 </div>
             </form>
-        </article>
+        </div>
     </main>
 
-    <!-- MODAL DE ÉXITO -->
+    <!-- SUCCESS MODAL -->
     <div class="modal" id="successModal">
-        <div class="modal__content">
-            <div class="modal__icon">🎉</div>
-            <h2 class="modal__title">¡Registro Exitoso!</h2>
-            <p class="modal__text">
-                Tu solicitud ha sido enviada correctamente. Nuestro equipo revisará tu perfil 
-                y te enviaremos un correo de confirmación en las próximas 24-48 horas.
-            </p>
-            <button class="modal__button" onclick="window.location.href='/'">
-                Ir al Inicio
-            </button>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-icon">🎉</div>
+            <h2>¡Registro Exitoso!</h2>
+            <p>Tu solicitud ha sido enviada. Nuestro equipo revisará tu perfil y te enviaremos un correo en las próximas 24-48 horas.</p>
+            <button class="btn btn-primary" onclick="window.location.href='/'">Ir al Inicio</button>
         </div>
     </div>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
