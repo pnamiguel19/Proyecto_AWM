@@ -1,0 +1,78 @@
+/* ================================
+   COURSES SECTION
+==================================*/
+.courses-section {
+    margin-top: 2rem;
+}
+
+.courses-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+#coursesList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.course-card {
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    background: var(--gray-light);
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.course-header h4 {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+}
+
+.btn-remove-course {
+    background: var(--error);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-remove-course:hover {
+    background: #c0392b;
+}
+
+.course-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.btn-add {
+    width: 100%;
+    padding: 1rem;
+    background: var(--success);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+}
+
+.btn-add:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}

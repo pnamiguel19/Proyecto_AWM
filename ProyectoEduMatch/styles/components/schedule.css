@@ -1,0 +1,107 @@
+/* ================================
+   SCHEDULE COMPONENT
+==================================*/
+.schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.schedule-day {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    border: 2px solid var(--gray-medium);
+    border-radius: 8px;
+    background: var(--white);
+    align-items: center;
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gray-medium);
+    border-radius: 34px;
+    transition: var(--transition);
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background: var(--white);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: var(--success);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(24px);
+}
+
+/* Day Times */
+.day-times {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.day-times.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.time-input {
+    flex: 1;
+    padding: 0.625rem;
+    border: 2px solid var(--gray-medium);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.time-input:focus {
+    outline: none;
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 217, 225, 0.1);
+}
+
+@media (max-width: 768px) {
+    .schedule-day {
+        grid-template-columns: 1fr;
+    }
+}
