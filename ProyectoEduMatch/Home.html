@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="EduMatch - Encuentra los mejores profesores particulares para tus clases. Profesores destacados y recomendados por estudiantes." />
     <title>EduMatch - Encuentra tu Profesor Ideal</title>
-    <link rel="stylesheet" href="css/home.css" />
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    
+    <!-- Layout -->
+    <link rel="stylesheet" href="styles/layout/container.css">
+    
+    <!-- Components -->
+    <link rel="stylesheet" href="styles/components/header.css">
+    <link rel="stylesheet" href="styles/components/teacher-cards.css">
+    
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="styles/pages/home.css">
 </head>
 <body>
   <!-- HEADER -->
@@ -19,16 +33,16 @@
         </a>
 
         <!-- Barra de búsqueda -->
-        <form class="search-form" role="search" aria-label="Búsqueda de clases">
+        <form class="search-bar" role="search" aria-label="Búsqueda de clases">
           <label for="search-input" class="sr-only">Buscar clases, profesores o materias</label>
           <input
             type="search"
             id="search-input"
-            class="search-form__input"
+            class="search-bar__input"
             placeholder="Buscar clases, profesores..."
             autocomplete="off"
           />
-          <button type="submit" class="search-form__button" aria-label="Realizar búsqueda">
+          <button type="submit" class="search-bar__button" aria-label="Realizar búsqueda">
             🔍
           </button>
         </form>
@@ -42,18 +56,18 @@
       </div>
 
       <!-- Filtros de navegación -->
-      <nav class="filters-nav" aria-label="Filtros de búsqueda">
-        <div class="filter">
-          <button class="filter__button" aria-label="Filtrar por materia">Materia</button>
-          <p class="filter__subtitle">¿Qué quieres aprender?</p>
+      <nav class="nav-filters" aria-label="Filtros de búsqueda">
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+          <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
         </div>
-        <div class="filter">
-          <button class="filter__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
-          <p class="filter__subtitle">¿En qué grado te encuentras?</p>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+          <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
         </div>
-        <div class="filter">
-          <button class="filter__button" aria-label="Filtrar por modalidad">Modalidad</button>
-          <p class="filter__subtitle">¿Cómo quieres recibir tu clase?</p>
+        <div class="nav-filters__item">
+          <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+          <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
         </div>
       </nav>
     </div>

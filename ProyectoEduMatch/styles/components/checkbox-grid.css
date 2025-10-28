@@ -1,0 +1,57 @@
+/* ================================
+   CHECKBOX GRID
+==================================*/
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid var(--gray-medium);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--white);
+}
+
+.checkbox-item:hover {
+    border-color: var(--primary-cyan);
+    background: rgba(0, 217, 225, 0.05);
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-cyan);
+}
+
+.checkbox-item span {
+    font-weight: 500;
+}
+
+.checkbox-item.terms {
+    border: none;
+    padding: 0;
+}
+
+.checkbox-item.terms a {
+    color: var(--primary-cyan);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.checkbox-item.terms a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,81 @@
+/* ================================
+   TERMS SECTION
+==================================*/
+.terms-section {
+    background: var(--gray-light);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.terms-content {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.terms-content h3 {
+    color: var(--text-dark);
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.terms-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.terms-scroll p {
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+}
+
+.terms-scroll strong {
+    color: var(--text-dark);
+}
+
+.terms-scroll ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    color: var(--text-gray);
+}
+
+.terms-scroll ul li {
+    margin-bottom: 0.5rem;
+    list-style: disc;
+}
+
+/* Estilizar la barra de desplazamiento */
+.terms-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terms-scroll::-webkit-scrollbar-track {
+    background: var(--gray-light);
+    border-radius: 4px;
+}
+
+.terms-scroll::-webkit-scrollbar-thumb {
+    background: var(--gray-medium);
+    border-radius: 4px;
+}
+
+.terms-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--text-gray);
+}
+
+@media (max-width: 768px) {
+    .terms-section {
+        padding: 1rem;
+    }
+    
+    .terms-content {
+        padding: 1.5rem;
+    }
+    
+    .terms-scroll {
+        max-height: 300px;
+    }
+}

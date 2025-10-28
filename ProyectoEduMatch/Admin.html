@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - EduMatch</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    
+    <!-- Layout -->
+    <link rel="stylesheet" href="styles/layout/container.css">
+    
+    <!-- Components -->
+    <link rel="stylesheet" href="styles/components/sidebar.css">
+    <link rel="stylesheet" href="styles/components/cards.css">
+    <link rel="stylesheet" href="styles/components/tables.css">
+    <link rel="stylesheet" href="styles/components/buttons.css">
+    <link rel="stylesheet" href="styles/components/badges.css">
+    
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="styles/pages/admin.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">EduMatch</div>
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <div class="user-menu">
+                <div class="notifications">
+                    🔔
+                    <span class="notification-badge">5</span>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">👤</div>
+                    <span>Administrador</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="#" class="menu-link active">
+                    <span class="menu-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">👥</span>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">👨‍🏫</span>
+                    <span>Profesores</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">📚</span>
+                    <span>Contenido</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">📅</span>
+                    <span>Clases Agendadas</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">💰</span>
+                    <span>Transacciones</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">⭐</span>
+                    <span>Reseñas</span>
+                </a>
+            </li>
+            <div class="menu-divider"></div>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">✓</span>
+                    <span>Verificaciones</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">🚨</span>
+                    <span>Reportes</span>
+                </a>
+            </li>
+            <div class="menu-divider"></div>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">⚙️</span>
+                    <span>Configuración</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon">🚪</span>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Dashboard</h1>
+            <p>Resumen general de la plataforma EduMatch</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-label">Usuarios Totales</div>
+                    </div>
+                    <div class="stat-icon blue">👥</div>
+                </div>
+                <div class="stat-change positive">↑ +12.5% este mes</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">389</div>
+                        <div class="stat-label">Profesores Activos</div>
+                    </div>
+                    <div class="stat-icon yellow">👨‍🏫</div>
+                </div>
+                <div class="stat-change positive">↑ +8.3% este mes</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">2,456</div>
+                        <div class="stat-label">Clases Realizadas</div>
+                    </div>
+                    <div class="stat-icon green">📚</div>
+                </div>
+                <div class="stat-change positive">↑ +15.7% este mes</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">$8,945</div>
+                        <div class="stat-label">Ingresos del Mes</div>
+                    </div>
+                    <div class="stat-icon red">💰</div>
+                </div>
+                <div class="stat-change positive">↑ +23.1% este mes</div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Recent Users Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Profesores Recientes</h2>
+                    <a href="#" class="card-action">Ver todos →</a>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Materia</th>
+                                <th>Estado</th>
+                                <th>Calificación</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>María González</td>
+                                <td>Matemáticas</td>
+                                <td><span class="status-badge active">Activo</span></td>
+                                <td>⭐ 4.8</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon view">👁️</button>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Ramírez</td>
+                                <td>Física</td>
+                                <td><span class="status-badge pending">Pendiente</span></td>
+                                <td>⭐ 4.5</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon view">👁️</button>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ana Martínez</td>
+                                <td>Química</td>
+                                <td><span class="status-badge active">Activo</span></td>
+                                <td>⭐ 4.9</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon view">👁️</button>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Luis Torres</td>
+                                <td>Inglés</td>
+                                <td><span class="status-badge inactive">Inactivo</span></td>
+                                <td>⭐ 4.3</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon view">👁️</button>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Patricia López</td>
+                                <td>Historia</td>
+                                <td><span class="status-badge active">Activo</span></td>
+                                <td>⭐ 4.7</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon view">👁️</button>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Actividad Reciente</h2>
+                    <a href="#" class="card-action">Ver todo →</a>
+                </div>
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon blue">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Nuevo usuario registrado</div>
+                            <div class="activity-time">Hace 5 minutos</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon yellow">✓</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Profesor verificado</div>
+                            <div class="activity-time">Hace 15 minutos</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon green">💰</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Nueva transacción: $45</div>
+                            <div class="activity-time">Hace 32 minutos</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon blue">📚</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Contenido publicado</div>
+                            <div class="activity-time">Hace 1 hora</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon yellow">⭐</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Nueva reseña recibida</div>
+                            <div class="activity-time">Hace 2 horas</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon green">📅</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Clase agendada</div>
+                            <div class="activity-time">Hace 3 horas</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
