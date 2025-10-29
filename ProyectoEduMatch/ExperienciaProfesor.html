@@ -397,7 +397,7 @@
 
                 <!-- NAVIGATION -->
                 <div class="form-navigation">
-                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    <button type="button" class="btn btn-secondary" id="backBtn">
                         ← Anterior
                     </button>
                     <button type="button" class="btn btn-primary" id="nextBtn">
@@ -416,117 +416,6 @@
         </div>
     </div>
 
-    <script>
-        // Contadores y actualizaciones en tiempo real
-        const subjectsCheckboxes = document.querySelectorAll('input[name="subjects"]');
-        const levelsCheckboxes = document.querySelectorAll('input[name="levels"]');
-        const modalityCheckboxes = document.querySelectorAll('input[name="modality"]');
-
-        // Actualizar contador de materias
-        subjectsCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                updateCounter('subjects', 'subjectsCount', 'selectedSubjects');
-            });
-        });
-
-        // Actualizar contador de niveles
-        levelsCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                updateCounter('levels', 'levelsCount', 'selectedLevels');
-            });
-        });
-
-        // Actualizar contador de modalidad
-        modalityCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                updateCounter('modality', 'modalityCount', 'selectedModality');
-            });
-        });
-
-        // Función para actualizar contadores y resumen
-        function updateCounter(name, counterId, summaryId) {
-            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
-            const count = checkboxes.length;
-            document.getElementById(counterId).textContent = count;
-
-            // Actualizar resumen
-            const summaryContainer = document.getElementById(summaryId);
-            if (count === 0) {
-                summaryContainer.innerHTML = '<span class="empty-state">No has seleccionado opciones</span>';
-            } else {
-                summaryContainer.innerHTML = '';
-                checkboxes.forEach(checkbox => {
-                    const tag = document.createElement('span');
-                    tag.className = 'summary-tag';
-                    tag.textContent = checkbox.value;
-                    summaryContainer.appendChild(tag);
-                });
-            }
-        }
-
-        // Validación y continuar
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            // Validar materias
-            const selectedSubjects = document.querySelectorAll('input[name="subjects"]:checked');
-            if (selectedSubjects.length === 0) {
-                showNotification('Debes seleccionar al menos una materia', 'error');
-                return;
-            }
-
-            // Validar niveles
-            const selectedLevels = document.querySelectorAll('input[name="levels"]:checked');
-            if (selectedLevels.length === 0) {
-                showNotification('Debes seleccionar al menos un nivel educativo', 'error');
-                return;
-            }
-
-            // Validar modalidad
-            const selectedModality = document.querySelectorAll('input[name="modality"]:checked');
-            if (selectedModality.length === 0) {
-                showNotification('Debes seleccionar al menos una modalidad', 'error');
-                return;
-            }
-
-            // Validar precio
-            const price = document.getElementById('pricePerHour').value;
-            if (!price || price < 5) {
-                showNotification('Ingresa un precio válido (mínimo $5)', 'error');
-                return;
-            }
-
-            // Validar duración
-            if (!document.getElementById('minClassDuration').value) {
-                showNotification('Selecciona una duración mínima', 'error');
-                return;
-            }
-
-            // Validar descripción
-            const description = document.getElementById('classDescription').value;
-            if (!description || description.length < 100) {
-                showNotification('La descripción debe tener al menos 100 caracteres', 'error');
-                return;
-            }
-
-            // Todo validado
-            showNotification('¡Información guardada! Continuando...', 'success');
-            setTimeout(() => {
-                console.log('Ir al paso 4');
-                // window.location.href = 'horario.html';
-            }, 1500);
-        });
-
-        // Mostrar notificación
-        function showNotification(message, type) {
-            const notification = document.getElementById('notification');
-            const icon = type === 'success' ? '✅' : '⚠️';
-            notification.querySelector('.notification-icon').textContent = icon;
-            notification.querySelector('.notification-message').textContent = message;
-            notification.classList.add('show', type);
-            
-            setTimeout(() => {
-                notification.classList.remove('show', type);
-            }, 3000);
-        }
-    </script>
+    <script src="java/scriptExperienciaP.js"></script>
 </body>
 </html>

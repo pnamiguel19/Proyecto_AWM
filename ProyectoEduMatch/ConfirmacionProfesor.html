@@ -187,48 +187,6 @@
         </div>
     </div>
 
-    <script>
-        // Manejar estados de checkboxes y botón de completar
-        const termsCheck = document.getElementById('termsCheck');
-        const dataCheck = document.getElementById('dataCheck');
-        const completeBtn = document.getElementById('completeBtn');
-
-        function updateButtonState() {
-            completeBtn.disabled = !(termsCheck.checked && dataCheck.checked);
-        }
-
-        termsCheck.addEventListener('change', updateButtonState);
-        dataCheck.addEventListener('change', updateButtonState);
-
-        // Manejar completar registro
-        completeBtn.addEventListener('click', function() {
-            if (!termsCheck.checked || !dataCheck.checked) {
-                showNotification('Debes aceptar los términos y confirmar la información', 'error');
-                return;
-            }
-
-            showNotification('¡Registro completado exitosamente!', 'success');
-            setTimeout(() => {
-                // Aquí iría la redirección al dashboard o perfil
-                console.log('Registro completado');
-            }, 1500);
-        });
-
-        // Función para mostrar notificaciones
-        function showNotification(message, type) {
-            const notification = document.getElementById('notification');
-            const messageElement = notification.querySelector('.notification-message');
-            const iconElement = notification.querySelector('.notification-icon');
-
-            messageElement.textContent = message;
-            iconElement.textContent = type === 'success' ? '✅' : '⚠️';
-            
-            notification.className = 'notification show ' + type;
-            
-            setTimeout(() => {
-                notification.classList.remove('show', type);
-            }, 3000);
-        }
-    </script>
+    <script src="java/scriptConfirmacionP.js"></script>
 </body>
 </html>
