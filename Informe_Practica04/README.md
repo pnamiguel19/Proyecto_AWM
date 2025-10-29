@@ -12,8 +12,8 @@
 - En sintesis, la organización en carpetas dentro de un proyecto es fundamental para mantener un entorno de trabajo ordenado y comprensible. Permite ubicar fácilmente los archivos relacionados con cada parte del desarrollo, como imágenes, hojas de estilo o scripts. Además, facilita la colaboración entre varios desarrolladores, evitando confusiones o duplicidad de archivos.
 - Al mantener una estructura de carpetas clara y coherente, se optimiza el mantenimiento y la escalabilidad del proyecto a largo plazo. Separar adecuadamente los recursos por tipo o función ayuda a implementar cambios sin afectar otras partes del sistema. Esto contribuye a una mejor comprensión del código y asegura que futuras modificaciones o ampliaciones se realicen de manera ordenada y controlada.
 ### Jannys Garrido
-- 
-- 
+- La creación de los mockups facilitó la detección temprana de mejoras en aspectos de usabilidad, estética y accesibilidad. Esto permitió realizar ajustes en la organización de los elementos visuales y funcionales, asegurando una navegación más intuitiva y atractiva tanto para profesores como para padres y estudiantes.
+- La implementación de principios de diseño adaptable permitió anticipar posibles problemas de visualización o rendimiento en distintos entornos. Gracias a ello, el producto final podrá ofrecer una experiencia fluida, coherente y profesional, alineada con los estándares actuales de usabilidad.
 ### Steven Tintín
 - 
 - 
@@ -22,8 +22,8 @@
 - Se recomienda establecer desde el inicio una estructura de carpetas bien definida, separando los archivos según su función, como HTML, CSS, JavaScript e imágenes. Esto facilita la navegación dentro del proyecto y evita confusiones durante el desarrollo.
 - Es aconsejable utilizar nombres de carpetas y archivos claros, coherentes y en minúsculas para mantener una convención uniforme. Además, documentar la estructura del proyecto en un archivo README puede ser útil para otros desarrolladores.
 ### Jannys Garrido
-- 
-- 
+- Es aconsejable aplicar técnicas de diseño responsivo desde las primeras etapas del desarrollo, utilizando sistemas de cuadrículas flexibles, tipografía escalable y componentes reconfigurables según el tamaño de pantalla.
+- Es aconsejable mantener una coherencia visual en todos los mockups, respetando la paleta de colores institucional, la tipografía seleccionada y el estilo de los íconos. Esta uniformidad refuerza la identidad visual de EduMatch y genera confianza en los usuarios.
 ### Steven Tintín
 - 
 - 
