@@ -10,10 +10,16 @@
     <link rel="stylesheet" href="styles/base/reset.css">
     <link rel="stylesheet" href="styles/base/typography.css">
     
+    <!-- Components -->
+    <link rel="stylesheet" href="styles/components/notifications.css">
+    
     <!-- Page Specific -->
     <link rel="stylesheet" href="styles/pages/loggin.css">
 </head>
 <body>
+    <!-- NOTIFICATION CONTAINER -->
+    <div id="notificationContainer"></div>
+
     <div class="auth-container">
         <!-- Logo -->
         <div class="logo-centered">
@@ -26,7 +32,7 @@
         <p class="auth-subtitle">Accede a tu cuenta para continuar</p>
 
         <!-- Formulario -->
-        <form id="loginForm">
+        <form id="loginForm" novalidate>
             <div class="input-group">
                 <label for="email">
                     Correo electrónico 
@@ -40,6 +46,7 @@
                     placeholder="ejemplo@correo.com"
                     aria-required="true"
                 >
+                <small class="error-message" id="error-email"></small>
             </div>
 
             <div class="input-group">
@@ -54,7 +61,9 @@
                     required 
                     placeholder="Ingresa tu contraseña"
                     aria-required="true"
+                    minlength="8"
                 >
+                <small class="error-message" id="error-password"></small>
             </div>
 
             <!-- Opciones del formulario -->
@@ -63,11 +72,11 @@
                     <input type="checkbox" id="remember" name="remember">
                     <span>Recordarme</span>
                 </label>
-                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                <a href="RecuperacionPassword.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
             </div>
 
             <!-- Botón principal -->
-            <button type="submit" class="btn-yellow">
+            <button type="submit" class="btn-yellow" id="submitBtn">
                 Iniciar sesión
             </button>
 
@@ -76,11 +85,11 @@
 
             <!-- Social Login -->
             <div class="social-login">
-                <button type="button" class="btn-social" aria-label="Continuar con Google">
+                <button type="button" class="btn-social" id="googleBtn" aria-label="Continuar con Google">
                     <span aria-hidden="true">G</span>
                     Google
                 </button>
-                <button type="button" class="btn-social" aria-label="Continuar con Facebook">
+                <button type="button" class="btn-social" id="facebookBtn" aria-label="Continuar con Facebook">
                     <span aria-hidden="true">f</span>
                     Facebook
                 </button>
@@ -88,29 +97,11 @@
 
             <!-- Registro -->
             <div class="register-link">
-                ¿No tienes cuenta? <a href="#">Regístrate aquí</a>
+                ¿No tienes cuenta? <a href="RegistroUsuario.html">Regístrate aquí</a>
             </div>
         </form>
     </div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if (!email || !password) {
-                alert('Por favor completa todos los campos');
-                return;
-            }
-
-            // Aquí iría la lógica de autenticación
-            console.log('Login attempt:', { email, password });
-            
-            // Simulación de login exitoso
-            alert('Inicio de sesión exitoso');
-        });
-    </script>
+    <script src="java/scriptLogging.js"></script>
 </body>
 </html>
