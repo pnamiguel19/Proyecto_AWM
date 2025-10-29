@@ -10,10 +10,16 @@
     <link rel="stylesheet" href="styles/base/reset.css">
     <link rel="stylesheet" href="styles/base/typography.css">
     
+    <!-- Components -->
+    <link rel="stylesheet" href="styles/components/notifications.css">
+    
     <!-- Page Specific -->
     <link rel="stylesheet" href="styles/pages/RegistroUsuario.css">
 </head>
 <body>
+    <!-- NOTIFICATION CONTAINER -->
+    <div id="notificationContainer"></div>
+
     <div class="auth-container">
         <!-- Logo -->
         <div class="logo-centered">
@@ -26,7 +32,7 @@
         <p class="auth-subtitle">Completa tus datos para comenzar</p>
 
         <!-- Formulario -->
-        <form id="registroForm">
+        <form id="registroForm" novalidate>
             <!-- Nombre y Apellido -->
             <div class="form-row">
                 <div class="form-group">
@@ -41,7 +47,9 @@
                         required 
                         placeholder="Juan"
                         aria-required="true"
+                        minlength="2"
                     >
+                    <small class="error-message" id="error-nombre"></small>
                 </div>
                 <div class="form-group">
                     <label for="apellido">
@@ -55,7 +63,9 @@
                         required 
                         placeholder="Pérez"
                         aria-required="true"
+                        minlength="2"
                     >
+                    <small class="error-message" id="error-apellido"></small>
                 </div>
             </div>
 
@@ -73,6 +83,7 @@
                     placeholder="ejemplo@correo.com"
                     aria-required="true"
                 >
+                <small class="error-message" id="error-email"></small>
             </div>
 
             <!-- Teléfono -->
@@ -83,7 +94,9 @@
                     id="telefono" 
                     name="telefono" 
                     placeholder="+593 99 123 4567"
+                    pattern="[0-9\s\+\-\(\)]+"
                 >
+                <small class="error-message" id="error-telefono"></small>
             </div>
 
             <!-- Ciudad -->
@@ -94,7 +107,9 @@
                     id="ciudad" 
                     name="ciudad" 
                     placeholder="Quito"
+                    minlength="2"
                 >
+                <small class="error-message" id="error-ciudad"></small>
             </div>
 
             <!-- Contraseña -->
@@ -110,7 +125,9 @@
                     required 
                     placeholder="Mínimo 8 caracteres"
                     aria-required="true"
+                    minlength="8"
                 >
+                <small class="error-message" id="error-password"></small>
             </div>
 
             <!-- Confirmar contraseña -->
@@ -126,11 +143,13 @@
                     required 
                     placeholder="Repite tu contraseña"
                     aria-required="true"
+                    minlength="8"
                 >
+                <small class="error-message" id="error-confirm-password"></small>
             </div>
 
             <!-- Botón de registro -->
-            <button type="submit" class="btn-yellow">
+            <button type="submit" class="btn-yellow" id="submitBtn">
                 Registrarse
             </button>
 
@@ -140,5 +159,7 @@
             </div>
         </form>
     </div>
+
+    <script src="java/scriptRegistroUsuario.js"></script>
 </body>
 </html>
