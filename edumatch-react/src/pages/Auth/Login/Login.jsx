@@ -57,7 +57,7 @@ const Login = () => {
       showSuccess('¡Inicio de sesión exitoso!');
       
       setTimeout(() => {
-        navigate('/home');
+        navigate('/Admin/Dashboard');
       }, 1500);
 
       resetForm();
@@ -123,7 +123,7 @@ const Login = () => {
           </div>
 
           <Button type="submit" variant="primary">
-            Iniciar sesión
+            Iniciar sesión 
           </Button>
 
           <div className="divider">
