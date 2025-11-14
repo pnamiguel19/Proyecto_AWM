@@ -1,0 +1,87 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 70px;
+  width: 250px;
+  height: calc(100vh - 70px);
+  background: white;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.sidebar__nav {
+  padding: 1rem 0;
+}
+
+.sidebar__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.sidebar__item:hover {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.sidebar__item--active {
+  background: linear-gradient(90deg, #00d4ff20 0%, transparent 100%);
+  border-left: 4px solid #00d4ff;
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.sidebar__icon {
+  font-size: 1.25rem;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__label {
+  flex: 1;
+}
+
+/* Scrollbar personalizado */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #00d4ff;
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #00a8cc;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar__label {
+    display: none;
+  }
+
+  .sidebar__item {
+    justify-content: center;
+    padding: 1rem;
+  }
+}

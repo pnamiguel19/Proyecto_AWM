@@ -1,0 +1,62 @@
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+}
+
+.required {
+  color: var(--color-error);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  background-color: #f8f9fa;
+  color: #333333;
+  font-weight: 400;
+}
+
+.form-group input::placeholder {
+  color: #adb5bd;
+  font-weight: 400;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #00d4ff;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  color: #333333;
+}
+
+.form-group input.input-error {
+  border-color: var(--color-error);
+  background-color: #fff5f5;
+}
+
+.error-message {
+  display: block;
+  color: var(--color-error);
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+/* Asegurar que el texto sea visible en todos los navegadores */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #333333;
+  -webkit-box-shadow: 0 0 0px 1000px #f8f9fa inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

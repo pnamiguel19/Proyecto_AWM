@@ -1,0 +1,27 @@
+.btn {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, #f4d03f 0%, #e8c547 100%);
+  color: var(--color-secondary);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f5d84f 0%, #e9c857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 208, 63, 0.3);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
