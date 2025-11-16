@@ -1,0 +1,281 @@
+/* ================================
+   SUMMARY CARD
+==================================*/
+.summary-card {
+    background: var(--gray-light);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-cyan);
+    margin-bottom: 2rem;
+}
+
+.summary-card h3 {
+    color: var(--primary-cyan);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.summary-label {
+    font-weight: 600;
+    min-width: 150px;
+}
+
+.summary-value {
+    color: var(--text-gray);
+}
+
+/* Paso de Confirmación */
+.form-step {
+  padding: 0;
+}
+
+.step-header {
+  margin-bottom: 2rem;
+}
+
+.step-header h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.step-header p {
+  margin: 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Review Section */
+.review-section {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-left: 4px solid #00d4d4;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.review-icon {
+  font-size: 1.5rem;
+}
+
+.review-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  gap: 1rem;
+}
+
+.review-label {
+  font-weight: 600;
+  color: #334e68;
+  flex-shrink: 0;
+  min-width: 180px;
+}
+
+.review-value {
+  color: #1a1a1a;
+  text-align: right;
+  flex: 1;
+  word-break: break-word;
+}
+
+/* Terms Section */
+.terms-section {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 2px solid #fb923c;
+  border-left: 4px solid #fb923c;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.terms-box {
+  margin-bottom: 1.25rem;
+}
+
+.terms-box:last-child {
+  margin-bottom: 0;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-custom {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  background: white;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.terms-checkbox:hover .checkbox-custom {
+  border-color: #00d4d4;
+}
+
+.terms-checkbox input:checked ~ .checkbox-custom {
+  background: #00d4d4;
+  border-color: #00d4d4;
+}
+
+.terms-checkbox input:checked ~ .checkbox-custom::after {
+  content: '✓';
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.terms-text {
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.terms-text a {
+  color: #00d4d4;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.terms-text a:hover {
+  text-decoration: underline;
+}
+
+/* Final Message */
+.final-message {
+  background: linear-gradient(135deg, #e0f7fa 0%, #f0fafa 100%);
+  border: 2px solid #00d4d4;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.message-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.message-content h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.message-content p {
+  margin: 0 0 1rem 0;
+  color: #334e68;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .summary-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .summary-label {
+        min-width: auto;
+    }
+
+  .review-section {
+    padding: 1.25rem;
+  }
+
+  .review-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-label {
+    min-width: auto;
+    margin-bottom: 0.25rem;
+  }
+
+  .review-value {
+    text-align: left;
+  }
+
+  .terms-section {
+    padding: 1.5rem;
+  }
+
+  .final-message {
+    padding: 1.5rem;
+  }
+
+  .message-icon {
+    font-size: 3rem;
+  }
+
+  .message-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .message-content p {
+    font-size: 0.95rem;
+  }
+}
