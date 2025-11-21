@@ -1,0 +1,166 @@
+       /* Variables de color de EduMatch */
+        :root {
+            --color-primary: #00bcd4; /* Cian principal */
+            --color-text-dark: #333333;
+            --color-text-light: #666666;
+            --color-background-soft: #f4f7f6;
+            --color-card-background: #ffffff;
+            --color-border: #e0e0e0;
+            --color-success: #4CAF50; 
+            --color-link: #1565c0; 
+            --color-highlight: #f4f7f6;
+            --color-warning: #FFC107; /* Amarillo para estrellas */
+            --color-danger: #D32F2F; /* Rojo para calificación baja */
+            --color-happy: #FF9800; /* Naranja para carita feliz */
+        }
+
+        body {
+            background-color: var(--color-background-soft);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- Estilos del Header Avanzado y Contráctil (Mantenidos) --- */
+        .header {
+            background-color: var(--color-primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding-bottom: 20px; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header__container { max-width: 1200px; margin: 0 auto; padding: 10px 20px 0; }
+        .header__top { display: flex; justify-content: space-between; align-items: center; padding: 5px 0 10px; }
+        .logo { display: flex; align-items: center; font-size: 1.5em; font-weight: bold; color: white; text-decoration: none; }
+        .logo__icon { margin-right: 5px; }
+
+        .search-bar { flex-grow: 1; max-width: 500px; margin: 0 30px; position: relative; }
+        .search-bar__input { width: 100%; padding: 10px 45px 10px 15px; border-radius: 25px; border: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        .search-bar__button { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--color-text-light); }
+
+        .user-actions-area { display: flex; align-items: center; gap: 20px; }
+        .mode-switch-link { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid white; border-radius: 20px; font-weight: 500; white-space: nowrap; transition: background-color 0.2s; }
+        .mode-switch-link:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+        .user-menu-dropdown-container { position: relative; }
+        .user-menu-trigger { display: flex; align-items: center; background: var(--color-card-background); border-radius: 25px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); cursor: pointer; padding: 0; border: none; transition: box-shadow 0.2s; }
+        .menu-bars-icon { color: var(--color-text-dark); padding: 0 10px 0 15px; }
+        .header-avatar-container { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; margin: 3px; }
+        .header-avatar { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .dropdown-menu {
+            position: absolute; top: 55px; right: 0; width: 200px; background-color: var(--color-card-background);
+            border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); padding: 10px 0; z-index: 110;
+            border-top: 3px solid var(--color-primary); 
+            display: none; opacity: 0; transform: translateY(-10px); transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .dropdown-menu.is-active { display: block; opacity: 1; transform: translateY(0); }
+        .dropdown-item { display: block; padding: 10px 20px; text-decoration: none; color: var(--color-text-dark); transition: background-color 0.1s; font-size: 0.95em; }
+        .dropdown-item:hover { background-color: var(--color-highlight); }
+        .dropdown-divider { height: 1px; background-color: var(--color-border); margin: 5px 0; }
+        
+        .nav-filters { display: flex; justify-content: space-around; padding-top: 10px; padding-bottom: 5px; }
+        .nav-filters__item { text-align: center; color: white; cursor: pointer; padding: 5px 10px; }
+        .nav-filters__button { background: none; border: none; color: white; font-size: 1.1em; font-weight: 600; cursor: pointer; margin-bottom: 3px; }
+        .nav-filters__subtitle { font-size: 0.85em; font-weight: 300; opacity: 0.9; }
+
+        /* --- Estilos del Contenido Principal (Formulario de Comentario) --- */
+        .main-content { padding: 40px 20px; display: flex; justify-content: center; }
+        .review-card {
+            background-color: var(--color-card-background); border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px; max-width: 650px; width: 100%; border-top: 5px solid var(--color-primary);
+        }
+        .card-header { text-align: center; margin-bottom: 30px; }
+        .card-title { font-size: 2em; font-weight: 700; color: var(--color-text-dark); margin-bottom: 10px; }
+        .teacher-info { font-size: 1.1em; color: var(--color-link); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .teacher-info:hover { color: var(--color-primary); }
+
+        /* Calificación por Estrellas */
+        .rating-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            position: relative; /* Contenedor para posicionar las caritas */
+            padding-bottom: 60px; /* Aumenta el padding para hacer espacio debajo de las estrellas */
+        }
+
+        .rating-label {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stars-container {
+            display: inline-block;
+            direction: rtl; 
+        }
+
+        .star-input {
+            display: none;
+        }
+
+        .star-label {
+            color: var(--color-border);
+            font-size: 2.5em;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        
+        .star-input:checked ~ .star-label,
+        .star-label:hover,
+        .star-label:hover ~ .star-label {
+            color: var(--color-warning); 
+        }
+        
+        /* --- ESTILOS PARA LAS CARITAS (La magia del CSS) --- */
+        .rating-emoji {
+            position: absolute;
+            bottom: -5px; /* Ajustado para estar más abajo del contenedor de estrellas */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            pointer-events: none; /* Asegura que no interfiera con los clics */
+        }
+
+        /* 1. CARITA TRISTE (Para 1 estrella) */
+        .stars-container #rating-1:checked ~ .rating-emoji--sad {
+            opacity: 1;
+            transform: translate(-50%, 0); /* No elevado, queda en su 'bottom' */
+            color: var(--color-danger);
+        }
+
+        /* 2. CARITA FELIZ (Para 5 estrellas) */
+        .stars-container #rating-5:checked ~ .rating-emoji--happy {
+            opacity: 1;
+            transform: translate(-50%, 0); /* No elevado, queda en su 'bottom' */
+            color: var(--color-happy);
+        }
+        
+        /* Ocultar las caritas por defecto y resetear la posición */
+        .rating-emoji {
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+        /* --- FIN DE ESTILOS PARA LAS CARITAS --- */
+
+        .form-group { margin-bottom: 25px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--color-text-dark); }
+        .form-textarea {
+            width: 100%; min-height: 150px; padding: 15px; border: 1px solid var(--color-border);
+            border-radius: 8px; box-sizing: border-box; font-size: 1em; resize: vertical;
+        }
+        .form-actions { display: flex; justify-content: flex-end; gap: 15px; }
+        .btn { padding: 12px 25px; border: none; border-radius: 25px; font-size: 1em; font-weight: 600; cursor: pointer; transition: background-color 0.2s, opacity 0.2s; }
+        .btn-cancel { background-color: var(--color-border); color: var(--color-text-dark); }
+        .btn-submit { background-color: var(--color-primary); color: white; box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3); }
+        .btn-submit:hover { background-color: var(--color-link); }
+
+  

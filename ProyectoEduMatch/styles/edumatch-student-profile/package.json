@@ -1,0 +1,29 @@
+{
+  "name": "edumatch-student-profile",
+  "version": "1.0.0",
+  "description": "A React application for managing student profiles in EduMatch.",
+  "main": "src/main.jsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0"
+  },
+  "devDependencies": {
+    "vite": "^2.0.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-react": "^7.0.0"
+  },
+  "keywords": [
+    "react",
+    "student",
+    "profile",
+    "edumatch"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

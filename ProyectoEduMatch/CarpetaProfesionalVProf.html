@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Documentos de Acreditación Docente">
+    <title>EduMatch - Carpeta Profesional Docente</title>
+
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+
+    <style>
+        /* =========================================
+           VARIABLES GLOBALES
+           ========================================= */
+        :root {
+            --color-primary: #00bcd4; /* Cian principal */
+            --color-text-dark: #333333;
+            --color-text-light: #666666;
+            --color-background-soft: #f4f7f6;
+            --color-card-background: #ffffff;
+            --color-border: #e0e0e0;
+            --color-success: #4CAF50;
+            --color-danger: #D32F2F;
+            --color-link: #1565c0;
+            --bg-gradient-cyan: linear-gradient(90deg, #00BCD4 0%, #4DD0E1 100%);
+            --bg-white: #ffffff;
+            --text-dark: #333;
+            --border-radius-pill: 30px;
+            --shadow-header: 0 1px 12px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --bg-gray-hover: #f7f7f7;
+        }
+
+        body {
+            background-color: var(--color-background-soft);
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* =========================================
+           HEADER TRIPLE FILA (FUNCIONALIDAD COMPLETA)
+           ========================================= */
+        .header {
+            background: var(--bg-gradient-cyan);
+            box-shadow: var(--shadow-header);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0 0; /* Padding superior, padding inferior lo da la última fila */
+        }
+
+        .header__container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* FILA 1: Logo y Controles de Usuario */
+        .header__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 0.5rem; color: var(--bg-white);
+            font-size: 1.5rem; font-weight: 700; text-decoration: none; min-width: 150px; 
+        }
+        .logo__icon { font-size: 2rem; }
+        .user-actions-area { display: flex; align-items: center; gap: 1rem; }
+        .mode-switch-link { color: var(--bg-white); font-weight: 500; padding: 0.5rem 1rem; border-radius: var(--border-radius-pill); text-decoration: none; white-space: nowrap; }
+
+        /* Estilos del Trigger (Cápsula) y Menú */
+        .user-menu-dropdown-container { position: relative; }
+        .user-menu-trigger {
+            display: flex; align-items: center; background: var(--bg-white); padding: 5px 5px 5px 12px;
+            border-radius: var(--border-radius-pill); border: 1px solid rgba(255, 255, 255, 0.3); cursor: pointer;
+            gap: 10px; outline: none; transition: box-shadow 0.3s;
+        }
+        .user-menu-trigger:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .menu-bars-icon { font-size: 1.2rem; color: var(--text-dark); }
+        .header-avatar-container { position: relative; width: 32px; height: 32px; }
+        .header-avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        
+        /* Dropdown Menu (Toggle JS) */
+        .dropdown-menu {
+            position: absolute; top: 120%; right: 0; background: var(--bg-white); width: 240px;
+            border-radius: 12px; box-shadow: var(--shadow-card); padding: 8px 0; z-index: 1001;
+            opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease;
+        }
+        .dropdown-menu.is-active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: block; padding: 12px 16px; color: var(--text-dark); text-decoration: none; transition: background 0.2s; }
+        .dropdown-item--bold { font-weight: 600; }
+        .dropdown-divider { height: 1px; background-color: var(--border-light); margin: 8px 0; }
+
+        /* FILA 2: Barra de Búsqueda (Se le da su propia fila) */
+        .header__search-row {
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar {
+            flex-grow: 0; /* No debe crecer infinitamente */
+            width: 500px; /* Ancho fijo para centrar bien */
+            position: relative;
+        }
+
+        .search-bar__input {
+            width: 100%;
+            padding: 12px 50px 12px 20px; 
+            border-radius: 30px; 
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+            font-size: 1.05em;
+        }
+        .search-bar__button {
+            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; cursor: pointer; font-size: 1.4em; color: var(--color-primary);
+        }
+
+        /* FILA 3: Filtros de Navegación */
+        .nav-filters {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 5px;
+            padding-bottom: 15px; /* Espacio final del header */
+            width: 70%; 
+            margin: 0 auto;
+        }
+        
+        .nav-filters__item {
+            text-align: center; color: white; cursor: pointer; padding: 5px 10px; flex-grow: 1;
+        }
+        .nav-filters__button { background: none; border: none; color: white; font-size: 1.1em; font-weight: 600; cursor: pointer; margin-bottom: 3px; }
+        .nav-filters__subtitle { font-size: 0.85em; font-weight: 300; opacity: 0.9; }
+
+
+        /* =========================================
+           DASHBOARD CONTENT (Mantenido)
+           ========================================= */
+        .main-content { padding-top: 40px; }
+        .dashboard-layout { display: flex; gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .sidebar { flex: 0 0 250px; }
+        .page-title { font-size: 2.2em; font-weight: 700; color: var(--color-text-dark); margin-bottom: 20px; }
+        .nav-card { background-color: var(--color-card-background); border-radius: 12px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); padding: 10px 0; }
+        .nav-item { padding: 14px 20px; color: var(--color-text-dark); font-weight: 500; text-decoration: none; display: flex; align-items: center; }
+        .nav-item__icon { margin-right: 10px; font-size: 1.2em; }
+        .nav-item--active { background-color: rgba(0, 188, 212, 0.1); color: var(--color-primary); font-weight: 700; border-left: 5px solid var(--color-primary); padding-left: 15px; }
+        .content-card { background-color: var(--color-card-background); border-radius: 12px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); padding: 40px; }
+        .content-card__header { font-size: 2em; color: var(--color-primary); border-bottom: 2px solid var(--color-border); margin-bottom: 20px; padding-bottom: 10px; }
+        .document-list { list-style: none; padding: 0; }
+        .document-item { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--color-border); }
+        .document-info { display: flex; flex-direction: column; }
+        .document-name { font-weight: 600; font-size: 1.1em; color: var(--color-text-dark); margin-bottom: 5px; }
+        .document-actions a { color: var(--color-primary); text-decoration: none; margin-left: 15px; font-size: 0.9em; font-weight: 600; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <span class="logo__icon">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <div class="user-actions-area">
+                    <div class="user-menu-dropdown-container">
+                        <button class="user-menu-trigger" id="userMenuTrigger" aria-expanded="false" aria-label="Menú de usuario">
+                            <span class="menu-bars-icon">☰</span>
+                            <div class="header-avatar-container">
+                                <img src="https://via.placeholder.com/32/FF9800/FFFFFF?text=JP" alt="Foto de perfil" class="header-avatar">
+                            </div>
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu" role="menu">
+                            <a href="#" class="dropdown-item dropdown-item--bold" role="menuitem">Notificaciones</a>
+                            <a href="#" class="dropdown-item" role="menuitem">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" role="menuitem">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header__search-row">
+                <form class="search-bar" role="search" aria-label="Búsqueda de clases">
+                    <label for="search-input" class="sr-only">Buscar clases, profesores o materias</label>
+                    <input type="search" id="search-input" class="search-bar__input" placeholder="Buscar clases, profesores..." autocomplete="off"/>
+                    <button type="submit" class="search-bar__button" aria-label="Realizar búsqueda">🔍</button>
+                </form>
+            </div>
+
+            <nav class="nav-filters" aria-label="Filtros de búsqueda">
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+                    <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+                    <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+                    <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <hr>
+    
+    <main class="main main-content" id="main-content">
+        <div class="dashboard-layout">
+            
+            <aside class="sidebar" role="navigation" aria-label="Menú del Perfil">
+                <h1 class="page-title">Perfil</h1>
+                <div class="nav-card">
+                    <a href="#" class="nav-item nav-item--active" aria-current="page">
+                        <span class="nav-item__icon" aria-hidden="true">📑</span>
+                        Documentos de Acreditación
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon" aria-hidden="true">👤</span>
+                        Información sobre mí
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon" aria-hidden="true">🧑‍🏫</span>
+                        Mis Clases
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon" aria-hidden="true">📅</span>
+                        Disponibilidad y Horario
+                    </a>
+                </div>
+            </aside>
+            
+            <section class="main-panel" aria-labelledby="documents-header">
+                <div class="content-card">
+                    <h2 class="content-card__header" id="documents-header">
+                        Documentos Cargados para Acreditación
+                    </h2>
+
+                    <ul class="document-list">
+                        <li class="document-item">
+                            <div class="document-info">
+                                <span class="document-name">Título Universitario (Licenciatura/Maestría)</span>
+                                <span class="document-description">Certificado de estudios superiores en Física.</span>
+                            </div>
+                            <div class="document-actions">
+                                <span class="document-status-badge status-aprobado">
+                                    <span class="status-icon">✅</span>Aprobado
+                                </span>
+                                <a href="#" aria-label="Ver documento Título Universitario">Ver</a>
+                            </div>
+                        </li>
+                        <li class="document-item">
+                            <div class="document-info">
+                                <span class="document-name">Cédula Profesional o Permiso de Ejercicio</span>
+                                <span class="document-description">Documento que habilita el ejercicio de la profesión.</span>
+                            </div>
+                            <div class="document-actions">
+                                <span class="document-status-badge status-aprobado">
+                                    <span class="status-icon">✅</span>Aprobado
+                                </span>
+                                <a href="#" aria-label="Ver Cédula Profesional">Ver</a>
+                            </div>
+                        </li>
+                        <li class="document-item">
+                            <div class="document-info">
+                                <span class="document-name">Identificación Oficial (Cédula de Identidad/Pasaporte)</span>
+                                <span class="document-description">Documento de identidad vigente. Imagen borrosa.</span>
+                            </div>
+                            <div class="document-actions">
+                                <span class="document-status-badge status-rechazado">
+                                    <span class="status-icon">❌</span>Rechazado
+                                </span>
+                                <a href="#" aria-label="Volver a subir Identificación Oficial">Re-subir</a>
+                            </div>
+                        </li>
+                        <li class="document-item">
+                            <div class="document-info">
+                                <span class="document-name">Certificación de Inglés Avanzado C1</span>
+                            </div>
+                            <div class="document-actions">
+                                <span class="document-status-badge status-aprobado">
+                                    <span class="status-icon">✅</span>Cargado
+                                </span>
+                                <a href="#" aria-label="Ver Certificación de Inglés">Ver</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('userMenuTrigger');
+            const menu = document.getElementById('dropdownMenu');
+
+            if (trigger && menu) {
+                // Función para alternar la visibilidad del menú
+                function toggleMenu() {
+                    const isActive = menu.classList.toggle('is-active');
+                    trigger.setAttribute('aria-expanded', isActive);
+                }
+
+                // 1. Alternar al hacer clic en el botón
+                trigger.addEventListener('click', function(event) {
+                    event.stopPropagation(); 
+                    toggleMenu();
+                });
+
+                // 2. Cerrar el menú si se hace clic fuera de él
+                document.addEventListener('click', function(event) {
+                    if (!menu.contains(event.target) && !trigger.contains(event.target)) {
+                        if (menu.classList.contains('is-active')) {
+                            menu.classList.remove('is-active');
+                            trigger.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

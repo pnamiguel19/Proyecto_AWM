@@ -1,0 +1,15 @@
+:root {
+    --primary-color: #00d4ff;
+    --secondary-color: #00b8d4;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --text-light-color: #666;
+    --white-color: #ffffff;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 28px;
+    --font-size-xlarge: 32px;
+}

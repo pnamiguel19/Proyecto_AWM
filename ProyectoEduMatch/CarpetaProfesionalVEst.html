@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Documentos de Acreditación de [Nombre del Docente]">
+    <title>EduMatch - Documentación Profesional del Docente</title>
+
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    <link rel="stylesheet" href="styles/pages/carpetaPEstD.css">
+</head>
+<body>
+
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="/" class="logo" aria-label="EduMatch - Ir a inicio">
+                    <span class="logo__icon" aria-hidden="true">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <form class="search-bar" role="search" aria-label="Búsqueda de clases">
+                    <label for="search-input" class="sr-only">Buscar clases, profesores o materias</label>
+                    <input
+                        type="search"
+                        id="search-input"
+                        class="search-bar__input"
+                        placeholder="Buscar clases, profesores..."
+                        autocomplete="off"
+                    />
+                    <button type="submit" class="search-bar__button" aria-label="Realizar búsqueda">
+                        🔍
+                    </button>
+                </form>
+
+                <div class="user-actions-area">
+                    <a href="#instructor" class="mode-switch-link">Conviértete en instructor</a>
+
+                    <div class="user-menu-dropdown-container">
+                        
+                        <button class="user-menu-trigger" id="userMenuTrigger" aria-expanded="false" aria-label="Menú de usuario">
+                            <span class="menu-bars-icon">☰</span>
+                            
+                            <div class="header-avatar-container">
+                                <img src="https://via.placeholder.com/40/00bcd4/ffffff?text=U" alt="Foto de perfil" class="header-avatar">
+                            </div>
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu" role="menu">
+                            <a href="#" class="dropdown-item dropdown-item--bold" role="menuitem">Notificaciones</a>
+                            <a href="#" class="dropdown-item" role="menuitem">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" role="menuitem">Cerrar sesión</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <nav class="nav-filters" aria-label="Filtros de búsqueda">
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+                    <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+                    <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+                    <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="back-button-container">
+        <a href="perfil-docente.html" class="back-button" aria-label="Volver al perfil completo del docente">
+            ← Volver al Perfil de Juan Pérez
+        </a>
+    </div>
+
+    <main class="main main-content" id="main-content">
+        <section class="public-document-card" aria-labelledby="doc-main-title">
+            
+            <header class="doc-header">
+                <h1 class="doc-title" id="doc-main-title">
+                    Acreditaciones y Títulos Profesionales
+                </h1>
+                <p class="doc-subtitle">
+                    Documentación de respaldo para la enseñanza de Juan Pérez, Profesor de Física.
+                </p>
+            </header>
+
+            <ul class="accreditation-list">
+                
+                <li class="accreditation-item">
+                    <div class="icon-container" aria-hidden="true">
+                        ✅
+                    </div>
+                    <div class="accreditation-info">
+                        <span class="accreditation-name">Título Universitario: Licenciatura en Física</span>
+                        <p class="accreditation-text">
+                            Validado por EduMatch. Certifica la culminación de estudios superiores.
+                        </p>
+                        <a href="#" class="accreditation-link" aria-label="Ver certificado de Título Universitario">
+                            Ver validación en [Plataforma de Validación]
+                        </a>
+                    </div>
+                </li>
+
+                <li class="accreditation-item">
+                    <div class="icon-container" aria-hidden="true">
+                        ✅
+                    </div>
+                    <div class="accreditation-info">
+                        <span class="accreditation-name">Cédula Profesional Registrada</span>
+                        <p class="accreditation-text">
+                            Documento oficial que habilita el ejercicio de la profesión. Vigente.
+                        </p>
+                        <a href="#" class="accreditation-link" aria-label="Ver registro de Cédula Profesional">
+                            Consultar registro profesional
+                        </a>
+                    </div>
+                </li>
+
+                <li class="accreditation-item">
+                    <div class="icon-container" aria-hidden="true">
+                        ⭐
+                    </div>
+                    <div class="accreditation-info">
+                        <span class="accreditation-name">Certificado: Metodologías de Enseñanza Virtual</span>
+                        <p class="accreditation-text">
+                            Certificado de curso especializado en didáctica moderna y clases en línea.
+                        </p>
+                        <a href="#" class="accreditation-link" aria-label="Ver Certificado de Metodologías de Enseñanza Virtual">
+                            Ver certificado
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="accreditation-item">
+                    <div class="icon-container" aria-hidden="true">
+                        🛡️
+                    </div>
+                    <div class="accreditation-info">
+                        <span class="accreditation-name">Verificación de Antecedentes (Background Check)</span>
+                        <p class="accreditation-text">
+                            Verificación de identidad y antecedentes realizada por un tercero.
+                        </p>
+                        <span class="accreditation-text">Fecha de última verificación: 15 de Noviembre de 2025</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('userMenuTrigger');
+            const menu = document.getElementById('dropdownMenu');
+
+            if (trigger && menu) {
+                // Función para alternar la visibilidad del menú
+                function toggleMenu() {
+                    const isActive = menu.classList.toggle('is-active');
+                    trigger.setAttribute('aria-expanded', isActive);
+                }
+
+                // 1. Alternar al hacer clic en el botón
+                trigger.addEventListener('click', function(event) {
+                    event.stopPropagation(); 
+                    toggleMenu();
+                });
+
+                // 2. Cerrar el menú si se hace clic fuera de él
+                document.addEventListener('click', function(event) {
+                    // Verifica si el clic no fue dentro del menú o el botón de activación
+                    if (!menu.contains(event.target) && !trigger.contains(event.target)) {
+                        if (menu.classList.contains('is-active')) {
+                            menu.classList.remove('is-active');
+                            trigger.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
