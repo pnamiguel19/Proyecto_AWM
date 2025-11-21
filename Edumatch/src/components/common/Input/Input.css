@@ -1,0 +1,38 @@
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.required {
+  color: #ff4444;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #00BCD4;
+  background-color: #fff;
+}
+
+.input-field::placeholder {
+  color: #999;
+}
