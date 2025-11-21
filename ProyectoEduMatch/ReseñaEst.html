@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Dejar comentario para Profesor [Nombre del Docente]">
+    <title>EduMatch - Dejar Comentario al Profesor</title>
+
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    <link rel="stylesheet" href="styles/pages/reseñaEst.css">
+
+</head>
+<body>
+
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="/" class="logo" aria-label="EduMatch - Ir a inicio">
+                    <span class="logo__icon" aria-hidden="true">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <form class="search-bar" role="search" aria-label="Búsqueda de clases">
+                    <label for="search-input" class="sr-only">Buscar clases, profesores o materias</label>
+                    <input type="search" id="search-input" class="search-bar__input" placeholder="Buscar clases, profesores..." autocomplete="off"/>
+                    <button type="submit" class="search-bar__button" aria-label="Realizar búsqueda">🔍</button>
+                </form>
+
+                <div class="user-actions-area">
+                    <a href="#instructor" class="mode-switch-link">Conviértete en instructor</a>
+                    <div class="user-menu-dropdown-container">
+                        <button class="user-menu-trigger" id="userMenuTrigger" aria-expanded="false" aria-label="Menú de usuario">
+                            <span class="menu-bars-icon">☰</span>
+                            <div class="header-avatar-container">
+                                <img src="https://via.placeholder.com/40/00bcd4/ffffff?text=E" alt="Foto de perfil del estudiante" class="header-avatar">
+                            </div>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu" role="menu">
+                            <a href="#" class="dropdown-item dropdown-item--bold" role="menuitem">Notificaciones</a>
+                            <a href="#" class="dropdown-item" role="menuitem">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" role="menuitem">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="nav-filters" aria-label="Filtros de búsqueda">
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por materia">Materia</button>
+                    <p class="nav-filters__subtitle">¿Qué quieres aprender?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por nivel educativo">Nivel Educativo</button>
+                    <p class="nav-filters__subtitle">¿En qué grado te encuentras?</p>
+                </div>
+                <div class="nav-filters__item">
+                    <button class="nav-filters__button" aria-label="Filtrar por modalidad">Modalidad</button>
+                    <p class="nav-filters__subtitle">¿Cómo quieres recibir tu clase?</p>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" id="main-content">
+        <section class="review-card" aria-labelledby="review-title">
+            
+            <header class="card-header">
+                <h1 class="card-title" id="review-title">
+                    Deja tu Comentario y Calificación
+                </h1>
+                <p>
+                    Tu opinión es muy valiosa para otros estudiantes.
+                </p>
+                <a href="#" class="teacher-info">
+                    Profesor: Juan Peréz (Física)
+                </a>
+            </header>
+
+            <form action="/submit-review" method="POST">
+                
+                <div class="rating-section">
+                    <label for="rating-5" class="rating-label">
+                        ¿Qué tan satisfecho quedaste con la clase?
+                    </label>
+                    <div class="stars-container">
+                        <input class="star-input" type="radio" id="rating-5" name="rating" value="5" required>
+                        <label class="star-label" for="rating-5" title="Excelente">★</label>
+                        
+                        <input class="star-input" type="radio" id="rating-4" name="rating" value="4">
+                        <label class="star-label" for="rating-4" title="Muy Bueno">★</label>
+                        
+                        <input class="star-input" type="radio" id="rating-3" name="rating" value="3">
+                        <label class="star-label" for="rating-3" title="Promedio">★</label>
+                        
+                        <input class="star-input" type="radio" id="rating-2" name="rating" value="2">
+                        <label class="star-label" for="rating-2" title="Malo">★</label>
+                        
+                        <input class="star-input" type="radio" id="rating-1" name="rating" value="1">
+                        <label class="star-label" for="rating-1" title="Muy Malo">★</label>
+
+                        <span class="rating-emoji rating-emoji--sad" aria-hidden="true">😢</span>
+                        <span class="rating-emoji rating-emoji--happy" aria-hidden="true">🤩</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment-text" class="form-label">
+                        Escribe tu reseña (máx. 500 caracteres):
+                    </label>
+                    <textarea 
+                        id="comment-text" 
+                        class="form-textarea" 
+                        name="comment" 
+                        maxlength="500" 
+                        placeholder="Describe tu experiencia, ¿qué te gustó más de la clase o del profesor?"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" onclick="history.back()">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-submit">
+                        Enviar Comentario
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('userMenuTrigger');
+            const menu = document.getElementById('dropdownMenu');
+
+            if (trigger && menu) {
+                function toggleMenu() {
+                    const isActive = menu.classList.toggle('is-active');
+                    trigger.setAttribute('aria-expanded', isActive);
+                }
+
+                trigger.addEventListener('click', function(event) {
+                    event.stopPropagation(); 
+                    toggleMenu();
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!menu.contains(event.target) && !trigger.contains(event.target)) {
+                        if (menu.classList.contains('is-active')) {
+                            menu.classList.remove('is-active');
+                            trigger.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

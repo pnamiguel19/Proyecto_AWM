@@ -1,0 +1,64 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    font-size: 16px;
+}
+
+.sidebar {
+    font-size: 14px;
+}
+
+.main-content {
+    font-size: 16px;
+}
+
+.button {
+    font-size: 14px;
+}
+
+.profile-name {
+    font-size: 24px;
+}
+
+.profile-role {
+    font-size: 16px;
+    color: #666;
+}
+
+.verified-badge {
+    font-size: 14px;
+}
+
+.reviews-section {
+    font-size: 14px;
+}
