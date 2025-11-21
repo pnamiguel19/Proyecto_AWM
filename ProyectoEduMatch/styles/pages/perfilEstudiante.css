@@ -1,0 +1,342 @@
+
+        /* =========================================
+           VARIABLES CSS (Fusión de estilos)
+        ========================================= */
+        :root {
+            /* Colores EduMatch */
+            --bg-gradient-cyan: linear-gradient(135deg, #00d4ff 0%, #00b8d4 100%);
+            --primary-cyan: #00b8d4;
+            
+            /* Colores Estilo Airbnb */
+            --airbnb-red: #ff5a5f; /* Para el badge de notificación y verificación */
+            --text-dark: #222222;
+            --text-medium: #717171;
+            --bg-white: #ffffff;
+            --bg-gray-hover: #f7f7f7; /* Gris claro para hovers */
+            --border-light: #dddddd;
+            
+            /* Sombras y Bordes */
+            --shadow-header: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-card: 0 6px 20px rgba(0,0,0,0.15); /* Sombra pronunciada estilo Airbnb */
+            --border-radius-card: 24px;
+            --border-radius-pill: 50px;
+        }
+
+        /* Reset básico */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+        .header {
+            background: var(--bg-gradient-cyan);
+            box-shadow: var(--shadow-header);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header__container {
+            max-width: 1400px; /* Ancho máximo similar a Airbnb */
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo EduMatch */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .logo__icon { font-size: 2rem; }
+
+        /* Área de acciones del usuario (Derecha) */
+        .user-actions-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Enlace opcional tipo "Hazte anfitrión" */
+        .mode-switch-link {
+            color: var(--bg-white);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-pill);
+            transition: background 0.3s;
+            font-size: 0.9rem;
+            display: none; /* Oculto en móviles */
+        }
+        .mode-switch-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        @media(min-width: 768px) { .mode-switch-link { display: block; } }
+
+
+        /* Contenedor del Menú de Usuario (Trigger + Dropdown) */
+        .user-menu-dropdown-container {
+            position: relative; /* Necesario para posicionar el dropdown */
+        }
+
+        /* El Trigger: La cápsula con la foto y el icono de menú (Estilo Airbnb) */
+        .user-menu-trigger {
+            display: flex;
+            align-items: center;
+            background: var(--bg-white);
+            padding: 5px 5px 5px 12px; /* Padding ajustado para que se vea como la cápsula */
+            border-radius: var(--border-radius-pill);
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+            gap: 10px;
+        }
+
+        .user-menu-trigger:hover {
+             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .menu-bars-icon {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        /* Contenedor de la foto de perfil pequeña en el header */
+        .header-avatar-container {
+             position: relative;
+             width: 32px;
+             height: 32px;
+        }
+        
+        .header-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--bg-white); /* Borde blanco para resaltar sobre el fondo cian si se sale */
+        }
+
+        /* Punto rojo de notificación (Estilo Airbnb/EduMatch) */
+        .notification-dot-header {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--airbnb-red);
+            border-radius: 50%;
+            border: 2px solid var(--bg-white);
+        }
+
+
+        /* MENÚ DESPLEGABLE (Dropdown) */
+        .dropdown-menu {
+            position: absolute;
+            top: 120%; /* Justo debajo del trigger */
+            right: 0;
+            background: var(--bg-white);
+            width: 240px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        /* Mostrar el menú al pasar el mouse por el contenedor */
+        .user-menu-dropdown-container:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: var(--text-dark);
+            font-weight: 400;
+            transition: background 0.2s;
+        }
+        .dropdown-item:hover {
+            background-color: var(--bg-gray-hover);
+        }
+        .dropdown-item--bold { font-weight: 600; }
+        .dropdown-divider {
+            height: 1px;
+            background-color: var(--border-light);
+            margin: 8px 0;
+        }
+
+
+        /* =========================================
+           LAYOUT DEL CUERPO 
+        ========================================= */
+        .main-container {
+            max-width: 1128px;
+            margin: 40px auto;
+            padding: 0 24px;
+            display: grid;
+            /* Grid de 2 columnas: Sidebar fijo (aprox 30%) y Contenido flexible */
+            grid-template-columns: 300px 1fr; 
+            gap: 80px;
+        }
+
+        /* ===== Sidebar Izquierdo ===== */
+        .sidebar h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .sidenav-menu { list-style: none; }
+
+        .sidenav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            color: var(--text-medium);
+            font-weight: 400;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .sidenav-item:hover {
+            background-color: var(--bg-gray-hover);
+        }
+
+        /* Estado activo estilo Airbnb (Gris claro) */
+        .sidenav-item.active {
+            background-color: #f0f0f0; 
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .sidenav-icon {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+            color: var(--text-dark); /* Iconos oscuros */
+        }
+
+
+        /* ===== Tarjeta Principal (Derecha) ===== */
+        .profile-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius-card);
+            padding: 48px;
+            /* Sombra pronunciada clave del diseño */
+            box-shadow: var(--shadow-card); 
+            border: 1px solid #f0f0f0; /* Borde muy sutil */
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .edit-btn {
+            background: var(--bg-white);
+            border: 1px solid var(--text-dark);
+            color: var(--text-dark);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .edit-btn:hover { background-color: var(--bg-gray-hover); }
+
+        /* Sección central (Foto y Nombre) */
+        .profile-summary { text-align: center; margin-bottom: 40px; }
+
+        .profile-avatar-large-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 16px;
+        }
+
+        .profile-avatar-large {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Badge de verificación grande ( */
+        .verified-badge-large {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background-color: var(--airbnb-red); /* Color rosado/rojo */
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--bg-white);
+            font-size: 14px;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .profile-role {
+            font-size: 18px;
+            color: var(--text-medium);
+        }
+
+        /* Secciones de detalles inferiores */
+        .detail-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 0;
+            border-top: 1px solid var(--border-light);
+            font-size: 18px;
+        }
+        .detail-section a { text-decoration: underline; font-weight: 500;}
+        .detail-icon { font-size: 24px; color: var(--text-dark); }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .main-container {
+                grid-template-columns: 1fr; /* Una sola columna en tablets/moviles */
+                gap: 40px;
+            }
+            .sidebar { margin-bottom: 20px; }
+            .profile-card { padding: 24px; }
+            .user-actions-area .mode-switch-link { display: none; }
+        }
+    
