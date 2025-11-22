@@ -36,3 +36,16 @@
 .input-field::placeholder {
   color: #999;
 }
+
+.input-error {
+  border-color: #ff4444 !important;
+  background-color: #fff5f5 !important;
+}
+
+.error-message {
+  display: block;
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 500;
+}

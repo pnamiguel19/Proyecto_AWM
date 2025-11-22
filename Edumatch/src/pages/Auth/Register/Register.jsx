@@ -9,9 +9,11 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    console.log('Selected role:', selectedRole);
-    // Aquí podrás redirigir según el rol seleccionado
-    // Por ejemplo: navigate('/register/student') o navigate('/register/professor')
+    if (selectedRole === 'estudiante') {
+      navigate('/register/student');
+    } else {
+      navigate('/register/professor');
+    }
   };
 
   const handleLoginRedirect = () => {
