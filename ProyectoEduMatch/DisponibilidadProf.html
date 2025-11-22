@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Disponibilidad y Horario">
+    <title>EduMatch - Disponibilidad y Horario</title>
+    <link rel="stylesheet" href="styles/pages/disponibilidadProf.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <span class="logo__icon">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <div class="user-actions-area">
+                    <a href="#" class="mode-switch-link">Conviértete en Estudiante</a>
+                    <div class="user-menu-dropdown-container">
+                        <button class="user-menu-trigger" id="userMenuTrigger">
+                            <span class="menu-bars-icon">☰</span>
+                            <img src="https://via.placeholder.com/32/FF9800/FFFFFF?text=JP" alt="Foto de perfil" class="header-avatar">
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" class="dropdown-item">Notificaciones</a>
+                            <a href="#" class="dropdown-item">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main main-content">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <h1 class="page-title">Perfil</h1>
+                <div class="nav-card">
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">👤</span>
+                        Información sobre mí
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🧑‍🏫</span>
+                        Mis Clases
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📚</span>
+                        Mis Cursos
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">☝</span>
+                        Mi historial de Enseñanza
+                    </a>
+                    <a href="#" class="nav-item nav-item--active" aria-current="page">
+                        <span class="nav-item__icon">📅</span>
+                        Disponibilidad y Horario
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📑</span>
+                        Documentos de Acreditación
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🤓</span>
+                        Mis Calificaciones y reseñas
+                    </a>
+                </div>
+            </aside>
+
+            <section class="main-panel">
+                <div class="content-card">
+                    <div class="content-card__header">
+                        <h2 class="content-card__title">Disponibilidad y Horario</h2>
+                        <button class="add-schedule-btn">+ Agregar Disponibilidad</button>
+                    </div>
+
+                    <!-- Estadísticas del Horario -->
+                    <div class="schedule-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-value">28</div>
+                            <div class="stat-label">Horas Disponibles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value">15</div>
+                            <div class="stat-label">Clases Agendadas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🕐</div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Horas Libres</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-value">54%</div>
+                            <div class="stat-label">Ocupación</div>
+                        </div>
+                    </div>
+
+                    <!-- Leyenda -->
+                    <div class="legend-section">
+                        <div class="legend-item">
+                            <div class="legend-color legend-available"></div>
+                            <span>Disponible</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-reserved"></div>
+                            <span>Clase Agendada</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-busy"></div>
+                            <span>No Disponible</span>
+                        </div>
+                    </div>
+
+                    <!-- Navegación del Calendario -->
+                    <div class="calendar-header">
+                        <div class="calendar-navigation">
+                            <button class="nav-btn">← Anterior</button>
+                            <span class="current-week">21 - 27 Noviembre 2024</span>
+                            <button class="nav-btn">Siguiente →</button>
+                        </div>
+                        <div class="view-toggle">
+                            <button class="view-btn active">Semana</button>
+                            <button class="view-btn">Mes</button>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de Horarios -->
+                    <div class="schedule-table-container">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th class="time-column">Hora</th>
+                                    <th>Lun 21</th>
+                                    <th>Mar 22</th>
+                                    <th>Mié 23</th>
+                                    <th>Jue 24</th>
+                                    <th>Vie 25</th>
+                                    <th>Sáb 26</th>
+                                    <th>Dom 27</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 8:00 AM -->
+                                <tr>
+                                    <td class="time-cell">08:00</td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">08:00-09:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">08:00-09:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">08:00-09:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <!-- 9:00 AM -->
+                                <tr>
+                                    <td class="time-cell">09:00</td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">09:00-10:30</span>
+                                            <span class="block-student">Diego Torres</span>
+                                            <span class="block-subject">Física</span>
+                                            <span class="block-modality">🏫 Presencial</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">09:00-10:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">09:00-10:00</span>
+                                            <span class="block-student">Ana Silva</span>
+                                            <span class="block-subject">Cálculo</span>
+                                            <span class="block-modality">🌐 En línea</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">09:00-10:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block busy">
+                                            <span class="block-time">09:00-12:00</span>
+                                            <span class="block-subject">No Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <!-- 10:00 AM -->
+                                <tr>
+                                    <td class="time-cell">10:00</td>
+                                    <td></td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">10:00-12:00</span>
+                                            <span class="block-student">María González</span>
+                                            <span class="block-subject">Matemáticas</span>
+                                            <span class="block-modality">🌐 En línea</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">10:00-11:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">10:00-11:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <!-- 14:00 PM -->
+                                <tr>
+                                    <td class="time-cell">14:00</td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">14:00-15:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">14:00-15:30</span>
+                                            <span class="block-student">Carlos Ruiz</span>
+                                            <span class="block-subject">Física</span>
+                                            <span class="block-modality">🌐 En línea</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">14:00-15:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">14:00-15:00</span>
+                                            <span class="block-student">Valentina Parra</span>
+                                            <span class="block-subject">Cálculo</span>
+                                            <span class="block-modality">🌐 En línea</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">14:00-15:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <!-- 16:00 PM -->
+                                <tr>
+                                    <td class="time-cell">16:00</td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">16:00-17:30</span>
+                                            <span class="block-student">Sofía Fernández</span>
+                                            <span class="block-subject">Matemáticas</span>
+                                            <span class="block-modality">🏫 Presencial</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">16:00-17:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">16:00-17:00</span>
+                                            <span class="block-student">Luis Moreno</span>
+                                            <span class="block-subject">Física</span>
+                                            <span class="block-modality">🌐 En línea</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">16:00-17:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">16:00-17:30</span>
+                                            <span class="block-student">Javier Ramos</span>
+                                            <span class="block-subject">Matemáticas</span>
+                                            <span class="block-modality">🌐 En línea</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <!-- 18:00 PM -->
+                                <tr>
+                                    <td class="time-cell">18:00</td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">18:00-19:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">18:00-19:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block busy">
+                                            <span class="block-time">18:00-20:00</span>
+                                            <span class="block-subject">No Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block available">
+                                            <span class="block-time">18:00-19:00</span>
+                                            <span class="block-subject">Disponible</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="time-block reserved">
+                                            <span class="block-time">18:00-19:00</span>
+                                            <span class="block-student">Patricia Vega</span>
+                                            <span class="block-subject">Física</span>
+                                            <span class="block-modality">🌐 En línea</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Configuración de Disponibilidad -->
+                    <div class="config-section">
+                        <h3 class="config-title">⚙️ Configuración de Disponibilidad</h3>
+                        <div class="config-options">
+                            <div class="config-item">
+                                <span class="config-label">Aceptar reservas automáticas</span>
+                                <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                                    <div class="toggle-slider"></div>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <span class="config-label">Permitir clases los fines de semana</span>
+                                <div class="toggle-switch" onclick="toggleSwitch(this)">
+                                    <div class="toggle-slider"></div>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <span class="config-label">Notificar nuevas reservas</span>
+                                <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                                    <div class="toggle-slider"></div>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <span class="config-label">Permitir cancelaciones 24h antes</span>
+                                <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                                    <div class="toggle-slider"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Próximas Clases -->
+                <div class="content-card">
+                    <div class="content-card__header">
+                        <h2 class="content-card__title">📋 Próximas Clases Programadas</h2>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Clase 1 -->
+                        <div style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%); padding: 20px; border-radius: 10px; border-left: 5px solid #4CAF50;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                <div>
+                                    <h4 style="font-size: 1.2em; color: #333; margin-bottom: 5px;">Javier Ramos - Matemáticas</h4>
+                                    <p style="color: #666; font-size: 0.95em;">🌐 En línea • $18.00</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-weight: bold; color: #333; font-size: 1.1em;">Viernes 25 Nov</p>
+                                    <p style="color: #666;">16:00 - 17:30</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button style="padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Ver Detalles</button>
+                                <button style="padding: 8px 16px; background: white; color: #f44336; border: 2px solid #f44336; border-radius: 6px; cursor: pointer; font-weight: 600;">Cancelar</button>
+                            </div>
+                        </div>
+
+                        <!-- Clase 2 -->
+                        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f1f8ff 100%); padding: 20px; border-radius: 10px; border-left: 5px solid #2196F3;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                <div>
+                                    <h4 style="font-size: 1.2em; color: #333; margin-bottom: 5px;">María González - Física</h4>
+                                    <p style="color: #666; font-size: 0.95em;">🏫 Presencial • $22.50</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-weight: bold; color: #333; font-size: 1.1em;">Martes 22 Nov</p>
+                                    <p style="color: #666;">10:00 - 12:00</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button style="padding: 8px 16px; background: #2196F3; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Ver Detalles</button>
+                                <button style="padding: 8px 16px; background: white; color: #f44336; border: 2px solid #f44336; border-radius: 6px; cursor: pointer; font-weight: 600;">Cancelar</button>
+                            </div>
+                        </div>
+
+                        <!-- Clase 3 -->
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%); padding: 20px; border-radius: 10px; border-left: 5px solid #FF9800;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                <div>
+                                    <h4 style="font-size: 1.2em; color: #333; margin-bottom: 5px;">Carlos Ruiz - Física</h4>
+                                    <p style="color: #666; font-size: 0.95em;">🌐 En línea • $22.50</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-weight: bold; color: #333; font-size: 1.1em;">Martes 22 Nov</p>
+                                    <p style="color: #666;">14:00 - 15:30</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button style="padding: 8px 16px; background: #FF9800; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Ver Detalles</button>
+                                <button style="padding: 8px 16px; background: white; color: #f44336; border: 2px solid #f44336; border-radius: 6px; cursor: pointer; font-weight: 600;">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

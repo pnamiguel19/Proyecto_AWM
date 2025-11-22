@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Mi Historial de Enseñanza">
+    <title>EduMatch - Mi Historial de Enseñanza</title>
+    <link rel="stylesheet" href="styles/pages/historialClasesProf.css">
+    
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <span class="logo__icon">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <div class="user-actions-area">
+                    <a href="#" class="mode-switch-link">Conviértete en Estudiante</a>
+                    <div class="user-menu-dropdown-container">
+                        <button class="user-menu-trigger" id="userMenuTrigger">
+                            <span class="menu-bars-icon">☰</span>
+                            <img src="https://via.placeholder.com/32/FF9800/FFFFFF?text=JP" alt="Foto de perfil" class="header-avatar">
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" class="dropdown-item">Notificaciones</a>
+                            <a href="#" class="dropdown-item">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main main-content">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <h1 class="page-title">Perfil</h1>
+                <div class="nav-card">
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">👤</span>
+                        Información sobre mí
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🧑‍🏫</span>
+                        Mis Clases
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📚</span>
+                        Mis Cursos
+                    </a>
+                    <a href="#" class="nav-item nav-item--active" aria-current="page">
+                        <span class="nav-item__icon">☝</span>
+                        Mi historial de Enseñanza
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📅</span>
+                        Disponibilidad y Horario
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📑</span>
+                        Documentos de Acreditación
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🤓</span>
+                        Mis Calificaciones y reseñas
+                    </a>
+                </div>
+            </aside>
+
+            <section class="main-panel">
+                <div class="content-card">
+                    <div class="content-card__header">
+                        <h2 class="content-card__title">Mi Historial de Enseñanza</h2>
+                    </div>
+
+                    <!-- Estadísticas -->
+                    <div class="stats-section">
+                        <div class="stat-card">
+                            <div class="stat-icon">📖</div>
+                            <div class="stat-value">127</div>
+                            <div class="stat-label">Clases Totales</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value">118</div>
+                            <div class="stat-label">Completadas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-value">45</div>
+                            <div class="stat-label">Estudiantes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-value">189</div>
+                            <div class="stat-label">Horas Enseñadas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-value">$2,835</div>
+                            <div class="stat-label">Ingresos</div>
+                        </div>
+                    </div>
+
+                    <!-- Filtros -->
+                    <div class="filters-section">
+                        <div class="filter-group search-filter">
+                            <label class="filter-label">Buscar Estudiante</label>
+                            <input type="text" class="search-input" placeholder="Nombre del estudiante...">
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Materia</label>
+                            <select class="filter-select">
+                                <option>Todas las materias</option>
+                                <option>Física</option>
+                                <option>Matemáticas</option>
+                                <option>Cálculo</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Estado</label>
+                            <select class="filter-select">
+                                <option>Todos los estados</option>
+                                <option>Completadas</option>
+                                <option>Canceladas</option>
+                                <option>Programadas</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Periodo</label>
+                            <select class="filter-select">
+                                <option>Último mes</option>
+                                <option>Últimos 3 meses</option>
+                                <option>Últimos 6 meses</option>
+                                <option>Este año</option>
+                                <option>Todo el historial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de Historial -->
+                    <div class="history-table-container">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Estudiante</th>
+                                    <th>Materia</th>
+                                    <th>Fecha y Hora</th>
+                                    <th>Modalidad</th>
+                                    <th>Duración</th>
+                                    <th>Costo</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <img src="https://via.placeholder.com/40/E91E63/FFFFFF?text=SF" alt="Sofía Fernández" class="student-avatar">
+                                            <div class="student-details">
+                                                <span class="student-name">Sofía Fernández</span>
+                                                <span class="student-email">sofia.f@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="subject-badge">Matemáticas</span></td>
+                                    <td>
+                                        <div class="datetime-info">
+                                            <span class="date-text">15 Nov 2024</span>
+                                            <span class="time-text">18:00 - 19:30</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="modality-badge modality-online">🌐 En línea</span></td>
+                                    <td><span class="duration-text">1.5 hrs</span></td>
+                                    <td><span class="cost-amount">$18.00</span></td>
+                                    <td><span class="status-badge status-completada">✓ Completada</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn-small">Ver</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <img src="https://via.placeholder.com/40/3F51B5/FFFFFF?text=DT" alt="Diego Torres" class="student-avatar">
+                                            <div class="student-details">
+                                                <span class="student-name">Diego Torres</span>
+                                                <span class="student-email">diego.t@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="subject-badge">Física</span></td>
+                                    <td>
+                                        <div class="datetime-info">
+                                            <span class="date-text">14 Nov 2024</span>
+                                            <span class="time-text">09:00 - 11:00</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="modality-badge modality-presencial">🏫 Presencial</span></td>
+                                    <td><span class="duration-text">2 hrs</span></td>
+                                    <td><span class="cost-amount">$30.00</span></td>
+                                    <td><span class="status-badge status-completada">✓ Completada</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn-small">Ver</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <img src="https://via.placeholder.com/40/4CAF50/FFFFFF?text=VP" alt="Valentina Parra" class="student-avatar">
+                                            <div class="student-details">
+                                                <span class="student-name">Valentina Parra</span>
+                                                <span class="student-email">vale.p@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="subject-badge">Cálculo</span></td>
+                                    <td>
+                                        <div class="datetime-info">
+                                            <span class="date-text">13 Nov 2024</span>
+                                            <span class="time-text">14:00 - 15:00</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="modality-badge modality-online">🌐 En línea</span></td>
+                                    <td><span class="duration-text">1 hr</span></td>
+                                    <td><span class="cost-amount">$18.00</span></td>
+                                    <td><span class="status-badge status-completada">✓ Completada</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn-small">Ver</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <img src="https://via.placeholder.com/40/FF5722/FFFFFF?text=JR" alt="Javier Ramos" class="student-avatar">
+                                            <div class="student-details">
+                                                <span class="student-name">Javier Ramos</span>
+                                                <span class="student-email">javier.r@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="subject-badge">Matemáticas</span></td>
+                                    <td>
+                                        <div class="datetime-info">
+                                            <span class="date-text">25 Nov 2024</span>
+                                            <span class="time-text">16:00 - 17:30</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="modality-badge modality-online">🌐 En línea</span></td>
+                                    <td><span class="duration-text">1.5 hrs</span></td>
+                                    <td><span class="cost-amount">$18.00</span></td>
+                                    <td><span class="status-badge status-programada">⏳ Programada</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn-small">Ver</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Paginación -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>← Anterior</button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">4</button>
+                        <button class="pagination-btn">Siguiente →</button>
+                    </div>
+
+                    <!-- Resumen Financiero -->
+                    <div class="financial-summary">
+                        <h3 class="summary-title">💰 Resumen Financiero del Mes</h3>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <span class="summary-label">Ingresos de Noviembre</span>
+                                <span class="summary-value">$468.50</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Clases este Mes</span>
+                                <span class="summary-value">28 clases</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Promedio por Clase</span>
+                                <span class="summary-value">$16.73</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
