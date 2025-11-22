@@ -3,33 +3,65 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
   padding: 40px 20px;
-  border-radius: 10%;
+  margin: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decoración de esquinas curvas */
+.register-container::before,
+.register-container::after {
+  content: '';
+  position: absolute;
+  background: #e8ecf0;
+  border-radius: 50%;
+}
+
+.register-container::before {
+  width: 800px;
+  height: 800px;
+  top: -400px;
+  left: -200px;
+}
+
+.register-container::after {
+  width: 800px;
+  height: 800px;
+  bottom: -400px;
+  right: -200px;
 }
 
 .register-content {
-  max-width: 900px;
+  position: relative;
+  z-index: 10;
   width: 100%;
+  max-width: 700px;
+  background: #f0f4f8;
+  border-radius: 30px;
+  padding: 60px 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 .register-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 50px;
 }
 
 .register-title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   color: #333;
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
 }
 
 .register-subtitle {
-  font-size: 16px;
+  font-size: 15px;
   color: #666;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .role-selection {
@@ -37,12 +69,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-bottom: 40px;
-}
-
-@media (max-width: 768px) {
-  .role-selection {
-    grid-template-columns: 1fr;
-  }
 }
 
 .login-link {
@@ -60,4 +86,38 @@
 
 .login-link a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .register-content {
+    padding: 40px 30px;
+  }
+
+  .role-selection {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .register-title {
+    font-size: 26px;
+  }
+
+  .register-subtitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-content {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .register-header {
+    margin-bottom: 30px;
+  }
+
+  .register-title {
+    font-size: 22px;
+  }
 }

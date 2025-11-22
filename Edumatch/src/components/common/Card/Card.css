@@ -1,62 +1,79 @@
 .card {
   background: white;
-  border: 2px solid #e0e0e0;
+  border: 3px solid transparent;
   border-radius: 16px;
-  padding: 32px 24px;
+  padding: 40px 30px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  min-height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .card:hover {
-  border-color: #00BCD4;
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #00BCD4;
 }
 
 .card-selected {
   border-color: #00BCD4;
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.05) 0%, rgba(0, 188, 212, 0.1) 100%);
+  background: linear-gradient(135deg, #e6f7f9 0%, #f0fbfc 100%);
   box-shadow: 0 8px 24px rgba(0, 188, 212, 0.2);
 }
 
-.card-check {
+.card-selected::after {
+  content: '✓';
   position: absolute;
   top: 16px;
   right: 16px;
   width: 32px;
   height: 32px;
   background: #00BCD4;
+  color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: 700;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .card-icon {
-  font-size: 80px;
-  margin-bottom: 24px;
+  font-size: 64px;
+  margin-bottom: 20px;
+  display: block;
 }
 
 .card-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #333;
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
 }
 
 .card-description {
   font-size: 14px;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 32px 24px;
+  }
+
+  .card-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .card-description {
+    font-size: 13px;
+  }
 }

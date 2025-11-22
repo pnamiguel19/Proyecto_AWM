@@ -5,6 +5,8 @@
   align-items: center;
   background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
   padding: 40px 20px;
+  margin: 0;
+  width: 100%;
 }
 
 .register-student-card {
