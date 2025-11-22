@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/common/Button/Button';
 import Input from '../../../components/common/Input/Input';
 import './Login.css';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -32,6 +34,10 @@ const Login = () => {
   const handleFacebookLogin = () => {
     console.log('Login with Facebook');
     // Lógica para login con Facebook
+  };
+
+  const handleRegisterRedirect = () => {
+    navigate('/register');
   };
 
   return (
@@ -101,7 +107,10 @@ const Login = () => {
         </div>
 
         <p className="register-link">
-          ¿No tienes cuenta? <a href="/register">Regístrate aquí</a>
+          ¿No tienes cuenta?{' '}
+          <a href="#" onClick={(e) => { e.preventDefault(); handleRegisterRedirect(); }}>
+            Regístrate aquí
+          </a>
         </p>
       </div>
     </div>
