@@ -182,8 +182,8 @@ function RegisterStudent() {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                placeholder="Ej: Juan"
-                className={errors.firstName ? 'error' : ''}
+                placeholder="Ej: Juan" // ← Más sutil
+                className={errors.firstName ? 'form-input error' : 'form-input'}
               />
               {errors.firstName && <span className="error-message">{errors.firstName}</span>}
             </div>
@@ -213,8 +213,8 @@ function RegisterStudent() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="ejemplo@correo.com"
-                className={errors.email ? 'error' : ''}
+                placeholder="ejemplo@correo.com" // ← Más genérico
+                className={errors.email ? 'form-input error' : 'form-input'}
               />
               {errors.email && <span className="error-message">{errors.email}</span>}
             </div>
@@ -227,8 +227,8 @@ function RegisterStudent() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+593 99 123 4567"
-                className={errors.phone ? 'error' : ''}
+                placeholder="+593 99 123 4567" // ← OK
+                className={errors.phone ? 'form-input error' : 'form-input'}
               />
               {errors.phone && <span className="error-message">{errors.phone}</span>}
             </div>
@@ -244,8 +244,8 @@ function RegisterStudent() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Mínimo 8 caracteres"
-                className={errors.password ? 'error' : ''}
+                placeholder="Mínimo 8 caracteres" // ← Más informativo
+                className={errors.password ? 'form-input error' : 'form-input'}
               />
               {errors.password && <span className="error-message">{errors.password}</span>}
             </div>
@@ -323,7 +323,8 @@ function RegisterStudent() {
               name="address"
               value={formData.address}
               onChange={handleChange}
-              placeholder="Calle, ciudad, país"
+              placeholder="Calle, ciudad, país" // ← Más genérico
+              className="form-input"
             />
           </div>
 
@@ -335,8 +336,8 @@ function RegisterStudent() {
               name="bio"
               value={formData.bio}
               onChange={handleChange}
-              placeholder="Tus intereses, hobbies, objetivos de aprendizaje..."
-              rows="3"
+              placeholder="Tus intereses, hobbies, objetivos de aprendizaje..." // ← OK
+              className="form-textarea"
             />
           </div>
 

@@ -284,104 +284,155 @@
   font-weight: bold;
 }
 
-/* Inputs mejorados */
-.form-group input,
-.form-group select,
-.form-group textarea {
+/* INPUT STYLES - ARREGLAR VISIBILIDAD */
+.form-input,
+.form-select,
+.form-textarea {
   width: 100%;
-  padding: 14px 18px;
-  border: 2.5px solid #e0e0e0;
-  border-radius: 12px;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   font-size: 15px;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  background-color: #fafafa;
   font-weight: 500;
+  color: #333; /* ← TEXTO OSCURO VISIBLE */
+  background: white; /* ← FONDO BLANCO */
+  transition: all 0.3s ease;
+  font-family: inherit;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #aaa;
-  font-weight: 400;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
   outline: none;
   border-color: #00bcd4;
-  background-color: white;
-  box-shadow: 0 0 0 5px rgba(0, 188, 212, 0.1);
-  transform: translateY(-2px);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1);
+  color: #333; /* ← MANTENER TEXTO OSCURO AL ESCRIBIR */
 }
 
-.form-group input:hover,
-.form-group select:hover,
-.form-group textarea:hover {
-  border-color: #00bcd4;
+/* PLACEHOLDERS EXTRA DIFUMINADOS */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #d0d0d0; /* ← Gris muy claro */
+  font-weight: 300; /* ← Peso de fuente más ligero */
+  opacity: 0.6; /* ← Más transparente */
+  font-style: italic; /* ← Opcional: estilo itálico para diferenciarlo */
 }
 
-/* Estados de error */
-.form-group input.error,
-.form-group select.error,
-.form-group textarea.error {
+.form-input:focus::placeholder,
+.form-textarea:focus::placeholder {
+  color: #e0e0e0; /* ← Casi invisible al escribir */
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+/* Placeholder en SELECT */
+.form-select {
+  color: #333 !important;
+}
+
+.form-select option:first-child {
+  color: #d0d0d0;
+  font-style: italic;
+}
+
+.form-select:invalid {
+  color: #bdbdbd; /* ← Color claro cuando no se ha seleccionado nada */
+}
+
+.form-select:valid {
+  color: #333 !important; /* ← Color oscuro cuando se selecciona una opción */
+}
+
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
   border-color: #f44336;
-  background-color: #fff5f5;
+  background: rgba(244, 67, 54, 0.05);
+  color: #333; /* ← TEXTO OSCURO INCLUSO CON ERROR */
 }
 
-.error-message {
-  color: #f44336;
-  font-size: 13px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.error-message::before {
-  content: '⚠️';
-  font-size: 14px;
-}
-
-/* Textarea */
-textarea {
-  resize: vertical;
-  min-height: 120px;
-  line-height: 1.6;
-}
-
-/* Select personalizado */
-select {
+/* SELECT específico */
+.form-select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300bcd4' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right 16px center;
+  background-position: right 12px center;
+  background-size: 20px;
   padding-right: 40px;
+  color: #333; /* ← TEXTO OSCURO EN SELECT */
 }
 
-/* Campos de fecha */
+.form-select option {
+  color: #333; /* ← OPCIONES CON TEXTO OSCURO */
+  background: white;
+  padding: 10px;
+}
+
+/* TEXTAREA */
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+  color: #333; /* ← TEXTO OSCURO EN TEXTAREA */
+}
+
+/* INPUT TYPE DATE */
 input[type="date"] {
-  cursor: pointer;
+  color: #333 !important; /* ← FORZAR TEXTO OSCURO EN FECHA */
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
-  font-size: 18px;
-  opacity: 0.7;
-  transition: opacity 0.3s;
+  filter: invert(0.5); /* ← HACER VISIBLE EL ICONO DEL CALENDARIO */
 }
 
-input[type="date"]:hover::-webkit-calendar-picker-indicator {
-  opacity: 1;
+/* INPUT TYPE FILE */
+input[type="file"] {
+  color: #333 !important; /* ← TEXTO OSCURO EN FILE INPUT */
 }
 
-/* Asterisco requerido */
-.required-asterisk {
-  color: #f44336;
-  font-weight: bold;
-  margin-left: 3px;
+input[type="file"]::file-selector-button {
+  background: #00bcd4;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #0097a7;
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #00bcd4;
+}
+
+/* Asegurar que todos los inputs tengan texto visible */
+input,
+select,
+textarea {
+  color: #333 !important;
+  -webkit-text-fill-color: #333 !important;
+}
+
+/* Autofill styles - evitar texto transparente en autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #333 !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+  color: #333 !important;
 }
 
 /* Botones de acción */
