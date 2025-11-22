@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Mis Cursos Asincrónicos">
+    <title>EduMatch - Mis Cursos</title>
+    <link rel="stylesheet" href="styles/pages/misCursosProf.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <span class="logo__icon">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <div class="user-actions-area">
+                    <a href="#" class="mode-switch-link">Conviértete en Estudiante</a>
+                    <div class="user-menu-dropdown-container">
+                        <button class="user-menu-trigger" id="userMenuTrigger">
+                            <span class="menu-bars-icon">☰</span>
+                            <img src="https://via.placeholder.com/32/FF9800/FFFFFF?text=JP" alt="Foto de perfil" class="header-avatar">
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" class="dropdown-item">Notificaciones</a>
+                            <a href="#" class="dropdown-item">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main main-content">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <h1 class="page-title">Perfil</h1>
+                <div class="nav-card">
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">👤</span>
+                        Información sobre mí
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🧑‍🏫</span>
+                        Mis Clases
+                    </a>
+                    <a href="#" class="nav-item nav-item--active" aria-current="page">
+                        <span class="nav-item__icon">📚</span>
+                        Mis Cursos
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">☝</span>
+                        Mi historial de Enseñanza
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📅</span>
+                        Disponibilidad y Horario
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📑</span>
+                        Documentos de Acreditación
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🤓</span>
+                        Mis Calificaciones y reseñas
+                    </a>
+                </div>
+            </aside>
+
+            <section class="main-panel">
+                <div class="content-card">
+                    <div class="content-card__header">
+                        <h2 class="content-card__title">Mis Cursos Asincrónicos</h2>
+                        <button class="add-course-btn">+ Crear Nuevo Curso</button>
+                    </div>
+
+                    <!-- Estadísticas -->
+                    <div class="stats-section">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Cursos Publicados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Estudiantes Inscritos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-value">4.7</div>
+                            <div class="stat-label">Valoración Promedio</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-value">$2,340</div>
+                            <div class="stat-label">Ingresos Totales</div>
+                        </div>
+                    </div>
+
+                    <!-- Lista de Cursos -->
+                    <div class="courses-list">
+                        <!-- Curso 1: Publicado -->
+                        <div class="course-card">
+                            <img src="https://via.placeholder.com/280x180/00BCD4/FFFFFF?text=Física+Avanzada" alt="Curso de Física Avanzada" class="course-thumbnail">
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <div>
+                                        <h3 class="course-title">Física Avanzada: Mecánica Clásica</h3>
+                                        <p class="course-category">Física • Universitario</p>
+                                    </div>
+                                    <span class="course-status-badge status-published">✓ Publicado</span>
+                                </div>
+
+                                <p class="course-description">
+                                    Curso completo de mecánica clásica para estudiantes universitarios. Incluye teoría, ejercicios resueltos y simulaciones interactivas. Aprenderás desde cinemática hasta mecánica lagrangiana.
+                                </p>
+
+                                <div class="course-meta">
+                                    <span class="meta-item">
+                                        <span class="meta-icon">🎥</span>
+                                        <span>8 módulos • 42 lecciones</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">⏱️</span>
+                                        <span>12 horas totales</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">💰</span>
+                                        <span><strong>$79.99</strong></span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">📅</span>
+                                        <span>Actualizado: 15 Nov 2024</span>
+                                    </span>
+                                </div>
+
+                                <div class="course-modules">
+                                    <div class="modules-title">📋 Contenido del Curso</div>
+                                    <div class="modules-list">
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 1: Introducción a la Mecánica</span>
+                                            <span class="module-duration">45 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 2: Cinemática en 1D y 2D</span>
+                                            <span class="module-duration">90 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 3: Leyes de Newton</span>
+                                            <span class="module-duration">120 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 +5 módulos más...</span>
+                                            <span class="module-duration"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="course-footer">
+                                    <div class="course-stats">
+                                        <span class="course-stat">👥 <strong>89</strong> estudiantes</span>
+                                        <span class="course-stat">⭐ <strong>4.8</strong> (34 reseñas)</span>
+                                        <span class="course-stat">📊 <strong>76%</strong> completado</span>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn">Editar Contenido</button>
+                                        <button class="action-btn action-btn--primary">Ver Curso</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curso 2: Publicado -->
+                        <div class="course-card">
+                            <img src="https://via.placeholder.com/280x180/4DD0E1/FFFFFF?text=Cálculo+Integral" alt="Curso de Cálculo Integral" class="course-thumbnail">
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <div>
+                                        <h3 class="course-title">Cálculo Integral desde Cero</h3>
+                                        <p class="course-category">Matemáticas • Universitario</p>
+                                    </div>
+                                    <span class="course-status-badge status-published">✓ Publicado</span>
+                                </div>
+
+                                <p class="course-description">
+                                    Domina el cálculo integral con este curso paso a paso. Desde los conceptos básicos hasta aplicaciones avanzadas. Incluye más de 100 ejercicios resueltos y evaluaciones automáticas.
+                                </p>
+
+                                <div class="course-meta">
+                                    <span class="meta-item">
+                                        <span class="meta-icon">🎥</span>
+                                        <span>6 módulos • 35 lecciones</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">⏱️</span>
+                                        <span>9 horas totales</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">💰</span>
+                                        <span><strong>$59.99</strong></span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">📅</span>
+                                        <span>Actualizado: 08 Nov 2024</span>
+                                    </span>
+                                </div>
+
+                                <div class="course-modules">
+                                    <div class="modules-title">📋 Contenido del Curso</div>
+                                    <div class="modules-list">
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 1: Antiderivadas e Integrales Indefinidas</span>
+                                            <span class="module-duration">75 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 2: Integrales Definidas</span>
+                                            <span class="module-duration">85 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 3: Técnicas de Integración</span>
+                                            <span class="module-duration">95 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 +3 módulos más...</span>
+                                            <span class="module-duration"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="course-footer">
+                                    <div class="course-stats">
+                                        <span class="course-stat">👥 <strong>52</strong> estudiantes</span>
+                                        <span class="course-stat">⭐ <strong>4.6</strong> (18 reseñas)</span>
+                                        <span class="course-stat">📊 <strong>68%</strong> completado</span>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn">Editar Contenido</button>
+                                        <button class="action-btn action-btn--primary">Ver Curso</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curso 3: Publicado -->
+                        <div class="course-card">
+                            <img src="https://via.placeholder.com/280x180/00ACC1/FFFFFF?text=Preparación+Exámenes" alt="Curso de Preparación" class="course-thumbnail">
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <div>
+                                        <h3 class="course-title">Preparación para Exámenes de Admisión</h3>
+                                        <p class="course-category">Matemáticas • Física • Pre-universitario</p>
+                                    </div>
+                                    <span class="course-status-badge status-published">✓ Publicado</span>
+                                </div>
+
+                                <p class="course-description">
+                                    Curso intensivo de preparación para exámenes de admisión universitaria. Cubre matemáticas y física con enfoque en resolución rápida y estrategias de examen.
+                                </p>
+
+                                <div class="course-meta">
+                                    <span class="meta-item">
+                                        <span class="meta-icon">🎥</span>
+                                        <span>10 módulos • 50 lecciones</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">⏱️</span>
+                                        <span>15 horas totales</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">💰</span>
+                                        <span><strong>$99.99</strong></span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <span class="meta-icon">📅</span>
+                                        <span>Actualizado: 01 Nov 2024</span>
+                                    </span>
+                                </div>
+
+                                <div class="course-modules">
+                                    <div class="modules-title">📋 Contenido del Curso</div>
+                                    <div class="modules-list">
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 1: Estrategias de Examen</span>
+                                            <span class="module-duration">60 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 2: Álgebra y Ecuaciones</span>
+                                            <span class="module-duration">120 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 Módulo 3: Geometría y Trigonometría</span>
+                                            <span class="module-duration">100 min</span>
+                                        </div>
+                                        <div class="module-item">
+                                            <span class="module-name">📖 +7 módulos más...</span>
+                                            <span class="module-duration"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="course-footer">
+                                    <div class="course-stats">
+                                        <span class="course-stat">👥 <strong>15</strong> estudiantes</span>
+                                        <span class="course-stat">⭐ <strong>4.9</strong> (8 reseñas)</span>
+                                        <span class="course-stat">📊 <strong>45%</strong> completado</span>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn">Editar Contenido</button>
+                                        <button class="action-btn action-btn--primary">Ver Curso</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    
+</body>
+</html>

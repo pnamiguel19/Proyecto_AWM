@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Mis Calificaciones y Reseñas">
+    <title>EduMatch - Mis Calificaciones y Reseñas</title>
+    <link rel="stylesheet" href="styles/pages/vistaReseñasProf.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <span class="logo__icon">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <div class="user-actions-area">
+                    <a href="#" class="mode-switch-link">Conviértete en Estudiante</a>
+                    <div class="user-menu-dropdown-container">
+                        <button class="user-menu-trigger" id="userMenuTrigger">
+                            <span class="menu-bars-icon">☰</span>
+                            <img src="https://via.placeholder.com/32/FF9800/FFFFFF?text=JP" alt="Foto de perfil" class="header-avatar">
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" class="dropdown-item">Notificaciones</a>
+                            <a href="#" class="dropdown-item">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main main-content">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <h1 class="page-title">Perfil</h1>
+                <div class="nav-card">
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">👤</span>
+                        Información sobre mí
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🧑‍🏫</span>
+                        Mis Clases
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📚</span>
+                        Mis Cursos
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">☝</span>
+                        Mi historial de Enseñanza
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📅</span>
+                        Disponibilidad y Horario
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📑</span>
+                        Documentos de Acreditación
+                    </a>
+                    <a href="#" class="nav-item nav-item--active" aria-current="page">
+                        <span class="nav-item__icon">🤓</span>
+                        Mis Calificaciones y reseñas
+                    </a>
+                </div>
+            </aside>
+
+            <section class="main-panel">
+                <div class="content-card">
+                    <div class="content-card__header">
+                        <h2 class="content-card__title">Mis Calificaciones y Reseñas</h2>
+                    </div>
+
+                    <!-- Resumen de Calificaciones -->
+                    <div class="rating-summary">
+                        <div class="overall-rating">
+                            <div class="rating-number">4.8</div>
+                            <div class="rating-stars">★★★★★</div>
+                            <div class="rating-count">Basado en 87 reseñas</div>
+                        </div>
+                        <div class="rating-breakdown">
+                            <div class="rating-row">
+                                <span class="rating-label">5 estrellas</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 75%;"></div>
+                                </div>
+                                <span class="rating-percentage">75%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">4 estrellas</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 18%;"></div>
+                                </div>
+                                <span class="rating-percentage">18%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">3 estrellas</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 5%;"></div>
+                                </div>
+                                <span class="rating-percentage">5%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">2 estrellas</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 2%;"></div>
+                                </div>
+                                <span class="rating-percentage">2%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">1 estrella</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 0%;"></div>
+                                </div>
+                                <span class="rating-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estadísticas -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">💬</div>
+                            <div class="stat-value">87</div>
+                            <div class="stat-label">Total Reseñas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👍</div>
+                            <div class="stat-value">82</div>
+                            <div class="stat-label">Reseñas Positivas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-value">94%</div>
+                            <div class="stat-label">Tasa de Recomendación</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💬</div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Respuestas Dadas</div>
+                        </div>
+                    </div>
+
+                    <!-- Filtros -->
+                    <div class="filters-section">
+                        <select class="filter-select">
+                            <option>Todas las calificaciones</option>
+                            <option>5 estrellas</option>
+                            <option>4 estrellas</option>
+                            <option>3 estrellas</option>
+                            <option>2 estrellas</option>
+                            <option>1 estrella</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>Todas las materias</option>
+                            <option>Física</option>
+                            <option>Matemáticas</option>
+                            <option>Cálculo</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>Más recientes</option>
+                            <option>Más antiguas</option>
+                            <option>Mejor valoradas</option>
+                            <option>Peor valoradas</option>
+                        </select>
+                    </div>
+
+                    <!-- Lista de Reseñas -->
+                    <div class="reviews-list">
+                        <!-- Reseña 1 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="student-info">
+                                    <img src="https://via.placeholder.com/50/4DD0E1/FFFFFF?text=MG" alt="María González" class="student-avatar">
+                                    <div class="student-details">
+                                        <h4>María González</h4>
+                                        <div class="review-meta">
+                                            <span>Estudiante verificado</span>
+                                            <span>•</span>
+                                            <span>6 clases tomadas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-value">5.0</span>
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <span class="review-subject">Física</span>
+                                <p class="review-text">
+                                    Excelente preparación para mi examen de admisión universitaria. Juan tiene un don para enseñar física de manera comprensible. Los ejercicios que preparó fueron muy similares a los del examen real. ¡Totalmente recomendado!
+                                </p>
+                            </div>
+                            <div class="review-footer">
+                                <div class="helpful-section">
+                                    <span class="helpful-text">¿Te fue útil?</span>
+                                    <span class="helpful-count">👍 10 personas encontraron esto útil</span>
+                                </div>
+                                <span class="review-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="teacher-response">
+                                <div class="response-header">
+                                    <span>✓</span>
+                                    <span>Respuesta del profesor</span>
+                                </div>
+                                <p class="response-text">
+                                    ¡Gracias Luis! Me alegra saber que entraste a la universidad. Todo el esfuerzo valió la pena. ¡Éxitos en esta nueva etapa!
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Reseña 5 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="student-info">
+                                    <img src="https://via.placeholder.com/50/E91E63/FFFFFF?text=SF" alt="Sofía Fernández" class="student-avatar">
+                                    <div class="student-details">
+                                        <h4>Sofía Fernández</h4>
+                                        <div class="review-meta">
+                                            <span>Estudiante verificada</span>
+                                            <span>•</span>
+                                            <span>10 clases tomadas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-value">5.0</span>
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <span class="review-subject">Matemáticas</span>
+                                <p class="review-text">
+                                    Las mejores clases de matemáticas que he tenido! Juan hace que incluso los temas más difíciles parezcan fáciles. Su método de enseñanza es muy efectivo y siempre tiene ejemplos prácticos. Pasé de reprobar a sacar 9 en mis exámenes. ¡Gracias!
+                                </p>
+                            </div>
+                            <div class="review-footer">
+                                <div class="helpful-section">
+                                    <span class="helpful-text">¿Te fue útil?</span>
+                                    <span class="helpful-count">👍 18 personas encontraron esto útil</span>
+                                </div>
+                                <button class="response-btn" onclick="toggleResponseForm(this)">💬 Responder</button>
+                            </div>
+                            <div class="response-form">
+                                <div class="response-form-header">
+                                    <span class="response-form-title">✍️ Responder a Sofía Fernández</span>
+                                    <button class="close-form-btn" onclick="closeResponseForm(this)">×</button>
+                                </div>
+                                <textarea class="response-textarea" placeholder="Escribe tu respuesta aquí..." maxlength="500" oninput="updateCharCounter(this)"></textarea>
+                                <div class="char-counter">0 / 500 caracteres</div>
+                                <div class="response-form-actions">
+                                    <button class="btn-cancel" onclick="closeResponseForm(this)">Cancelar</button>
+                                    <button class="btn-submit" onclick="submitResponse(this)">Enviar Respuesta</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reseña 6 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="student-info">
+                                    <img src="https://via.placeholder.com/50/3F51B5/FFFFFF?text=DT" alt="Diego Torres" class="student-avatar">
+                                    <div class="student-details">
+                                        <h4>Diego Torres</h4>
+                                        <div class="review-meta">
+                                            <span>Estudiante verificado</span>
+                                            <span>•</span>
+                                            <span>4 clases tomadas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-value">5.0</span>
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <span class="review-subject">Física</span>
+                                <p class="review-text">
+                                    Profesor muy profesional y comprometido. Se nota que ama lo que hace. Las clases presenciales fueron geniales, con experimentos y demostraciones que hicieron todo más interesante. Definitivamente seguiré tomando clases con él.
+                                </p>
+                            </div>
+                            <div class="review-footer">
+                                <div class="helpful-section">
+                                    <span class="helpful-text">¿Te fue útil?</span>
+                                    <span class="helpful-count">👍 9 personas encontraron esto útil</span>
+                                </div>
+                                <button class="response-btn" onclick="toggleResponseForm(this)">💬 Responder</button>
+                            </div>
+                            <div class="response-form">
+                                <div class="response-form-header">
+                                    <span class="response-form-title">✍️ Responder a Diego Torres</span>
+                                    <button class="close-form-btn" onclick="closeResponseForm(this)">×</button>
+                                </div>
+                                <textarea class="response-textarea" placeholder="Escribe tu respuesta aquí..." maxlength="500" oninput="updateCharCounter(this)"></textarea>
+                                <div class="char-counter">0 / 500 caracteres</div>
+                                <div class="response-form-actions">
+                                    <button class="btn-cancel" onclick="closeResponseForm(this)">Cancelar</button>
+                                    <button class="btn-submit" onclick="submitResponse(this)">Enviar Respuesta</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>

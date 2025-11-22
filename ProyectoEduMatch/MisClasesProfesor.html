@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduMatch - Mis Clases como Profesor">
+    <title>EduMatch - Mis Clases</title>
+    <link rel="stylesheet" href="styles/pages/misclasesProf.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__top">
+                <a href="#" class="logo">
+                    <span class="logo__icon">🎓</span>
+                    <span>EduMatch</span>
+                </a>
+
+                <div class="user-actions-area">
+                    <a href="#" class="mode-switch-link">Conviértete en Estudiante</a>
+                    <div class="user-menu-dropdown-container">
+                        <button class="user-menu-trigger" id="userMenuTrigger">
+                            <span class="menu-bars-icon">☰</span>
+                            <img src="https://via.placeholder.com/32/FF9800/FFFFFF?text=JP" alt="Foto de perfil" class="header-avatar">
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" class="dropdown-item">Notificaciones</a>
+                            <a href="#" class="dropdown-item">Menú Principal</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main main-content">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <h1 class="page-title">Perfil</h1>
+                <div class="nav-card">
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">👤</span>
+                        Información sobre mí
+                    </a>
+                    <a href="#" class="nav-item nav-item--active" aria-current="page">
+                        <span class="nav-item__icon">🧑‍🏫</span>
+                        Mis Clases
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📚</span>
+                        Mis Cursos
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">☝</span>
+                        Mi historial de Enseñanza
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📅</span>
+                        Disponibilidad y Horario
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">📑</span>
+                        Documentos de Acreditación
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-item__icon">🤓</span>
+                        Mis Calificaciones y reseñas
+                    </a>
+                </div>
+            </aside>
+
+            <section class="main-panel">
+                <div class="content-card">
+                    <div class="content-card__header">
+                        <h2 class="content-card__title">Mis Clases</h2>
+                        <button class="add-class-btn">+ Agregar Nueva Clase</button>
+                    </div>
+
+                    <!-- Estadísticas Rápidas -->
+                    <div class="stats-section">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Clases Activas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-value">42</div>
+                            <div class="stat-label">Estudiantes Totales</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-value">4.8</div>
+                            <div class="stat-label">Calificación Promedio</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🕐</div>
+                            <div class="stat-value">120</div>
+                            <div class="stat-label">Horas Enseñadas</div>
+                        </div>
+                    </div>
+
+                    <!-- Grid de Clases -->
+                    <div class="classes-grid">
+                        <!-- Clase 1: Física -->
+                        <div class="class-card">
+                            <div class="class-card__header">
+                                <div class="class-status-badge status-active">● Activa</div>
+                                <h3 class="class-subject">Física</h3>
+                                <p class="class-level">Bachillerato • Universitario</p>
+                            </div>
+                            <div class="class-card__body">
+                                <div class="class-info-item">
+                                    <span class="class-info-icon">💰</span>
+                                    <span class="class-info-text"><strong>$15</strong> por hora</span>
+                                </div>
+                                <p class="class-description">
+                                    Clases de Física para secundaria y universidad. Incluye mecánica, electricidad, ondas y más. Método práctico con ejercicios.
+                                </p>
+                            </div>
+                            <div class="class-card__footer">
+                                <div class="class-stats">
+                                    <span class="class-stat">👥 <strong>15</strong> estudiantes</span>
+                                    <span class="class-stat">⭐ <strong>4.9</strong></span>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="action-btn" title="Editar">✏️</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clase 2: Matemáticas -->
+                        <div class="class-card">
+                            <div class="class-card__header">
+                                <div class="class-status-badge status-active">● Activa</div>
+                                <h3 class="class-subject">Matemáticas</h3>
+                                <p class="class-level">Primaria • Secundaria</p>
+                            </div>
+                            <div class="class-card__body">
+                                <div class="class-info-item">
+                                    <span class="class-info-icon">💰</span>
+                                    <span class="class-info-text"><strong>$12</strong> por hora</span>
+                                </div>
+                                <p class="class-description">
+                                    Clases de matemáticas desde nivel básico hasta avanzado. Álgebra, geometría, trigonometría y cálculo.
+                                </p>
+                            </div>
+                            <div class="class-card__footer">
+                                <div class="class-stats">
+                                    <span class="class-stat">👥 <strong>12</strong> estudiantes</span>
+                                    <span class="class-stat">⭐ <strong>4.7</strong></span>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="action-btn" title="Editar">✏️</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clase 3: Cálculo -->
+                        <div class="class-card">
+                            <div class="class-card__header">
+                                <div class="class-status-badge status-active">● Activa</div>
+                                <h3 class="class-subject">Cálculo Diferencial</h3>
+                                <p class="class-level">Universitario</p>
+                            </div>
+                            <div class="class-card__body">
+                                <div class="class-info-item">
+                                    <span class="class-info-icon">💰</span>
+                                    <span class="class-info-text"><strong>$18</strong> por hora</span>
+                                </div>
+                                <p class="class-description">
+                                    Cálculo diferencial e integral para estudiantes universitarios. Límites, derivadas, integrales y aplicaciones.
+                                </p>
+                            </div>
+                            <div class="class-card__footer">
+                                <div class="class-stats">
+                                    <span class="class-stat">👥 <strong>8</strong> estudiantes</span>
+                                    <span class="class-stat">⭐ <strong>5.0</strong></span>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="action-btn" title="Editar">✏️</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clase 4: Física Avanzada -->
+                        <div class="class-card">
+                            <div class="class-card__header">
+                                <div class="class-status-badge status-paused">● Pausada</div>
+                                <h3 class="class-subject">Física Cuántica</h3>
+                                <p class="class-level">Universitario Avanzado</p>
+                            </div>
+                            <div class="class-card__body">
+                                <div class="class-info-item">
+                                    <span class="class-info-icon">💰</span>
+                                    <span class="class-info-text"><strong>$25</strong> por hora</span>
+                                </div>
+                                <p class="class-description">
+                                    Introducción a la mecánica cuántica. Ecuación de Schrödinger, principio de incertidumbre y aplicaciones.
+                                </p>
+                            </div>
+                            <div class="class-card__footer">
+                                <div class="class-stats">
+                                    <span class="class-stat">👥 <strong>4</strong> estudiantes</span>
+                                    <span class="class-stat">⭐ <strong>4.8</strong></span>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="action-btn" title="Editar">✏️</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clase 5: Preparación Exámenes -->
+                        <div class="class-card">
+                            <div class="class-card__header">
+                                <div class="class-status-badge status-active">● Activa</div>
+                                <h3 class="class-subject">Preparación Exámenes</h3>
+                                <p class="class-level">Bachillerato • Pre-universitario</p>
+                            </div>
+                            <div class="class-card__body">
+                                <div class="class-info-item">
+                                    <span class="class-info-icon">💰</span>
+                                    <span class="class-info-text"><strong>$20</strong> por hora</span>
+                                </div>
+                                <p class="class-description">
+                                    Preparación intensiva para exámenes de admisión universitaria. Física y matemáticas enfocadas en exámenes estandarizados.
+                                </p>
+                            </div>
+                            <div class="class-card__footer">
+                                <div class="class-stats">
+                                    <span class="class-stat">👥 <strong>3</strong> estudiantes</span>
+                                    <span class="class-stat">⭐ <strong>4.9</strong></span>
+                                </div>
+                                <div class="class-actions">
+                                    <button class="action-btn" title="Editar">✏️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
