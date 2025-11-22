@@ -7,7 +7,8 @@ const Input = ({
   value, 
   onChange, 
   required = false,
-  name 
+  name,
+  error
 }) => {
   return (
     <div className="input-group">
@@ -18,13 +19,14 @@ const Input = ({
       )}
       <input
         type={type}
-        className="input-field"
+        className={`input-field ${error ? 'input-error' : ''}`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         name={name}
         required={required}
       />
+      {error && <span className="error-message">{error}</span>}
     </div>
   );
 };

@@ -1,0 +1,544 @@
+/* ========================================
+   REGISTRO DE ESTUDIANTE - MEJORADO
+   ======================================== */
+
+.register-student-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 50%, #00838f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elementos decorativos de fondo */
+.register-student-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  top: -250px;
+  right: -250px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.register-student-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  bottom: -200px;
+  left: -200px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* Contenedor principal */
+.register-student-container {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  width: 100%;
+  padding: 50px;
+  position: relative;
+  z-index: 1;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header del registro */
+.register-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 3px solid #f0f0f0;
+  position: relative;
+}
+
+.register-header::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #00bcd4, #0097a7);
+  border-radius: 2px;
+}
+
+.register-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.register-header p {
+  font-size: 16px;
+  color: #666;
+  font-weight: 400;
+}
+
+/* Formulario */
+.register-student-form {
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Sección de foto de perfil mejorada */
+.photo-upload-section {
+  margin-bottom: 40px;
+}
+
+.photo-upload-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+}
+
+.photo-upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(0, 151, 167, 0.12) 100%);
+  border-radius: 20px;
+  border: 2px dashed rgba(0, 188, 212, 0.3);
+  transition: all 0.3s ease;
+}
+
+.photo-upload-container:hover {
+  border-color: #00bcd4;
+  background: linear-gradient(135deg, rgba(0, 188, 212, 0.12) 0%, rgba(0, 151, 167, 0.16) 100%);
+}
+
+.photo-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 60px;
+  background: white;
+  border: 3px dashed rgba(0, 188, 212, 0.4);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 450px;
+}
+
+.photo-upload-area:hover {
+  border-color: #00bcd4;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.15);
+}
+
+.photo-upload-icon {
+  font-size: 80px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.photo-upload-text {
+  text-align: center;
+}
+
+.photo-upload-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.photo-upload-hint {
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
+.photo-upload-input {
+  display: none;
+}
+
+/* Vista previa de foto */
+.photo-preview-container {
+  position: relative;
+  display: inline-block;
+}
+
+.photo-preview {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.photo-preview:hover {
+  transform: scale(1.05);
+}
+
+.photo-remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f44336;
+  color: white;
+  border: 3px solid white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+.photo-remove-btn:hover {
+  background: #d32f2f;
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* Grid de formulario */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Grupos de formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-group label::before {
+  content: '•';
+  color: #00bcd4;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* INPUT STYLES - ARREGLAR VISIBILIDAD */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333; /* ← TEXTO OSCURO VISIBLE */
+  background: white; /* ← FONDO BLANCO */
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #00bcd4;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1);
+  color: #333; /* ← MANTENER TEXTO OSCURO AL ESCRIBIR */
+}
+
+/* PLACEHOLDERS EXTRA DIFUMINADOS */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #d0d0d0; /* ← Gris muy claro */
+  font-weight: 300; /* ← Peso de fuente más ligero */
+  opacity: 0.6; /* ← Más transparente */
+  font-style: italic; /* ← Opcional: estilo itálico para diferenciarlo */
+}
+
+.form-input:focus::placeholder,
+.form-textarea:focus::placeholder {
+  color: #e0e0e0; /* ← Casi invisible al escribir */
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+/* Placeholder en SELECT */
+.form-select {
+  color: #333 !important;
+}
+
+.form-select option:first-child {
+  color: #d0d0d0;
+  font-style: italic;
+}
+
+.form-select:invalid {
+  color: #bdbdbd; /* ← Color claro cuando no se ha seleccionado nada */
+}
+
+.form-select:valid {
+  color: #333 !important; /* ← Color oscuro cuando se selecciona una opción */
+}
+
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+  border-color: #f44336;
+  background: rgba(244, 67, 54, 0.05);
+  color: #333; /* ← TEXTO OSCURO INCLUSO CON ERROR */
+}
+
+/* SELECT específico */
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+  color: #333; /* ← TEXTO OSCURO EN SELECT */
+}
+
+.form-select option {
+  color: #333; /* ← OPCIONES CON TEXTO OSCURO */
+  background: white;
+  padding: 10px;
+}
+
+/* TEXTAREA */
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+  color: #333; /* ← TEXTO OSCURO EN TEXTAREA */
+}
+
+/* INPUT TYPE DATE */
+input[type="date"] {
+  color: #333 !important; /* ← FORZAR TEXTO OSCURO EN FECHA */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.5); /* ← HACER VISIBLE EL ICONO DEL CALENDARIO */
+}
+
+/* INPUT TYPE FILE */
+input[type="file"] {
+  color: #333 !important; /* ← TEXTO OSCURO EN FILE INPUT */
+}
+
+input[type="file"]::file-selector-button {
+  background: #00bcd4;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #0097a7;
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #00bcd4;
+}
+
+/* Asegurar que todos los inputs tengan texto visible */
+input,
+select,
+textarea {
+  color: #333 !important;
+  -webkit-text-fill-color: #333 !important;
+}
+
+/* Autofill styles - evitar texto transparente en autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #333 !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+  color: #333 !important;
+}
+
+/* Botones de acción */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 16px 32px;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .register-student-container {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+
+  .register-header h1 {
+    font-size: 28px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .photo-upload-area {
+    padding: 30px 20px;
+  }
+
+  .photo-upload-icon {
+    font-size: 60px;
+  }
+
+  .photo-preview {
+    width: 160px;
+    height: 160px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-student-wrapper {
+    padding: 20px 10px;
+  }
+
+  .register-student-container {
+    padding: 25px 15px;
+  }
+
+  .register-header h1 {
+    font-size: 24px;
+  }
+
+  .register-header p {
+    font-size: 14px;
+  }
+
+  .photo-upload-label {
+    font-size: 16px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+}
+
+/* Animaciones adicionales */
+.form-group {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Efecto hover en todo el form-group */
+.form-group:hover label::before {
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
+}
