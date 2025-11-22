@@ -5,6 +5,7 @@ import Input from '../../../components/common/Input/Input';
 import Select from '../../../components/common/Select/Select';
 import Textarea from '../../../components/common/TexTarea/TexTarea';
 import './RegisterProfessor.css';
+import { addProfessor, emailExists } from '../../../data/mockUsers';
 
 function RegisterProfessor() {
   const navigate = useNavigate();
@@ -12,11 +13,12 @@ function RegisterProfessor() {
 
 
   const [formData, setFormData] = useState({
-    // Paso 1
     profilePhoto: null,
     firstName: '',
     lastName: '',
     email: '',
+    password: '', // AGREGAR
+    confirmPassword: '', // AGREGAR (opcional pero recomendado)
     phone: '',
     birthDate: '',
     gender: '',
@@ -272,61 +274,41 @@ function RegisterProfessor() {
   const validateStep1 = () => {
     const newErrors = {};
 
-    if (!formData.profilePhoto) {
-      newErrors.profilePhoto = 'La foto de perfil es obligatoria';
-    }
-
     if (!formData.firstName.trim()) {
       newErrors.firstName = 'El nombre es obligatorio';
-    } else if (formData.firstName.trim().length < 2) {
-      newErrors.firstName = 'El nombre debe tener al menos 2 caracteres';
     }
 
     if (!formData.lastName.trim()) {
       newErrors.lastName = 'El apellido es obligatorio';
-    } else if (formData.lastName.trim().length < 2) {
-      newErrors.lastName = 'El apellido debe tener al menos 2 caracteres';
     }
 
     if (!formData.email.trim()) {
       newErrors.email = 'El correo electrónico es obligatorio';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'El correo electrónico no es válido';
+    }
+
+    // VALIDACIÓN DE CONTRASEÑA
+    if (!formData.password.trim()) {
+      newErrors.password = 'La contraseña es obligatoria';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Las contraseñas no coinciden';
     }
 
     if (!formData.phone.trim()) {
       newErrors.phone = 'El teléfono es obligatorio';
-    } else if (!/^[+]?[\d\s()-]{9,}$/.test(formData.phone)) {
-      newErrors.phone = 'El teléfono no es válido';
     }
 
     if (!formData.birthDate) {
       newErrors.birthDate = 'La fecha de nacimiento es obligatoria';
-    } else {
-      const birthDate = new Date(formData.birthDate);
-      const today = new Date();
-      const age = today.getFullYear() - birthDate.getFullYear();
-      if (age < 18) {
-        newErrors.birthDate = 'Debes ser mayor de 18 años';
-      }
     }
 
     if (!formData.gender) {
       newErrors.gender = 'El género es obligatorio';
-    }
-
-    if (!formData.address.trim()) {
-      newErrors.address = 'La dirección es obligatoria';
-    } else if (formData.address.trim().length < 10) {
-      newErrors.address = 'La dirección debe tener al menos 10 caracteres';
-    }
-
-    if (!formData.bio.trim()) {
-      newErrors.bio = 'La biografía es obligatoria';
-    } else if (formData.bio.trim().length < 100) {
-      newErrors.bio = `La biografía debe tener al menos 100 caracteres (actual: ${formData.bio.trim().length})`;
-    } else if (formData.bio.trim().length > 500) {
-      newErrors.bio = 'La biografía no debe superar los 500 caracteres';
     }
 
     setErrors(newErrors);
@@ -485,26 +467,28 @@ function RegisterProfessor() {
   };
 
   const handleSubmitRegistration = () => {
-    if (validateStep5()) {
-      // Aquí iría la lógica para enviar el formulario
-      console.log('📝 Datos del registro completo:', formData);
-      
-      // Simular envío exitoso
-      alert('¡Registro enviado exitosamente! Recibirás un correo de confirmación en las próximas 24-48 horas.');
-      
-      // Opcional: redirigir a página de confirmación
-      // navigate('/registro-exitoso');
-    } else {
-      alert('Por favor, acepta los términos y condiciones obligatorios');
+    if (!validateStep5()) return;
+
+    if (emailExists(formData.email)) {
+      setErrors({ email: 'Este correo ya está registrado' });
+      setCurrentStep(1);
+      return;
     }
+
+    const newProfessor = addProfessor(formData);
+    localStorage.setItem('currentUser', JSON.stringify(newProfessor));
+
+    alert('¡Registro exitoso! Bienvenido a EduMatch');
+    navigate('/professor/dashboard');
   };
 
   const handleScheduleChange = (day, period) => {
+    console.log('🔍 Cambiando:', day, period); // Debug
+    
     setFormData(prev => {
       const newSchedule = { ...prev.schedule };
       
       if (period === 'todoElDia') {
-        // Si marca "Todo el día", marca/desmarca todos los periodos
         const allChecked = !newSchedule[day].todoElDia;
         newSchedule[day] = {
           manana: allChecked,
@@ -513,18 +497,15 @@ function RegisterProfessor() {
           todoElDia: allChecked
         };
       } else {
-        // Toggle del periodo individual
         newSchedule[day][period] = !newSchedule[day][period];
-        
-        // Actualizar "Todo el día" si todos están marcados
         const allPeriods = newSchedule[day].manana && newSchedule[day].tarde && newSchedule[day].noche;
         newSchedule[day].todoElDia = allPeriods;
       }
       
+      console.log('✅ Nuevo estado:', newSchedule[day]); // Debug
       return { ...prev, schedule: newSchedule };
     });
 
-    // Limpiar error si existe
     if (errors.schedule) {
       setErrors(prev => ({ ...prev, schedule: '' }));
     }
@@ -638,6 +619,7 @@ function RegisterProfessor() {
             </div>
 
             <form className="register-professor-form" onSubmit={(e) => e.preventDefault()}>
+              {/* FOTO DE PERFIL */}
               <div className="photo-upload-section">
                 <label className="photo-upload-label">
                   Foto de Perfil <span className="required-asterisk">*</span>
@@ -679,98 +661,177 @@ function RegisterProfessor() {
                 )}
               </div>
 
+              {/* NOMBRE Y APELLIDO */}
               <div className="form-row">
-                <Input
-                  label="Nombre"
+                <div className="form-group">
+                  <label htmlFor="firstName">
+                    Nombre <span className="required-asterisk">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="Ej: Juan"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className={errors.firstName ? 'error' : ''}
+                  />
+                  {errors.firstName && <span className="error-message">{errors.firstName}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="lastName">
+                    Apellido <span className="required-asterisk">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Ej: Pérez"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className={errors.lastName ? 'error' : ''}
+                  />
+                  {errors.lastName && <span className="error-message">{errors.lastName}</span>}
+                </div>
+              </div>
+
+              {/* EMAIL Y TELÉFONO */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="email">
+                    Correo Electrónico <span className="required-asterisk">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="ejemplo@correo.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={errors.email ? 'error' : ''}
+                  />
+                  {errors.email && <span className="error-message">{errors.email}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="phone">
+                    Teléfono <span className="required-asterisk">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+593 99 123 4567"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className={errors.phone ? 'error' : ''}
+                  />
+                  {errors.phone && <span className="error-message">{errors.phone}</span>}
+                </div>
+              </div>
+
+              {/* CONTRASEÑA Y CONFIRMAR */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="password">
+                    Contraseña <span className="required-asterisk">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Mínimo 8 caracteres"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className={errors.password ? 'error' : ''}
+                  />
+                  {errors.password && <span className="error-message">{errors.password}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="confirmPassword">
+                    Confirmar Contraseña <span className="required-asterisk">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Repite tu contraseña"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    className={errors.confirmPassword ? 'error' : ''}
+                  />
+                  {errors.confirmPassword && <span className="error-message">{errors.confirmPassword}</span>}
+                </div>
+              </div>
+
+              {/* FECHA DE NACIMIENTO Y GÉNERO */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="birthDate">
+                    Fecha de Nacimiento <span className="required-asterisk">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    id="birthDate"
+                    name="birthDate"
+                    value={formData.birthDate}
+                    onChange={handleChange}
+                    className={errors.birthDate ? 'error' : ''}
+                    max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0]}
+                  />
+                  {errors.birthDate && <span className="error-message">{errors.birthDate}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="gender">
+                    Género <span className="required-asterisk">*</span>
+                  </label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    className={errors.gender ? 'error' : ''}
+                  >
+                    {genderOptions.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.gender && <span className="error-message">{errors.gender}</span>}
+                </div>
+              </div>
+
+              {/* DIRECCIÓN */}
+              <div className="form-group">
+                <label htmlFor="address">Dirección</label>
+                <input
                   type="text"
-                  name="firstName"
-                  placeholder="Ej: Juan"
-                  value={formData.firstName}
+                  id="address"
+                  name="address"
+                  placeholder="Calle, número, ciudad, país"
+                  value={formData.address}
                   onChange={handleChange}
-                  required
-                  error={errors.firstName}
-                />
-                <Input
-                  label="Apellido"
-                  type="text"
-                  name="lastName"
-                  placeholder="Ej: Pérez"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                  error={errors.lastName}
                 />
               </div>
 
-              <div className="form-row">
-                <Input
-                  label="Correo Electrónico"
-                  type="email"
-                  name="email"
-                  placeholder="ejemplo@correo.com"
-                  value={formData.email}
+              {/* BIOGRAFÍA */}
+              <div className="form-group">
+                <label htmlFor="bio">Biografía</label>
+                <textarea
+                  id="bio"
+                  name="bio"
+                  value={formData.bio}
                   onChange={handleChange}
-                  required
-                  error={errors.email}
-                />
-                <Input
-                  label="Teléfono"
-                  type="tel"
-                  name="phone"
-                  placeholder="+593 99 123 4567"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  error={errors.phone}
+                  placeholder="Cuéntanos sobre tu experiencia, tus pasiones por la enseñanza y qué te hace un gran profesor..."
+                  rows="4"
                 />
               </div>
 
-              <div className="form-row">
-                <Input
-                  label="Fecha de Nacimiento"
-                  type="date"
-                  name="birthDate"
-                  value={formData.birthDate}
-                  onChange={handleChange}
-                  required
-                  error={errors.birthDate}
-                  max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0]}
-                />
-                <Select
-                  label="Género"
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  options={genderOptions}
-                  required
-                  error={errors.gender}
-                />
-              </div>
-
-              <Input
-                label="Dirección"
-                type="text"
-                name="address"
-                placeholder="Calle, número, ciudad"
-                value={formData.address}
-                onChange={handleChange}
-                required
-                error={errors.address}
-              />
-
-              <Textarea
-                label="Biografía"
-                name="bio"
-                value={formData.bio}
-                onChange={handleChange}
-                placeholder="Cuéntanos sobre tu experiencia, tus pasiones por la enseñanza y qué te hace un gran profesor..."
-                required
-                minLength={100}
-                maxLength={500}
-                showCharCount
-                error={errors.bio}
-              />
-
+              {/* BOTONES */}
               <div className="form-actions">
                 <Button
                   type="button"

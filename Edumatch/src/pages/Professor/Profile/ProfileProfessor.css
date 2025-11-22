@@ -1,0 +1,49 @@
+.profile-professor-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.profile-main {
+  background: white;
+  min-height: calc(100vh - 80px);
+  padding: 40px 60px;
+}
+
+.section-content {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+  .profile-content {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .profile-main {
+    padding: 30px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-content {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-main {
+    padding: 20px;
+  }
+}
