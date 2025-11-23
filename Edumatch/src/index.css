@@ -1,7 +1,107 @@
+/* Importamos la fuente si no la tienes local, o usamos la del sistema */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
+:root {
+  /* --- PALETA DE COLORES UNIFICADA --- */
+  
+  /* Cyan (Color Principal - Igual al Header del Home) */
+  --em-primary: #00bcd4;       
+  --em-primary-dark: #00acc1;  
+  --em-primary-light: #b2ebf2; 
+
+  /* Secundarios */
+  --em-secondary: #ffb300;     /* Amarillo (Estrellas/Destacados) */
+  --em-danger: #e53935;        /* Rojo (Errores/Logout) */
+  --em-success: #4caf50;       /* Verde (Verificado) */
+
+  /* Fondos */
+  --em-bg-body: #f5f7fa;       /* Gris muy claro (Fondo general) */
+  --em-bg-card: #ffffff;       /* Blanco puro (Tarjetas) */
+
+  /* Texto */
+  --em-text-main: #333333;     /* Negro suave */
+  --em-text-muted: #777777;    /* Gris texto secundario */
+  --em-text-light: #ffffff;    /* Texto sobre fondos oscuros */
+  
+  /* Bordes */
+  --em-border-radius: 12px;    /* Redondeado estándar de tarjetas */
+  --em-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave estándar */
+}
+
+/* Reset básico */
 * {
+  box-sizing: border-box;
+}
+
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--em-bg-body);
+  color: var(--em-text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- UTILIDAD GLOBAL: BARRA DE BÚSQUEDA ESTÉTICA --- */
+/* Usa esta clase .em-search-style en cualquier input wrapper para que se vea como en el Home */
+.em-search-style {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 50px; /* Píldora completa */
+  padding: 5px 5px 5px 20px;
+  box-shadow: var(--em-shadow);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.em-search-style:focus-within {
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.15); /* Sombra Cyan suave al enfocar */
+  border-color: rgba(0, 188, 212, 0.3);
+}
+
+.em-search-style input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 15px;
+  color: var(--em-text-main);
+}
+
+.em-search-style button {
+  background: var(--em-primary);
+  color: white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.em-search-style button:hover {
+  background: var(--em-primary-dark);
+}
+
+/* --- UTILIDAD: Botones Generales --- */
+.em-btn-primary {
+  background-color: var(--em-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.em-btn-primary:hover {
+  opacity: 0.9;
 }
 
 html,

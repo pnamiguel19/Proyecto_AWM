@@ -1,0 +1,358 @@
+.content-area {
+  flex: 1;
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+.card-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  color: #333;
+  font-weight: 700;
+  margin: 0;
+}
+
+.profile-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-avatar-large-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1.5rem;
+}
+
+.profile-avatar-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00BCD4;
+}
+
+.profile-avatar-placeholder-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  border: 4px solid #00BCD4;
+}
+
+.verified-badge-large {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 32px;
+  height: 32px;
+  background: #4CAF50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.profile-role {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.detail-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+}
+
+.detail-section a {
+  color: #00BCD4;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.detail-section a:hover {
+  color: #00ACC1;
+  text-decoration: underline;
+}
+
+.info-section {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.info-section:last-child {
+  border-bottom: none;
+}
+
+.info-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-text {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Contenedor principal */
+.em-personal-info-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Título Principal (Cyan y subrayado) */
+.em-info-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00bcd4; /* Cyan exacto */
+  margin: 0 0 30px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* --- SECCIÓN SUPERIOR (Foto + Bio) --- */
+.em-profile-header-section {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.em-avatar-column {
+  flex-shrink: 0;
+}
+
+.em-avatar-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Círculo */
+  overflow: hidden;
+  border: 2px solid #fce4ec; /* Borde rosa suave opcional */
+}
+
+.em-profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.em-bio-column {
+  flex: 1;
+  position: relative;
+}
+
+.em-profile-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.em-profile-role {
+  font-size: 15px;
+  color: #7f8c8d;
+  margin: 0 0 20px 0;
+}
+
+.em-profile-bio {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Check Rosa */
+.em-pink-badge-container {
+  display: flex;
+  justify-content: flex-end; /* Alinear a la derecha como en la imagen? O izquierda */
+  /* En la imagen parece estar flotando abajo a la izquierda de la bio o centrado */
+}
+
+.em-pink-check {
+  width: 30px;
+  height: 30px;
+  background-color: #e91e63; /* Rosa fuerte */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* --- SECCIÓN INFERIOR (Grid) --- */
+.em-subsection-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.em-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 Columnas */
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.em-grid-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.em-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7f8c8d; /* Gris */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.em-value {
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: 400;
+}
+
+/* --- FOOTER VERDE --- */
+.em-verified-footer {
+  background-color: #e8f5e9; /* Verde muy claro */
+  border-left: 5px solid #4caf50; /* Borde verde */
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.em-green-box-icon {
+  background-color: #4caf50;
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content-area {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .profile-avatar-large-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .verified-badge-large {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .profile-name {
+    font-size: 1.5rem;
+  }
+
+  .profile-role {
+    font-size: 1rem;
+  }
+
+  .detail-section {
+    padding: 1rem;
+  }
+
+  .profile-avatar-large,
+  .profile-avatar-placeholder-large {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-avatar-placeholder-large {
+    font-size: 2rem;
+  }
+
+  .em-profile-header-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .em-info-grid {
+    grid-template-columns: 1fr; /* 1 Columna en móvil */
+  }
+  
+  .em-pink-badge-container {
+    justify-content: center;
+  }
+}

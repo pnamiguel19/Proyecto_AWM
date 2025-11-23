@@ -545,6 +545,23 @@
 }
 
 /* ========================================
+   PROFESSOR SPECIFIC STYLES
+   ======================================== */
+
+.prof-courses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.prof-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 
@@ -590,6 +607,19 @@
   }
 
   .courses-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prof-courses-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .prof-btn-create {
+    width: 100%;
+  }
+
+  .prof-courses-grid {
     grid-template-columns: 1fr;
   }
 }

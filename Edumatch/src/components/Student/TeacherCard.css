@@ -1,0 +1,416 @@
+.teacher-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.teacher-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.teacher-card-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.teacher-avatar-section {
+  flex-shrink: 0;
+}
+
+.teacher-avatar-large {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.teacher-avatar-large img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #f0f0f0;
+  border: 3px solid #00bcd4;
+}
+
+.verified-badge-teacher {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.teacher-main-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.teacher-card-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.teacher-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.subject-tag {
+  padding: 0.375rem 0.875rem;
+  background-color: #e3f2fd;
+  color: #00bcd4;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.teacher-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.teacher-rating-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-stars {
+  font-size: 1.25rem;
+}
+
+.rating-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.rating-count {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.teacher-stats-inline {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.stat-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-inline-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00bcd4;
+}
+
+.stat-inline-label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.teacher-last-class {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background-color: #fff3cd;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.last-class-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #856404;
+}
+
+.last-class-date {
+  font-size: 0.9rem;
+  color: #856404;
+}
+
+.teacher-card-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.btn-schedule-class {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-schedule-class:hover {
+  background-color: #0097a7;
+}
+
+.btn-view-profile {
+  padding: 0.875rem 1.5rem;
+  background-color: transparent;
+  color: #00bcd4;
+  border: 2px solid #00bcd4;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-view-profile:hover {
+  background-color: #00bcd4;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .teacher-card {
+    padding: 1rem;
+  }
+
+  .teacher-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .teacher-avatar-large {
+    width: 80px;
+    height: 80px;
+  }
+
+  .teacher-card-name {
+    font-size: 1.25rem;
+  }
+
+  .teacher-subjects {
+    justify-content: center;
+  }
+
+  .teacher-stats-inline {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .teacher-card-actions {
+    flex-direction: column;
+  }
+}
+
+.em-teacher-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.em-teacher-card:hover {
+  border-color: #00bcd4;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+}
+
+/* Avatar */
+.em-avatar-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.em-tc-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4dd0e1; /* Borde cyan claro */
+}
+
+.em-verified-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: #4caf50;
+  color: white;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Info */
+.em-tc-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.em-tc-subjects {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.em-subject-pill {
+  background: #e0f7fa;
+  color: #00bcd4;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.em-tc-rating {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+.em-stars {
+  color: #ffb300;
+  letter-spacing: 2px;
+}
+
+.em-rating-val {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Stats Internos */
+.em-tc-stats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 15px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.em-tc-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.em-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: #00bcd4;
+}
+
+.em-lbl {
+  font-size: 11px;
+  color: #888;
+}
+
+/* Botones */
+.em-tc-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.em-btn-full {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.em-btn-cyan-solid {
+  background: linear-gradient(90deg, #00bcd4 0%, #4dd0e1 100%);
+  color: white;
+  border: none;
+}
+
+.em-btn-cyan-solid:hover {
+  opacity: 0.9;
+}
+
+.em-btn-cyan-outline {
+  background: white;
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+}
+
+.em-btn-cyan-outline:hover {
+  background: #e0f7fa;
+}
+
+/* Footer */
+.em-tc-footer {
+  font-size: 12px;
+  color: #888;
+  width: 100%;
+  text-align: left;
+}
+
+.em-tc-footer strong {
+  color: #555;
+}

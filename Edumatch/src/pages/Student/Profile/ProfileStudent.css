@@ -1,0 +1,58 @@
+/* Importar los estilos base del proyecto original */
+@import url('../../../index.css');
+
+/* Layout General de la Página */
+.student-layout {
+  min-height: 100vh;
+  background-color: #f4f7f6; /* Fondo gris claro general */
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.student-main-container {
+  flex: 1;
+  max-width: 1200px; /* Ancho máximo contenido */
+  width: 100%;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Grid: Sidebar (Izquierda) - Contenido (Derecha) */
+.student-content-grid {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start; /* Importante para que no se estiren */
+}
+
+/* Columna Sidebar */
+.sidebar-column {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+/* Columna Contenido (Tarjeta Blanca) */
+.content-column {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  min-height: 600px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .student-content-grid {
+    flex-direction: column;
+  }
+  
+  .sidebar-column {
+    width: 100%;
+  }
+  
+  .content-column {
+    width: 100%;
+    padding: 20px;
+  }
+}

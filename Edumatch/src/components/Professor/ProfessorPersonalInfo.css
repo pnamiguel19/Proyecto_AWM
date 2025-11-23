@@ -1,0 +1,156 @@
+.prof-personal-info-container {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.prof-info-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00bcd4;
+  margin: 0 0 30px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* --- SECCIÓN SUPERIOR (Foto + Bio) --- */
+.prof-profile-header-section {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.prof-avatar-column {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.prof-avatar-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e0e0e0;
+  position: relative;
+}
+
+.prof-profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prof-verified-badge {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #e91e63;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  border: 3px solid white;
+}
+
+.prof-bio-column {
+  flex: 1;
+}
+
+.prof-profile-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.prof-profile-role {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin: 0 0 20px 0;
+}
+
+.prof-profile-bio {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+}
+
+/* --- SECCIÓN INFERIOR (Grid) --- */
+.prof-subsection-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.prof-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.prof-grid-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.prof-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.prof-value {
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: 400;
+}
+
+/* --- FOOTER VERDE --- */
+.prof-verified-footer {
+  background-color: #e8f5e9;
+  border-left: 5px solid #4caf50;
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.prof-green-box-icon {
+  background-color: #4caf50;
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .prof-profile-header-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .prof-info-grid {
+    grid-template-columns: 1fr;
+  }
+}

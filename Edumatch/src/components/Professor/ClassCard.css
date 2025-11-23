@@ -1,0 +1,131 @@
+.prof-class-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.prof-class-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.prof-class-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.prof-class-info {
+  flex: 1;
+}
+
+.prof-class-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.prof-class-subject {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.prof-class-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.prof-class-status.active {
+  background-color: #e8f5e9;
+  color: #4caf50;
+}
+
+.prof-class-status.completed {
+  background-color: #e3f2fd;
+  color: #2196f3;
+}
+
+.prof-class-status.cancelled {
+  background-color: #ffebee;
+  color: #f44336;
+}
+
+.prof-class-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.prof-class-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prof-detail-icon {
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+}
+
+.prof-detail-text {
+  font-size: 14px;
+  color: #555;
+}
+
+.prof-class-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.prof-btn-primary,
+.prof-btn-secondary {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.prof-btn-primary {
+  background-color: #00bcd4;
+  color: white;
+}
+
+.prof-btn-primary:hover {
+  background-color: #00acc1;
+}
+
+.prof-btn-secondary {
+  background-color: #f5f5f5;
+  color: #555;
+}
+
+.prof-btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .prof-class-footer {
+    flex-direction: column;
+  }
+
+  .prof-btn-primary,
+  .prof-btn-secondary {
+    width: 100%;
+  }
+}
