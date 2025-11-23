@@ -1,23 +1,28 @@
 import React from 'react';
-import './ReviewStats.css';
 
-const ReviewStats = ({ stats }) => {
-  const statsData = [
-    { icon: '💬', value: stats.totalWritten, label: 'Reseñas Escritas' },
-    { icon: '👍', value: stats.positiveReviews, label: 'Reseñas Positivas' },
-    { icon: '📝', value: stats.withResponse, label: 'Con Respuesta' },
-    { icon: '📋', value: stats.pending, label: 'Pendientes' }
-  ];
-
+const ReviewStats = () => {
   return (
-    <div className="review-stats-grid">
-      {statsData.map((stat, index) => (
-        <div key={index} className="review-stat-card">
-          <div className="review-stat-icon">{stat.icon}</div>
-          <div className="review-stat-value">{stat.value}</div>
-          <div className="review-stat-label">{stat.label}</div>
-        </div>
-      ))}
+    <div className="em-stats-grid">
+      <div className="em-stat-card">
+        <div className="em-stat-icon">💬</div>
+        <div className="em-stat-value">12</div>
+        <div className="em-stat-label">Reseñas Escritas</div>
+      </div>
+      <div className="em-stat-card">
+        <div className="em-stat-icon">👍</div>
+        <div className="em-stat-value">11</div>
+        <div className="em-stat-label">Reseñas Positivas</div>
+      </div>
+      <div className="em-stat-card">
+        <div className="em-stat-icon">💬</div>
+        <div className="em-stat-value">8</div>
+        <div className="em-stat-label">Con Respuesta</div>
+      </div>
+      <div className="em-stat-card">
+        <div className="em-stat-icon">📝</div>
+        <div className="em-stat-value">6</div>
+        <div className="em-stat-label">Pendientes</div>
+      </div>
     </div>
   );
 };

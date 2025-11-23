@@ -1,119 +1,108 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StudentHeader from '../../../components/common/Header/StudentHeader';
 import StudentProfileSidebar from '../../../components/Student/StudentProfileSidebar';
-import ClassCard from '../../../components/Student/ClassCard';
 import ClassStats from '../../../components/Student/ClassStats';
-import ClassTabs from '../../../components/Student/ClassTabs';
-import './MyClasses.css';
+import ClassCard from '../../../components/Student/ClassCard';
+import './MyClasses.css'; // Asegúrate de que este archivo tenga el CSS del paso 1
 
-const MyClasses = ({ currentUser, onLogout }) => {
+const MyClasses = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('upcoming');
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // Datos Mock (Iguales a tu imagen)
+  const mockClasses = [
+    {
+      id: 1,
+      teacherName: "Juan Pérez",
+      subject: "Física",
+      status: "Programada",
+      date: "Viernes 25 Nov 2024",
+      time: "16:00 - 17:30",
+      duration: "1.5 hrs",
+      modality: "En línea",
+      price: "18.00"
+    },
+    {
+      id: 2,
+      teacherName: "María González",
+      subject: "Matemáticas",
+      status: "Programada",
+      date: "Sábado 26 Nov 2024",
+      time: "10:00 - 11:00",
+      duration: "1 hr",
+      modality: "Presencial",
+      price: "12.00"
+    },
+    {
+      id: 3,
+      teacherName: "Carlos Ruiz",
+      subject: "Cálculo",
+      status: "Programada",
+      date: "Lunes 28 Nov 2024",
+      time: "14:00 - 16:00",
+      duration: "2 hrs",
+      modality: "En línea",
+      price: "36.00"
+    }
+  ];
 
   useEffect(() => {
-    if (!currentUser || currentUser.role !== 'student') {
-      navigate('/login');
-    }
-  }, [currentUser, navigate]);
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (!user) navigate('/login');
+    else setCurrentUser(user);
+  }, [navigate]);
 
-  if (!currentUser) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner">🎓</div>
-        <p>Cargando...</p>
-      </div>
-    );
-  }
-
-  // Mock data de clases
-  const mockClasses = {
-    upcoming: [
-      {
-        id: 1,
-        subject: 'Matemáticas',
-        teacher: 'Prof. María García',
-        date: '2024-11-25',
-        time: '10:00 AM',
-        status: 'upcoming',
-        duration: '1 hora',
-        type: 'Virtual'
-      },
-      {
-        id: 2,
-        subject: 'Física',
-        teacher: 'Prof. Juan Pérez',
-        date: '2024-11-26',
-        time: '3:00 PM',
-        status: 'upcoming',
-        duration: '1.5 horas',
-        type: 'Presencial'
-      }
-    ],
-    completed: [
-      {
-        id: 3,
-        subject: 'Química',
-        teacher: 'Prof. Ana López',
-        date: '2024-11-20',
-        time: '2:00 PM',
-        status: 'completed',
-        duration: '1 hora',
-        type: 'Virtual'
-      }
-    ],
-    cancelled: []
-  };
-
-  const stats = {
-    total: 15,
-    completed: 8,
-    upcoming: 5,
-    cancelled: 2
-  };
-
-  const currentClasses = mockClasses[activeTab] || [];
+  if (!currentUser) return null;
 
   return (
-    <div className="my-classes-page">
-      <StudentHeader currentUser={currentUser} onLogout={onLogout} />
+    <div className="em-student-layout">
+      <StudentHeader currentUser={currentUser} />
+      
+      <div className="em-main-container">
+        {/* Sidebar */}
+        <div className="em-sidebar-wrapper">
+          <StudentProfileSidebar />
+        </div>
 
-      <main className="classes-main">
-        <div className="classes-container">
-          <StudentProfileSidebar activeSection="classes" />
+        {/* Tarjeta Blanca Principal */}
+        <div className="em-content-card">
+          <h2 className="em-page-title">Mis Clases</h2>
           
-          <div className="classes-content">
-            <div className="classes-header">
-              <h1 className="page-title">Mis Clases</h1>
-              <p className="page-subtitle">Administra y revisa tus clases programadas</p>
-            </div>
+          {/* Estadísticas */}
+          <ClassStats />
 
-            <ClassStats stats={stats} />
-            
-            <ClassTabs activeTab={activeTab} onTabChange={setActiveTab} />
+          {/* Tabs */}
+          <div className="em-tabs">
+            <button 
+              className={`em-tab-btn ${activeTab === 'upcoming' ? 'active' : ''}`}
+              onClick={() => setActiveTab('upcoming')}
+            >
+              Próximas (4)
+            </button>
+            <button 
+              className={`em-tab-btn ${activeTab === 'completed' ? 'active' : ''}`}
+              onClick={() => setActiveTab('completed')}
+            >
+              Completadas (18)
+            </button>
+            <button 
+              className={`em-tab-btn ${activeTab === 'cancelled' ? 'active' : ''}`}
+              onClick={() => setActiveTab('cancelled')}
+            >
+              Canceladas (2)
+            </button>
+          </div>
 
-            <div className="classes-grid">
-              {currentClasses.map(classItem => (
-                <ClassCard key={classItem.id} classData={classItem} />
-              ))}
-            </div>
-
-            {currentClasses.length === 0 && (
-              <div className="empty-state">
-                <div className="empty-icon">📚</div>
-                <h3>No tienes clases en esta categoría</h3>
-                <p>Busca profesores y agenda tu primera clase</p>
-                <button 
-                  className="btn-primary"
-                  onClick={() => navigate('/')}
-                >
-                  Buscar Profesores
-                </button>
-              </div>
-            )}
+          {/* Lista de Clases */}
+          <div>
+            {mockClasses.map(item => (
+              <ClassCard key={item.id} classItem={item} />
+            ))}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

@@ -436,8 +436,61 @@
 }
 
 /* ========================================
-   RESPONSIVE
+   PROFESSOR LAYOUT
    ======================================== */
+
+@import url('../../../index.css');
+
+.professor-layout {
+  min-height: 100vh;
+  background-color: #f4f7f6;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.professor-main-container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.professor-content-grid {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.prof-sidebar-column {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.prof-content-column {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  min-height: 600px;
+}
+
+@media (max-width: 900px) {
+  .professor-content-grid {
+    flex-direction: column;
+  }
+  
+  .prof-sidebar-column {
+    width: 100%;
+  }
+  
+  .prof-content-column {
+    width: 100%;
+    padding: 20px;
+  }
+}
 
 @media (max-width: 1024px) {
   .prof-main-content {

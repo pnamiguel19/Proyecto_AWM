@@ -1,0 +1,194 @@
+.prof-course-view-modal {
+  max-width: 1000px;
+  max-height: 85vh;
+}
+
+.prof-course-view-body {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+  min-height: 500px;
+}
+
+.prof-modules-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 1px solid #e0e0e0;
+  padding-right: 20px;
+}
+
+.prof-modules-sidebar h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 15px 0;
+}
+
+.prof-modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.prof-module-item {
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prof-module-item:hover {
+  background: #e9ecef;
+}
+
+.prof-module-item.active {
+  background: #e0f7fa;
+  border-left: 4px solid #00bcd4;
+}
+
+.prof-module-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.prof-module-icon {
+  font-size: 18px;
+}
+
+.prof-module-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.prof-module-count {
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.prof-btn-add-module,
+.prof-btn-add-lesson {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 2px dashed #00bcd4;
+  color: #00bcd4;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prof-btn-add-module:hover,
+.prof-btn-add-lesson:hover {
+  background: #e0f7fa;
+}
+
+.prof-module-content {
+  flex: 1;
+}
+
+.prof-module-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+}
+
+.prof-lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.prof-lesson-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.prof-lesson-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.prof-lesson-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.prof-lesson-type {
+  font-size: 24px;
+}
+
+.prof-lesson-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 4px 0;
+}
+
+.prof-lesson-duration {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.prof-lesson-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.prof-lesson-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prof-lesson-btn.edit {
+  background-color: #fff3e0;
+}
+
+.prof-lesson-btn.edit:hover {
+  background-color: #ff9800;
+}
+
+.prof-lesson-btn.delete {
+  background-color: #ffebee;
+}
+
+.prof-lesson-btn.delete:hover {
+  background-color: #f44336;
+}
+
+@media (max-width: 768px) {
+  .prof-course-view-body {
+    flex-direction: column;
+  }
+
+  .prof-modules-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+}

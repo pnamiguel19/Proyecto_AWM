@@ -281,8 +281,8 @@
 .mc-classes-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
+  align-items: flex-start;
+  margin-bottom: 30px;
 }
 
 .mc-section-title {
@@ -484,6 +484,91 @@
 }
 
 /* ========================================
+   PROFESSOR SPECIFIC STYLES
+   ======================================== */
+
+.prof-classes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.prof-page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.prof-page-subtitle {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.prof-btn-create {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prof-btn-create:hover {
+  background-color: #00acc1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+}
+
+.prof-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.prof-filter-btn {
+  background-color: #f5f5f5;
+  color: #555;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prof-filter-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.prof-filter-btn.active {
+  background-color: #00bcd4;
+  color: white;
+}
+
+.prof-classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.prof-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 
@@ -526,5 +611,23 @@
 
   .mc-stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .prof-classes-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .prof-btn-create {
+    width: 100%;
+  }
+
+  .prof-classes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prof-filters {
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }

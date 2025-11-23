@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StudentHeader from '../../../components/common/Header/StudentHeader';
 import StudentProfileSidebar from '../../../components/Student/StudentProfileSidebar';
@@ -6,133 +6,111 @@ import TeacherStats from '../../../components/Student/TeacherStats';
 import TeacherCard from '../../../components/Student/TeacherCard';
 import './MyTeachers.css';
 
-const MyTeachers = ({ currentUser, onLogout }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedSubject, setSelectedSubject] = useState('all');
+const MyTeachers = () => {
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    if (!currentUser || currentUser.role !== 'student') {
-      navigate('/login');
-    }
-  }, [currentUser, navigate]);
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (!user) navigate('/login');
+    else setCurrentUser(user);
+  }, [navigate]);
 
-  if (!currentUser) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner">🎓</div>
-        <p>Cargando...</p>
-      </div>
-    );
-  }
-
-  // Mock data de profesores
+  // DATOS MOCK EXACTOS DE LA IMAGEN
   const mockTeachers = [
     {
       id: 1,
-      name: 'María García',
-      subject: 'Matemáticas',
+      name: "Juan Pérez",
+      avatar: "https://i.pravatar.cc/150?img=11",
+      subjects: ["Física", "Matemáticas"],
       rating: 4.9,
-      totalClasses: 12,
-      price: 25,
-      avatar: null,
-      specialties: ['Álgebra', 'Geometría', 'Cálculo']
+      reviewCount: 45,
+      classesTogether: 8,
+      totalHours: "12h",
+      lastClass: "20 Nov 2024 - Física"
     },
     {
       id: 2,
-      name: 'Juan Pérez',
-      subject: 'Física',
+      name: "María González",
+      avatar: "https://i.pravatar.cc/150?img=5",
+      subjects: ["Matemáticas"],
       rating: 4.8,
-      totalClasses: 8,
-      price: 30,
-      avatar: null,
-      specialties: ['Mecánica', 'Termodinámica']
+      reviewCount: 32,
+      classesTogether: 5,
+      totalHours: "6h",
+      lastClass: "18 Nov 2024 - Matemáticas"
     },
     {
       id: 3,
-      name: 'Ana López',
-      subject: 'Química',
+      name: "Carlos Ruiz",
+      avatar: "https://i.pravatar.cc/150?img=3",
+      subjects: ["Cálculo", "Álgebra"],
+      rating: 4.6,
+      reviewCount: 28,
+      classesTogether: 4,
+      totalHours: "8h",
+      lastClass: "15 Nov 2024 - Cálculo"
+    },
+    {
+      id: 4,
+      name: "Ana Silva",
+      avatar: "https://i.pravatar.cc/150?img=9",
+      subjects: ["Física", "Química"],
       rating: 5.0,
-      totalClasses: 15,
-      price: 28,
-      avatar: null,
-      specialties: ['Química Orgánica', 'Química Inorgánica']
+      reviewCount: 18,
+      classesTogether: 3,
+      totalHours: "4.5h",
+      lastClass: "10 Nov 2024 - Física"
+    },
+    {
+      id: 5,
+      name: "Luis Moreno",
+      avatar: "https://i.pravatar.cc/150?img=12",
+      subjects: ["Matemáticas", "Estadística"],
+      rating: 4.5,
+      reviewCount: 22,
+      classesTogether: 2,
+      totalHours: "2h",
+      lastClass: "08 Nov 2024 - Matemáticas"
+    },
+    {
+      id: 6,
+      name: "Sofía Fernández",
+      avatar: "https://i.pravatar.cc/150?img=24",
+      subjects: ["Inglés", "Literatura"],
+      rating: 4.7,
+      reviewCount: 35,
+      classesTogether: 2,
+      totalHours: "3h",
+      lastClass: "05 Nov 2024 - Inglés"
     }
   ];
 
-  const stats = {
-    total: mockTeachers.length,
-    active: mockTeachers.length,
-    favorites: 2
-  };
-
-  const subjects = ['all', 'Física', 'Matemáticas', 'Química'];
-
-  const filteredTeachers = mockTeachers.filter(teacher => {
-    const matchesSearch = teacher.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesSubject = selectedSubject === 'all' || teacher.subject === selectedSubject;
-    return matchesSearch && matchesSubject;
-  });
+  if (!currentUser) return null;
 
   return (
-    <div className="my-teachers-page">
-      <StudentHeader currentUser={currentUser} onLogout={onLogout} />
+    <div className="em-student-layout">
+      <StudentHeader currentUser={currentUser} />
+      
+      <div className="em-main-container">
+        {/* Sidebar */}
+        <div className="em-sidebar-wrapper">
+          <StudentProfileSidebar />
+        </div>
 
-      <main className="teachers-main">
-        <div className="teachers-container">
-          <StudentProfileSidebar activeSection="teachers" />
+        {/* Contenido Principal */}
+        <div className="em-content-card">
+          <h2 className="em-page-title">Mis Profesores</h2>
           
-          <div className="teachers-content">
-            <div className="teachers-header">
-              <h1 className="page-title">Mis Profesores</h1>
-              <p className="page-subtitle">Profesores con los que has tomado clases</p>
-            </div>
+          <TeacherStats />
 
-            <TeacherStats stats={stats} />
-
-            <div className="teachers-filters">
-              <input
-                type="text"
-                placeholder="Buscar profesor..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
-              />
-              
-              <select
-                value={selectedSubject}
-                onChange={(e) => setSelectedSubject(e.target.value)}
-                className="subject-filter"
-              >
-                <option value="all">Todas las materias</option>
-                {subjects.filter(s => s !== 'all').map(subject => (
-                  <option key={subject} value={subject}>{subject}</option>
-                ))}
-              </select>
-            </div>
-            
-            <div className="teachers-grid">
-              {filteredTeachers.length > 0 ? (
-                filteredTeachers.map(teacher => (
-                  <TeacherCard key={teacher.id} teacher={teacher} />
-                ))
-              ) : (
-                <div className="empty-state">
-                  <div className="empty-icon">👨‍🏫</div>
-                  <h3>Aún no tienes profesores</h3>
-                  <p>Agenda tu primera clase para comenzar</p>
-                  <button 
-                    className="btn-primary"
-                    onClick={() => navigate('/')}
-                  >
-                    Buscar Profesores
-                  </button>
-                </div>
-              )}
-            </div>
+          <div className="em-teachers-grid">
+            {mockTeachers.map(teacher => (
+              <TeacherCard key={teacher.id} teacher={teacher} />
+            ))}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

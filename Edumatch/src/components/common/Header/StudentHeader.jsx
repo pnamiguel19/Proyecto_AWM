@@ -1,100 +1,102 @@
-import { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './StudentHeader.css';
 
 const StudentHeader = ({ currentUser, onLogout }) => {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleLogout = () => {
-    onLogout();
+    if (onLogout) onLogout();
+    localStorage.removeItem('currentUser');
     setShowDropdown(false);
-    navigate('/');
+    navigate('/login');
   };
 
+  // Obtener iniciales si no hay foto
   const getInitials = () => {
-    if (!currentUser || !currentUser.firstName) return '👤';
-    const first = currentUser.firstName?.[0] || '';
-    const last = currentUser.lastName?.[0] || '';
-    return `${first}${last}`.toUpperCase();
+    if (!currentUser) return 'U';
+    const name = currentUser.name || currentUser.firstName || 'U';
+    return name.charAt(0).toUpperCase();
   };
+
+  const userAvatar = currentUser?.avatar || currentUser?.profilePhoto;
 
   return (
-    <header className="student-header">
-      <div className="student-header__container">
-        {/* LOGO - Izquierda */}
-        <div 
-          className="student-header__logo"
-          onClick={() => navigate('/')}
-        >
-          <span className="logo__icon">🎓</span>
-          <span className="logo__text">EduMatch</span>
+    <header className="em-header">
+      <div className="em-header-container">
+        
+        {/* 1. LOGO (Clic para ir al inicio) */}
+        <div className="em-logo" onClick={() => navigate('/')}>
+          <span className="em-logo-icon">🎓</span>
+          <span className="em-logo-text">EduMatch</span>
         </div>
 
-        {/* ACCIONES - Derecha */}
-        <div className="student-header__actions">
-          {/* Botón Conviértete en Profesor */}
-          <button 
-            className="btn-convert"
-            onClick={() => navigate('/register/professor')}
-          >
-            Conviértete en Instructor
-          </button>
-
-          {/* Menú de Usuario */}
-          <div className="user-menu">
+        {/* 2. ÁREA DE ACCIONES */}
+        <div className="em-user-actions">
+          
+          {/* ENLACE: CONVIÉRTETE EN INSTRUCTOR 
+              Redirige al registro de profesores como pediste */}
+          {currentUser?.role !== 'professor' && (
             <button 
-              className="user-menu__trigger"
-              onClick={() => setShowDropdown(!showDropdown)}
-              onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
+              className="em-mode-switch-link"
+              onClick={() => navigate('/register/professor')}
             >
-              <span className="menu-bars">☰</span>
-              <div className="user-avatar">
-                {currentUser?.profilePhoto ? (
-                  <img 
-                    src={currentUser.profilePhoto} 
-                    alt="Avatar" 
-                    className="avatar-img"
-                  />
+              Conviértete en instructor
+            </button>
+          )}
+
+          {/* 3. MENÚ DE USUARIO (Píldora Blanca) */}
+          <div className="em-user-menu" ref={dropdownRef}>
+            <div 
+              className="em-menu-trigger"
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
+              <span className="em-menu-bars">☰</span>
+              
+              <div className="em-header-avatar">
+                {userAvatar ? (
+                  <img src={userAvatar} alt="Perfil" />
                 ) : (
-                  <div className="avatar-placeholder">
-                    {getInitials()}
-                  </div>
+                  <span className="em-avatar-initials">{getInitials()}</span>
                 )}
               </div>
-            </button>
+              
+              {/* Punto rojo de notificación */}
+              <span className="em-notification-dot"></span>
+            </div>
 
-            {/* Dropdown */}
+            {/* DROPDOWN DESPLEGABLE */}
             {showDropdown && (
-              <div className="user-menu__dropdown">
-                <div className="dropdown__header">
-                  <strong className="user-name">
-                    {currentUser?.firstName} {currentUser?.lastName}
-                  </strong>
-                  <span className="user-role">Estudiante</span>
+              <div className="em-dropdown-content">
+                <div className="em-dropdown-header">
+                  <strong>Hola, {currentUser?.name || 'Usuario'}</strong>
                 </div>
                 
-                <div className="dropdown__divider"></div>
-                
-                <button 
-                  className="dropdown__item"
-                  onClick={() => {
-                    setShowDropdown(false);
-                    navigate('/');
-                  }}
-                >
-                  <span className="item-icon">🏠</span>
-                  Menú Principal
+                <button onClick={() => navigate('/')} className="em-dropdown-item">
+                  🏠 Inicio
                 </button>
                 
-                <div className="dropdown__divider"></div>
-                
-                <button 
-                  className="dropdown__item dropdown__item--danger"
-                  onClick={handleLogout}
-                >
-                  <span className="item-icon">🚪</span>
-                  Cerrar Sesión
+                <button onClick={() => navigate('/student/profile')} className="em-dropdown-item">
+                  👤 Mi Perfil
+                </button>
+
+                <div className="em-dropdown-divider"></div>
+
+                <button onClick={handleLogout} className="em-dropdown-item em-text-danger">
+                  🚪 Cerrar Sesión
                 </button>
               </div>
             )}

@@ -1,68 +1,57 @@
 import React from 'react';
 import './TeacherCard.css';
 
-const TeacherCard = ({ teacher, onScheduleClass, onViewProfile }) => {
+const TeacherCard = ({ teacher }) => {
+  if (!teacher) return null;
+
   return (
-    <div className="teacher-card">
-      <div className="teacher-card-header">
-        <div className="teacher-avatar-section">
-          <div className="teacher-avatar-large">
-            <img src={teacher.avatar || ""} alt={teacher.name} />
-            {teacher.verified && (
-              <span className="verified-badge-teacher">✓</span>
-            )}
-          </div>
+    <div className="em-teacher-card">
+      {/* Header: Avatar y Badge */}
+      <div className="em-tc-header">
+        <div className="em-avatar-wrapper">
+          <img src={teacher.avatar} alt={teacher.name} className="em-tc-avatar" />
+          <div className="em-verified-badge">✓</div>
         </div>
-        <div className="teacher-main-info">
-          <h3 className="teacher-card-name">{teacher.name}</h3>
-          <div className="teacher-subjects">
-            {teacher.subjects.map((subject, index) => (
-              <span key={index} className="subject-tag">{subject}</span>
-            ))}
-          </div>
+        <h3 className="em-tc-name">{teacher.name}</h3>
+        
+        <div className="em-tc-subjects">
+          {teacher.subjects.map((sub, idx) => (
+            <span key={idx} className="em-subject-pill">{sub}</span>
+          ))}
+        </div>
+
+        <div className="em-tc-rating">
+          <span className="em-stars">★★★★★</span>
+          <span className="em-rating-val">{teacher.rating}</span>
+          <span className="em-rating-count">({teacher.reviewCount} reseñas)</span>
         </div>
       </div>
 
-      <div className="teacher-card-body">
-        <div className="teacher-rating-section">
-          <div className="rating-stars">
-            {'⭐'.repeat(Math.floor(teacher.rating))}
-            {teacher.rating % 1 !== 0 && '⭐'}
-          </div>
-          <span className="rating-value">{teacher.rating}</span>
-          <span className="rating-count">({teacher.reviewCount} reseñas)</span>
+      {/* Stats Internos */}
+      <div className="em-tc-stats">
+        <div className="em-tc-stat-item">
+          <span className="em-val">{teacher.classesTogether}</span>
+          <span className="em-lbl">Clases juntos</span>
         </div>
-
-        <div className="teacher-stats-inline">
-          <div className="stat-inline">
-            <span className="stat-inline-value">{teacher.classesTogether}</span>
-            <span className="stat-inline-label">Clases juntos</span>
-          </div>
-          <div className="stat-inline">
-            <span className="stat-inline-value">{teacher.totalHours}h</span>
-            <span className="stat-inline-label">Horas totales</span>
-          </div>
-        </div>
-
-        <div className="teacher-last-class">
-          <span className="last-class-label">Última clase:</span>
-          <span className="last-class-date">{teacher.lastClassDate} - {teacher.lastClassSubject}</span>
+        <div className="em-tc-stat-item">
+          <span className="em-val">{teacher.totalHours}</span>
+          <span className="em-lbl">Horas totales</span>
         </div>
       </div>
 
-      <div className="teacher-card-actions">
-        <button 
-          className="btn-schedule-class"
-          onClick={() => onScheduleClass(teacher.id)}
-        >
+      {/* Botones */}
+      <div className="em-tc-actions">
+        <button className="em-btn-full em-btn-cyan-solid">
           📅 Agendar Clase
         </button>
-        <button 
-          className="btn-view-profile"
-          onClick={() => onViewProfile(teacher.id)}
-        >
+        <button className="em-btn-full em-btn-cyan-outline">
           👁️ Ver Perfil
         </button>
+      </div>
+
+      {/* Footer */}
+      <div className="em-tc-footer">
+        <strong>Última clase:</strong> {teacher.lastClass}
       </div>
     </div>
   );

@@ -1,37 +1,40 @@
 import React from 'react';
-import './ReviewSummary.css';
+// El CSS ya está cargado globalmente o en el padre
 
-const ReviewSummary = ({ summary }) => {
-  const getRatingPercentage = (count) => {
-    return summary.totalReviews > 0 
-      ? Math.round((count / summary.totalReviews) * 100) 
-      : 0;
-  };
-
+const ReviewSummary = () => {
   return (
-    <div className="review-summary-container">
-      <div className="average-rating-section">
-        <div className="average-rating-value">{summary.averageRating.toFixed(1)}</div>
-        <div className="average-rating-stars">
-          {'⭐'.repeat(Math.floor(summary.averageRating))}
-          {summary.averageRating % 1 !== 0 && '⭐'}
-        </div>
-        <p className="average-rating-text">Promedio de {summary.totalReviews} reseñas</p>
+    <div className="em-rating-summary">
+      <div className="em-overall-rating">
+        <div className="em-rating-number">4.6</div>
+        <div className="em-rating-stars">★★★★★</div>
+        <div className="em-rating-count">Promedio de 12 reseñas</div>
       </div>
-
-      <div className="rating-distribution">
-        {[5, 4, 3, 2, 1].map((stars) => (
-          <div key={stars} className="rating-bar-row">
-            <span className="rating-label">{stars} estrella{stars !== 1 && 's'}</span>
-            <div className="rating-bar-container">
-              <div 
-                className="rating-bar-fill"
-                style={{ width: `${getRatingPercentage(summary.ratingCounts[stars] || 0)}%` }}
-              ></div>
-            </div>
-            <span className="rating-percentage">{getRatingPercentage(summary.ratingCounts[stars] || 0)}%</span>
-          </div>
-        ))}
+      <div className="em-rating-breakdown">
+        <div className="em-rating-row">
+          <span className="em-rating-label">5 estrellas</span>
+          <div className="em-bar-container"><div className="em-rating-bar" style={{width: '67%'}}></div></div>
+          <span className="em-rating-percentage">67%</span>
+        </div>
+        <div className="em-rating-row">
+          <span className="em-rating-label">4 estrellas</span>
+          <div className="em-bar-container"><div className="em-rating-bar" style={{width: '25%'}}></div></div>
+          <span className="em-rating-percentage">25%</span>
+        </div>
+        <div className="em-rating-row">
+          <span className="em-rating-label">3 estrellas</span>
+          <div className="em-bar-container"><div className="em-rating-bar" style={{width: '8%'}}></div></div>
+          <span className="em-rating-percentage">8%</span>
+        </div>
+        <div className="em-rating-row">
+          <span className="em-rating-label">2 estrellas</span>
+          <div className="em-bar-container"><div className="em-rating-bar" style={{width: '0%'}}></div></div>
+          <span className="em-rating-percentage">0%</span>
+        </div>
+        <div className="em-rating-row">
+          <span className="em-rating-label">1 estrella</span>
+          <div className="em-bar-container"><div className="em-rating-bar" style={{width: '0%'}}></div></div>
+          <span className="em-rating-percentage">0%</span>
+        </div>
       </div>
     </div>
   );

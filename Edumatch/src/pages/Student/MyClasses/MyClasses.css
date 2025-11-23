@@ -100,7 +100,97 @@
   font-size: var(--font-size-base);
   opacity: 0.95;
 }
+.student-layout {
+  min-height: 100vh;
+  background-color: #f4f7f6; /* Color de fondo exacto del HTML */
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
 
+.student-main-container {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.student-content-grid {
+  display: flex;
+  gap: 2rem;
+  align-items: start;
+}
+
+.sidebar-column {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.content-column {
+  flex: 1;
+  background: #ffffff !important; /* Fondo blanco puro */
+  border-radius: 16px;
+  padding: 40px !important; /* Espacio interno amplio */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  min-height: 600px;
+}
+
+/* Título Principal */
+.page-title-main {
+  color: #00bcd4 !important;
+  font-size: 26px !important;
+  font-weight: 700;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+/* Tabs */
+.tabs-container {
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  background: none !important;
+  border: none !important;
+  border-bottom: 3px solid transparent !important;
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #777 !important;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  color: #00bcd4;
+}
+
+.tab-btn.active {
+  color: #00bcd4 !important;
+  border-bottom: 3px solid #00bcd4 !important;
+  font-weight: 700;
+}
+
+.classes-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .student-content-grid {
+    flex-direction: column;
+  }
+  
+  .sidebar-column {
+    width: 100%;
+  }
+}
 /* ==================== CLASSES FILTERS ==================== */
 .classes-filters {
   background: var(--bg-primary);
@@ -573,105 +663,79 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 1200px) {
-  .classes-grid {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  }
-
-  .classes-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* --- LAYOUT GENERAL (Fondo Gris) --- */
+.em-student-layout {
+  background-color: #f0f2f5; /* Gris suave de fondo */
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media (max-width: 992px) {
-  .classes-container {
-    padding: 0 var(--spacing-lg);
-  }
-
-  .classes-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .filters-row {
-    grid-template-columns: 1fr;
-  }
-
-  .status-tabs {
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
+.em-main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 
-@media (max-width: 768px) {
-  .classes-container {
-    padding: 0 var(--spacing-md);
-  }
-
-  .classes-content {
-    padding: var(--spacing-xl) 0;
-  }
-
-  .page-header {
-    padding: var(--spacing-xl);
-  }
-
-  .page-title {
-    font-size: var(--font-size-2xl);
-  }
-
-  .classes-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .classes-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .class-card-footer {
-    flex-direction: column;
-  }
-
-  .btn-class-action {
-    width: 100%;
-  }
+/* Sidebar Container (para mantener tu sidebar existente) */
+.em-sidebar-wrapper {
+  width: 260px;
+  flex-shrink: 0;
 }
 
-@media (max-width: 576px) {
-  .page-title {
-    font-size: var(--font-size-xl);
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* --- TARJETA BLANCA PRINCIPAL (El contenedor grande) --- */
+.em-content-card {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  min-height: 600px;
+}
 
-  .classes-filters {
-    padding: var(--spacing-md);
-  }
+/* Título "Mis Clases" */
+.em-page-title {
+  color: #00bcd4; /* Cyan EduMatch */
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
 
-  .stat-card {
-    padding: var(--spacing-md);
-  }
+/* --- TABS (Pestañas) --- */
+.em-tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #eee;
+  margin: 30px 0;
+}
 
-  .stat-icon {
-    width: 50px;
-    height: 50px;
-    font-size: var(--font-size-xl);
-  }
+.em-tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #777;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
 
-  .stat-value {
-    font-size: var(--font-size-2xl);
-  }
+.em-tab-btn.active {
+  color: #00bcd4;
+  font-weight: 700;
+}
 
-  .class-card-body {
-    padding: var(--spacing-md);
-  }
-
-  .class-card-header {
-    padding: var(--spacing-md);
-  }
-
-  .teacher-avatar {
-    width: 40px;
-    height: 40px;
-  }
+.em-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #00bcd4;
 }

@@ -24,31 +24,30 @@ function Home() {
 
   const getInitials = () => {
     if (!currentUser) return '';
-    return `${currentUser.firstName?.[0] || ''}${currentUser.lastName?.[0] || ''}`;
+    const first = currentUser.firstName || currentUser.name || 'U';
+    const last = currentUser.lastName || '';
+    return `${first[0] || ''}${last[0] || ''}`.toUpperCase();
   };
 
-  // Profesores destacados
+  // Datos de ejemplo (sin cambios)
   const featuredProfessors = [
     { id: 1, name: 'Juan', subject: 'Física', level: 'Bachillerato', price: '$5 por hora', rating: '4.9' },
     { id: 2, name: 'María', subject: 'Matemáticas', level: 'Primaria y Secundaria', price: '$5 por hora', rating: '5.0' },
     { id: 3, name: 'Carlos', subject: 'Química', level: 'Bachillerato', price: '$5 por hora', rating: '4.8' }
   ];
 
-  // Expertos en buenos resultados
   const expertProfessors = [
     { id: 4, name: 'Gabriela', subject: 'Francés', level: 'Todos los niveles', price: '$5 por hora', rating: '4.9' },
     { id: 5, name: 'Miguel', subject: 'Música', level: 'Piano y Guitarra', price: '$5 por hora', rating: '5.0' },
     { id: 6, name: 'Valentina', subject: 'Dibujo', level: 'Arte y Diseño', price: '$5 por hora', rating: '4.8' }
   ];
 
-  // Expertos en buenos resultados (segunda sección)
   const expertProfessors2 = [
     { id: 7, name: 'Diego', subject: 'Programación', level: 'Bachillerato y Universidad', price: '$5 por hora', rating: '5.0' },
     { id: 8, name: 'Sofía', subject: 'Literatura', level: 'Secundaria y Bachillerato', price: '$5 por hora', rating: '4.9' },
     { id: 9, name: 'Roberto', subject: 'Economía', level: 'Bachillerato y Universidad', price: '$5 por hora', rating: '4.7' }
   ];
 
-  // Los más recomendados
   const recommendedProfessors = [
     { id: 10, name: 'Ana', subject: 'Inglés', level: 'Todos los niveles', price: '$5 por hora', rating: '5.0' },
     { id: 11, name: 'Pedro', subject: 'Historia', level: 'Secundaria y Bachillerato', price: '$5 por hora', rating: '4.9' },
@@ -80,20 +79,17 @@ function Home() {
 
   return (
     <div className="home-container">
-      {/* HEADER */}
       <header className="home-header">
         <div className="home-header-content">
-          {/* Logo */}
           <div className="home-logo" onClick={() => navigate('/')}>
             <span className="logo-icon">🎓</span>
             <span className="logo-text">EduMatch</span>
           </div>
 
-          {/* Barra de búsqueda */}
           <div className="home-search-bar">
             <input
               type="text"
-              placeholder="Buscar clases, profesores..."
+              placeholder="¿Qué quieres aprender hoy?"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="search-input"
@@ -103,19 +99,29 @@ function Home() {
             </button>
           </div>
 
-          {/* Menú de navegación */}
           <nav className="home-nav">
-            <button className="nav-link">Regístrate</button>
+            {/* 
+              BOTÓN "CONVIÉRTETE EN INSTRUCTOR"
+              ✅ Redirige a: /register/professor
+              ✅ Archivo destino: src/pages/Auth/Register/RegisterProfessor.jsx
+            */}
+            {currentUser.role !== 'professor' && (
+              <button 
+                className="nav-link-instructor"
+                onClick={() => navigate('/register/professor')}
+              >
+                Conviértete en instructor
+              </button>
+            )}
 
-            {/* Avatar del usuario */}
             <div className="user-menu-container">
               <button
                 className="user-avatar-button"
                 onClick={() => setShowUserMenu(!showUserMenu)}
               >
-                {currentUser.profilePhoto ? (
+                {currentUser.profilePhoto || currentUser.avatar ? (
                   <img 
-                    src={currentUser.profilePhoto} 
+                    src={currentUser.profilePhoto || currentUser.avatar} 
                     alt="Perfil" 
                     className="user-avatar-image"
                   />
@@ -130,7 +136,7 @@ function Home() {
                 <div className="user-dropdown">
                   <div className="user-dropdown-header">
                     <p className="user-dropdown-name">
-                      {currentUser.firstName} {currentUser.lastName}
+                      {currentUser.firstName || currentUser.name}
                     </p>
                     <p className="user-dropdown-email">{currentUser.email}</p>
                   </div>
@@ -140,18 +146,6 @@ function Home() {
                     onClick={() => navigate('/student/profile')}
                   >
                     👤 Mi Perfil
-                  </button>
-                  <button 
-                    className="dropdown-item"
-                    onClick={() => navigate('/student/classes')}
-                  >
-                    📚 Mis Clases
-                  </button>
-                  <button 
-                    className="dropdown-item"
-                    onClick={() => navigate('/student/settings')}
-                  >
-                    ⚙️ Configuración
                   </button>
                   <div className="dropdown-divider"></div>
                   <button 
@@ -167,19 +161,16 @@ function Home() {
         </div>
       </header>
 
-      {/* SECCIÓN DE FILTROS */}
       <section className="filters-section">
         <div className="filters-container">
           <div className="filter-card">
             <h3 className="filter-title">Materia</h3>
             <p className="filter-subtitle">¿Qué quieres aprender?</p>
           </div>
-
           <div className="filter-card">
             <h3 className="filter-title">Nivel Educativo</h3>
             <p className="filter-subtitle">¿En qué grado te encuentras?</p>
           </div>
-
           <div className="filter-card">
             <h3 className="filter-title">Modalidad</h3>
             <p className="filter-subtitle">¿Cómo quieres recibir tu clase?</p>
@@ -187,7 +178,6 @@ function Home() {
         </div>
       </section>
 
-      {/* PROFESORES DESTACADOS */}
       <section className="professors-section">
         <div className="professors-container">
           <h2 className="section-title">Profesores destacados</h2>
@@ -199,7 +189,6 @@ function Home() {
         </div>
       </section>
 
-      {/* EXPERTOS EN BUENOS RESULTADOS - CYAN */}
       <section className="professors-section bg-cyan">
         <div className="professors-container">
           <h2 className="section-title">Expertos en buenos resultados</h2>
@@ -211,7 +200,6 @@ function Home() {
         </div>
       </section>
 
-      {/* EXPERTOS EN BUENOS RESULTADOS - ORANGE */}
       <section className="professors-section bg-orange">
         <div className="professors-container">
           <h2 className="section-title">Expertos en buenos resultados</h2>
@@ -223,7 +211,6 @@ function Home() {
         </div>
       </section>
 
-      {/* LOS MÁS RECOMENDADOS - YELLOW */}
       <section className="professors-section bg-yellow">
         <div className="professors-container">
           <h2 className="section-title">Los más recomendados por padres y estudiantes</h2>

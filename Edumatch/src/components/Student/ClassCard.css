@@ -1,140 +1,129 @@
-.class-card {
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+.em-class-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+
+.em-class-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  border-color: #b2ebf2;
+}
+
+/* Avatar */
+.em-card-left {
+  flex-shrink: 0;
+}
+
+.em-avatar-placeholder {
+  width: 60px;
+  height: 60px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #555;
+  font-size: 18px;
+}
+
+/* Contenido */
+.em-card-right {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 15px;
 }
 
-.class-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.15);
-}
-
-.class-card__header {
+/* Header */
+.em-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
 }
 
-.class-subject {
-  font-size: 1.25rem;
+.em-teacher-name {
+  font-size: 18px;
   font-weight: 700;
-  color: #2c3e50;
-  margin: 0;
-  flex: 1;
+  color: #333;
+  margin: 0 0 5px 0;
 }
 
-.class-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.badge-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.badge-upcoming {
-  background: #e3f2fd;
-  color: #1976d2;
-}
-
-.badge-completed {
-  background: #e8f5e9;
-  color: #2e7d32;
-}
-
-.badge-cancelled {
-  background: #ffebee;
-  color: #c62828;
-}
-
-.class-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-}
-
-.class-info-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.info-icon {
-  font-size: 1.25rem;
-  line-height: 1;
-  width: 24px;
-  text-align: center;
-}
-
-.info-text {
-  font-size: 0.95rem;
-  color: #495057;
-  font-weight: 500;
-}
-
-.class-card__footer {
-  display: flex;
-  gap: 0.75rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid #e9ecef;
-}
-
-.btn-class {
-  flex: 1;
-  padding: 0.75rem 1rem;
+.em-subject-tag {
+  background-color: #e0f7fa;
+  color: #00bcd4;
+  padding: 2px 10px;
   border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.em-status-badge {
+  background-color: #fff3e0;
+  color: #ef6c00;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
   font-weight: 600;
-  font-size: 0.9rem;
+}
+
+/* Detalles */
+.em-card-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.em-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- BOTONES (Estilo exacto de la imagen) --- */
+.em-card-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.em-btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent; /* Fondo transparente CLAVE */
+  transition: all 0.2s;
 }
 
-.btn-class-primary {
-  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
-  color: white;
+/* Botón Cyan Delineado */
+.em-btn-outline-cyan {
+  border: 1px solid #00bcd4;
+  color: #00bcd4;
 }
 
-.btn-class-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+.em-btn-outline-cyan:hover {
+  background-color: #e0f7fa;
 }
 
-.btn-class-secondary {
-  background: transparent;
-  color: #dc3545;
-  border: 2px solid #dc3545;
+/* Botón Rojo Delineado */
+.em-btn-outline-red {
+  border: 1px solid #ff5252;
+  color: #ff5252;
 }
 
-.btn-class-secondary:hover {
-  background: #fff5f5;
-}
-
-/* Responsive */
-@media (max-width: 576px) {
-  .class-card__footer {
-    flex-direction: column;
-  }
-
-  .class-subject {
-    font-size: 1.1rem;
-  }
-
-  .class-badge {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.8rem;
-  }
+.em-btn-outline-red:hover {
+  background-color: #ffebee;
 }

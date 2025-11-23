@@ -1,0 +1,171 @@
+.prof-course-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.prof-course-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.prof-course-image {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.prof-course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prof-course-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.placeholder-icon {
+  font-size: 48px;
+}
+
+.prof-course-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.prof-course-badge.published {
+  background-color: #4caf50;
+  color: white;
+}
+
+.prof-course-badge.draft {
+  background-color: #ff9800;
+  color: white;
+}
+
+.prof-course-content {
+  padding: 20px;
+}
+
+.prof-course-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.prof-course-description {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 0 0 15px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.prof-course-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.prof-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-icon {
+  font-size: 14px;
+}
+
+.stat-text {
+  font-size: 13px;
+  color: #555;
+}
+
+.prof-course-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prof-course-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00bcd4;
+}
+
+.prof-course-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.prof-action-btn {
+  background: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prof-action-btn.view {
+  background-color: #e3f2fd;
+}
+
+.prof-action-btn.view:hover {
+  background-color: #2196f3;
+}
+
+.prof-action-btn.edit {
+  background-color: #fff3e0;
+}
+
+.prof-action-btn.edit:hover {
+  background-color: #ff9800;
+}
+
+.prof-action-btn.delete {
+  background-color: #ffebee;
+}
+
+.prof-action-btn.delete:hover {
+  background-color: #f44336;
+}
+
+@media (max-width: 768px) {
+  .prof-course-stats {
+    flex-wrap: wrap;
+  }
+}

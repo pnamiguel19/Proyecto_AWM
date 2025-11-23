@@ -1,287 +1,171 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import StudentHeader from '../../../components/common/Header/StudentHeader';
+import ProfileSidebar from '../../../components/Professor/ProfileSidebar';
+import ClassCard from '../../../components/Professor/ClassCard';
+import ClassFormModal from '../../../components/Professor/ClassFormModal';
 import './MyClasses.css';
 
-function MyClasses() {
+const MyClasses = () => {
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState(null);
-  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [currentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || {
+    name: "Juan Pérez",
+    role: "professor"
+  });
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    if (!user || user.role !== 'professor') {
-      navigate('/login');
-      return;
+  // Estado para las clases
+  const [classes, setClasses] = useState([
+    {
+      id: 1,
+      title: "Introducción a la Física",
+      subject: "Física",
+      studentName: "María González",
+      date: "2024-12-01",
+      time: "10:00",
+      duration: "60",
+      price: "$5",
+      status: "active",
+      description: "Clase inicial sobre conceptos básicos"
+    },
+    {
+      id: 2,
+      title: "Álgebra Avanzada",
+      subject: "Matemáticas",
+      studentName: "Carlos Ruiz",
+      date: "2024-12-02",
+      time: "15:00",
+      duration: "90",
+      price: "$7",
+      status: "active",
+      description: ""
     }
-    setCurrentUser(user);
-  }, [navigate]);
+  ]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('currentUser');
-    navigate('/login');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingClass, setEditingClass] = useState(null);
+  const [filter, setFilter] = useState('all');
+
+  // Crear nueva clase
+  const handleCreateClass = () => {
+    setEditingClass(null);
+    setIsModalOpen(true);
   };
 
-  const getInitials = () => {
-    if (!currentUser) return '';
-    return `${currentUser.firstName?.[0] || ''}${currentUser.lastName?.[0] || ''}`;
+  // Editar clase existente
+  const handleEditClass = (classData) => {
+    setEditingClass(classData);
+    setIsModalOpen(true);
   };
 
-  const menuItems = [
-    { id: 'info', icon: '👤', label: 'Información sobre mí', path: '/professor/profile' },
-    { id: 'classes', icon: '📚', label: 'Mis Clases', path: '/professor/classes' },
-    { id: 'courses', icon: '📖', label: 'Mis Cursos', path: '/professor/courses' },
-    { id: 'history', icon: '📊', label: 'Mi historial de Enseñanza', path: '/professor/history' },
-    { id: 'schedule', icon: '📅', label: 'Disponibilidad y Horario', path: '/professor/schedule' },
-    { id: 'documents', icon: '📄', label: 'Documentos de Acreditación', path: '/professor/documents' },
-    { id: 'ratings', icon: '⭐', label: 'Mis Calificaciones y reseñas', path: '/professor/ratings' }
-  ];
+  // Guardar clase (crear o editar)
+  const handleSaveClass = (formData) => {
+    if (editingClass) {
+      // Editar
+      setClasses(prev => prev.map(c => 
+        c.id === editingClass.id ? { ...formData, id: c.id } : c
+      ));
+    } else {
+      // Crear nueva
+      const newClass = {
+        ...formData,
+        id: Date.now()
+      };
+      setClasses(prev => [...prev, newClass]);
+    }
+    setIsModalOpen(false);
+    setEditingClass(null);
+  };
 
-  if (!currentUser) {
-    return <div style={{ padding: '40px', textAlign: 'center' }}>Cargando...</div>;
-  }
+  // Ver detalles (placeholder)
+  const handleViewDetails = (classData) => {
+    alert(`Ver detalles de: ${classData.title}`);
+    // Aquí puedes navegar a una página de detalles
+  };
+
+  // Filtrar clases
+  const filteredClasses = classes.filter(c => {
+    if (filter === 'all') return true;
+    return c.status === filter;
+  });
 
   return (
-    <div className="my-classes-page">
-      {/* HEADER */}
-      <header className="mc-header">
-        <div className="mc-header-content">
-          <div className="mc-header-left">
-            <div className="mc-logo" onClick={() => navigate('/professor/profile')}>
-              <span className="mc-logo-icon">🎓</span>
-              <span className="mc-logo-text">EduMatch</span>
-            </div>
-          </div>
+    <div className="professor-layout">
+      <StudentHeader currentUser={currentUser} />
 
-          <div className="mc-header-right">
-            <button className="mc-btn-convert" onClick={() => navigate('/student/home')}>
-              Conviértete en Estudiante
-            </button>
-            
-            <div className="mc-user-menu-container">
-              <button
-                className="mc-user-avatar-btn"
-                onClick={() => setShowUserMenu(!showUserMenu)}
-              >
-                <div className="mc-avatar-placeholder">{getInitials()}</div>
-                <span className="mc-menu-icon">☰</span>
+      <main className="professor-main-container">
+        <div className="professor-content-grid">
+          
+          <aside className="prof-sidebar-column">
+            <ProfileSidebar />
+          </aside>
+
+          <section className="prof-content-column">
+            <div className="prof-classes-header">
+              <div>
+                <h2 className="prof-page-title">Mis Clases</h2>
+                <p className="prof-page-subtitle">Gestiona tus clases programadas</p>
+              </div>
+              <button className="prof-btn-create" onClick={handleCreateClass}>
+                + Nueva Clase
               </button>
+            </div>
 
-              {showUserMenu && (
-                <div className="mc-user-dropdown">
-                  <div className="mc-dropdown-header">
-                    <p className="mc-user-name">{currentUser.firstName} {currentUser.lastName}</p>
-                    <p className="mc-user-email">{currentUser.email}</p>
-                  </div>
-                  <div className="mc-dropdown-divider"></div>
-                  <button className="mc-dropdown-item" onClick={() => navigate('/professor/profile')}>
-                    👤 Mi Perfil
-                  </button>
-                  <button className="mc-dropdown-item mc-logout" onClick={handleLogout}>
-                    🚪 Cerrar Sesión
-                  </button>
+            {/* Filtros */}
+            <div className="prof-filters">
+              <button 
+                className={`prof-filter-btn ${filter === 'all' ? 'active' : ''}`}
+                onClick={() => setFilter('all')}
+              >
+                Todas ({classes.length})
+              </button>
+              <button 
+                className={`prof-filter-btn ${filter === 'active' ? 'active' : ''}`}
+                onClick={() => setFilter('active')}
+              >
+                Activas ({classes.filter(c => c.status === 'active').length})
+              </button>
+              <button 
+                className={`prof-filter-btn ${filter === 'completed' ? 'active' : ''}`}
+                onClick={() => setFilter('completed')}
+              >
+                Completadas ({classes.filter(c => c.status === 'completed').length})
+              </button>
+            </div>
+
+            {/* Grid de Clases */}
+            <div className="prof-classes-grid">
+              {filteredClasses.length > 0 ? (
+                filteredClasses.map(classData => (
+                  <ClassCard
+                    key={classData.id}
+                    classData={classData}
+                    onEdit={handleEditClass}
+                    onViewDetails={handleViewDetails}
+                  />
+                ))
+              ) : (
+                <div className="prof-empty-state">
+                  <p>No hay clases en esta categoría</p>
                 </div>
               )}
             </div>
-          </div>
+          </section>
+
         </div>
-      </header>
+      </main>
 
-      {/* CONTENT */}
-      <div className="mc-main-content">
-        {/* SIDEBAR */}
-        <aside className="mc-sidebar">
-          <h2 className="mc-sidebar-title">Perfil</h2>
-          <nav className="mc-sidebar-nav">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                className={`mc-sidebar-item ${item.id === 'classes' ? 'mc-active' : ''}`}
-                onClick={() => navigate(item.path)}
-              >
-                <span className="mc-sidebar-icon">{item.icon}</span>
-                <span className="mc-sidebar-label">{item.label}</span>
-              </button>
-            ))}
-          </nav>
-        </aside>
-
-        {/* MAIN SECTION */}
-        <section className="mc-classes-section">
-          {/* Header */}
-          <div className="mc-classes-header">
-            <h1 className="mc-section-title">Mis Clases</h1>
-            <button className="mc-btn-add-class">+ Agregar Nueva Clase</button>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="mc-stats-grid">
-            <div className="mc-stat-card">
-              <div className="mc-stat-icon">📚</div>
-              <div className="mc-stat-value">5</div>
-              <div className="mc-stat-label">Clases Activas</div>
-            </div>
-
-            <div className="mc-stat-card">
-              <div className="mc-stat-icon">👥</div>
-              <div className="mc-stat-value">42</div>
-              <div className="mc-stat-label">Estudiantes Totales</div>
-            </div>
-
-            <div className="mc-stat-card">
-              <div className="mc-stat-icon">⭐</div>
-              <div className="mc-stat-value">4.8</div>
-              <div className="mc-stat-label">Calificación Promedio</div>
-            </div>
-
-            <div className="mc-stat-card">
-              <div className="mc-stat-icon">⏰</div>
-              <div className="mc-stat-value">120</div>
-              <div className="mc-stat-label">Horas Enseñadas</div>
-            </div>
-          </div>
-
-          {/* Classes List */}
-          <div className="mc-classes-list">
-            {/* Clase 1 - Física */}
-            <div className="mc-class-card">
-              <div className="mc-class-header mc-header-active">
-                <div className="mc-class-title-section">
-                  <h3 className="mc-class-title">Física</h3>
-                  <p className="mc-class-subtitle">Bachillerato - Universitario</p>
-                </div>
-                <span className="mc-class-status mc-status-active">● Activa</span>
-              </div>
-
-              <div className="mc-class-body">
-                <div className="mc-class-price">
-                  <span className="mc-price-icon">💰</span>
-                  <span className="mc-price-text">$15 por hora</span>
-                </div>
-
-                <p className="mc-class-description">
-                  Clases de Física para secundaria y universidad. Incluye mecánica, electricidad, ondas y más. Método práctico con ejercicios.
-                </p>
-
-                <div className="mc-class-stats">
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">👥</span>
-                    <span className="mc-stat-text">15 estudiantes</span>
-                  </div>
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">⭐</span>
-                    <span className="mc-stat-text">4.9</span>
-                  </div>
-                  <button className="mc-btn-edit-inline">✏️</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Clase 2 - Matemáticas */}
-            <div className="mc-class-card">
-              <div className="mc-class-header mc-header-active">
-                <div className="mc-class-title-section">
-                  <h3 className="mc-class-title">Matemáticas</h3>
-                  <p className="mc-class-subtitle">Primaria - Secundaria</p>
-                </div>
-                <span className="mc-class-status mc-status-active">● Activa</span>
-              </div>
-
-              <div className="mc-class-body">
-                <div className="mc-class-price">
-                  <span className="mc-price-icon">💰</span>
-                  <span className="mc-price-text">$12 por hora</span>
-                </div>
-
-                <p className="mc-class-description">
-                  Clases de matemáticas desde nivel básico hasta avanzado. Álgebra, geometría, trigonometría y cálculo.
-                </p>
-
-                <div className="mc-class-stats">
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">👥</span>
-                    <span className="mc-stat-text">12 estudiantes</span>
-                  </div>
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">⭐</span>
-                    <span className="mc-stat-text">4.7</span>
-                  </div>
-                  <button className="mc-btn-edit-inline">✏️</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Clase 3 - Cálculo Diferencial */}
-            <div className="mc-class-card">
-              <div className="mc-class-header mc-header-active">
-                <div className="mc-class-title-section">
-                  <h3 className="mc-class-title">Cálculo Diferencial</h3>
-                  <p className="mc-class-subtitle">Universitario</p>
-                </div>
-                <span className="mc-class-status mc-status-active">● Activa</span>
-              </div>
-
-              <div className="mc-class-body">
-                <div className="mc-class-price">
-                  <span className="mc-price-icon">💰</span>
-                  <span className="mc-price-text">$18 por hora</span>
-                </div>
-
-                <p className="mc-class-description">
-                  Cálculo diferencial e integral para estudiantes universitarios. Límites, derivadas, integrales y aplicaciones.
-                </p>
-
-                <div className="mc-class-stats">
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">👥</span>
-                    <span className="mc-stat-text">8 estudiantes</span>
-                  </div>
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">⭐</span>
-                    <span className="mc-stat-text">5.0</span>
-                  </div>
-                  <button className="mc-btn-edit-inline">✏️</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Clase 4 - Física Cuántica (Pausada) */}
-            <div className="mc-class-card">
-              <div className="mc-class-header mc-header-paused">
-                <div className="mc-class-title-section">
-                  <h3 className="mc-class-title">Física Cuántica</h3>
-                  <p className="mc-class-subtitle">Universitario Avanzado</p>
-                </div>
-                <span className="mc-class-status mc-status-paused">● Pausada</span>
-              </div>
-
-              <div className="mc-class-body">
-                <div className="mc-class-price">
-                  <span className="mc-price-icon">💰</span>
-                  <span className="mc-price-text">$25 por hora</span>
-                </div>
-
-                <p className="mc-class-description">
-                  Introducción a la mecánica cuántica y física moderna. Para estudiantes de física e ingeniería.
-                </p>
-
-                <div className="mc-class-stats">
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">👥</span>
-                    <span className="mc-stat-text">5 estudiantes</span>
-                  </div>
-                  <div className="mc-class-stat">
-                    <span className="mc-stat-icon">⭐</span>
-                    <span className="mc-stat-text">4.8</span>
-                  </div>
-                  <button className="mc-btn-edit-inline">✏️</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+      {/* Modal de Formulario */}
+      <ClassFormModal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingClass(null);
+        }}
+        classData={editingClass}
+        onSave={handleSaveClass}
+      />
     </div>
   );
-}
+};
 
 export default MyClasses;

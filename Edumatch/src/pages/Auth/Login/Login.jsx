@@ -61,10 +61,15 @@ function Login() {
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
       
+      // ESTO ES IMPORTANTE: Avisa al Header que ya hay usuario
+      window.dispatchEvent(new Event("storage"));
+      
       if (user.role === 'student') {
-        navigate('/student/home');
+        // CORRECCIÓN: Te enviamos al Home principal ('/') en vez de '/student/home'
+        navigate('/'); 
       } else if (user.role === 'professor') {
-        navigate('/professor/profile');
+        // Puedes enviarlo al home también o a su perfil
+        navigate('/'); 
       } else if (user.role === 'admin') {
         navigate('/admin/dashboard');
       }
@@ -108,7 +113,7 @@ function Login() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="correo@ejemplo.com" // ← Más genérico y sutil
+              placeholder="correo@ejemplo.com"
               className={errors.email ? 'error' : ''}
             />
             {errors.email && (
@@ -128,7 +133,7 @@ function Login() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Ingresa tu contraseña" // ← Más sutil que puntos
+                placeholder="Ingresa tu contraseña"
                 className={errors.password ? 'error' : ''}
               />
               <button

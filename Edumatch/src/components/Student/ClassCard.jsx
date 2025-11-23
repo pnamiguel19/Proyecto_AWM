@@ -1,74 +1,59 @@
 import React from 'react';
 import './ClassCard.css';
 
-const ClassCard = ({ classData }) => {
-  const getStatusBadge = (status) => {
-    const badges = {
-      upcoming: { text: 'Próxima', class: 'badge-upcoming', icon: '📅' },
-      completed: { text: 'Completada', class: 'badge-completed', icon: '✅' },
-      cancelled: { text: 'Cancelada', class: 'badge-cancelled', icon: '❌' }
-    };
-    return badges[status] || badges.upcoming;
-  };
-
-  const badge = getStatusBadge(classData.status);
+const ClassCard = ({ classItem }) => {
+  if (!classItem) return null;
 
   return (
-    <div className="class-card">
-      <div className="class-card__header">
-        <h3 className="class-subject">{classData.subject}</h3>
-        <span className={`class-badge ${badge.class}`}>
-          <span className="badge-icon">{badge.icon}</span>
-          {badge.text}
-        </span>
+    <div className="em-class-card">
+      {/* Izquierda: Avatar */}
+      <div className="em-card-left">
+        <div className="em-avatar-placeholder">
+           {/* Simulamos iniciales o imagen */}
+           {classItem.teacherName.split(' ').map(n=>n[0]).join('').substring(0,2)}
+        </div>
+        {/* Nombre debajo del avatar como en algunos diseños, o a la derecha */}
       </div>
 
-      <div className="class-card__body">
-        <div className="class-info-item">
-          <span className="info-icon">👨‍🏫</span>
-          <span className="info-text">{classData.teacher}</span>
+      {/* Derecha: Contenido */}
+      <div className="em-card-right">
+        
+        {/* Header: Nombre y Estado */}
+        <div className="em-card-header">
+          <div className="em-teacher-info">
+            <h3 className="em-teacher-name">{classItem.teacherName}</h3>
+            <span className="em-subject-tag">{classItem.subject}</span>
+          </div>
+          <div className="em-status-badge">
+            📅 {classItem.status}
+          </div>
         </div>
 
-        <div className="class-info-item">
-          <span className="info-icon">📅</span>
-          <span className="info-text">{classData.date}</span>
+        {/* Detalles: Fecha, Hora, etc */}
+        <div className="em-card-details">
+          <div className="em-detail-item">
+            <span>📅</span> {classItem.date}
+          </div>
+          <div className="em-detail-item">
+            <span>🕒</span> {classItem.time} ({classItem.duration})
+          </div>
+          <div className="em-detail-item">
+            <span>🌐</span> {classItem.modality}
+          </div>
+          <div className="em-detail-item">
+            <span>💰</span> <strong>${classItem.price}</strong>
+          </div>
         </div>
 
-        <div className="class-info-item">
-          <span className="info-icon">⏰</span>
-          <span className="info-text">{classData.time}</span>
-        </div>
-
-        <div className="class-info-item">
-          <span className="info-icon">⏱️</span>
-          <span className="info-text">{classData.duration}</span>
-        </div>
-
-        <div className="class-info-item">
-          <span className="info-icon">
-            {classData.type === 'Virtual' ? '💻' : '🏫'}
-          </span>
-          <span className="info-text">{classData.type}</span>
-        </div>
-      </div>
-
-      <div className="class-card__footer">
-        {classData.status === 'upcoming' && (
-          <>
-            <button className="btn-class btn-class-primary">
-              Unirse a la Clase
-            </button>
-            <button className="btn-class btn-class-secondary">
-              Cancelar
-            </button>
-          </>
-        )}
-
-        {classData.status === 'completed' && (
-          <button className="btn-class btn-class-primary">
-            Dejar Reseña
+        {/* Botones: DELINEADOS */}
+        <div className="em-card-actions">
+          <button className="em-btn em-btn-outline-cyan">
+            📝 Ver Detalles
           </button>
-        )}
+          <button className="em-btn em-btn-outline-red">
+            ❌ Cancelar
+          </button>
+        </div>
       </div>
     </div>
   );

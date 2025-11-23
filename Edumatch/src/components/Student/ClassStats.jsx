@@ -1,39 +1,28 @@
 import React from 'react';
 import './ClassStats.css';
 
-const ClassStats = ({ stats }) => {
+const ClassStats = () => {
   return (
-    <div className="class-stats">
-      <div className="stat-item">
-        <div className="stat-icon stat-icon--total">📊</div>
-        <div className="stat-content">
-          <span className="stat-value">{stats.total}</span>
-          <span className="stat-label">Total</span>
-        </div>
+    <div className="em-stats-grid">
+      <div className="em-stat-box">
+        <div className="em-stat-icon">📚</div>
+        <div className="em-stat-number">24</div>
+        <div className="em-stat-label">Clases Totales</div>
       </div>
-
-      <div className="stat-item">
-        <div className="stat-icon stat-icon--completed">✅</div>
-        <div className="stat-content">
-          <span className="stat-value">{stats.completed}</span>
-          <span className="stat-label">Completadas</span>
-        </div>
+      <div className="em-stat-box">
+        <div className="em-stat-icon">✅</div>
+        <div className="em-stat-number">18</div>
+        <div className="em-stat-label">Completadas</div>
       </div>
-
-      <div className="stat-item">
-        <div className="stat-icon stat-icon--upcoming">📅</div>
-        <div className="stat-content">
-          <span className="stat-value">{stats.upcoming}</span>
-          <span className="stat-label">Próximas</span>
-        </div>
+      <div className="em-stat-box">
+        <div className="em-stat-icon">📅</div>
+        <div className="em-stat-number">4</div>
+        <div className="em-stat-label">Próximas</div>
       </div>
-
-      <div className="stat-item">
-        <div className="stat-icon stat-icon--cancelled">❌</div>
-        <div className="stat-content">
-          <span className="stat-value">{stats.cancelled}</span>
-          <span className="stat-label">Canceladas</span>
-        </div>
+      <div className="em-stat-box">
+        <div className="em-stat-icon">⏱️</div>
+        <div className="em-stat-number">36</div>
+        <div className="em-stat-label">Horas Totales</div>
       </div>
     </div>
   );
