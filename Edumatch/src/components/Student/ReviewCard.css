@@ -1,0 +1,175 @@
+.review-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.teacher-review-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.teacher-review-avatar {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.teacher-review-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #f0f0f0;
+  border: 2px solid #00bcd4;
+}
+
+.teacher-review-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.teacher-review-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.teacher-review-verified {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.review-subject-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #e3f2fd;
+  color: #00bcd4;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.review-rating-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.review-stars-display {
+  font-size: 1.25rem;
+}
+
+.review-rating-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffa500;
+}
+
+.review-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.review-metadata {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.review-class-info {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.teacher-response-section {
+  background-color: #e3f2fd;
+  border-left: 4px solid #00bcd4;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.teacher-response-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.response-icon {
+  color: #00bcd4;
+  font-weight: bold;
+}
+
+.response-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #00bcd4;
+}
+
+.teacher-response-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .review-card {
+    padding: 1rem;
+  }
+
+  .review-card-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .review-rating-header {
+    align-self: flex-start;
+  }
+
+  .teacher-review-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .teacher-review-name {
+    font-size: 1.1rem;
+  }
+
+  .review-text {
+    font-size: 0.95rem;
+  }
+}
