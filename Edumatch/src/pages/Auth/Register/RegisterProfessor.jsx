@@ -567,6 +567,175 @@ function RegisterProfessor() {
     { number: 5, label: 'Confirmación', icon: '✓' }
   ];
 
+  // Renderizar Paso 5: Confirmación
+  const renderStep5 = () => (
+    <div className="rp-step-content rp-step5-wrapper">
+      <div className="rp-confirmation-container">
+        <div className="rp-confirmation-icon">
+          <div className="rp-success-circle">
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="48" stroke="#4caf50" strokeWidth="4" fill="#e8f5e9"/>
+              <path d="M30 50L45 65L70 35" stroke="#4caf50" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <h2 className="rp-confirmation-title">¡Registro Completado con Éxito!</h2>
+        <p className="rp-confirmation-subtitle">
+          Bienvenido a EduMatch, {formData.firstName} {formData.lastName}
+        </p>
+
+        <div className="rp-confirmation-info">
+          <div className="rp-info-card">
+            <div className="rp-info-icon">📧</div>
+            <div className="rp-info-content">
+              <div className="rp-info-label">Correo Electrónico</div>
+              <div className="rp-info-value">{formData.email}</div>
+            </div>
+          </div>
+
+          <div className="rp-info-card">
+            <div className="rp-info-icon">📚</div>
+            <div className="rp-info-content">
+              <div className="rp-info-label">Materias a Enseñar</div>
+              <div className="rp-info-value">{formData.subjects.join(', ') || 'No especificado'}</div>
+            </div>
+          </div>
+
+          <div className="rp-info-card">
+            <div className="rp-info-icon">🎓</div>
+            <div className="rp-info-content">
+              <div className="rp-info-label">Nivel Educativo</div>
+              <div className="rp-info-value">{formData.educationLevel || 'No especificado'}</div>
+            </div>
+          </div>
+
+          <div className="rp-info-card">
+            <div className="rp-info-icon">💰</div>
+            <div className="rp-info-content">
+              <div className="rp-info-label">Tarifa por Hora</div>
+              <div className="rp-info-value">${formData.hourlyRate || '0'} MXN</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="rp-confirmation-steps">
+          <h3 className="rp-steps-title">🚀 Próximos Pasos</h3>
+          <div className="rp-steps-list">
+            <div className="rp-step-item">
+              <div className="rp-step-number">1</div>
+              <div className="rp-step-text">
+                <strong>Completa tu perfil</strong>
+                <span>Añade una foto, biografía y más detalles sobre ti</span>
+              </div>
+            </div>
+
+            <div className="rp-step-item">
+              <div className="rp-step-number">2</div>
+              <div className="rp-step-text">
+                <strong>Sube tus documentos</strong>
+                <span>Acredita tu experiencia con certificados y títulos</span>
+              </div>
+            </div>
+
+            <div className="rp-step-item">
+              <div className="rp-step-number">3</div>
+              <div className="rp-step-text">
+                <strong>Configura tu disponibilidad</strong>
+                <span>Define tus horarios disponibles para dar clases</span>
+              </div>
+            </div>
+
+            <div className="rp-step-item">
+              <div className="rp-step-number">4</div>
+              <div className="rp-step-text">
+                <strong>¡Comienza a enseñar!</strong>
+                <span>Espera a que los estudiantes te contacten</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="rp-confirmation-benefits">
+          <h3 className="rp-benefits-title">✨ Beneficios de ser Profesor en EduMatch</h3>
+          <div className="rp-benefits-grid">
+            <div className="rp-benefit-card">
+              <div className="rp-benefit-icon">🕒</div>
+              <div className="rp-benefit-title">Horarios Flexibles</div>
+              <div className="rp-benefit-text">Tú decides cuándo y cuánto trabajar</div>
+            </div>
+
+            <div className="rp-benefit-card">
+              <div className="rp-benefit-icon">💵</div>
+              <div className="rp-benefit-title">Pagos Seguros</div>
+              <div className="rp-benefit-text">Sistema de pagos confiable y transparente</div>
+            </div>
+
+            <div className="rp-benefit-card">
+              <div className="rp-benefit-icon">📈</div>
+              <div className="rp-benefit-title">Crece Profesionalmente</div>
+              <div className="rp-benefit-text">Construye tu reputación y aumenta tus ingresos</div>
+            </div>
+
+            <div className="rp-benefit-card">
+              <div className="rp-benefit-icon">🤝</div>
+              <div className="rp-benefit-title">Comunidad de Apoyo</div>
+              <div className="rp-benefit-text">Únete a una red de educadores apasionados</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="rp-confirmation-actions">
+          <button 
+            className="rp-btn-primary rp-btn-large"
+            onClick={() => navigate('/professor/profile')}
+          >
+            Ir a Mi Perfil
+          </button>
+          <button 
+            className="rp-btn-secondary rp-btn-large"
+            onClick={() => navigate('/professor/schedule')}
+          >
+            Configurar Disponibilidad
+          </button>
+        </div>
+
+        <div className="rp-confirmation-footer">
+          <p className="rp-footer-text">
+            ¿Necesitas ayuda? <a href="#" className="rp-footer-link">Visita nuestro Centro de Ayuda</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Busca la función handleSubmit y asegúrate de que esté así:
+
+  const handleSubmit = () => {
+    // Validar paso 4 antes de enviar
+    const stepErrors = validateStep4();
+    if (Object.keys(stepErrors).length > 0) {
+      setErrors(stepErrors);
+      return;
+    }
+
+    const user = {
+      ...formData,
+      role: 'professor',
+      id: Date.now(),
+      createdAt: new Date().toISOString()
+    };
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(user));
+
+    // Avanzar al paso 5
+    setCurrentStep(5);
+    setErrors({});
+  };
+
   return (
     <div className="register-professor-wrapper">
       {/* HEADER */}
@@ -1833,7 +2002,7 @@ function RegisterProfessor() {
                 <Button 
                   type="button" 
                   variant="primary" 
-                  onClick={handleSubmitRegistration}
+                  onClick={handleSubmit}
                 >
                   🎉 Completar Registro
                 </Button>
