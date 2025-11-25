@@ -1,0 +1,47 @@
+.teacher-profile {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 2rem 0;
+}
+
+.teacher-profile__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.teacher-profile__back-button {
+  background-color: white;
+  border: 2px solid #00D9E1;
+  color: #00D9E1;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.teacher-profile__back-button:hover {
+  background-color: #00D9E1;
+  color: white;
+  transform: translateX(-4px);
+}
+
+.teacher-profile__back-button:active {
+  transform: translateX(-2px);
+}
+
+@media (max-width: 768px) {
+  .teacher-profile {
+    padding: 1rem 0;
+  }
+  
+  .teacher-profile__container {
+    gap: 1.5rem;
+  }
+}

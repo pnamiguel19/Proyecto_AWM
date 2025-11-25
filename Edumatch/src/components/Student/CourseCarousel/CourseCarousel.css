@@ -1,0 +1,144 @@
+.course-carousel {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.course-carousel__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin: 0 0 1.5rem 0;
+}
+
+.course-carousel__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.course-carousel__track {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.course-carousel__slides {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-carousel__slide {
+  min-width: 100%;
+  padding: 0.5rem;
+}
+
+.course-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  border-color: #00D9E1;
+  box-shadow: 0 4px 16px rgba(0, 217, 225, 0.2);
+  transform: translateY(-2px);
+}
+
+.course-card__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+.course-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.course-card__detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #5A6C7D;
+}
+
+.course-card__icon {
+  font-size: 1.2rem;
+}
+
+.course-carousel__nav {
+  background-color: #00D9E1;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.course-carousel__nav:hover {
+  background-color: #008B8B;
+  transform: scale(1.1);
+}
+
+.course-carousel__nav:active {
+  transform: scale(0.95);
+}
+
+.course-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.course-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #dee2e6;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.course-carousel__dot.active {
+  background-color: #00D9E1;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.course-carousel__dot:hover {
+  background-color: #00D9E1;
+}
+
+@media (max-width: 768px) {
+  .course-carousel {
+    padding: 1.5rem;
+  }
+  
+  .course-carousel__title {
+    font-size: 1.5rem;
+  }
+  
+  .course-carousel__nav {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+}
