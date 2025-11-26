@@ -19,7 +19,10 @@ function Home() {
     setCurrentUser(user);
     
     // Cargar todos los profesores (mock + registrados)
-    setAllProfessors(getAllTeachers());
+    const teachers = getAllTeachers();
+    console.log('📚 Profesores cargados:', teachers);
+    console.log('📊 Total profesores:', teachers.length);
+    setAllProfessors(teachers);
   }, [navigate]);
 
   const handleLogout = () => {

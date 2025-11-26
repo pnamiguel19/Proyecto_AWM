@@ -31,7 +31,7 @@ const TeacherProfile = () => {
         </button>
         
         <TeacherProfileCard teacher={teacherData} />
-        <ActionButtons />
+        <ActionButtons teacherId={teacherData.id} />
         <VideoPresentation video={teacherData.video} />
         <CourseCarousel courses={teacherData.courses} />
         <TeacherReviews 

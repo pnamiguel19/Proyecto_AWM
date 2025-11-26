@@ -1,10 +1,13 @@
 import React from 'react';
 import './ActionButtons.css';
+import { useNavigate } from 'react-router-dom';
 
-const ActionButtons = () => {
+const ActionButtons = ({ teacherId }) => {
+  const navigate = useNavigate();
+
   const handleScheduleClick = () => {
     console.log('Redirigir a agendamiento de clases');
-    // TODO: Implementar navegación futura
+    navigate(`/schedule/${teacherId}`);
   };
 
   const handleCoursesClick = () => {

@@ -14,6 +14,7 @@ const MyClasses = lazy(() => import('../pages/Student/MyClasses/MyClasses'));
 const MyTeachers = lazy(() => import('../pages/Student/MyTeachers/MyTeachers'));
 const Reviews = lazy(() => import('../pages/Student/Reviews/Reviews'));
 const TeacherProfile = lazy(() => import('../pages/Student/TeacherProfile/TeacherProfile'));
+const ScheduleClass = lazy(() => import('../pages/Student/ScheduleClass/ScheduleClass'));
 
 // Professor routes
 const ProfileProfessor = lazy(() => import('../pages/Professor/Profile/ProfileProfessor'));
@@ -49,6 +50,7 @@ const AppRoutes = () => {
         <Route path="/student/my-teachers" element={<MyTeachers />} />
         <Route path="/student/reviews" element={<Reviews />} />
         <Route path="/teacher/:id" element={<TeacherProfile />} />
+        <Route path="/schedule/:teacherId" element={<ScheduleClass />} />
 
         {/* Professor Routes */}
         <Route path="/professor/profile" element={<ProfileProfessor />} />
