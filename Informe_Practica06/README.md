@@ -1,4 +1,5 @@
-
+🎓 Nombre de la aplicacion:
+EduMatch
 Descripción breve del objetivo de la práctica
 El objetivo principal de esta práctica es evolucionar el prototipo estático de EduMatch hacia una Single Page Application (SPA) dinámica y escalable utilizando la librería React. Se busca transformar la estructura previa de HTML y JavaScript en una arquitectura basada en componentes funcionales, permitiendo la reutilización de código en vistas clave (como perfiles de profesores y catálogos de cursos). Además, se implementa la gestión de estado mediante Hooks (useState, useEffect) y el flujo de datos a través de Props, garantizando una interfaz interactiva y modular que facilite futuras expansiones del sistema de agendamiento y monetización.
 
