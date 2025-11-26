@@ -1,0 +1,121 @@
+.location-selector {
+  margin-bottom: 2rem;
+}
+
+.location-selector__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0 0 1rem 0;
+}
+
+.location-selector__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.location-selector__option {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.location-selector__option:hover {
+  border-color: #00D9E1;
+}
+
+.location-selector__option--active {
+  border-color: #00D9E1;
+  background-color: #f0f9ff;
+}
+
+.location-selector__radio {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: #00D9E1;
+  flex-shrink: 0;
+}
+
+.location-selector__option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.location-selector__option-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.location-selector__option-address {
+  font-size: 0.9rem;
+  color: #5A6C7D;
+  line-height: 1.4;
+}
+
+.location-selector__map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.location-selector__map-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: #00D9E1;
+  color: white;
+}
+
+.location-selector__map-icon {
+  font-size: 1.8rem;
+}
+
+.location-selector__map-info {
+  flex: 1;
+}
+
+.location-selector__map-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.location-selector__map-address {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.location-selector__map {
+  background-color: #f0f0f0;
+  width: 100%;
+  height: 400px;
+}
+
+.location-selector__map iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .location-selector__map {
+    height: 300px;
+  }
+
+  .location-selector__option-address {
+    font-size: 0.85rem;
+  }
+}

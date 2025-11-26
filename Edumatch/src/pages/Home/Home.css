@@ -2,6 +2,12 @@
    HOME - ESTUDIANTE
    ======================================== */
 
+.home {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 2rem;
+}
+
 .home-container {
   min-height: 100vh;
   background: #f5f7fa;
@@ -419,6 +425,10 @@
 }
 
 @media (max-width: 768px) {
+  .home {
+    padding: 1rem;
+  }
+  
   .home-header-content {
     padding: 0 20px;
     flex-wrap: wrap;

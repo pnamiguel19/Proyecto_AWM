@@ -1,0 +1,60 @@
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.action-button {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+.action-button--primary {
+  background: linear-gradient(135deg, #00D9E1 0%, #008B8B 100%);
+  color: white;
+}
+
+.action-button--primary:hover {
+  background: linear-gradient(135deg, #00C5CD 0%, #007777 100%);
+}
+
+.action-button--secondary {
+  background-color: #FFD700;
+  color: #2C3E50;
+}
+
+.action-button--secondary:hover {
+  background-color: #FFC700;
+}
+
+.action-button--tertiary {
+  background-color: white;
+  color: #2C3E50;
+  border: 2px solid #00D9E1;
+}
+
+.action-button--tertiary:hover {
+  background-color: #f0f9ff;
+}
+
+@media (max-width: 768px) {
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+}

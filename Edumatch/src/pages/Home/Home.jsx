@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getAllTeachers } from '../../data/mockTeachers';
 import './Home.css';
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
   const [currentUser, setCurrentUser] = useState(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [allProfessors, setAllProfessors] = useState([]);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('currentUser'));
@@ -15,6 +17,12 @@ function Home() {
       return;
     }
     setCurrentUser(user);
+    
+    // Cargar todos los profesores (mock + registrados)
+    const teachers = getAllTeachers();
+    console.log('📚 Profesores cargados:', teachers);
+    console.log('📊 Total profesores:', teachers.length);
+    setAllProfessors(teachers);
   }, [navigate]);
 
   const handleLogout = () => {
@@ -29,45 +37,40 @@ function Home() {
     return `${first[0] || ''}${last[0] || ''}`.toUpperCase();
   };
 
-  // Datos de ejemplo (sin cambios)
-  const featuredProfessors = [
-    { id: 1, name: 'Juan', subject: 'Física', level: 'Bachillerato', price: '$5 por hora', rating: '4.9' },
-    { id: 2, name: 'María', subject: 'Matemáticas', level: 'Primaria y Secundaria', price: '$5 por hora', rating: '5.0' },
-    { id: 3, name: 'Carlos', subject: 'Química', level: 'Bachillerato', price: '$5 por hora', rating: '4.8' }
-  ];
+  // Usar profesores cargados dinámicamente
+  const featuredProfessors = allProfessors.slice(0, 3);
+  const expertProfessors = allProfessors.slice(3, 6);
+  const expertProfessors2 = allProfessors.slice(6, 9);
+  const recommendedProfessors = allProfessors.slice(9, 12);
 
-  const expertProfessors = [
-    { id: 4, name: 'Gabriela', subject: 'Francés', level: 'Todos los niveles', price: '$5 por hora', rating: '4.9' },
-    { id: 5, name: 'Miguel', subject: 'Música', level: 'Piano y Guitarra', price: '$5 por hora', rating: '5.0' },
-    { id: 6, name: 'Valentina', subject: 'Dibujo', level: 'Arte y Diseño', price: '$5 por hora', rating: '4.8' }
-  ];
-
-  const expertProfessors2 = [
-    { id: 7, name: 'Diego', subject: 'Programación', level: 'Bachillerato y Universidad', price: '$5 por hora', rating: '5.0' },
-    { id: 8, name: 'Sofía', subject: 'Literatura', level: 'Secundaria y Bachillerato', price: '$5 por hora', rating: '4.9' },
-    { id: 9, name: 'Roberto', subject: 'Economía', level: 'Bachillerato y Universidad', price: '$5 por hora', rating: '4.7' }
-  ];
-
-  const recommendedProfessors = [
-    { id: 10, name: 'Ana', subject: 'Inglés', level: 'Todos los niveles', price: '$5 por hora', rating: '5.0' },
-    { id: 11, name: 'Pedro', subject: 'Historia', level: 'Secundaria y Bachillerato', price: '$5 por hora', rating: '4.9' },
-    { id: 12, name: 'Laura', subject: 'Biología', level: 'Bachillerato', price: '$5 por hora', rating: '4.8' }
-  ];
+  const handleTeacherClick = (teacherId) => {
+    navigate(`/teacher/${teacherId}`);
+  };
 
   const ProfessorCard = ({ professor }) => (
-    <div className="professor-card">
+    <div 
+      className="professor-card"
+      onClick={() => handleTeacherClick(professor.id)}
+      style={{ cursor: 'pointer' }}
+      role="button"
+      tabIndex={0}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') handleTeacherClick(professor.id);
+      }}
+    >
       <div className="professor-image-container">
         <div className="professor-placeholder">
           <span className="placeholder-emoji">😊</span>
         </div>
       </div>
       <div className="professor-info">
-        <h3 className="professor-name">{professor.name}, {professor.subject}</h3>
-        <p className="professor-level">{professor.level}</p>
-        <p className="professor-price">{professor.price}</p>
+        <h3 className="professor-name">{professor.name}</h3>
+        <p className="professor-level">{professor.mainSubject}</p>
+        <p className="professor-price">{professor.modality}</p>
         <div className="professor-rating">
           <span className="rating-star">⭐</span>
           <span className="rating-value">{professor.rating}</span>
+          <span className="rating-reviews">({professor.reviewCount})</span>
         </div>
       </div>
     </div>
