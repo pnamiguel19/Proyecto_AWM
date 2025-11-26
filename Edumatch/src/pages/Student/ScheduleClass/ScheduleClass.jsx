@@ -92,7 +92,7 @@ const ScheduleClass = () => {
     return consolidated;
   };
 
-  const handleAccept = () => {
+  const handleGoToCheckout = () => {
     if (!selectedSubject) {
       alert('Por favor selecciona una materia');
       return;
@@ -108,12 +108,18 @@ const ScheduleClass = () => {
 
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     
+    // Obtener precio por hora según modalidad
+    const pricePerHour = modality === 'virtual' 
+      ? parseFloat(teacher.priceVirtual || teacher.courses[0]?.priceVirtual?.replace(/[^0-9.]/g, '') || 15)
+      : parseFloat(teacher.pricePresencial || teacher.courses[0]?.pricePresencial?.replace(/[^0-9.]/g, '') || 20);
+    
     const appointment = {
       id: `appointment_${Date.now()}`,
       studentId: currentUser?.id || 'guest',
       studentName: currentUser ? `${currentUser.firstName} ${currentUser.lastName}` : 'Invitado',
       teacherId: teacher.id,
       teacherName: teacher.name,
+      teacherPhoto: teacher.photos?.main || 'https://via.placeholder.com/150',
       subject: selectedSubject,
       modality,
       platform: modality === 'virtual' ? platform : null,
@@ -126,21 +132,15 @@ const ScheduleClass = () => {
       description,
       schedules,
       totalHours,
+      pricePerHour,
       status: 'pending_payment',
       createdAt: new Date().toISOString()
     };
 
-    // Guardar en localStorage
-    const pendingAppointments = JSON.parse(localStorage.getItem('pending_appointments') || '[]');
-    pendingAppointments.push(appointment);
-    localStorage.setItem('pending_appointments', JSON.stringify(pendingAppointments));
-
-    console.log('Agendamiento creado:', appointment);
-    alert(`¡Agendamiento creado exitosamente!\n\nTotal de horas: ${totalHours}\nEstado: Pendiente de pago`);
+    console.log('📋 Datos del agendamiento:', appointment);
     
-    // TODO: Navegar a vista de pago (futura)
-    // navigate(`/payment/${appointment.id}`);
-    navigate('/');
+    // Navegar a checkout con los datos
+    navigate('/checkout', { state: { appointmentData: appointment } });
   };
 
   if (!teacher) {
@@ -213,10 +213,10 @@ const ScheduleClass = () => {
             Regresar
           </button>
           <button
-            onClick={handleAccept}
+            onClick={handleGoToCheckout}
             className="schedule-class__button schedule-class__button--primary"
           >
-            Aceptar
+            🛒 Ir a la caja
           </button>
         </div>
       </div>

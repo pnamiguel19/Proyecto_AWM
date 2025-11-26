@@ -33,7 +33,12 @@ const TeacherProfile = () => {
         <TeacherProfileCard teacher={teacherData} />
         <ActionButtons teacherId={teacherData.id} />
         <VideoPresentation video={teacherData.video} />
-        <CourseCarousel courses={teacherData.courses} />
+        <CourseCarousel 
+          courses={teacherData.courses} 
+          teacherModality={teacherData.modality}
+          priceVirtual={teacherData.priceVirtual}
+          pricePresencial={teacherData.pricePresencial}
+        />
         <TeacherReviews 
           reviews={teacherData.reviews}
           rating={teacherData.rating}

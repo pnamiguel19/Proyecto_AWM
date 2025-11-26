@@ -7,6 +7,8 @@ export const mockTeachers = [
     rating: 4.8,
     reviewCount: 35,
     approvalRate: 98,
+    priceVirtual: '10',
+    pricePresencial: '15',
     photos: {
       main: "https://via.placeholder.com/400x300/FF6B35/ffffff?text=Juan+Garcia",
       additional: [
@@ -93,6 +95,10 @@ export const mockTeachers = [
     rating: 4.9,
     reviewCount: 42,
     approvalRate: 100,
+    priceVirtual: '8',
+    pricePresencial: '12',
+    priceVirtual: '8',
+    pricePresencial: '12',
     photos: {
       main: "https://via.placeholder.com/400x300/00D9E1/ffffff?text=Maria+Lopez",
       additional: [
@@ -165,6 +171,10 @@ export const mockTeachers = [
     rating: 4.7,
     reviewCount: 28,
     approvalRate: 96,
+    priceVirtual: '12',
+    pricePresencial: '17',
+    priceVirtual: '12',
+    pricePresencial: '17',
     photos: {
       main: "https://via.placeholder.com/400x300/FFD700/ffffff?text=Carlos+Perez",
       additional: [
@@ -237,6 +247,8 @@ export const mockTeachers = [
     rating: 4.9,
     reviewCount: 38,
     approvalRate: 99,
+    priceVirtual: '14',
+    pricePresencial: '18',
     photos: {
       main: "https://via.placeholder.com/400x300/9C27B0/ffffff?text=Gabriela+Mendoza",
       additional: [
@@ -317,6 +329,8 @@ export const mockTeachers = [
     rating: 5.0,
     reviewCount: 31,
     approvalRate: 100,
+    priceVirtual: '20',
+    pricePresencial: '25',
     photos: {
       main: "https://via.placeholder.com/400x300/FF5722/ffffff?text=Miguel+Vargas",
       additional: [
@@ -397,6 +411,8 @@ export const mockTeachers = [
     rating: 4.8,
     reviewCount: 25,
     approvalRate: 97,
+    priceVirtual: '16',
+    pricePresencial: '20',
     photos: {
       main: "https://via.placeholder.com/400x300/E91E63/ffffff?text=Valentina+Soto",
       additional: [
@@ -473,69 +489,75 @@ export const mockTeachers = [
 
 // Función para obtener todos los profesores (mock + registrados)
 export const getAllTeachers = () => {
-  // Cargar profesores registrados desde localStorage
+  // Profesores de mockTeachers.js (los 6 originales)
+  const staticTeachers = mockTeachers;
+
+  // Profesores registrados desde localStorage
   const storedUsers = localStorage.getItem('edumatch_users');
   let registeredProfessors = [];
-  
+
   if (storedUsers) {
-    const parsedData = JSON.parse(storedUsers);
-    registeredProfessors = parsedData.professors || [];
+    try {
+      const usersData = JSON.parse(storedUsers);
+      registeredProfessors = (usersData.professors || []).map(prof => ({
+        id: prof.id,
+        name: `${prof.firstName} ${prof.lastName}`,
+        mainSubject: prof.subjects?.[0] ? `${prof.subjects[0]} - ${prof.educationLevels?.[0] || 'Varios niveles'}` : 'Materia no especificada',
+        modality: prof.teachingModalities?.join(' / ') || 'Virtual / Presencial',
+        rating: prof.rating || 0,
+        reviewCount: prof.totalClasses || 0,
+        approvalRate: Math.floor((prof.rating / 5) * 100) || 0,
+        photos: {
+          main: prof.profilePhoto || `https://via.placeholder.com/400x300/00BCD4/ffffff?text=${prof.firstName}+${prof.lastName}`,
+          additional: [
+            `https://via.placeholder.com/200x150/FF6B35/ffffff?text=Clase+1`,
+            `https://via.placeholder.com/200x150/FFD700/ffffff?text=Clase+2`
+          ]
+        },
+        video: {
+          url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          description: prof.bio || "Profesor registrado en EduMatch"
+        },
+        courses: prof.subjects?.map((subject, idx) => ({
+          id: idx + 1,
+          title: `${subject} - ${prof.educationLevels?.[0] || 'Varios niveles'}`,
+          duration: "1h de clase",
+          priceVirtual: `$${prof.priceVirtual || prof.pricePerHour || 15} USD`,
+          pricePresencial: `$${prof.pricePresencial || (parseInt(prof.pricePerHour || 15) + 5)} USD`,
+          modality: prof.teachingModalities?.join('/') || 'Virtual/Presencial'
+        })) || [],
+        reviews: [
+          {
+            id: 1,
+            studentName: "Usuario EduMatch",
+            rating: prof.rating || 5,
+            date: "Reciente",
+            comment: "Excelente profesor registrado en nuestra plataforma."
+          }
+        ],
+        location: {
+          address: prof.address || "Quito, Ecuador",
+          coordinates: { lat: -0.1807, lng: -78.4678 }
+        },
+        priceVirtual: prof.priceVirtual || prof.pricePerHour || '15',
+        pricePresencial: prof.pricePresencial || (parseInt(prof.pricePerHour || 15) + 5).toString()
+      }));
+    } catch (error) {
+      console.error('Error parseando profesores registrados:', error);
+    }
   }
 
-  // Mapear profesores registrados al formato de mockTeachers
-  const mappedRegisteredProfessors = registeredProfessors.map((prof, index) => ({
-    id: 100 + index, // IDs empiezan desde 100 para evitar conflictos
-    name: `${prof.firstName} ${prof.lastName}`,
-    mainSubject: prof.subjects?.[0] ? `${prof.subjects[0]} - ${prof.educationLevels?.[0] || 'Varios niveles'}` : 'Materia no especificada',
-    modality: prof.teachingModalities?.join(' / ') || 'No especificado',
-    rating: prof.rating || 0,
-    reviewCount: prof.totalClasses || 0,
-    approvalRate: Math.floor((prof.rating / 5) * 100) || 0,
-    photos: {
-      main: prof.profilePhoto || `https://via.placeholder.com/400x300/00BCD4/ffffff?text=${prof.firstName}+${prof.lastName}`,
-      additional: [
-        `https://via.placeholder.com/200x150/FF6B35/ffffff?text=Clase+1`,
-        `https://via.placeholder.com/200x150/FFD700/ffffff?text=Clase+2`
-      ]
-    },
-    video: {
-      url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      description: prof.bio || "Profesor registrado en EduMatch"
-    },
-    courses: prof.subjects?.map((subject, idx) => ({
-      id: idx + 1,
-      title: `${subject} - ${prof.educationLevels?.[0] || 'Varios niveles'}`,
-      duration: "1h de clase",
-      priceVirtual: `$${prof.pricePerHour || 15} ${prof.currency || 'USD'}`,
-      pricePresencial: `$${parseInt(prof.pricePerHour || 15) + 5} ${prof.currency || 'USD'}`,
-      modality: prof.teachingModalities?.join('/') || 'Virtual/Presencial'
-    })) || [],
-    reviews: [
-      {
-        id: 1,
-        studentName: "Usuario EduMatch",
-        rating: prof.rating || 5,
-        date: "Reciente",
-        comment: "Excelente profesor registrado en nuestra plataforma."
-      }
-    ],
-    location: {
-      address: prof.address || "Quito, Ecuador",
-      coordinates: { lat: -0.1807, lng: -78.4678 }
-    }
-  }));
-
-  // Combinar profesores mock + registrados
-  return [...mockTeachers, ...mappedRegisteredProfessors];
+  // Combinar ambos
+  return [...staticTeachers, ...registeredProfessors];
 };
 
 // Función para obtener un profesor por ID (busca en mock y registrados)
 export const getTeacherById = (id) => {
-  // Buscar primero en mockTeachers
+  // Buscar primero en mockTeachers (IDs numéricos 1-6)
   const mockTeacher = mockTeachers.find(teacher => teacher.id === parseInt(id));
   if (mockTeacher) return mockTeacher;
 
-  // Si no se encuentra, buscar en profesores registrados
+  // Si no se encuentra, buscar en profesores registrados (IDs tipo 'PR001', 'PR002', etc)
   const allTeachers = getAllTeachers();
-  return allTeachers.find(teacher => teacher.id === parseInt(id));
+  return allTeachers.find(teacher => teacher.id === id || teacher.id === parseInt(id));
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './CourseCarousel.css';
 
-const CourseCarousel = ({ courses }) => {
+const CourseCarousel = ({ courses, teacherModality, priceVirtual, pricePresencial }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -16,9 +16,24 @@ const CourseCarousel = ({ courses }) => {
     );
   };
 
+  // Determinar qué precio mostrar
+  const getPrice = () => {
+    if (teacherModality === 'Virtual') {
+      return priceVirtual;
+    } else if (teacherModality === 'Presencial') {
+      return pricePresencial;
+    } else {
+      // Si es híbrido, mostrar ambos precios
+      return `Virtual: ${priceVirtual} | Presencial: ${pricePresencial}`;
+    }
+  };
+
   return (
     <div className="course-carousel">
-      <h2 className="course-carousel__title">📚 Clases que imparto</h2>
+      <div className="carousel-header">
+        <h2>📚 Cursos Disponibles</h2>
+        <p className="price-info">💰 Precio por hora: ${getPrice()} USD</p>
+      </div>
       <div className="course-carousel__container">
         {courses.length > 1 && (
           <button 
@@ -46,7 +61,7 @@ const CourseCarousel = ({ courses }) => {
                     </div>
                     <div className="course-card__detail">
                       <span className="course-card__icon">💵</span>
-                      <span>{course.priceVirtual}</span>
+                      <span>{getPrice()}</span>
                     </div>
                     <div className="course-card__detail">
                       <span className="course-card__icon">📍</span>

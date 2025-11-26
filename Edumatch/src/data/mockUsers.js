@@ -116,6 +116,8 @@ export const mockUsers = {
       educationLevels: ['Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Presencial', 'Virtual'],
       pricePerHour: '25',
+      priceVirtual: '20',
+      pricePresencial: '25',
       currency: 'USD',
       schedule: {
         lunes: { manana: true, tarde: true, noche: false, todoElDia: false },
@@ -154,6 +156,8 @@ export const mockUsers = {
       educationLevels: ['Primaria', 'Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Virtual', 'Híbrido'],
       pricePerHour: '20',
+      priceVirtual: '15',
+      pricePresencial: '20',
       currency: 'USD',
       schedule: {
         lunes: { manana: false, tarde: true, noche: true, todoElDia: false },
@@ -192,6 +196,8 @@ export const mockUsers = {
       educationLevels: ['Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Presencial', 'Virtual'],
       pricePerHour: '30',
+      priceVirtual: '25', 
+      pricePresencial: '30',
       currency: 'USD',
       schedule: {
         lunes: { manana: true, tarde: false, noche: true, todoElDia: false },
@@ -230,6 +236,8 @@ export const mockUsers = {
       educationLevels: ['Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Virtual'],
       pricePerHour: '35',
+      priceVirtual: '30',
+      pricePresencial: '35',
       currency: 'USD',
       schedule: {
         lunes: { manana: false, tarde: true, noche: true, todoElDia: false },
@@ -268,6 +276,8 @@ export const mockUsers = {
       educationLevels: ['Primaria', 'Secundaria', 'Bachillerato'],
       teachingModalities: ['Presencial', 'Virtual', 'Híbrido'],
       pricePerHour: '18',
+      priceVirtual: '14',
+      pricePresencial: '18',
       currency: 'USD',
       schedule: {
         lunes: { manana: true, tarde: true, noche: false, todoElDia: false },
@@ -306,6 +316,8 @@ export const mockUsers = {
       educationLevels: ['Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Presencial', 'Virtual'],
       pricePerHour: '22',
+      priceVirtual: '18',
+      pricePresencial: '22',
       currency: 'USD',
       schedule: {
         lunes: { manana: false, tarde: true, noche: true, todoElDia: false },
@@ -344,6 +356,8 @@ export const mockUsers = {
       educationLevels: ['Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Virtual', 'Híbrido'],
       pricePerHour: '20',
+      priceVirtual: '16',
+      pricePresencial: '20',
       currency: 'USD',
       schedule: {
         lunes: { manana: true, tarde: false, noche: true, todoElDia: false },
@@ -382,6 +396,8 @@ export const mockUsers = {
       educationLevels: ['Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Virtual'],
       pricePerHour: '28',
+      priceVirtual: '24',
+      pricePresencial: '28',
       currency: 'USD',
       schedule: {
         lunes: { manana: false, tarde: true, noche: true, todoElDia: false },
@@ -420,6 +436,8 @@ export const mockUsers = {
       educationLevels: ['Primaria', 'Secundaria', 'Bachillerato'],
       teachingModalities: ['Presencial', 'Virtual'],
       pricePerHour: '25',
+      priceVirtual: '20',
+      pricePresencial: '25',
       currency: 'USD',
       schedule: {
         lunes: { manana: false, tarde: true, noche: true, todoElDia: false },
@@ -458,6 +476,8 @@ export const mockUsers = {
       educationLevels: ['Secundaria', 'Bachillerato', 'Universidad'],
       teachingModalities: ['Virtual', 'Híbrido'],
       pricePerHour: '30',
+      priceVirtual: '25',
+      pricePresencial: '30',
       currency: 'USD',
       schedule: {
         lunes: { manana: true, tarde: true, noche: false, todoElDia: false },
