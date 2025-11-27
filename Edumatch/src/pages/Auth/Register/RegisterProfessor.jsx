@@ -1768,248 +1768,330 @@ function RegisterProfessor() {
             </form>
           </div>
         )}
-
         {/* PASO 5: CONFIRMACIÓN Y REVISIÓN */}
-        {currentStep === 5 && (
-          <div className="step-content">
-            <div className="step-header">
-              <h2 className="step-title">
-                <span>✅</span> Confirmación y Revisión
-              </h2>
-              <p className="step-description">
-                Revisa toda tu información antes de enviar tu solicitud
-              </p>
-            </div>
+{currentStep === 5 && (
+  <div className="step-content">
+    <div className="step-header">
+      <h2 className="step-title">
+        <span>✅</span> Confirmación y Revisión
+      </h2>
+      <p className="step-description">
+        Revisa toda tu información antes de enviar tu solicitud
+      </p>
+    </div>
 
-            <form className="register-professor-form" onSubmit={(e) => e.preventDefault()}>
-              {/* MENSAJE DE BIENVENIDA */}
-              <div className="success-message-section">
-                <div className="success-icon">🎉</div>
-                <h3 className="success-title">¡Estás a un paso de unirte a EduMatch!</h3>
-                <p className="success-description">
-                  Al completar tu registro, nuestro equipo revisará tu perfil y te enviaremos una confirmación 
-                  por correo electrónico en las próximas 24-48 horas.
-                </p>
-                <p className="success-subdescription">
-                  Una vez aprobado, podrás comenzar a recibir solicitudes de estudiantes y empezar a 
-                  compartir tu conocimiento.
-                </p>
-              </div>
+    <form className="register-professor-form" onSubmit={(e) => e.preventDefault()}>
+      {/* MENSAJE DE BIENVENIDA */}
+      <div className="success-message-section">
+        <div className="success-icon">🎉</div>
+        <h3 className="success-title">¡Estás a un paso de unirte a EduMatch!</h3>
+        <p className="success-description">
+          Al completar tu registro, nuestro equipo revisará tu perfil y te enviaremos una confirmación 
+          por correo electrónico en las próximas 24-48 horas.
+        </p>
+        <p className="success-subdescription">
+          Una vez aprobado, podrás comenzar a recibir solicitudes de estudiantes y empezar a 
+          compartir tu conocimiento.
+        </p>
+      </div>
 
-              {/* SECCIÓN 1: INFORMACIÓN PERSONAL */}
-              <div className="review-section">
-                <div className="review-header">
-                  <span className="review-icon">👤</span>
-                  <h3 className="review-title">Información Personal</h3>
-                </div>
+      {/* SECCIÓN 1: INFORMACIÓN PERSONAL */}
+      <div className="review-section">
+        <div className="review-header">
+          <span className="review-icon">👤</span>
+          <h3 className="review-title">Información Personal</h3>
+        </div>
 
-                <div className="review-grid">
-                  <div className="review-item">
-                    <span className="review-label">Nombre completo:</span>
-                    <span className="review-value">{formData.firstName} {formData.lastName}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Email:</span>
-                    <span className="review-value">{formData.email}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Teléfono:</span>
-                    <span className="review-value">{formData.phone}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Fecha de nacimiento:</span>
-                    <span className="review-value">{formData.birthDate}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Género:</span>
-                    <span className="review-value">
-                      {genderOptions.find(opt => opt.value === formData.gender)?.label || 'No especificado'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* SECCIÓN 2: FORMACIÓN ACADÉMICA */}
-              <div className="review-section">
-                <div className="review-header">
-                  <span className="review-icon">🎓</span>
-                  <h3 className="review-title">Formación Académica</h3>
-                </div>
-
-                <div className="review-grid">
-                  <div className="review-item">
-                    <span className="review-label">Título universitario:</span>
-                    <span className="review-value">{formData.universityDegree || 'No especificado'}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Universidad:</span>
-                    <span className="review-value">{formData.university || 'No especificado'}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Año de graduación:</span>
-                    <span className="review-value">{formData.graduationYear || 'No especificado'}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Cédula profesional:</span>
-                    <span className="review-value">
-                      {formData.professionalLicenseFile ? '✓ Documento cargado' : 'No especificado'}
-                    </span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Experiencia docente:</span>
-                    <span className="review-value">{getExperienceLabel()}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Certificaciones adicionales:</span>
-                    <span className="review-value">
-                      {formData.certifications.filter(c => c.file).length} certificación(es)
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* SECCIÓN 3: MATERIAS Y MODALIDADES */}
-              <div className="review-section">
-                <div className="review-header">
-                  <span className="review-icon">📚</span>
-                  <h3 className="review-title">Materias y Modalidades</h3>
-                </div>
-
-                <div className="review-grid">
-                  <div className="review-item full-width">
-                    <span className="review-label">Materias:</span>
-                    <span className="review-value">{getSelectedSubjectsNames()}</span>
-                  </div>
-                  <div className="review-item full-width">
-                    <span className="review-label">Niveles educativos:</span>
-                    <span className="review-value">{getSelectedLevelsNames()}</span>
-                  </div>
-                  <div className="review-item full-width">
-                    <span className="review-label">Modalidades:</span>
-                    <span className="review-value">{getSelectedModalitiesNames()}</span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Tarifa por hora:</span>
-                    <span className="review-value">
-                      {formData.pricePerHour} {formData.currency}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* SECCIÓN 4: DISPONIBILIDAD HORARIA */}
-              <div className="review-section">
-                <div className="review-header">
-                  <span className="review-icon">📅</span>
-                  <h3 className="review-title">Disponibilidad Horaria</h3>
-                </div>
-
-                <div className="review-grid">
-                  <div className="review-item">
-                    <span className="review-label">Horarios disponibles:</span>
-                    <span className="review-value">
-                      {getScheduleStats().timeSlots} franja{getScheduleStats().timeSlots !== 1 ? 's' : ''} horaria{getScheduleStats().timeSlots !== 1 ? 's' : ''} seleccionada{getScheduleStats().timeSlots !== 1 ? 's' : ''}
-                    </span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Estudiantes máximo por clase:</span>
-                    <span className="review-value">
-                      {maxStudentsOptions.find(opt => opt.value === formData.maxStudentsPerClass)?.label.split('(')[0].trim() || 'No especificado'}
-                    </span>
-                  </div>
-                  <div className="review-item">
-                    <span className="review-label">Tiempo de anticipación:</span>
-                    <span className="review-value">
-                      {reservationTimeOptions.find(opt => opt.value === formData.reservationTime)?.label || 'No especificado'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* TÉRMINOS Y CONDICIONES */}
-              <div className="terms-section">
-                <div className="terms-checkbox-group">
-                  <label className={`terms-checkbox ${errors.acceptTerms ? 'error' : ''}`}>
-                    <input
-                      type="checkbox"
-                      checked={formData.acceptTerms}
-                      onChange={(e) => {
-                        setFormData(prev => ({ ...prev, acceptTerms: e.target.checked }));
-                        if (errors.acceptTerms) {
-                          setErrors(prev => ({ ...prev, acceptTerms: '' }));
-                        }
-                      }}
-                    />
-                    <span className="terms-checkmark"></span>
-                    <span className="terms-text">
-                      He leído y acepto los{' '}
-                      <a href="/terminos-condiciones" target="_blank" rel="noopener noreferrer">
-                        Términos y Condiciones
-                      </a>
-                      {' '}y la{' '}
-                      <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer">
-                        Política de Privacidad
-                      </a>
-                    </span>
-                  </label>
-                  {errors.acceptTerms && (
-                    <span className="error-message">{errors.acceptTerms}</span>
-                  )}
-
-                  <label className={`terms-checkbox ${errors.acceptPrivacy ? 'error' : ''}`}>
-                    <input
-                      type="checkbox"
-                      checked={formData.acceptPrivacy}
-                      onChange={(e) => {
-                        setFormData(prev => ({ ...prev, acceptPrivacy: e.target.checked }));
-                        if (errors.acceptPrivacy) {
-                          setErrors(prev => ({ ...prev, acceptPrivacy: '' }));
-                        }
-                      }}
-                    />
-                    <span className="terms-checkmark"></span>
-                    <span className="terms-text">
-                      Autorizo el uso de mis datos personales según la política de privacidad
-                    </span>
-                  </label>
-                  {errors.acceptPrivacy && (
-                    <span className="error-message">{errors.acceptPrivacy}</span>
-                  )}
-
-                  <label className="terms-checkbox optional">
-                    <input
-                      type="checkbox"
-                      checked={formData.acceptNotifications}
-                      onChange={(e) => setFormData(prev => ({ ...prev, acceptNotifications: e.target.checked }))}
-                    />
-                    <span className="terms-checkmark"></span>
-                    <span className="terms-text">
-                      Deseo recibir notificaciones sobre nuevas solicitudes de clases (opcional)
-                    </span>
-                  </label>
-                </div>
-              </div>
-
-              {/* BOTONES */}
-              <div className="form-actions">
-                <Button
-                  type="button"
-                  variant="secondary"
-                  onClick={() => setCurrentStep(4)}
-                >
-                  ← Anterior
-                </Button>
-                <Button 
-                  type="button" 
-                  variant="primary" 
-                  onClick={handleSubmit}
-                >
-                  🎉 Completar Registro
-                </Button>
-              </div>
-            </form>
+        <div className="review-grid">
+          <div className="review-item">
+            <span className="review-label">Nombre completo:</span>
+            <span className="review-value">
+              {formData.firstName && formData.lastName 
+                ? `${formData.firstName} ${formData.lastName}` 
+                : 'No especificado'}
+            </span>
           </div>
-        )}
+          <div className="review-item">
+            <span className="review-label">Email:</span>
+            <span className="review-value">{formData.email || 'No especificado'}</span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Teléfono:</span>
+            <span className="review-value">{formData.phone || 'No especificado'}</span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Fecha de nacimiento:</span>
+            <span className="review-value">
+              {formData.birthDate 
+                ? new Date(formData.birthDate).toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })
+                : 'No especificado'}
+            </span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Género:</span>
+            <span className="review-value">
+              {formData.gender 
+                ? genderOptions.find(opt => opt.value === formData.gender)?.label 
+                : 'No especificado'}
+            </span>
+          </div>
+          {formData.address && (
+            <div className="review-item full-width">
+              <span className="review-label">Dirección:</span>
+              <span className="review-value">{formData.address}</span>
+            </div>
+          )}
+          {formData.bio && (
+            <div className="review-item full-width">
+              <span className="review-label">Biografía:</span>
+              <span className="review-value">{formData.bio}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* SECCIÓN 2: FORMACIÓN ACADÉMICA */}
+      <div className="review-section">
+        <div className="review-header">
+          <span className="review-icon">🎓</span>
+          <h3 className="review-title">Formación Académica</h3>
+        </div>
+
+        <div className="review-grid">
+          <div className="review-item">
+            <span className="review-label">Título universitario:</span>
+            <span className="review-value">{formData.universityDegree || 'No especificado'}</span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Universidad:</span>
+            <span className="review-value">{formData.university || 'No especificado'}</span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Año de graduación:</span>
+            <span className="review-value">{formData.graduationYear || 'No especificado'}</span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Experiencia docente:</span>
+            <span className="review-value">
+              {formData.teachingExperience 
+                ? experienceOptions.find(opt => opt.value === formData.teachingExperience)?.label 
+                : 'No especificado'}
+            </span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Título universitario (PDF):</span>
+            <span className="review-value">
+              {formData.universityDegreeFile 
+                ? `✓ ${formData.universityDegreeFile.name}` 
+                : '✕ No cargado'}
+            </span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Cédula profesional (PDF):</span>
+            <span className="review-value">
+              {formData.professionalLicenseFile 
+                ? `✓ ${formData.professionalLicenseFile.name}` 
+                : '✕ No cargado'}
+            </span>
+          </div>
+          <div className="review-item full-width">
+            <span className="review-label">Certificaciones adicionales:</span>
+            <span className="review-value">
+              {formData.certifications.filter(c => c.file).length > 0
+                ? `${formData.certifications.filter(c => c.file).length} certificación(es) cargada(s)`
+                : 'Ninguna certificación adicional'}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* SECCIÓN 3: MATERIAS Y MODALIDADES */}
+      <div className="review-section">
+        <div className="review-header">
+          <span className="review-icon">📚</span>
+          <h3 className="review-title">Materias y Modalidades</h3>
+        </div>
+
+        <div className="review-grid">
+          <div className="review-item full-width">
+            <span className="review-label">Materias que enseñas:</span>
+            <span className="review-value">
+              {formData.subjects.length > 0
+                ? formData.subjects
+                    .map(id => subjectsOptions.find(s => s.id === id)?.name)
+                    .filter(Boolean)
+                    .join(', ')
+                : 'No especificado'}
+            </span>
+          </div>
+          <div className="review-item full-width">
+            <span className="review-label">Niveles educativos:</span>
+            <span className="review-value">
+              {formData.educationLevels.length > 0
+                ? formData.educationLevels
+                    .map(id => educationLevelsOptions.find(l => l.id === id)?.name)
+                    .filter(Boolean)
+                    .join(', ')
+                : 'No especificado'}
+            </span>
+          </div>
+          <div className="review-item full-width">
+            <span className="review-label">Modalidades de enseñanza:</span>
+            <span className="review-value">
+              {formData.teachingModalities.length > 0
+                ? formData.teachingModalities
+                    .map(id => modalitiesOptions.find(m => m.id === id)?.name)
+                    .filter(Boolean)
+                    .join(', ')
+                : 'No especificado'}
+            </span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Tarifa por hora:</span>
+            <span className="review-value">
+              {formData.pricePerHour && formData.currency
+                ? `${formData.pricePerHour} ${formData.currency}`
+                : 'No especificado'}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* SECCIÓN 4: DISPONIBILIDAD HORARIA */}
+      <div className="review-section">
+        <div className="review-header">
+          <span className="review-icon">📅</span>
+          <h3 className="review-title">Disponibilidad Horaria</h3>
+        </div>
+
+        <div className="review-grid">
+          <div className="review-item">
+            <span className="review-label">Franjas horarias disponibles:</span>
+            <span className="review-value">
+              {getScheduleStats().timeSlots} franja{getScheduleStats().timeSlots !== 1 ? 's' : ''} horaria{getScheduleStats().timeSlots !== 1 ? 's' : ''}
+            </span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Días disponibles:</span>
+            <span className="review-value">
+              {getScheduleStats().daysAvailable} día{getScheduleStats().daysAvailable !== 1 ? 's' : ''} a la semana
+            </span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Estudiantes máximo por clase:</span>
+            <span className="review-value">
+              {formData.maxStudentsPerClass
+                ? maxStudentsOptions.find(opt => opt.value === formData.maxStudentsPerClass)?.label.split('(')[0].trim()
+                : 'No especificado'}
+            </span>
+          </div>
+          <div className="review-item">
+            <span className="review-label">Tiempo de anticipación para reservas:</span>
+            <span className="review-value">
+              {formData.reservationTime
+                ? reservationTimeOptions.find(opt => opt.value === formData.reservationTime)?.label
+                : 'No especificado'}
+            </span>
+          </div>
+          {formData.availabilityNotes && (
+            <div className="review-item full-width">
+              <span className="review-label">Notas adicionales:</span>
+              <span className="review-value">{formData.availabilityNotes}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* TÉRMINOS Y CONDICIONES */}
+      <div className="terms-section">
+        <div className="terms-checkbox-group">
+          <label className={`terms-checkbox ${errors.acceptTerms ? 'error' : ''}`}>
+            <input
+              type="checkbox"
+              checked={formData.acceptTerms}
+              onChange={(e) => {
+                setFormData(prev => ({ ...prev, acceptTerms: e.target.checked }));
+                if (errors.acceptTerms) {
+                  setErrors(prev => ({ ...prev, acceptTerms: '' }));
+                }
+              }}
+            />
+            <span className="terms-checkmark"></span>
+            <span className="terms-text">
+              He leído y acepto los{' '}
+              <a href="/terminos-condiciones" target="_blank" rel="noopener noreferrer">
+                Términos y Condiciones
+              </a>
+              {' '}y la{' '}
+              <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer">
+                Política de Privacidad
+              </a>
+              {' '}<span style={{color: '#f44336', fontWeight: 'bold'}}>*</span>
+            </span>
+          </label>
+          {errors.acceptTerms && (
+            <span className="error-message" style={{marginTop: '-10px', marginLeft: '38px'}}>{errors.acceptTerms}</span>
+          )}
+
+          <label className={`terms-checkbox ${errors.acceptPrivacy ? 'error' : ''}`}>
+            <input
+              type="checkbox"
+              checked={formData.acceptPrivacy}
+              onChange={(e) => {
+                setFormData(prev => ({ ...prev, acceptPrivacy: e.target.checked }));
+                if (errors.acceptPrivacy) {
+                  setErrors(prev => ({ ...prev, acceptPrivacy: '' }));
+                }
+              }}
+            />
+            <span className="terms-checkmark"></span>
+            <span className="terms-text">
+              Autorizo el uso de mis datos personales según la política de privacidad
+              {' '}<span style={{color: '#f44336', fontWeight: 'bold'}}>*</span>
+            </span>
+          </label>
+          {errors.acceptPrivacy && (
+            <span className="error-message" style={{marginTop: '-10px', marginLeft: '38px'}}>{errors.acceptPrivacy}</span>
+          )}
+
+          <label className="terms-checkbox optional">
+            <input
+              type="checkbox"
+              checked={formData.acceptNotifications}
+              onChange={(e) => setFormData(prev => ({ ...prev, acceptNotifications: e.target.checked }))}
+            />
+            <span className="terms-checkmark"></span>
+            <span className="terms-text">
+              Deseo recibir notificaciones sobre nuevas solicitudes de clases (opcional)
+            </span>
+          </label>
+        </div>
+      </div>
+
+      {/* BOTONES */}
+      <div className="form-actions">
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={() => setCurrentStep(4)}
+        >
+          ← Anterior
+        </Button>
+        <Button 
+          type="button" 
+          variant="primary" 
+          onClick={handleSubmit}
+        >
+          🎉 Completar Registro
+        </Button>
+      </div>
+    </form>
+  </div>
+)}
       </main>
     </div>
   );

@@ -2,140 +2,15 @@
    CALIFICACIONES Y RESEÑAS
    ======================================== */
 
-.rat-page {
-  min-height: 100vh;
-  background: #f5f7fa;
-  margin: 0;
-  padding: 0;
+.rat-container {
+  width: 100%;
+  animation: ratFadeIn 0.5s ease;
 }
 
-/* ========================================
-   HEADER
-   ======================================== */
-
-.rat-header {
-  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.rat-header-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.rat-header-left {
-  display: flex;
-  align-items: center;
-}
-
-.rat-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.rat-logo:hover {
-  transform: translateY(-2px);
-}
-
-.rat-logo-icon {
-  font-size: 32px;
-}
-
-.rat-logo-text {
-  font-size: 24px;
-  font-weight: 800;
-  color: white;
-}
-
-.rat-header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.rat-btn-convert {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 10px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.rat-btn-convert:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.rat-user-menu-container {
-  position: relative;
-}
-
-.rat-user-avatar-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: white;
-  border: none;
-  border-radius: 50px;
-  padding: 8px 16px 8px 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.rat-user-avatar-btn:hover {
-  transform: scale(1.05);
-}
-
-.rat-avatar-placeholder {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 800;
-  color: white;
-}
-
-.rat-menu-icon {
-  font-size: 20px;
-  color: #666;
-}
-
-.rat-user-dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  min-width: 260px;
-  overflow: hidden;
-  animation: ratSlideDown 0.3s ease;
-}
-
-@keyframes ratSlideDown {
+@keyframes ratFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -143,146 +18,19 @@
   }
 }
 
-.rat-dropdown-header {
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(0, 151, 167, 0.15) 100%);
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.rat-user-name {
-  font-weight: 700;
-  font-size: 16px;
-  color: #333;
-  margin: 0 0 4px 0;
-}
-
-.rat-user-email {
-  font-size: 13px;
-  color: #666;
-  margin: 0;
-}
-
-.rat-dropdown-item {
-  width: 100%;
-  padding: 14px 20px;
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-weight: 600;
-  font-size: 14px;
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.rat-dropdown-item:hover {
-  background: #f5f5f5;
-}
-
-.rat-dropdown-item.rat-logout {
-  color: #f44336;
-}
-
-.rat-dropdown-divider {
-  height: 1px;
-  background: #e0e0e0;
-  margin: 8px 0;
-}
-
 /* ========================================
-   MAIN CONTENT
+   SECTION TITLE
    ======================================== */
-
-.rat-main-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 40px;
-}
-
-/* ========================================
-   SIDEBAR
-   ======================================== */
-
-.rat-sidebar {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  height: fit-content;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 100px;
-}
-
-.rat-sidebar-title {
-  font-size: 20px;
-  font-weight: 800;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.rat-sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.rat-sidebar-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: none;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: left;
-  font-weight: 600;
-  font-size: 14px;
-  color: #666;
-  border-left: 4px solid transparent;
-}
-
-.rat-sidebar-item:hover {
-  background: #f5f5f5;
-}
-
-.rat-sidebar-item.rat-active {
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(0, 151, 167, 0.15) 100%);
-  color: #00bcd4;
-  border-left-color: #00bcd4;
-}
-
-.rat-sidebar-icon {
-  font-size: 20px;
-}
-
-.rat-sidebar-label {
-  flex: 1;
-}
-
-/* ========================================
-   SECTION
-   ======================================== */
-
-.rat-section {
-  background: white;
-  border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
 
 .rat-section-title {
-  font-size: 32px;
-  font-weight: 800;
-  color: #00bcd4;
+  font-size: 34px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0 0 32px 0;
+  letter-spacing: -0.5px;
 }
 
 /* ========================================
@@ -298,6 +46,13 @@
   grid-template-columns: 1fr 2fr;
   gap: 40px;
   margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(255, 193, 7, 0.2);
+  transition: all 0.3s ease;
+}
+
+.rat-overview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(255, 193, 7, 0.3);
 }
 
 .rat-overview-left {
@@ -311,11 +66,24 @@
 }
 
 .rat-score-number {
-  font-size: 72px;
-  font-weight: 800;
-  color: #ffa000;
+  font-size: 80px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffa000 0%, #ff6f00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  animation: ratPulse 2s ease-in-out infinite;
+}
+
+@keyframes ratPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .rat-score-stars {
@@ -326,11 +94,13 @@
 }
 
 .rat-star {
-  font-size: 32px;
+  font-size: 36px;
+  transition: all 0.3s ease;
 }
 
 .rat-star.filled {
   color: #ffa000;
+  filter: drop-shadow(0 2px 4px rgba(255, 160, 0, 0.4));
 }
 
 .rat-star.half {
@@ -343,9 +113,9 @@
 }
 
 .rat-score-text {
-  font-size: 14px;
+  font-size: 15px;
   color: #856404;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .rat-overview-right {
@@ -357,41 +127,43 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .rat-distribution-row {
   display: grid;
   grid-template-columns: 100px 1fr 60px;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .rat-distribution-label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #856404;
   text-align: right;
 }
 
 .rat-distribution-bar {
-  height: 12px;
-  background: #e0e0e0;
-  border-radius: 6px;
+  height: 14px;
+  background: rgba(224, 224, 224, 0.5);
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .rat-distribution-fill {
   height: 100%;
   background: linear-gradient(135deg, #ffa000 0%, #ff6f00 100%);
-  border-radius: 6px;
-  transition: width 0.5s ease;
+  border-radius: 8px;
+  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 6px rgba(255, 160, 0, 0.3);
 }
 
 .rat-distribution-percentage {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #856404;
   text-align: right;
 }
@@ -403,41 +175,56 @@
 .rat-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
   margin-bottom: 32px;
 }
 
 .rat-stat-card {
   background: white;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 14px;
+  padding: 24px;
   text-align: center;
-  border: 2px solid #e8e8e8;
-  transition: all 0.3s ease;
+  border: 2px solid #e8f4f8;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .rat-stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 188, 212, 0.2);
   border-color: #00bcd4;
 }
 
 .rat-stat-icon {
-  font-size: 36px;
-  margin-bottom: 8px;
+  font-size: 40px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  animation: ratFloat 3s ease-in-out infinite;
+}
+
+@keyframes ratFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .rat-stat-value {
-  font-size: 28px;
-  font-weight: 800;
-  color: #00bcd4;
-  margin-bottom: 4px;
+  font-size: 32px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
 }
 
 .rat-stat-label {
-  font-size: 12px;
-  color: #888;
-  font-weight: 600;
+  font-size: 13px;
+  color: #546e7a;
+  font-weight: 700;
 }
 
 /* ========================================
@@ -448,28 +235,149 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 24px;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 12px;
+  margin-bottom: 28px;
+  padding: 24px;
+  background: linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 100%);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.rat-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rat-filter-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .rat-filter-select {
-  padding: 12px 14px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  padding: 14px 16px;
+  border: 2px solid #e0e7ee;
+  border-radius: 10px;
   font-size: 14px;
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: #2c3e50;
   background: white;
   transition: all 0.3s ease;
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300bcd4' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
 }
 
 .rat-filter-select:focus {
   outline: none;
   border-color: #00bcd4;
-  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+  box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.12);
+}
+
+.rat-filter-select:hover {
+  border-color: #00bcd4;
+}
+
+/* ========================================
+   RESULTS INFO
+   ======================================== */
+
+.rat-results-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f0f9fa 0%, #e0f7fa 100%);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #b2ebf2;
+  box-shadow: 0 2px 8px rgba(0, 188, 212, 0.1);
+}
+
+.rat-results-count {
+  font-size: 15px;
+  font-weight: 800;
+  color: #00838f;
+}
+
+.rat-clear-filters {
+  background: white;
+  border: 2px solid #00bcd4;
+  color: #00bcd4;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rat-clear-filters:hover {
+  background: #00bcd4;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+}
+
+/* ========================================
+   NO RESULTS
+   ======================================== */
+
+.rat-no-results {
+  background: white;
+  border: 2px dashed #e0e0e0;
+  border-radius: 16px;
+  padding: 60px 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.rat-no-results-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+  animation: ratFloat 3s ease-in-out infinite;
+}
+
+.rat-no-results-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #2c3e50;
+  margin: 0 0 12px 0;
+}
+
+.rat-no-results-text {
+  font-size: 15px;
+  color: #7f8c8d;
+  margin: 0 0 24px 0;
+  font-weight: 500;
+}
+
+.rat-btn-reset {
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.35);
+}
+
+.rat-btn-reset:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.5);
 }
 
 /* ========================================
@@ -484,15 +392,33 @@
 
 .rat-review-card {
   background: white;
-  border: 2px solid #e8e8e8;
-  border-radius: 12px;
-  padding: 24px;
-  transition: all 0.3s ease;
+  border: 2px solid #e8f4f8;
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.rat-review-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 188, 212, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.rat-review-card:hover::before {
+  left: 100%;
 }
 
 .rat-review-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 188, 212, 0.15);
   border-color: #00bcd4;
 }
 
@@ -500,76 +426,85 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .rat-student-info {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 .rat-student-avatar {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 900;
   color: white;
   flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(0, 188, 212, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.rat-review-card:hover .rat-student-avatar {
+  transform: scale(1.1);
 }
 
 .rat-student-details {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .rat-student-name {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
-  color: #333;
+  color: #2c3e50;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .rat-verified-badge {
-  background: #e3f2fd;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
   color: #1976d2;
-  padding: 4px 10px;
-  border-radius: 12px;
+  padding: 5px 12px;
+  border-radius: 14px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.2);
 }
 
 .rat-student-meta {
   font-size: 13px;
-  color: #888;
+  color: #7f8c8d;
+  font-weight: 600;
 }
 
 .rat-review-rating {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+  gap: 6px;
 }
 
 .rat-rating-stars {
   display: flex;
-  gap: 2px;
+  gap: 3px;
 }
 
 .rat-rating-stars .rat-star {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .rat-rating-number {
-  font-size: 16px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 900;
   color: #ffa000;
 }
 
@@ -579,31 +514,33 @@
 
 .rat-subject-badge {
   display: inline-block;
-  background: #e3f2fd;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
   color: #1976d2;
-  padding: 6px 14px;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
 }
 
 .rat-review-content {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .rat-review-comment {
   font-size: 15px;
-  color: #333;
-  line-height: 1.7;
+  color: #2c3e50;
+  line-height: 1.8;
   margin: 0;
+  font-weight: 500;
 }
 
 .rat-review-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
-  border-top: 2px solid #f0f0f0;
+  padding-top: 18px;
+  border-top: 2px solid #e8f4f8;
 }
 
 .rat-review-helpful {
@@ -612,26 +549,28 @@
 }
 
 .rat-helpful-btn {
-  background: #f5f5f5;
-  border: 2px solid #e0e0e0;
-  padding: 8px 16px;
-  border-radius: 20px;
+  background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 22px;
   font-size: 13px;
-  font-weight: 600;
-  color: #666;
+  font-weight: 700;
+  color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .rat-helpful-btn:hover {
-  background: #e0e0e0;
-  border-color: #ccc;
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .rat-review-date {
   font-size: 13px;
-  color: #888;
-  font-weight: 600;
+  color: #7f8c8d;
+  font-weight: 700;
 }
 
 /* ========================================
@@ -640,57 +579,70 @@
 
 .rat-response {
   background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-  border-left: 4px solid #4caf50;
-  border-radius: 8px;
-  padding: 16px 20px;
-  margin-top: 16px;
+  border-left: 5px solid #4caf50;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.15);
 }
 
 .rat-response-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .rat-response-icon {
-  font-size: 18px;
+  font-size: 20px;
   color: #2e7d32;
+  background: white;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.2);
 }
 
 .rat-response-title {
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
   color: #2e7d32;
 }
 
 .rat-response-text {
   font-size: 14px;
   color: #1b5e20;
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
+  font-weight: 600;
 }
 
 .rat-response-actions {
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .rat-btn-respond {
   background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 13px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 188, 212, 0.3);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .rat-btn-respond:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.5);
 }
 
 /* ========================================
@@ -704,38 +656,26 @@
 
   .rat-overview {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 1024px) {
-  .rat-main-content {
-    grid-template-columns: 1fr;
-  }
-
-  .rat-sidebar {
-    position: static;
-  }
-
-  .rat-filters {
-    grid-template-columns: 1fr;
+    gap: 28px;
   }
 }
 
 @media (max-width: 768px) {
-  .rat-main-content {
-    padding: 24px 20px;
-  }
-
-  .rat-section {
-    padding: 24px;
-  }
-
   .rat-section-title {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .rat-stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rat-filters {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .rat-review-card {
+    padding: 20px;
   }
 
   .rat-review-header {
@@ -750,10 +690,56 @@
   .rat-review-footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 14px;
   }
 
   .rat-distribution-row {
     grid-template-columns: 80px 1fr 50px;
+  }
+
+  .rat-score-number {
+    font-size: 64px;
+  }
+
+  .rat-score-stars .rat-star {
+    font-size: 28px;
+  }
+
+  .rat-results-info {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .rat-clear-filters {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rat-no-results {
+    padding: 40px 20px;
+  }
+
+  .rat-no-results-icon {
+    font-size: 60px;
+  }
+
+  .rat-no-results-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rat-section-title {
+    font-size: 24px;
+  }
+
+  .rat-overview {
+    padding: 24px;
+  }
+
+  .rat-student-name {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

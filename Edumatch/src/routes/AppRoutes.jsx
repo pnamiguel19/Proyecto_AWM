@@ -20,6 +20,9 @@ const Checkout = lazy(() => import('../pages/Student/Checkout/Checkout'));
 // Professor routes
 const ProfileProfessor = lazy(() => import('../pages/Professor/Profile/ProfileProfessor'));
 
+// Admin routes
+const AdminProfile = lazy(() => import('../pages/Admin/AdminProfile'));
+
 // Loading component
 const Loading = () => (
   <div style={{ 
@@ -56,6 +59,9 @@ const AppRoutes = () => {
 
         {/* Professor Routes */}
         <Route path="/professor/profile" element={<ProfileProfessor />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/profile" element={<AdminProfile />} />
 
         {/* Redirect unknown routes to home */}
         <Route path="*" element={<Navigate to="/" replace />} />

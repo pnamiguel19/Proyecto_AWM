@@ -538,23 +538,57 @@ export const addProfessor = (professorData) => {
 
 // Función para autenticar usuario
 export const authenticateUser = (email, password) => {
-  // Buscar en estudiantes
+  loadFromLocalStorage();
+  
+  console.log('🔐 Autenticando email:', email);
+  console.log('🔑 Password recibido:', password);
+  
+  // Verificar admin
+  console.log('🔍 Verificando admin...');
+  console.log('📧 Admin email:', mockUsers.admin.email);
+  console.log('🔑 Admin password:', mockUsers.admin.password);
+  
+  if (mockUsers.admin.email === email && mockUsers.admin.password === password) {
+    console.log('✅ ADMIN ENCONTRADO!');
+    const adminUser = {
+      ...mockUsers.admin,
+      role: 'admin'
+    };
+    console.log('👑 Retornando admin:', adminUser);
+    return adminUser;
+  }
+
+  // Verificar estudiantes
+  console.log('🔍 Verificando estudiantes...');
   const student = mockUsers.students.find(
     u => u.email === email && u.password === password
   );
-  if (student) return student;
+  if (student) {
+    console.log('✅ ESTUDIANTE ENCONTRADO!');
+    const studentUser = {
+      ...student,
+      role: 'student'
+    };
+    console.log('🎓 Retornando estudiante:', studentUser);
+    return studentUser;
+  }
 
-  // Buscar en profesores
+  // Verificar profesores
+  console.log('🔍 Verificando profesores...');
   const professor = mockUsers.professors.find(
     u => u.email === email && u.password === password
   );
-  if (professor) return professor;
-
-  // Buscar en admin
-  if (mockUsers.admin.email === email && mockUsers.admin.password === password) {
-    return mockUsers.admin;
+  if (professor) {
+    console.log('✅ PROFESOR ENCONTRADO!');
+    const professorUser = {
+      ...professor,
+      role: 'professor'
+    };
+    console.log('👨‍🏫 Retornando profesor:', professorUser);
+    return professorUser;
   }
 
+  console.log('❌ NO SE ENCONTRÓ USUARIO');
   return null;
 };
 
@@ -585,3 +619,45 @@ export const loadFromLocalStorage = () => {
 
 // Inicializar al cargar
 loadFromLocalStorage();
+
+// Función para obtener todos los usuarios (estudiantes + profesores)
+export const getAllUsers = () => {
+  loadFromLocalStorage();
+  return [...mockUsers.students, ...mockUsers.professors];
+};
+
+// Función para obtener todos los profesores
+export const getAllProfessors = () => {
+  loadFromLocalStorage();
+  return mockUsers.professors;
+};
+
+// Función para obtener todos los estudiantes
+export const getAllStudents = () => {
+  loadFromLocalStorage();
+  return mockUsers.students;
+};
+
+// Función para obtener el administrador
+export const getAdmin = () => {
+  loadFromLocalStorage();
+  return mockUsers.admin;
+};
+
+// Función para obtener usuario por ID
+export const getUserById = (userId) => {
+  loadFromLocalStorage();
+  
+  // Buscar en estudiantes
+  const student = mockUsers.students.find(u => u.id === userId);
+  if (student) return student;
+
+  // Buscar en profesores
+  const professor = mockUsers.professors.find(u => u.id === userId);
+  if (professor) return professor;
+
+  // Buscar admin
+  if (mockUsers.admin.id === userId) return mockUsers.admin;
+
+  return null;
+};

@@ -548,6 +548,41 @@
    PROFESSOR SPECIFIC STYLES
    ======================================== */
 
+.prof-courses-container {
+  width: 100%;
+}
+
+.prof-page-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #00bcd4;
+  margin: 0 0 8px 0;
+}
+
+.prof-page-subtitle {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.prof-btn-create {
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+}
+
+.prof-btn-create:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+}
+
 .prof-courses-header {
   display: flex;
   justify-content: space-between;
@@ -555,10 +590,75 @@
   margin-bottom: 30px;
 }
 
+.prof-header-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.prof-btn-requests {
+  background: white;
+  color: #ff6f00;
+  padding: 14px 24px;
+  border: 2px solid #ff6f00;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(255, 111, 0, 0.2);
+}
+
+.prof-btn-requests:hover {
+  background: linear-gradient(135deg, #ff6f00 0%, #e65100 100%);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 111, 0, 0.4);
+}
+
+.prof-requests-icon {
+  font-size: 22px;
+  animation: profBounce 2s ease-in-out infinite;
+}
+
+.prof-requests-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(135deg, #ff5252 0%, #f44336 100%);
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 5px 10px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(255, 82, 82, 0.5);
+  animation: profPulse 1.5s ease-in-out infinite;
+  border: 3px solid white;
+}
+
 .prof-courses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 25px;
+}
+
+.prof-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  border: 2px dashed #ddd;
+}
+
+.prof-empty-state p {
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 20px;
 }
 
 /* ========================================
@@ -615,8 +715,15 @@
     gap: 15px;
   }
 
+  .prof-header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .prof-btn-requests,
   .prof-btn-create {
     width: 100%;
+    justify-content: center;
   }
 
   .prof-courses-grid {
