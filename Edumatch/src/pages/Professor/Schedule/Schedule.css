@@ -2,6 +2,10 @@
    DISPONIBILIDAD Y HORARIO
    ======================================== */
 
+.sch-container {
+  width: 100%;
+}
+
 .sch-page {
   min-height: 100vh;
   background: #f5f7fa;
@@ -268,15 +272,8 @@
 }
 
 /* ========================================
-   SECTION
+   HEADER SECTION
    ======================================== */
-
-.sch-section {
-  background: white;
-  border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
 
 .sch-header-section {
   display: flex;
@@ -290,24 +287,6 @@
   font-weight: 800;
   color: #00bcd4;
   margin: 0;
-}
-
-.sch-btn-add {
-  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
-}
-
-.sch-btn-add:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
 }
 
 /* ========================================
@@ -580,23 +559,8 @@
 
 .sch-btn-details:hover {
   background: #0097a7;
-}
-
-.sch-btn-cancel {
-  background: white;
-  color: #f44336;
-  padding: 8px 16px;
-  border: 2px solid #f44336;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.sch-btn-cancel:hover {
-  background: #f44336;
-  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
 }
 
 /* ========================================
@@ -913,5 +877,9 @@
   .sch-calendar-nav {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .sch-calendar {
+    overflow-x: scroll;
   }
 }

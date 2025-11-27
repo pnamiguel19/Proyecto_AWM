@@ -48,33 +48,35 @@ function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoginError('');
 
-    if (!validateForm()) {
-      return;
-    }
+    // Usar authenticateUser de mockUsers.js
+    const foundUser = authenticateUser(formData.email, formData.password);
 
-    const user = authenticateUser(formData.email, formData.password);
-
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
+    if (foundUser) {
+      localStorage.setItem('currentUser', JSON.stringify(foundUser));
       
-      // ESTO ES IMPORTANTE: Avisa al Header que ya hay usuario
+      // Avisa al Header que ya hay usuario
       window.dispatchEvent(new Event("storage"));
       
-      if (user.role === 'student') {
-        // CORRECCIÓN: Te enviamos al Home principal ('/') en vez de '/student/home'
-        navigate('/'); 
-      } else if (user.role === 'professor') {
-        // Puedes enviarlo al home también o a su perfil
-        navigate('/'); 
-      } else if (user.role === 'admin') {
-        navigate('/admin/dashboard');
+      // Redirigir según el rol del usuario
+      switch (foundUser.role) {
+        case 'professor':
+          navigate('/professor/profile');
+          break;
+        case 'student':
+          navigate('/home');
+          break;
+        case 'admin':
+          navigate('/admin/profile');
+          break;
+        default:
+          navigate('/');
       }
     } else {
-      setLoginError('Correo electrónico o contraseña incorrectos');
+      setLoginError('Credenciales inválidas');
     }
   };
 
@@ -201,6 +203,9 @@ function Login() {
             </div>
             <div className="test-item">
               <strong>Profesor:</strong> juan.perez@professor.com / Professor123
+            </div>
+            <div className="test-item">
+              <strong>Admin:</strong> admin@edumatch.com / Admin123
             </div>
           </div>
         </div>

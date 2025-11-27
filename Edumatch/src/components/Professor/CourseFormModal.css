@@ -1,27 +1,336 @@
-.prof-course-modal {
-  max-width: 800px;
+/* ========================================
+   MODAL DE CURSO - MEJORADO
+   ======================================== */
+
+.prof-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.prof-modal-content {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prof-course-modal {
+  max-width: 900px;
+  width: 95%;
+}
+
+/* ========================================
+   HEADER DEL MODAL
+   ======================================== */
+
+.prof-modal-header {
+  padding: 24px 30px;
+  border-bottom: 2px solid #e0f7fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa 0%, #f0f9ff 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.prof-modal-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.prof-modal-icon {
+  font-size: 28px;
+}
+
+.prof-modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #00838f;
+}
+
+.prof-modal-close {
+  background: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prof-modal-close:hover {
+  background: #ff5252;
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* ========================================
+   FORMULARIO
+   ======================================== */
+
+.prof-course-form {
+  padding: 30px;
+}
+
+.prof-form-section {
+  margin-bottom: 30px;
+}
+
+.prof-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #00bcd4;
+  margin: 0 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0f7fa;
+}
+
+.prof-form-group {
+  margin-bottom: 20px;
+}
+
+.prof-form-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.prof-required {
+  color: #ff5252;
+  margin-left: 4px;
+}
+
+.prof-optional {
+  color: #999;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.prof-form-group input[type="text"],
+.prof-form-group input[type="url"],
+.prof-form-group textarea,
+.prof-form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.prof-form-group input:focus,
+.prof-form-group textarea:focus,
+.prof-form-group select:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+.prof-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.prof-input-with-icon {
+  position: relative;
+}
+
+.prof-input-with-icon .prof-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.prof-input-with-icon input {
+  padding-left: 45px;
+}
+
+.prof-char-count {
+  text-align: right;
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.prof-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ========================================
+   ERRORES
+   ======================================== */
+
+.prof-input-error {
+  border-color: #ff5252 !important;
+  background: #fff5f5 !important;
+}
+
+.prof-error-message {
+  display: block;
+  color: #ff5252;
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* ========================================
+   CHECKBOX
+   ======================================== */
+
 .prof-checkbox-group {
-  margin-top: 10px;
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
 }
 
 .prof-checkbox-label {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 12px;
   cursor: pointer;
-  font-size: 14px;
-  color: #555;
 }
 
 .prof-checkbox-label input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   accent-color: #00bcd4;
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
-.prof-checkbox-label span {
-  user-select: none;
+.prof-checkbox-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prof-checkbox-text strong {
+  color: #333;
+  font-size: 14px;
+}
+
+.prof-checkbox-text small {
+  color: #666;
+  font-size: 12px;
+}
+
+/* ========================================
+   FOOTER DEL MODAL
+   ======================================== */
+
+.prof-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.prof-btn-cancel,
+.prof-btn-save {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.prof-btn-cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.prof-btn-cancel:hover {
+  background: #e0e0e0;
+}
+
+.prof-btn-save {
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+}
+
+.prof-btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .prof-course-modal {
+    width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .prof-modal-header {
+    border-radius: 0;
+  }
+
+  .prof-course-form {
+    padding: 20px;
+  }
+
+  .prof-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .prof-modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .prof-btn-cancel,
+  .prof-btn-save {
+    width: 100%;
+  }
 }

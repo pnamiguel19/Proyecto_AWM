@@ -1715,10 +1715,6 @@ textarea {
   gap: 12px;
 }
 
-.schedule-day-header {
-  /* Celda vacía para alineación */
-}
-
 .schedule-period-header {
   display: flex;
   flex-direction: column;
@@ -2517,372 +2513,240 @@ textarea {
 }
 
 /* ========================================
-   PASO 5: CONFIRMACIÓN - ESTILOS FIJOS
+   PASO 5: CONFIRMACIÓN Y REVISIÓN - NUEVOS ESTILOS
    ======================================== */
 
-.rp-step5-wrapper {
-  padding: 0 !important;
-}
-
-.rp-confirmation-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.success-message-section {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border: 3px solid #4caf50;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
   text-align: center;
+  box-shadow: 0 8px 24px rgba(76, 175, 80, 0.2);
 }
 
-.rp-confirmation-icon {
-  margin-bottom: 30px;
-  animation: rpScaleIn 0.6s ease;
+.success-icon {
+  font-size: 72px;
+  margin-bottom: 20px;
+  animation: successBounce 0.6s ease;
+  display: block;
 }
 
-.rp-success-circle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  animation: rpPulse 2s infinite;
+@keyframes successBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
-.rp-success-circle svg {
-  filter: drop-shadow(0 4px 12px rgba(76, 175, 80, 0.3));
-}
-
-.rp-confirmation-title {
-  font-size: 42px;
+.success-title {
+  font-size: 32px;
   font-weight: 800;
-  color: #4caf50;
+  color: #2e7d32;
   margin: 0 0 16px 0;
-  animation: rpFadeIn 0.6s ease 0.2s both;
   line-height: 1.2;
 }
 
-.rp-confirmation-subtitle {
-  font-size: 20px;
-  color: #666;
-  margin: 0 0 50px 0;
-  animation: rpFadeIn 0.6s ease 0.4s both;
+.success-description {
+  font-size: 17px;
+  color: #1b5e20;
+  margin: 0 0 12px 0;
+  line-height: 1.6;
   font-weight: 500;
 }
 
-@keyframes rpFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* INFO CARDS */
-.rp-confirmation-info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 50px;
-  animation: rpFadeIn 0.6s ease 0.6s both;
-}
-
-.rp-info-card {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border: 2px solid #dee2e6;
-  border-radius: 16px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  text-align: left;
-  transition: all 0.3s ease;
-}
-
-.rp-info-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  border-color: #00bcd4;
-}
-
-.rp-info-icon {
-  font-size: 48px;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.rp-info-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.rp-info-label {
-  font-size: 13px;
-  color: #6c757d;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  letter-spacing: 0.5px;
-}
-
-.rp-info-value {
-  font-size: 17px;
-  color: #212529;
-  font-weight: 700;
-  word-wrap: break-word;
-}
-
-/* PRÓXIMOS PASOS */
-.rp-confirmation-steps {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-  border: 2px solid #2196f3;
-  border-radius: 20px;
-  padding: 40px;
-  margin-bottom: 50px;
-  text-align: left;
-  animation: rpFadeIn 0.6s ease 0.8s both;
-}
-
-.rp-steps-title {
-  font-size: 28px;
-  font-weight: 800;
-  color: #1976d2;
-  margin: 0 0 30px 0;
-  text-align: center;
-}
-
-.rp-steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.rp-step-item {
-  background: white;
-  border-radius: 14px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.rp-step-item:hover {
-  transform: translateX(12px);
-  box-shadow: 0 6px 16px rgba(33, 150, 243, 0.15);
-}
-
-.rp-step-number {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: 800;
-  color: white;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
-}
-
-.rp-step-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.rp-step-text strong {
-  font-size: 18px;
-  color: #212529;
-  font-weight: 700;
-}
-
-.rp-step-text span {
+.success-subdescription {
   font-size: 15px;
-  color: #6c757d;
+  color: #2e7d32;
+  margin: 0;
   line-height: 1.5;
 }
 
-/* BENEFICIOS */
-.rp-confirmation-benefits {
-  margin-bottom: 50px;
-  animation: rpFadeIn 0.6s ease 1s both;
+.review-section {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.rp-benefits-title {
-  font-size: 28px;
+.review-section:hover {
+  border-color: #00bcd4;
+  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.15);
+  transform: translateY(-2px);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.review-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.review-title {
+  font-size: 24px;
   font-weight: 800;
-  color: #212529;
-  margin: 0 0 30px 0;
+  color: #2c3e50;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
-.rp-benefits-grid {
+.review-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-.rp-benefit-card {
-  background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
-  border: 2px solid #ffc107;
-  border-radius: 16px;
-  padding: 30px;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.rp-benefit-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(255, 193, 7, 0.25);
-}
-
-.rp-benefit-icon {
-  font-size: 56px;
-  margin-bottom: 16px;
-  line-height: 1;
-}
-
-.rp-benefit-title {
-  font-size: 18px;
-  font-weight: 800;
-  color: #856404;
-  margin-bottom: 10px;
-}
-
-.rp-benefit-text {
-  font-size: 15px;
-  color: #856404;
-  line-height: 1.6;
-}
-
-/* ACCIONES */
-.rp-confirmation-actions {
+.review-item {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 40px;
-  animation: rpFadeIn 0.6s ease 1.2s both;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #00bcd4;
+  transition: all 0.3s ease;
 }
 
-.rp-btn-large {
-  padding: 18px 40px;
-  font-size: 17px;
-  border-radius: 12px;
+.review-item:hover {
+  background: #e3f2fd;
+  transform: translateX(4px);
+}
+
+.review-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.review-label {
+  font-size: 13px;
   font-weight: 700;
+  color: #546e7a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.review-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #212529;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.terms-section {
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+  border: 3px solid #ffc107;
+  border-radius: 16px;
+  padding: 32px;
+  margin: 32px 0;
+}
+
+.terms-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border: none;
+  border: 2px solid transparent;
+  position: relative;
 }
 
-.rp-btn-primary.rp-btn-large {
-  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
-  color: white;
+.terms-checkbox:hover {
+  background: #fffbf0;
+  border-color: #ffc107;
+  transform: translateX(4px);
 }
 
-.rp-btn-primary.rp-btn-large:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.4);
+.terms-checkbox.error {
+  border-color: #f44336;
+  background: #fff5f5;
 }
 
-.rp-btn-secondary.rp-btn-large {
-  background: white;
-  color: #00bcd4;
+.terms-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.terms-checkmark {
+  width: 24px;
+  height: 24px;
   border: 2px solid #00bcd4;
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-top: 2px;
 }
 
-.rp-btn-secondary.rp-btn-large:hover {
-  background: #f0f9fa;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.2);
+.terms-checkbox input[type="checkbox"]:checked ~ .terms-checkmark {
+  background: #00bcd4;
+  border-color: #00bcd4;
 }
 
-/* FOOTER */
-.rp-confirmation-footer {
-  padding-top: 30px;
-  border-top: 2px solid #dee2e6;
-  animation: rpFadeIn 0.6s ease 1.4s both;
-}
-
-.rp-footer-text {
+.terms-checkbox input[type="checkbox"]:checked ~ .terms-checkmark::after {
+  content: '✓';
+  color: white;
   font-size: 16px;
-  color: #6c757d;
-  margin: 0;
+  font-weight: 700;
 }
 
-.rp-footer-link {
+.terms-text {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  flex: 1;
+  font-weight: 500;
+}
+
+.terms-text a {
   color: #00bcd4;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.rp-footer-link:hover {
+.terms-text a:hover {
   color: #0097a7;
   text-decoration: underline;
 }
 
-/* ========================================
-   RESPONSIVE - CONFIRMACIÓN
-   ======================================== */
-
-@media (max-width: 768px) {
-  .rp-confirmation-title {
-    font-size: 32px;
-  }
-
-  .rp-confirmation-subtitle {
-    font-size: 18px;
-  }
-
-  .rp-confirmation-info {
-    grid-template-columns: 1fr;
-  }
-
-  .rp-benefits-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .rp-confirmation-actions {
-    flex-direction: column;
-  }
-
-  .rp-btn-large {
-    width: 100%;
-  }
-
-  .rp-step-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .rp-steps-title,
-  .rp-benefits-title {
-    font-size: 24px;
-  }
-
-  .rp-confirmation-steps,
-  .rp-confirmation-benefits {
-    padding: 24px;
-  }
+.terms-checkbox.optional {
+  border: 2px dashed #e0e0e0;
 }
 
-@media (max-width: 480px) {
-  .rp-confirmation-title {
-    font-size: 28px;
-  }
+.terms-checkbox.optional .terms-checkmark {
+  border-color: #9e9e9e;
+}
 
-  .rp-success-circle svg {
-    width: 80px;
-    height: 80px;
-  }
-
-  .rp-info-icon {
-    font-size: 36px;
-  }
-
-  .rp-benefit-icon {
-    font-size: 44px;
-  }
+.terms-checkbox.optional input[type="checkbox"]:checked ~ .terms-checkmark {
+  background: #4caf50;
+  border-color: #4caf50;
 }
