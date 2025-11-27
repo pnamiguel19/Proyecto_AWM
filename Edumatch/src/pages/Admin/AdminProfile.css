@@ -1,0 +1,960 @@
+.admin-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+/* HEADER */
+.admin-header {
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
+}
+
+.admin-header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.admin-logo .logo-icon {
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.admin-logo .logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+.admin-user-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.admin-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.welcome-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.welcome-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.user-menu-container {
+  position: relative;
+}
+
+.user-avatar-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.user-avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #00bcd4;
+}
+
+.admin-avatar {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: white !important;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  min-width: 240px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.user-dropdown-header {
+  padding: 16px;
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  color: white;
+}
+
+.user-dropdown-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.user-dropdown-email {
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.user-role-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.admin-badge {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown-item:hover {
+  background: #f8fafc;
+  color: #00bcd4;
+}
+
+.dropdown-item.logout {
+  color: #ef4444;
+}
+
+.dropdown-item.logout:hover {
+  background: #fef2f2;
+}
+
+/* NAVEGACIÓN */
+.admin-nav {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 40px;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.admin-nav-item:hover {
+  background: #e0f7fa;
+  color: #00bcd4;
+}
+
+.admin-nav-item.active {
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  color: white;
+}
+
+.nav-icon {
+  font-size: 20px;
+}
+
+.nav-text {
+  font-size: 14px;
+}
+
+.nav-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* CONTENIDO */
+.admin-content {
+  max-width: 1400px;
+  margin: 32px auto;
+  padding: 0 40px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 24px 0;
+}
+
+.subsection-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 32px 0 16px 0;
+}
+
+/* DASHBOARD */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.15);
+}
+
+.stat-card.blue { border-left: 4px solid #00bcd4; }
+.stat-card.green { border-left: 4px solid #10b981; }
+.stat-card.purple { border-left: 4px solid #8b5cf6; }
+.stat-card.orange { border-left: 4px solid #f59e0b; }
+
+.stat-icon {
+  font-size: 48px;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.recent-activity {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.activity-icon {
+  font-size: 20px;
+}
+
+.activity-text {
+  flex: 1;
+  font-size: 14px;
+  color: #475569;
+}
+
+.activity-time {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* SECCIÓN DE USUARIOS/PROFESORES */
+.section-header-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.search-bar-admin {
+  position: relative;
+  width: 400px;
+}
+
+.search-input-admin {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.search-input-admin:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+.search-icon-admin {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+/* TABLA */
+.table-container {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table thead {
+  background: #f8fafc;
+}
+
+.admin-table th {
+  padding: 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-table td {
+  padding: 16px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar-small {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.role-badge.student {
+  background: #e0f7fa;
+  color: #00838f;
+}
+
+.role-badge.professor {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.role-badge.admin {
+  background: #fed7aa;
+  color: #92400e;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.action-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn.view {
+  background: #e0f7fa;
+  color: #00838f;
+}
+
+.action-btn.view:hover {
+  background: #b2ebf2;
+}
+
+/* GRID DE PROFESORES */
+.professors-grid-admin {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.professor-card-admin {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.professor-card-admin:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.15);
+}
+
+.professor-header-admin {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.professor-avatar-admin {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.professor-info-admin h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.professor-info-admin p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.professor-details-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.detail-icon {
+  font-size: 16px;
+}
+
+.professor-actions-admin {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn-admin {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn-admin.view {
+  background: #e0f7fa;
+  color: #00838f;
+}
+
+.action-btn-admin.view:hover {
+  background: #b2ebf2;
+}
+
+.action-btn-admin.approve {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.action-btn-admin.approve:hover {
+  background: #a7f3d0;
+}
+
+.action-btn-admin.reject {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.action-btn-admin.reject:hover {
+  background: #fecaca;
+}
+
+/* PENDIENTES */
+.empty-state {
+  background: white;
+  border-radius: 16px;
+  padding: 60px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.empty-icon {
+  font-size: 80px;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.empty-state p {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0;
+}
+
+.pending-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pending-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.pending-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.pending-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.pending-info {
+  flex: 1;
+}
+
+.pending-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.pending-info p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.pending-badge {
+  padding: 6px 16px;
+  background: #fef3c7;
+  color: #92400e;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pending-details {
+  margin-bottom: 16px;
+}
+
+.pending-details p {
+  font-size: 14px;
+  color: #475569;
+  margin: 8px 0;
+}
+
+.pending-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* NUEVAS CLASES PARA STATS GRID CON MÁS COLORES */
+.stat-card.money::before { background: #10b981; }
+.stat-card.success::before { background: #059669; }
+.stat-card.info::before { background: #3b82f6; }
+.stat-card.warning::before { background: #f59e0b; }
+
+/* SECCIÓN DE GANANCIAS */
+.earnings-section {
+  width: 100%;
+}
+
+.earnings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.earnings-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid #00D9E1;
+}
+
+.earnings-card.total {
+  border-left-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, white 100%);
+}
+
+.earnings-card.monthly {
+  border-left-color: #00D9E1;
+  background: linear-gradient(135deg, rgba(0, 217, 225, 0.05) 0%, white 100%);
+}
+
+.earnings-card.average {
+  border-left-color: #8b5cf6;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, white 100%);
+}
+
+.earnings-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.earnings-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.earnings-icon {
+  font-size: 32px;
+}
+
+.earnings-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0;
+}
+
+.earnings-amount {
+  font-size: 40px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.earnings-detail {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* DESGLOSE DE GANANCIAS */
+.earnings-breakdown {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.breakdown-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.breakdown-item:hover {
+  background: #f1f5f9;
+}
+
+.breakdown-item.highlight {
+  background: linear-gradient(135deg, rgba(0, 217, 225, 0.1) 0%, rgba(0, 184, 196, 0.05) 100%);
+  border: 2px solid #00D9E1;
+}
+
+.breakdown-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.breakdown-icon {
+  font-size: 24px;
+}
+
+.breakdown-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.breakdown-item.highlight .breakdown-value {
+  color: #00B8C4;
+}
+
+/* GANANCIAS POR MES */
+.earnings-by-month {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.month-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.month-card:hover {
+  border-color: #00D9E1;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 217, 225, 0.15);
+}
+
+.month-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.month-amount {
+  font-size: 24px;
+  font-weight: 800;
+  color: #00D9E1;
+  margin-bottom: 8px;
+}
+
+.month-classes {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* RESPONSIVE PARA GANANCIAS */
+@media (max-width: 1024px) {
+  .earnings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .months-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .months-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .earnings-amount {
+    font-size: 32px;
+  }
+
+  .breakdown-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .professors-grid-admin {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-header-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .admin-nav {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+
+  .admin-content {
+    padding: 0 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header-admin {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .search-bar-admin {
+    width: 100%;
+  }
+
+  .professors-grid-admin {
+    grid-template-columns: 1fr;
+  }
+
+  .pending-actions {
+    flex-direction: column;
+  }
+}

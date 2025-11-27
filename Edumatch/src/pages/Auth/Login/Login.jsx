@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { authenticateUser } from '../../../data/mockUsers';
 import './Login.css';
 
 function Login() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -52,51 +51,59 @@ function Login() {
     e.preventDefault();
     setLoginError('');
 
-    // Usar authenticateUser de mockUsers.js
+    if (!validateForm()) {
+      return;
+    }
+
+    console.log('📧 Intentando login con:', formData.email);
+
+    // Autenticar usuario
     const foundUser = authenticateUser(formData.email, formData.password);
 
+    console.log('👤 Usuario encontrado:', foundUser);
+
     if (foundUser) {
+      // Guardar usuario en localStorage
       localStorage.setItem('currentUser', JSON.stringify(foundUser));
       
-      // Avisa al Header que ya hay usuario
+      // Notificar al Header
       window.dispatchEvent(new Event("storage"));
       
-      // Redirigir según el rol del usuario
-      switch (foundUser.role) {
-        case 'professor':
-          navigate('/professor/profile');
-          break;
-        case 'student':
-          navigate('/home');
-          break;
-        case 'admin':
-          navigate('/admin/profile');
-          break;
-        default:
-          navigate('/');
+      console.log('🎭 Rol del usuario:', foundUser.role);
+      
+      // Redirigir según el rol
+      if (foundUser.role === 'admin') {
+        console.log('✅ Redirigiendo a /admin/profile');
+        window.location.href = '/admin/profile';
+      } else if (foundUser.role === 'professor') {
+        console.log('✅ Redirigiendo a /professor/profile');
+        window.location.href = '/professor/profile';
+      } else if (foundUser.role === 'student') {
+        console.log('✅ Redirigiendo a / (Home)');
+        window.location.href = '/';
+      } else {
+        console.log('⚠️ Rol desconocido, redirigiendo a /');
+        window.location.href = '/';
       }
     } else {
-      setLoginError('Credenciales inválidas');
+      console.log('❌ Credenciales incorrectas');
+      setLoginError('Correo o contraseña incorrectos');
     }
   };
 
   return (
     <div className="login-wrapper">
       <div className="login-card">
-        {/* Logo */}
         <div className="login-logo-container">
           <div className="logo-circle">
             <span className="logo-icon">🎓</span>
           </div>
         </div>
 
-        {/* Título */}
         <h1 className="login-title">Iniciar sesión</h1>
         <p className="login-subtitle">Accede a tu cuenta para continuar</p>
 
-        {/* Formulario */}
         <form onSubmit={handleSubmit} className="login-form">
-          {/* Error de login */}
           {loginError && (
             <div className="login-error">
               <span className="error-icon">⚠️</span>
@@ -104,7 +111,6 @@ function Login() {
             </div>
           )}
 
-          {/* Email */}
           <div className="form-field">
             <label htmlFor="email">
               Correo electrónico <span className="required">*</span>
@@ -123,7 +129,6 @@ function Login() {
             )}
           </div>
 
-          {/* Contraseña */}
           <div className="form-field">
             <label htmlFor="password">
               Contraseña <span className="required">*</span>
@@ -151,7 +156,6 @@ function Login() {
             )}
           </div>
 
-          {/* Recordarme y Olvidé contraseña */}
           <div className="form-options">
             <label className="checkbox-container">
               <input
@@ -166,17 +170,14 @@ function Login() {
             </Link>
           </div>
 
-          {/* Botón de login */}
           <button type="submit" className="btn-submit">
             INICIAR SESIÓN
           </button>
 
-          {/* Divider */}
           <div className="divider">
             <span>o continúa con</span>
           </div>
 
-          {/* Social buttons */}
           <div className="social-buttons">
             <button type="button" className="btn-social google">
               <span className="social-icon">G</span>
@@ -188,24 +189,22 @@ function Login() {
             </button>
           </div>
 
-          {/* Registro */}
           <div className="register-link">
             ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
           </div>
         </form>
 
-        {/* Credenciales de prueba */}
         <div className="test-info">
           <p className="test-title">🔑 Credenciales de Prueba</p>
           <div className="test-credentials">
             <div className="test-item">
-              <strong>Estudiante:</strong> maria.gonzalez@student.com / Student123
+              <strong>👤 Estudiante:</strong> maria.gonzalez@student.com / Student123
             </div>
             <div className="test-item">
-              <strong>Profesor:</strong> juan.perez@professor.com / Professor123
+              <strong>👨‍🏫 Profesor:</strong> juan.perez@professor.com / Professor123
             </div>
             <div className="test-item">
-              <strong>Admin:</strong> admin@edumatch.com / Admin123
+              <strong>👑 Admin:</strong> admin@edumatch.com / Admin123
             </div>
           </div>
         </div>
