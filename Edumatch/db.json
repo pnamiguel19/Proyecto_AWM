@@ -1,0 +1,1862 @@
+{
+  "students": [
+    {
+      "id": "s1",
+      "role": "student",
+      "email": "juan.perez@email.com",
+      "password": "student123",
+      "personalInfo": {
+        "photo": "https://new-photo-url.com/juan.jpg",
+        "firstName": "Juan Carlos",
+        "lastName": "Pérez García",
+        "phone": "+34 699 888 777",
+        "dateOfBirth": "2000-05-15",
+        "gender": "Masculino",
+        "educationLevel": "Universidad",
+        "address": {
+          "street": "Calle Mayor 123 - Piso 3",
+          "city": "Madrid",
+          "province": "Madrid",
+          "zipCode": "28013",
+          "country": "España"
+        },
+        "bio": "Bio actualizada - Estudiante de ingeniería con pasión por aprender nuevas tecnologías",
+        "learningGoals": [
+          "Dominar React y Node.js",
+          "Certificación TOEFL",
+          "Aprobar todas las materias de cálculo"
+        ]
+      },
+      "enrolledCourses": [
+        "co1",
+        "co3"
+      ],
+      "classes": [],
+      "professors": [],
+      "reviews": [
+        "r1",
+        "r2"
+      ],
+      "statistics": {}
+    },
+    {
+      "id": "s2",
+      "role": "student",
+      "email": "maria.garcia@email.com",
+      "password": "student123",
+      "personalInfo": {
+        "photo": "https://i.pravatar.cc/150?img=5",
+        "firstName": "María",
+        "lastName": "García Rodríguez",
+        "phone": "+34 623 456 789",
+        "dateOfBirth": "2001-08-22",
+        "gender": "Femenino",
+        "educationLevel": "Bachillerato",
+        "address": {
+          "street": "Avenida Diagonal 456",
+          "city": "Barcelona",
+          "province": "Barcelona",
+          "zipCode": "08007",
+          "country": "España"
+        },
+        "bio": "Estudiante de bachillerato interesada en idiomas y música. Me encanta aprender nuevos idiomas.",
+        "learningGoals": [
+          "Obtener certificación TOEFL",
+          "Aprender francés conversacional",
+          "Mejorar en gramática inglesa"
+        ]
+      },
+      "enrolledCourses": [
+        "co2",
+        "co4"
+      ],
+      "classes": [
+        {
+          "classId": "cl3",
+          "professorId": "p2",
+          "professorName": "Ana Martínez",
+          "subject": "Inglés",
+          "date": "2025-01-21",
+          "startTime": "18:00",
+          "endTime": "19:30",
+          "modality": "online",
+          "price": 30,
+          "status": "scheduled"
+        },
+        {
+          "classId": "cl4",
+          "professorId": "p2",
+          "professorName": "Ana Martínez",
+          "subject": "TOEFL Preparation",
+          "date": "2025-01-27",
+          "startTime": "10:00",
+          "endTime": "14:00",
+          "modality": "presencial",
+          "price": 40,
+          "status": "scheduled"
+        }
+      ],
+      "professors": [
+        {
+          "professorId": "p2",
+          "name": "Ana",
+          "lastName": "Martínez Torres",
+          "subjects": [
+            "Inglés",
+            "TOEFL",
+            "Cambridge"
+          ],
+          "rating": 4.9,
+          "totalReviews": 98,
+          "classesReceived": 12,
+          "hoursReceived": 18,
+          "lastClassDate": "2025-01-27"
+        }
+      ],
+      "reviews": [
+        "r3",
+        "r9"
+      ],
+      "statistics": {
+        "totalClasses": 12,
+        "totalHours": 18,
+        "completedCourses": 1,
+        "activeCourses": 2,
+        "averageRating": 5
+      },
+      "createdAt": "2024-08-20T14:00:00Z",
+      "lastLogin": "2025-01-20T09:15:00Z"
+    },
+    {
+      "id": "s3",
+      "role": "student",
+      "email": "pedro.martinez@email.com",
+      "password": "student123",
+      "personalInfo": {
+        "photo": "https://i.pravatar.cc/150?img=8",
+        "firstName": "Pedro",
+        "lastName": "Martínez Sánchez",
+        "phone": "+34 634 567 890",
+        "dateOfBirth": "1999-03-10",
+        "gender": "Masculino",
+        "educationLevel": "Universidad",
+        "address": {
+          "street": "Calle Serrano 789",
+          "city": "Madrid",
+          "province": "Madrid",
+          "zipCode": "28006",
+          "country": "España"
+        },
+        "bio": "Estudiante de informática enfocado en desarrollo web",
+        "learningGoals": [
+          "Dominar React y Node.js",
+          "Crear proyectos full-stack",
+          "Aprender bases de datos"
+        ]
+      },
+      "enrolledCourses": [
+        "co3",
+        "co7"
+      ],
+      "classes": [],
+      "professors": [],
+      "reviews": [],
+      "statistics": {
+        "totalClasses": 0,
+        "totalHours": 0,
+        "completedCourses": 0,
+        "activeCourses": 2,
+        "averageRating": 0
+      },
+      "createdAt": "2024-09-10T16:30:00Z",
+      "lastLogin": "2025-01-18T10:45:00Z"
+    }
+  ],
+  "professors": [
+    {
+      "id": "p1",
+      "role": "professor",
+      "email": "carlos.lopez@email.com",
+      "password": "prof123",
+      "registrationStep": "completed",
+      "verificationStatus": "verified",
+      "step1_personalInfo": {
+        "photo": "https://i.pravatar.cc/150?img=12",
+        "firstName": "Carlos",
+        "lastName": "López Martínez",
+        "phone": "+34 634 567 890",
+        "dateOfBirth": "1985-03-10",
+        "gender": "Masculino",
+        "address": {
+          "street": "Calle Serrano 789",
+          "city": "Madrid",
+          "province": "Madrid",
+          "zipCode": "28006",
+          "country": "España"
+        },
+        "bio": "Doctor en Matemáticas Aplicadas con más de 15 años de experiencia en docencia universitaria y preparación de estudiantes para exámenes de acceso. Especializado en cálculo, álgebra y física matemática."
+      },
+      "step2_academicBackground": {
+        "universityDegree": "Doctorado en Matemáticas Aplicadas",
+        "university": "Universidad Complutense de Madrid",
+        "graduationYear": 2015,
+        "teachingExperience": 15,
+        "documents": [
+          {
+            "id": "doc1",
+            "type": "university_degree",
+            "fileName": "titulo_doctorado_matematicas.pdf",
+            "url": "/documents/prof1/titulo_doctorado.pdf",
+            "uploadDate": "2024-05-10T10:00:00Z",
+            "status": "approved",
+            "approvedBy": "admin1",
+            "approvalDate": "2024-05-12T14:30:00Z"
+          },
+          {
+            "id": "doc2",
+            "type": "professional_license",
+            "fileName": "cedula_profesional.pdf",
+            "url": "/documents/prof1/cedula_profesional.pdf",
+            "uploadDate": "2024-05-10T10:05:00Z",
+            "status": "approved",
+            "approvedBy": "admin1",
+            "approvalDate": "2024-05-12T14:30:00Z"
+          },
+          {
+            "id": "doc3",
+            "type": "additional_certification",
+            "fileName": "certificado_pedagogia_digital.pdf",
+            "url": "/documents/prof1/cert_pedagogia.pdf",
+            "uploadDate": "2024-05-10T10:10:00Z",
+            "status": "approved",
+            "approvedBy": "admin1",
+            "approvalDate": "2024-05-12T14:30:00Z"
+          }
+        ],
+        "additionalEducation": [
+          {
+            "degree": "Licenciatura en Matemáticas",
+            "institution": "Universidad Autónoma de Madrid",
+            "year": 2008
+          },
+          {
+            "degree": "Master en Educación Digital",
+            "institution": "Universidad de Barcelona",
+            "year": 2020
+          }
+        ]
+      },
+      "step3_classes": {
+        "subjects": [
+          "Matemáticas",
+          "Física",
+          "Cálculo Diferencial",
+          "Cálculo Integral",
+          "Álgebra Lineal",
+          "Estadística"
+        ],
+        "educationLevels": [
+          "Secundaria",
+          "Bachillerato",
+          "Universidad",
+          "Preparación exámenes"
+        ],
+        "teachingModalities": [
+          "presencial",
+          "online",
+          "hibrido"
+        ],
+        "pricing": {
+          "hourlyRate": 25,
+          "currency": "EUR",
+          "groupDiscount": 10,
+          "packageDeals": [
+            {
+              "sessions": 5,
+              "pricePerSession": 23,
+              "totalPrice": 115
+            },
+            {
+              "sessions": 10,
+              "pricePerSession": 22,
+              "totalPrice": 220
+            }
+          ]
+        }
+      },
+      "step4_schedule": {
+        "weeklyAvailability": {
+          "monday": {
+            "available": true,
+            "slots": [
+              {
+                "period": "morning",
+                "hours": "09:00-12:00"
+              },
+              {
+                "period": "afternoon",
+                "hours": "16:00-20:00"
+              }
+            ]
+          },
+          "tuesday": {
+            "available": true,
+            "slots": [
+              {
+                "period": "morning",
+                "hours": "09:00-13:00"
+              },
+              {
+                "period": "afternoon",
+                "hours": "16:00-20:00"
+              }
+            ]
+          },
+          "wednesday": {
+            "available": true,
+            "slots": [
+              {
+                "period": "morning",
+                "hours": "09:00-13:00"
+              }
+            ]
+          },
+          "thursday": {
+            "available": true,
+            "slots": [
+              {
+                "period": "afternoon",
+                "hours": "16:00-20:00"
+              }
+            ]
+          },
+          "friday": {
+            "available": true,
+            "slots": [
+              {
+                "period": "morning",
+                "hours": "09:00-13:00"
+              },
+              {
+                "period": "afternoon",
+                "hours": "16:00-20:00"
+              }
+            ]
+          },
+          "saturday": {
+            "available": true,
+            "slots": [
+              {
+                "period": "morning",
+                "hours": "10:00-14:00"
+              }
+            ]
+          },
+          "sunday": {
+            "available": false,
+            "slots": []
+          }
+        },
+        "maxStudentsPerClass": 8,
+        "advanceBookingTime": 24,
+        "additionalNotes": "Prefiero clases por la mañana. Disponibilidad flexible para grupos. No doy clases los domingos."
+      },
+      "classes": [
+        {
+          "classId": "cl1",
+          "subject": "Matemáticas",
+          "students": [
+            {
+              "studentId": "s1",
+              "studentName": "Juan Pérez García",
+              "studentEmail": "juan.perez@email.com"
+            }
+          ],
+          "date": "2025-01-20",
+          "startTime": "16:00",
+          "endTime": "18:00",
+          "price": 25,
+          "status": "scheduled",
+          "modality": "presencial",
+          "location": "Calle Serrano 789, Madrid"
+        },
+        {
+          "classId": "cl2",
+          "subject": "Física",
+          "students": [
+            {
+              "studentId": "s1",
+              "studentName": "Juan Pérez García",
+              "studentEmail": "juan.perez@email.com"
+            }
+          ],
+          "date": "2025-01-22",
+          "startTime": "16:00",
+          "endTime": "18:00",
+          "price": 25,
+          "status": "scheduled",
+          "modality": "online",
+          "meetingLink": "https://zoom.us/j/123456789"
+        },
+        {
+          "classId": "cl10",
+          "subject": "Cálculo",
+          "students": [
+            {
+              "studentId": "s1",
+              "studentName": "Juan Pérez García",
+              "studentEmail": "juan.perez@email.com"
+            }
+          ],
+          "date": "2024-12-15",
+          "startTime": "16:00",
+          "endTime": "18:00",
+          "price": 25,
+          "status": "completed",
+          "modality": "online",
+          "meetingLink": "https://zoom.us/j/987654321"
+        }
+      ],
+      "classRequests": [
+        {
+          "requestId": "req1",
+          "studentId": "s3",
+          "studentName": "Pedro Martínez Sánchez",
+          "subject": "Álgebra Lineal",
+          "preferredDate": "2025-01-25",
+          "preferredTime": "10:00",
+          "modality": "online",
+          "message": "Necesito ayuda con matrices y determinantes",
+          "status": "pending",
+          "requestDate": "2025-01-18T15:00:00Z"
+        }
+      ],
+      "courses": [
+        "co1",
+        "co5"
+      ],
+      "statistics": {
+        "totalStudents": 342,
+        "totalClasses": 856,
+        "totalHours": 1712,
+        "rating": 4.8,
+        "totalReviews": 124,
+        "completedCourses": 45,
+        "activeCourses": 2,
+        "totalEarnings": 42800
+      },
+      "createdAt": "2024-05-10T10:00:00Z",
+      "lastLogin": "2025-01-19T07:00:00Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "co1",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "professorPhoto": "https://i.pravatar.cc/150?img=12",
+      "title": "Matemáticas para Bachillerato",
+      "description": "Curso completo de matemáticas para estudiantes de bachillerato. Cubre álgebra avanzada, geometría analítica, trigonometría, introducción al cálculo y estadística básica. Incluye ejercicios prácticos y preparación para exámenes de acceso universitario.",
+      "subject": "Matemáticas",
+      "level": "Bachillerato",
+      "modality": "hibrido",
+      "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
+      "price": {
+        "amount": 25,
+        "currency": "EUR",
+        "billingType": "per_hour",
+        "totalCoursePrice": 1000
+      },
+      "duration": {
+        "months": 3,
+        "totalHours": 40,
+        "sessionsPerWeek": 2,
+        "hoursPerSession": 2
+      },
+      "schedule": {
+        "monday": "16:00-18:00",
+        "wednesday": "16:00-18:00"
+      },
+      "modules": [
+        {
+          "moduleNumber": 1,
+          "title": "Álgebra Avanzada",
+          "description": "Ecuaciones, inecuaciones y sistemas",
+          "hours": 8,
+          "topics": [
+            "Ecuaciones de segundo grado",
+            "Sistemas de ecuaciones",
+            "Inecuaciones",
+            "Valor absoluto"
+          ]
+        },
+        {
+          "moduleNumber": 2,
+          "title": "Geometría Analítica",
+          "description": "Puntos, rectas y figuras en el plano",
+          "hours": 8,
+          "topics": [
+            "Distancia entre puntos",
+            "Ecuación de la recta",
+            "Circunferencia",
+            "Parábola"
+          ]
+        },
+        {
+          "moduleNumber": 3,
+          "title": "Trigonometría",
+          "description": "Funciones trigonométricas y aplicaciones",
+          "hours": 8,
+          "topics": [
+            "Funciones trigonométricas",
+            "Identidades trigonométricas",
+            "Ecuaciones trigonométricas",
+            "Aplicaciones prácticas"
+          ]
+        },
+        {
+          "moduleNumber": 4,
+          "title": "Introducción al Cálculo",
+          "description": "Límites, derivadas básicas",
+          "hours": 8,
+          "topics": [
+            "Concepto de límite",
+            "Derivadas",
+            "Aplicaciones de derivadas",
+            "Optimización básica"
+          ]
+        },
+        {
+          "moduleNumber": 5,
+          "title": "Estadística Básica",
+          "description": "Medidas de tendencia y dispersión",
+          "hours": 8,
+          "topics": [
+            "Media, mediana, moda",
+            "Desviación estándar",
+            "Probabilidad básica",
+            "Distribuciones"
+          ]
+        }
+      ],
+      "students": [
+        {
+          "studentId": "s1",
+          "studentName": "Juan Pérez García",
+          "enrollmentDate": "2024-10-15",
+          "progress": 65,
+          "status": "active"
+        }
+      ],
+      "capacity": {
+        "maxStudents": 15,
+        "currentStudents": 1,
+        "availableSlots": 14
+      },
+      "dates": {
+        "startDate": "2025-01-15",
+        "endDate": "2025-04-15",
+        "enrollmentDeadline": "2025-01-10"
+      },
+      "requirements": [
+        "Conocimientos básicos de álgebra",
+        "Calculadora científica",
+        "Cuaderno de ejercicios"
+      ],
+      "materials": [
+        "Libro de texto (proporcionado digitalmente)",
+        "Ejercicios semanales",
+        "Exámenes de práctica",
+        "Videos explicativos"
+      ],
+      "reviews": [
+        {
+          "reviewId": "r1",
+          "studentId": "s1",
+          "studentName": "Juan Pérez García",
+          "rating": 5,
+          "comment": "Excelente profesor, explica muy bien los conceptos complejos.",
+          "date": "2024-12-16"
+        }
+      ],
+      "rating": {
+        "average": 4.8,
+        "total": 45,
+        "breakdown": {
+          "5_stars": 35,
+          "4_stars": 8,
+          "3_stars": 2,
+          "2_stars": 0,
+          "1_star": 0
+        }
+      },
+      "status": "active",
+      "createdAt": "2024-09-01T10:00:00Z",
+      "updatedAt": "2025-01-15T08:00:00Z"
+    },
+    {
+      "id": "co2",
+      "professorId": "p2",
+      "professorName": "Ana Martínez Torres",
+      "professorPhoto": "https://i.pravatar.cc/150?img=9",
+      "title": "Inglés Conversacional Avanzado",
+      "description": "Mejora tu fluidez en inglés con conversaciones prácticas y situaciones de la vida real. Enfoque en pronunciación, vocabulario profesional y confianza al hablar.",
+      "subject": "Inglés",
+      "level": "Avanzado",
+      "modality": "online",
+      "image": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800",
+      "price": {
+        "amount": 30,
+        "currency": "EUR",
+        "billingType": "per_hour",
+        "totalCoursePrice": 900
+      },
+      "duration": {
+        "months": 2,
+        "totalHours": 30,
+        "sessionsPerWeek": 2,
+        "hoursPerSession": 1.5
+      },
+      "schedule": {
+        "tuesday": "18:00-19:30",
+        "thursday": "18:00-19:30"
+      },
+      "modules": [
+        {
+          "moduleNumber": 1,
+          "title": "Conversación Avanzada",
+          "description": "Debates y discusiones complejas",
+          "hours": 6,
+          "topics": [
+            "Expresar opiniones",
+            "Argumentación",
+            "Debate estructurado",
+            "Conversación fluida"
+          ]
+        },
+        {
+          "moduleNumber": 2,
+          "title": "Pronunciación y Acento",
+          "description": "Mejora tu pronunciación",
+          "hours": 6,
+          "topics": [
+            "Fonética inglesa",
+            "Acento americano vs británico",
+            "Entonación",
+            "Reducción de acento"
+          ]
+        },
+        {
+          "moduleNumber": 3,
+          "title": "Vocabulario Profesional",
+          "description": "Inglés para negocios",
+          "hours": 6,
+          "topics": [
+            "Terminología empresarial",
+            "Presentaciones",
+            "Reuniones",
+            "Negociaciones"
+          ]
+        },
+        {
+          "moduleNumber": 4,
+          "title": "Presentaciones en Inglés",
+          "description": "Hablar en público efectivamente",
+          "hours": 6,
+          "topics": [
+            "Estructura de presentaciones",
+            "Lenguaje persuasivo",
+            "Manejo de preguntas",
+            "Confianza al hablar"
+          ]
+        },
+        {
+          "moduleNumber": 5,
+          "title": "Debate y Argumentación",
+          "description": "Técnicas de debate",
+          "hours": 6,
+          "topics": [
+            "Construcción de argumentos",
+            "Contra-argumentación",
+            "Pensamiento crítico",
+            "Debate formal"
+          ]
+        }
+      ],
+      "students": [
+        {
+          "studentId": "s2",
+          "studentName": "María García Rodríguez",
+          "enrollmentDate": "2024-11-20",
+          "progress": 40,
+          "status": "active"
+        }
+      ],
+      "capacity": {
+        "maxStudents": 10,
+        "currentStudents": 1,
+        "availableSlots": 9
+      },
+      "dates": {
+        "startDate": "2025-01-20",
+        "endDate": "2025-03-20",
+        "enrollmentDeadline": "2025-01-15"
+      },
+      "requirements": [
+        "Nivel B2 o superior",
+        "Micrófono y cámara funcionales",
+        "Conexión estable a internet"
+      ],
+      "materials": [
+        "Material digital proporcionado",
+        "Acceso a plataforma de práctica",
+        "Grabaciones de clases",
+        "Ejercicios de pronunciación"
+      ],
+      "reviews": [
+        {
+          "reviewId": "r2",
+          "studentId": "s2",
+          "studentName": "María García Rodríguez",
+          "rating": 5,
+          "comment": "Ana es fantástica. Mi inglés ha mejorado notablemente.",
+          "date": "2024-12-10"
+        }
+      ],
+      "rating": {
+        "average": 4.9,
+        "total": 32,
+        "breakdown": {
+          "5_stars": 30,
+          "4_stars": 2,
+          "3_stars": 0,
+          "2_stars": 0,
+          "1_star": 0
+        }
+      },
+      "status": "active",
+      "createdAt": "2024-10-15T10:00:00Z",
+      "updatedAt": "2025-01-20T08:00:00Z"
+    },
+    {
+      "id": "co3",
+      "professorId": "p3",
+      "professorName": "Luis Sánchez García",
+      "professorPhoto": "https://i.pravatar.cc/150?img=15",
+      "title": "Desarrollo Web con React",
+      "description": "Aprende a crear aplicaciones web modernas con React desde cero hasta nivel avanzado. Incluye hooks, routing, estado global y proyecto final.",
+      "subject": "Programación",
+      "level": "Intermedio",
+      "modality": "online",
+      "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800",
+      "price": {
+        "amount": 35,
+        "currency": "EUR",
+        "billingType": "per_hour",
+        "totalCoursePrice": 2100
+      },
+      "duration": {
+        "months": 4,
+        "totalHours": 60,
+        "sessionsPerWeek": 2,
+        "hoursPerSession": 2
+      },
+      "schedule": {
+        "monday": "19:00-21:00",
+        "wednesday": "19:00-21:00"
+      },
+      "modules": [
+        {
+          "moduleNumber": 1,
+          "title": "Fundamentos de React",
+          "description": "Componentes, props y estado",
+          "hours": 12,
+          "topics": [
+            "JSX y componentes",
+            "Props y state",
+            "Event handling",
+            "Conditional rendering",
+            "Lists y keys"
+          ]
+        },
+        {
+          "moduleNumber": 2,
+          "title": "Hooks y Context API",
+          "description": "Estado moderno en React",
+          "hours": 12,
+          "topics": [
+            "useState y useEffect",
+            "useContext",
+            "useReducer",
+            "Custom hooks",
+            "Context API"
+          ]
+        },
+        {
+          "moduleNumber": 3,
+          "title": "React Router",
+          "description": "Navegación en aplicaciones SPA",
+          "hours": 12,
+          "topics": [
+            "Routing básico",
+            "Rutas anidadas",
+            "Parámetros de URL",
+            "Navegación programática",
+            "Protected routes"
+          ]
+        },
+        {
+          "moduleNumber": 4,
+          "title": "Estado Global con Redux",
+          "description": "Manejo de estado complejo",
+          "hours": 12,
+          "topics": [
+            "Fundamentos de Redux",
+            "Actions y reducers",
+            "Redux Toolkit",
+            "Async operations",
+            "Redux DevTools"
+          ]
+        },
+        {
+          "moduleNumber": 5,
+          "title": "Proyecto Final",
+          "description": "Aplicación web completa",
+          "hours": 12,
+          "topics": [
+            "Planificación del proyecto",
+            "Desarrollo guiado",
+            "Testing básico",
+            "Deployment",
+            "Presentación final"
+          ]
+        }
+      ],
+      "students": [
+        {
+          "studentId": "s1",
+          "studentName": "Juan Pérez García",
+          "enrollmentDate": "2025-01-15",
+          "progress": 15,
+          "status": "active"
+        },
+        {
+          "studentId": "s3",
+          "studentName": "Pedro Martínez Sánchez",
+          "enrollmentDate": "2025-01-18",
+          "progress": 10,
+          "status": "active"
+        }
+      ],
+      "capacity": {
+        "maxStudents": 20,
+        "currentStudents": 2,
+        "availableSlots": 18
+      },
+      "dates": {
+        "startDate": "2025-02-01",
+        "endDate": "2025-05-30",
+        "enrollmentDeadline": "2025-01-25"
+      },
+      "requirements": [
+        "Conocimientos básicos de JavaScript",
+        "HTML y CSS básico",
+        "Node.js instalado",
+        "Editor de código (VS Code recomendado)"
+      ],
+      "materials": [
+        "Acceso a repositorio GitHub",
+        "Videos grabados de las clases",
+        "Documentación de React",
+        "Proyecto starter template",
+        "Ejercicios prácticos semanales"
+      ],
+      "reviews": [
+        {
+          "reviewId": "r3",
+          "studentId": "s1",
+          "studentName": "Juan Pérez García",
+          "rating": 4,
+          "comment": "Muy buen curso de React. Luis explica con ejemplos prácticos.",
+          "date": "2024-11-28"
+        }
+      ],
+      "rating": {
+        "average": 4.7,
+        "total": 28,
+        "breakdown": {
+          "5_stars": 20,
+          "4_stars": 6,
+          "3_stars": 2,
+          "2_stars": 0,
+          "1_star": 0
+        }
+      },
+      "status": "upcoming",
+      "createdAt": "2024-11-01T10:00:00Z",
+      "updatedAt": "2025-01-18T12:00:00Z"
+    }
+  ],
+  "courseRequests": [
+    {
+      "id": "creq1",
+      "courseId": "co1",
+      "courseName": "Matemáticas para Bachillerato",
+      "professorId": "p1",
+      "studentId": "s3",
+      "studentName": "Pedro Martínez Sánchez",
+      "studentEmail": "pedro.martinez@email.com",
+      "studentPhone": "+34 634 567 890",
+      "message": "Estoy muy interesado en el curso. ¿Todavía hay cupos disponibles para el próximo ciclo?",
+      "requestDate": "2025-01-18T10:30:00Z",
+      "status": "pending",
+      "responseDate": null,
+      "responseMessage": null
+    },
+    {
+      "id": "creq2",
+      "courseId": "co2",
+      "courseName": "Inglés Conversacional Avanzado",
+      "professorId": "p2",
+      "studentId": "s1",
+      "studentName": "Juan Pérez García",
+      "studentEmail": "juan.perez@email.com",
+      "studentPhone": "+34 612 345 678",
+      "message": "Me gustaría unirme al curso de inglés. Tengo nivel B2.",
+      "requestDate": "2025-01-17T14:20:00Z",
+      "status": "approved",
+      "responseDate": "2025-01-17T16:00:00Z",
+      "responseMessage": "¡Bienvenido al curso! Te he enviado los detalles por correo."
+    },
+    {
+      "id": "creq3",
+      "courseId": "co3",
+      "courseName": "Desarrollo Web con React",
+      "professorId": "p3",
+      "studentId": "s2",
+      "studentName": "María García Rodríguez",
+      "studentEmail": "maria.garcia@email.com",
+      "studentPhone": "+34 623 456 789",
+      "message": "No tengo mucha experiencia en JavaScript, ¿puedo tomar el curso?",
+      "requestDate": "2025-01-16T09:00:00Z",
+      "status": "rejected",
+      "responseDate": "2025-01-16T11:30:00Z",
+      "responseMessage": "Te recomiendo primero tomar el curso de JavaScript básico. Luego podrás unirte a este curso."
+    }
+  ],
+  "classRequests": [
+    {
+      "id": "clreq1",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "studentId": "s3",
+      "studentName": "Pedro Martínez Sánchez",
+      "studentEmail": "pedro.martinez@email.com",
+      "studentPhone": "+34 634 567 890",
+      "subject": "Álgebra Lineal",
+      "level": "Universidad",
+      "preferredDates": [
+        {
+          "date": "2025-01-25",
+          "startTime": "10:00",
+          "endTime": "12:00"
+        },
+        {
+          "date": "2025-01-26",
+          "startTime": "16:00",
+          "endTime": "18:00"
+        }
+      ],
+      "modality": "online",
+      "numberOfSessions": 1,
+      "message": "Necesito ayuda urgente con matrices y determinantes para un examen la próxima semana.",
+      "urgency": "high",
+      "requestDate": "2025-01-18T15:00:00Z",
+      "status": "pending",
+      "responseDate": null,
+      "proposedSchedule": null
+    },
+    {
+      "id": "clreq2",
+      "professorId": "p2",
+      "professorName": "Ana Martínez Torres",
+      "studentId": "s1",
+      "studentName": "Juan Pérez García",
+      "studentEmail": "juan.perez@email.com",
+      "studentPhone": "+34 612 345 678",
+      "subject": "Business English",
+      "level": "Avanzado",
+      "preferredDates": [
+        {
+          "date": "2025-01-28",
+          "startTime": "18:00",
+          "endTime": "19:30"
+        }
+      ],
+      "modality": "presencial",
+      "numberOfSessions": 4,
+      "message": "Necesito preparación para una entrevista de trabajo en inglés.",
+      "urgency": "medium",
+      "requestDate": "2025-01-19T12:00:00Z",
+      "status": "approved",
+      "responseDate": "2025-01-19T14:30:00Z",
+      "proposedSchedule": {
+        "sessions": [
+          {
+            "date": "2025-01-28",
+            "startTime": "18:00",
+            "endTime": "19:30"
+          },
+          {
+            "date": "2025-01-30",
+            "startTime": "18:00",
+            "endTime": "19:30"
+          },
+          {
+            "date": "2025-02-04",
+            "startTime": "18:00",
+            "endTime": "19:30"
+          },
+          {
+            "date": "2025-02-06",
+            "startTime": "18:00",
+            "endTime": "19:30"
+          }
+        ],
+        "totalPrice": 180,
+        "location": "Paseo de Gracia 321, Barcelona"
+      }
+    },
+    {
+      "id": "clreq3",
+      "professorId": "p3",
+      "professorName": "Luis Sánchez García",
+      "studentId": "s2",
+      "studentName": "María García Rodríguez",
+      "studentEmail": "maria.garcia@email.com",
+      "studentPhone": "+34 623 456 789",
+      "subject": "JavaScript Básico",
+      "level": "Principiante",
+      "preferredDates": [
+        {
+          "date": "2025-01-27",
+          "startTime": "11:00",
+          "endTime": "13:00"
+        }
+      ],
+      "modality": "online",
+      "numberOfSessions": 6,
+      "message": "Soy principiante total en programación. ¿Puedes enseñarme desde cero?",
+      "urgency": "low",
+      "requestDate": "2025-01-17T10:00:00Z",
+      "status": "rejected",
+      "responseDate": "2025-01-17T15:00:00Z",
+      "proposedSchedule": null,
+      "rejectionReason": "No tengo disponibilidad en esos horarios. Te sugiero revisar mi curso de JavaScript desde Cero que inicia el 1 de febrero."
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "courseId": "co1",
+      "courseName": "Matemáticas para Bachillerato",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "studentId": "s1",
+      "studentName": "Juan Pérez García",
+      "studentPhoto": "https://i.pravatar.cc/150?img=1",
+      "rating": 5,
+      "categories": {
+        "methodology": 5,
+        "punctuality": 5,
+        "clarity": 5,
+        "patience": 5,
+        "materials": 5
+      },
+      "comment": "Excelente profesor, explica muy bien los conceptos complejos. Las clases son dinámicas y siempre resuelve todas las dudas. El material proporcionado es de alta calidad.",
+      "pros": [
+        "Explicaciones muy claras",
+        "Paciencia infinita",
+        "Material excelente",
+        "Siempre puntual"
+      ],
+      "cons": [
+        "A veces las clases son muy intensas"
+      ],
+      "wouldRecommend": true,
+      "helpful": 12,
+      "unhelpful": 0,
+      "date": "2024-12-16T10:30:00Z",
+      "verified": true,
+      "professorResponse": {
+        "message": "¡Muchas gracias Juan! Es un placer trabajar contigo. Seguimos mejorando juntos.",
+        "date": "2024-12-16T14:00:00Z"
+      }
+    },
+    {
+      "id": "r2",
+      "courseId": "co2",
+      "courseName": "Inglés Conversacional Avanzado",
+      "professorId": "p2",
+      "professorName": "Ana Martínez Torres",
+      "studentId": "s1",
+      "studentName": "Juan Pérez García",
+      "studentPhoto": "https://i.pravatar.cc/150?img=1",
+      "rating": 5,
+      "categories": {
+        "methodology": 5,
+        "punctuality": 5,
+        "clarity": 5,
+        "patience": 5,
+        "materials": 5
+      },
+      "comment": "Ana es fantástica. Mi inglés ha mejorado notablemente en solo unas semanas. Muy profesional y cercana. Las conversaciones son naturales y divertidas.",
+      "pros": [
+        "Nativa del idioma",
+        "Método conversacional efectivo",
+        "Ambiente relajado",
+        "Correcciones constructivas"
+      ],
+      "cons": [],
+      "wouldRecommend": true,
+      "helpful": 8,
+      "unhelpful": 0,
+      "date": "2024-12-10T16:20:00Z",
+      "verified": true,
+      "professorResponse": {
+        "message": "Thank you so much Juan! Your progress has been amazing. Keep up the great work!",
+        "date": "2024-12-10T18:00:00Z"
+      }
+    },
+    {
+      "id": "r3",
+      "courseId": "co3",
+      "courseName": "Desarrollo Web con React",
+      "professorId": "p3",
+      "professorName": "Luis Sánchez García",
+      "studentId": "s2",
+      "studentName": "María García Rodríguez",
+      "studentPhoto": "https://i.pravatar.cc/150?img=5",
+      "rating": 4,
+      "categories": {
+        "methodology": 5,
+        "punctuality": 4,
+        "clarity": 4,
+        "patience": 4,
+        "materials": 5
+      },
+      "comment": "Muy buen curso de React. Luis explica con ejemplos prácticos. A veces va un poco rápido pero en general excelente. Los proyectos son muy útiles.",
+      "pros": [
+        "Ejemplos prácticos reales",
+        "Proyectos útiles",
+        "Siempre disponible para dudas",
+        "Material actualizado"
+      ],
+      "cons": [
+        "A veces va muy rápido",
+        "Podría haber más ejercicios"
+      ],
+      "wouldRecommend": true,
+      "helpful": 15,
+      "unhelpful": 1,
+      "date": "2024-11-28T11:45:00Z",
+      "verified": true,
+      "professorResponse": {
+        "message": "Gracias María por tu feedback. Voy a ajustar el ritmo y agregar más ejercicios. ¡Gracias!",
+        "date": "2024-11-28T15:30:00Z"
+      }
+    },
+    {
+      "id": "r4",
+      "courseId": "co1",
+      "courseName": "Matemáticas para Bachillerato",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "studentId": "s2",
+      "studentName": "María García Rodríguez",
+      "studentPhoto": "https://i.pravatar.cc/150?img=5",
+      "rating": 5,
+      "categories": {
+        "methodology": 5,
+        "punctuality": 5,
+        "clarity": 5,
+        "patience": 5,
+        "materials": 5
+      },
+      "comment": "Carlos tiene una paciencia infinita. Perfecto para quienes tenemos dificultades con las matemáticas. Ahora entiendo conceptos que antes parecían imposibles.",
+      "pros": [
+        "Extremadamente paciente",
+        "Adapta el ritmo al estudiante",
+        "Usa ejemplos cotidianos",
+        "Motivador"
+      ],
+      "cons": [],
+      "wouldRecommend": true,
+      "helpful": 6,
+      "unhelpful": 0,
+      "date": "2024-12-01T09:15:00Z",
+      "verified": true,
+      "professorResponse": null
+    },
+    {
+      "id": "r5",
+      "courseId": "co1",
+      "courseName": "Matemáticas para Bachillerato",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "studentId": "s3",
+      "studentName": "Pedro Martínez Sánchez",
+      "studentPhoto": "https://i.pravatar.cc/150?img=8",
+      "rating": 4,
+      "categories": {
+        "methodology": 5,
+        "punctuality": 4,
+        "clarity": 4,
+        "patience": 4,
+        "materials": 4
+      },
+      "comment": "Muy buen curso de física. Los experimentos virtuales son muy útiles para entender los conceptos teóricos.",
+      "pros": [
+        "Experimentos virtuales",
+        "Teoría bien explicada",
+        "Ejercicios variados"
+      ],
+      "cons": [
+        "Me gustaría más práctica experimental"
+      ],
+      "wouldRecommend": true,
+      "helpful": 9,
+      "unhelpful": 0,
+      "date": "2024-11-15T14:30:00Z",
+      "verified": true,
+      "professorResponse": {
+        "message": "Gracias Pedro. Voy a incluir más laboratorios virtuales en las próximas clases.",
+        "date": "2024-11-15T16:00:00Z"
+      }
+    }
+  ],
+  "academicDocuments": [
+    {
+      "id": "doc1",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "type": "university_degree",
+      "title": "Doctorado en Matemáticas Aplicadas",
+      "fileName": "titulo_doctorado_matematicas.pdf",
+      "fileSize": "2.5 MB",
+      "fileUrl": "/documents/prof1/titulo_doctorado.pdf",
+      "institution": "Universidad Complutense de Madrid",
+      "issueDate": "2015-06-20",
+      "uploadDate": "2024-05-10T10:00:00Z",
+      "status": "approved",
+      "reviewedBy": "admin1",
+      "reviewerName": "Sistema Administrativo",
+      "reviewDate": "2024-05-12T14:30:00Z",
+      "reviewNotes": "Documento verificado. Título válido y en regla.",
+      "expirationDate": null
+    },
+    {
+      "id": "doc2",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "type": "professional_license",
+      "title": "Cédula Profesional",
+      "fileName": "cedula_profesional.pdf",
+      "fileSize": "1.2 MB",
+      "fileUrl": "/documents/prof1/cedula_profesional.pdf",
+      "institution": "Ministerio de Educación de España",
+      "issueDate": "2015-09-10",
+      "uploadDate": "2024-05-10T10:05:00Z",
+      "status": "approved",
+      "reviewedBy": "admin1",
+      "reviewerName": "Sistema Administrativo",
+      "reviewDate": "2024-05-12T14:30:00Z",
+      "reviewNotes": "Cédula profesional verificada correctamente.",
+      "expirationDate": null
+    },
+    {
+      "id": "doc3",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "type": "additional_certification",
+      "title": "Certificado de Pedagogía Digital",
+      "fileName": "certificado_pedagogia_digital.pdf",
+      "fileSize": "850 KB",
+      "fileUrl": "/documents/prof1/cert_pedagogia.pdf",
+      "institution": "Universidad de Barcelona",
+      "issueDate": "2020-12-15",
+      "uploadDate": "2024-05-10T10:10:00Z",
+      "status": "approved",
+      "reviewedBy": "admin1",
+      "reviewerName": "Sistema Administrativo",
+      "reviewDate": "2024-05-12T14:30:00Z",
+      "reviewNotes": "Certificación adicional aprobada.",
+      "expirationDate": "2025-12-15"
+    },
+    {
+      "id": "doc4",
+      "professorId": "p2",
+      "professorName": "Ana Martínez Torres",
+      "type": "university_degree",
+      "title": "Master en Enseñanza de Inglés",
+      "fileName": "master_teaching_english.pdf",
+      "fileSize": "3.1 MB",
+      "fileUrl": "/documents/prof2/master_degree.pdf",
+      "institution": "University of Cambridge",
+      "issueDate": "2014-07-20",
+      "uploadDate": "2024-06-15T09:00:00Z",
+      "status": "approved",
+      "reviewedBy": "admin1",
+      "reviewerName": "Sistema Administrativo",
+      "reviewDate": "2024-06-16T11:00:00Z",
+      "reviewNotes": "Título internacional verificado.",
+      "expirationDate": null
+    },
+    {
+      "id": "doc5",
+      "professorId": "p2",
+      "professorName": "Ana Martínez Torres",
+      "type": "additional_certification",
+      "title": "CELTA Certificate",
+      "fileName": "celta_certificate.pdf",
+      "fileSize": "1.5 MB",
+      "fileUrl": "/documents/prof2/celta_cert.pdf",
+      "institution": "Cambridge English",
+      "issueDate": "2013-11-30",
+      "uploadDate": "2024-06-15T09:05:00Z",
+      "status": "approved",
+      "reviewedBy": "admin1",
+      "reviewerName": "Sistema Administrativo",
+      "reviewDate": "2024-06-16T11:00:00Z",
+      "reviewNotes": "Certificación CELTA válida.",
+      "expirationDate": null
+    },
+    {
+      "id": "doc6",
+      "professorId": "p3",
+      "professorName": "Luis Sánchez García",
+      "type": "university_degree",
+      "title": "Ingeniería Informática",
+      "fileName": "titulo_ingenieria.pdf",
+      "fileSize": "2.8 MB",
+      "fileUrl": "/documents/prof3/engineering_degree.pdf",
+      "institution": "Universidad Politécnica de Madrid",
+      "issueDate": "2011-06-25",
+      "uploadDate": "2024-07-20T10:00:00Z",
+      "status": "pending",
+      "reviewedBy": null,
+      "reviewerName": null,
+      "reviewDate": null,
+      "reviewNotes": null,
+      "expirationDate": null
+    },
+    {
+      "id": "doc7",
+      "professorId": "p3",
+      "professorName": "Luis Sánchez García",
+      "type": "professional_license",
+      "title": "Cédula Profesional Ingeniería",
+      "fileName": "cedula_ing.pdf",
+      "fileSize": "1.1 MB",
+      "fileUrl": "/documents/prof3/prof_license.pdf",
+      "institution": "Colegio de Ingenieros",
+      "issueDate": "2011-09-15",
+      "uploadDate": "2024-07-20T10:05:00Z",
+      "status": "rejected",
+      "reviewedBy": "admin1",
+      "reviewerName": "Sistema Administrativo",
+      "reviewDate": "2024-07-22T15:00:00Z",
+      "reviewNotes": "El documento presenta borroso. Por favor suba una copia más clara.",
+      "expirationDate": null
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay1",
+      "transactionId": "TXN_2025011501234",
+      "studentId": "s1",
+      "studentName": "Juan Pérez García",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "type": "class",
+      "relatedId": "cl1",
+      "relatedTitle": "Clase de Matemáticas",
+      "amount": 25,
+      "currency": "EUR",
+      "paymentMethod": "credit_card",
+      "cardBrand": "Visa",
+      "cardLast4": "4242",
+      "status": "completed",
+      "platformFee": 2.5,
+      "professorEarnings": 22.5,
+      "paymentDate": "2025-01-15T10:00:00Z",
+      "paidOutDate": "2025-01-20T08:00:00Z",
+      "paidOutStatus": "paid",
+      "description": "Pago por clase de Matemáticas - 20/01/2025",
+      "receipt": {
+        "receiptNumber": "REC-2025-001234",
+        "receiptUrl": "/receipts/2025/01/rec_001234.pdf"
+      }
+    },
+    {
+      "id": "pay2",
+      "transactionId": "TXN_2025011802567",
+      "studentId": "s2",
+      "studentName": "María García Rodríguez",
+      "professorId": "p2",
+      "professorName": "Ana Martínez Torres",
+      "type": "class",
+      "relatedId": "cl3",
+      "relatedTitle": "Clase de Inglés Conversacional",
+      "amount": 30,
+      "currency": "EUR",
+      "paymentMethod": "paypal",
+      "paypalEmail": "maria.garcia@email.com",
+      "status": "completed",
+      "platformFee": 3,
+      "professorEarnings": 27,
+      "paymentDate": "2025-01-18T10:00:00Z",
+      "paidOutDate": null,
+      "paidOutStatus": "pending",
+      "description": "Pago por clase de Inglés - 21/01/2025",
+      "receipt": {
+        "receiptNumber": "REC-2025-002567",
+        "receiptUrl": "/receipts/2025/01/rec_002567.pdf"
+      }
+    },
+    {
+      "id": "pay3",
+      "transactionId": "TXN_2025011503890",
+      "studentId": "s1",
+      "studentName": "Juan Pérez García",
+      "professorId": "p1",
+      "professorName": "Dr. Carlos López Martínez",
+      "type": "course",
+      "relatedId": "co1",
+      "relatedTitle": "Matemáticas para Bachillerato",
+      "amount": 1000,
+      "currency": "EUR",
+      "paymentMethod": "bank_transfer",
+      "bankReference": "TRANS123456",
+      "status": "completed",
+      "platformFee": 100,
+      "professorEarnings": 900,
+      "paymentDate": "2024-10-15T14:30:00Z",
+      "paidOutDate": "2024-10-25T08:00:00Z",
+      "paidOutStatus": "paid",
+      "description": "Inscripción completa al curso de Matemáticas",
+      "receipt": {
+        "receiptNumber": "REC-2024-015678",
+        "receiptUrl": "/receipts/2024/10/rec_015678.pdf"
+      }
+    },
+    {
+      "id": "pay4",
+      "transactionId": "TXN_2025011204567",
+      "studentId": "s3",
+      "studentName": "Pedro Martínez Sánchez",
+      "professorId": "p3",
+      "professorName": "Luis Sánchez García",
+      "type": "class",
+      "relatedId": "cl15",
+      "relatedTitle": "Clase de Programación",
+      "amount": 35,
+      "currency": "EUR",
+      "paymentMethod": "credit_card",
+      "cardBrand": "Mastercard",
+      "cardLast4": "5555",
+      "status": "refunded",
+      "platformFee": 3.5,
+      "professorEarnings": 0,
+      "paymentDate": "2024-12-12T11:00:00Z",
+      "refundDate": "2024-12-13T09:00:00Z",
+      "refundReason": "Clase cancelada por el profesor",
+      "paidOutDate": null,
+      "paidOutStatus": "refunded",
+      "description": "Pago por clase de Programación - Reembolsado",
+      "receipt": {
+        "receiptNumber": "REC-2024-023456",
+        "receiptUrl": "/receipts/2024/12/rec_023456.pdf"
+      }
+    },
+    {
+      "id": "pay5",
+      "transactionId": "TXN_2025011906789",
+      "studentId": "s2",
+      "studentName": "María García Rodríguez",
+      "professorId": "p2",
+      "professorName": "Ana Martínez Torres",
+      "type": "course",
+      "relatedId": "co2",
+      "relatedTitle": "Inglés Conversacional Avanzado",
+      "amount": 900,
+      "currency": "EUR",
+      "paymentMethod": "credit_card",
+      "cardBrand": "Visa",
+      "cardLast4": "1234",
+      "status": "pending",
+      "platformFee": 90,
+      "professorEarnings": 810,
+      "paymentDate": "2025-01-19T15:20:00Z",
+      "paidOutDate": null,
+      "paidOutStatus": "processing",
+      "description": "Inscripción al curso de Inglés Avanzado",
+      "receipt": {
+        "receiptNumber": "REC-2025-006789",
+        "receiptUrl": "/receipts/2025/01/rec_006789.pdf"
+      }
+    }
+  ],
+  "notifications": [
+    {
+      "id": "not1",
+      "userId": "s1",
+      "userRole": "student",
+      "type": "class_reminder",
+      "priority": "high",
+      "title": "Recordatorio de clase",
+      "message": "Tu clase de Matemáticas con Dr. Carlos López comienza en 1 hora",
+      "relatedType": "class",
+      "relatedId": "cl1",
+      "actionUrl": "/student/classes/cl1",
+      "createdAt": "2025-01-20T15:00:00Z",
+      "read": false,
+      "readAt": null
+    },
+    {
+      "id": "not2",
+      "userId": "s1",
+      "userRole": "student",
+      "type": "new_message",
+      "priority": "medium",
+      "title": "Nuevo mensaje",
+      "message": "Dr. Carlos López te ha enviado un mensaje",
+      "relatedType": "message",
+      "relatedId": "msg1",
+      "actionUrl": "/messages/p1",
+      "createdAt": "2025-01-19T14:30:00Z",
+      "read": false,
+      "readAt": null
+    },
+    {
+      "id": "not3",
+      "userId": "s2",
+      "userRole": "student",
+      "type": "payment_confirmation",
+      "priority": "medium",
+      "title": "Pago confirmado",
+      "message": "Tu pago de €30 ha sido procesado correctamente",
+      "relatedType": "payment",
+      "relatedId": "pay2",
+      "actionUrl": "/student/payments",
+      "createdAt": "2025-01-18T10:00:00Z",
+      "read": true,
+      "readAt": "2025-01-18T11:30:00Z"
+    },
+    {
+      "id": "not4",
+      "userId": "p1",
+      "userRole": "professor",
+      "type": "new_class_request",
+      "priority": "high",
+      "title": "Nueva solicitud de clase",
+      "message": "Pedro Martínez ha solicitado una clase de Álgebra Lineal",
+      "relatedType": "class_request",
+      "relatedId": "clreq1",
+      "actionUrl": "/professor/requests",
+      "createdAt": "2025-01-18T15:00:00Z",
+      "read": false,
+      "readAt": null
+    },
+    {
+      "id": "not5",
+      "userId": "p2",
+      "userRole": "professor",
+      "type": "new_review",
+      "priority": "medium",
+      "title": "Nueva reseña recibida",
+      "message": "Juan Pérez ha dejado una reseña de 5 estrellas en tu curso",
+      "relatedType": "review",
+      "relatedId": "r2",
+      "actionUrl": "/professor/reviews",
+      "createdAt": "2024-12-10T16:20:00Z",
+      "read": true,
+      "readAt": "2024-12-10T17:00:00Z"
+    },
+    {
+      "id": "not6",
+      "userId": "p3",
+      "userRole": "professor",
+      "type": "document_status",
+      "priority": "high",
+      "title": "Documento rechazado",
+      "message": "Tu cédula profesional ha sido rechazada. Por favor revisa los comentarios.",
+      "relatedType": "document",
+      "relatedId": "doc7",
+      "actionUrl": "/professor/documents",
+      "createdAt": "2024-07-22T15:00:00Z",
+      "read": false,
+      "readAt": null
+    },
+    {
+      "id": "not7",
+      "userId": "s1",
+      "userRole": "student",
+      "type": "course_update",
+      "priority": "low",
+      "title": "Actualización del curso",
+      "message": "Se ha agregado nuevo material al módulo 3 de Matemáticas",
+      "relatedType": "course",
+      "relatedId": "co1",
+      "actionUrl": "/student/courses/co1",
+      "createdAt": "2025-01-19T09:00:00Z",
+      "read": true,
+      "readAt": "2025-01-19T10:15:00Z"
+    },
+    {
+      "id": "not8",
+      "userId": "p1",
+      "userRole": "professor",
+      "type": "payout_completed",
+      "priority": "medium",
+      "title": "Pago procesado",
+      "message": "Se ha transferido €22.50 a tu cuenta bancaria",
+      "relatedType": "payment",
+      "relatedId": "pay1",
+      "actionUrl": "/professor/earnings",
+      "createdAt": "2025-01-20T08:00:00Z",
+      "read": false,
+      "readAt": null
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg1",
+      "conversationId": "conv_s1_p1",
+      "senderId": "p1",
+      "senderName": "Dr. Carlos López",
+      "senderRole": "professor",
+      "receiverId": "s1",
+      "receiverName": "Juan Pérez García",
+      "receiverRole": "student",
+      "subject": "Preparación para clase",
+      "message": "Hola Juan, recuerda traer tu calculadora científica a la próxima clase. También revisa el capítulo 3 del libro.",
+      "timestamp": "2025-01-19T14:30:00Z",
+      "read": false,
+      "readAt": null,
+      "attachments": []
+    },
+    {
+      "id": "msg2",
+      "conversationId": "conv_s1_p1",
+      "senderId": "s1",
+      "senderName": "Juan Pérez García",
+      "senderRole": "student",
+      "receiverId": "p1",
+      "receiverName": "Dr. Carlos López",
+      "receiverRole": "professor",
+      "subject": "Re: Preparación para clase",
+      "message": "Perfecto profesor, gracias por el recordatorio. Ya tengo todo preparado.",
+      "timestamp": "2025-01-19T14:45:00Z",
+      "read": true,
+      "readAt": "2025-01-19T15:00:00Z",
+      "attachments": []
+    },
+    {
+      "id": "msg3",
+      "conversationId": "conv_s2_p2",
+      "senderId": "s2",
+      "senderName": "María García Rodríguez",
+      "senderRole": "student",
+      "receiverId": "p2",
+      "receiverName": "Ana Martínez",
+      "receiverRole": "professor",
+      "subject": "Consulta sobre pronunciación",
+      "message": "Hi Ana, I'm having trouble with the 'th' sound. Do you have any extra exercises I can practice?",
+      "timestamp": "2025-01-18T11:00:00Z",
+      "read": true,
+      "readAt": "2025-01-18T12:00:00Z",
+      "attachments": []
+    },
+    {
+      "id": "msg4",
+      "conversationId": "conv_s2_p2",
+      "senderId": "p2",
+      "senderName": "Ana Martínez",
+      "senderRole": "professor",
+      "receiverId": "s2",
+      "receiverName": "María García Rodríguez",
+      "receiverRole": "student",
+      "subject": "Re: Consulta sobre pronunciación",
+      "message": "Of course! I'm sending you a PDF with specific exercises for 'th' sounds. Practice 10 minutes daily and we'll review in our next class.",
+      "timestamp": "2025-01-18T12:30:00Z",
+      "read": true,
+      "readAt": "2025-01-18T13:00:00Z",
+      "attachments": [
+        {
+          "fileName": "th_sound_exercises.pdf",
+          "fileSize": "450 KB",
+          "fileUrl": "/attachments/th_exercises.pdf"
+        }
+      ]
+    },
+    {
+      "id": "msg5",
+      "conversationId": "conv_s3_p1",
+      "senderId": "s3",
+      "senderName": "Pedro Martínez Sánchez",
+      "senderRole": "student",
+      "receiverId": "p1",
+      "receiverName": "Dr. Carlos López",
+      "receiverRole": "professor",
+      "subject": "Solicitud de clase urgente",
+      "message": "Buenos días Dr. López, necesito urgentemente ayuda con álgebra lineal. ¿Tiene disponibilidad esta semana?",
+      "timestamp": "2025-01-18T09:00:00Z",
+      "read": true,
+      "readAt": "2025-01-18T10:00:00Z",
+      "attachments": []
+    }
+  ],
+  "admin": {
+    "id": "admin1",
+    "role": "admin",
+    "email": "admin@edumatch.com",
+    "password": "admin123",
+    "name": "Sistema Administrativo",
+    "permissions": [
+      "view_all_users",
+      "manage_users",
+      "approve_documents",
+      "view_financials",
+      "manage_courses",
+      "manage_classes",
+      "send_notifications",
+      "generate_reports"
+    ],
+    "dashboard": {
+      "totalUsers": 6,
+      "totalStudents": 3,
+      "totalProfessors": 3,
+      "verifiedProfessors": 2,
+      "pendingVerifications": 1,
+      "totalCourses": 3,
+      "activeCourses": 2,
+      "upcomingCourses": 1,
+      "totalClasses": 5,
+      "scheduledClasses": 4,
+      "completedClasses": 1,
+      "totalEarnings": {
+        "amount": 2055,
+        "currency": "EUR",
+        "platformFees": 199,
+        "professorEarnings": 1856
+      },
+      "monthlyEarnings": {
+        "january2025": {
+          "amount": 55,
+          "platformFees": 5.5,
+          "professorEarnings": 49.5,
+          "transactions": 2
+        },
+        "december2024": {
+          "amount": 0,
+          "platformFees": 0,
+          "professorEarnings": 0,
+          "transactions": 0
+        },
+        "november2024": {
+          "amount": 0,
+          "platformFees": 0,
+          "professorEarnings": 0,
+          "transactions": 0
+        },
+        "october2024": {
+          "amount": 1000,
+          "platformFees": 100,
+          "professorEarnings": 900,
+          "transactions": 1
+        }
+      },
+      "pendingDocuments": [
+        {
+          "documentId": "doc6",
+          "professorId": "p3",
+          "professorName": "Luis Sánchez García",
+          "type": "university_degree",
+          "uploadDate": "2024-07-20T10:00:00Z",
+          "daysWaiting": 173
+        }
+      ],
+      "recentActivities": [
+        {
+          "id": "act1",
+          "type": "new_registration",
+          "description": "Nuevo estudiante registrado: Pedro Martínez",
+          "userId": "s3",
+          "timestamp": "2024-09-10T16:30:00Z"
+        },
+        {
+          "id": "act2",
+          "type": "document_approved",
+          "description": "Documento aprobado para Dr. Carlos López",
+          "userId": "p1",
+          "timestamp": "2024-05-12T14:30:00Z"
+        },
+        {
+          "id": "act3",
+          "type": "course_created",
+          "description": "Nuevo curso creado: Desarrollo Web con React",
+          "userId": "p3",
+          "timestamp": "2024-11-01T10:00:00Z"
+        },
+        {
+          "id": "act4",
+          "type": "payment_completed",
+          "description": "Pago procesado: €1000 - Juan Pérez",
+          "userId": "s1",
+          "timestamp": "2024-10-15T14:30:00Z"
+        }
+      ],
+      "statistics": {
+        "userGrowth": {
+          "january2025": 0,
+          "december2024": 0,
+          "november2024": 1,
+          "october2024": 1,
+          "september2024": 1,
+          "august2024": 1,
+          "july2024": 1,
+          "june2024": 1
+        },
+        "popularSubjects": [
+          {
+            "subject": "Matemáticas",
+            "students": 2,
+            "courses": 1,
+            "classes": 3
+          },
+          {
+            "subject": "Inglés",
+            "students": 1,
+            "courses": 1,
+            "classes": 2
+          },
+          {
+            "subject": "Programación",
+            "students": 2,
+            "courses": 1,
+            "classes": 0
+          }
+        ],
+        "platformPerformance": {
+          "averageClassRating": 4.7,
+          "studentSatisfaction": 92,
+          "professorRetention": 100,
+          "completionRate": 85
+        }
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00Z",
+    "lastLogin": "2025-01-20T07:00:00Z"
+  }
+}
