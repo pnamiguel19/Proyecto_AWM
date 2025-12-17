@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMatch - Mi Perfil</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/student.css">
+</head>
+<body>
+    <div class="mobile-header">
+        <div class="mobile-header-content">
+            <h1>Mi Perfil</h1>
+            <span class="mobile-header-icon">⚙️</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Información del perfil -->
+        <div class="profile-header">
+            <img src="https://via.placeholder.com/100" alt="Perfil" class="avatar avatar-lg">
+            <h2>Juan Pérez</h2>
+            <p class="profile-email">juan.perez@email.com</p>
+            <p class="profile-phone">+593 999 999 999</p>
+            <button class="btn btn-outline">Editar perfil</button>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="profile-stats">
+            <div class="stat-box">
+                <div class="stat-value">24</div>
+                <div class="stat-label">Clases tomadas</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Profesores</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">45</div>
+                <div class="stat-label">Horas</div>
+            </div>
+        </div>
+
+        <!-- Opciones del menú -->
+        <div class="menu-section">
+            <h3>General</h3>
+            <div class="menu-list">
+                <a href="mis-profesores.html" class="menu-item">
+                    <span class="menu-icon">👨‍🏫</span>
+                    <span class="menu-text">Mis profesores</span>
+                    <span class="menu-arrow">›</span>
+                </a>
+                <a href="favoritos.html" class="menu-item">
+                    <span class="menu-icon">♥</span>
+                    <span class="menu-text">Favoritos</span>
+                    <span class="menu-arrow">›</span>
+                </a>
+                <a href="historial-pagos.html" class="menu-item">
+                    <span class="menu-icon">💳</span>
+                    <span class="menu-text">Historial de pagos</span>
+                    <span class="menu-arrow">›</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <h3>Configuración</h3>
+            <div class="menu-list">
+                <a href="notificaciones.html" class="menu-item">
+                    <span class="menu-icon">🔔</span>
+                    <span class="menu-text">Notificaciones</span>
+                    <span class="menu-arrow">›</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <span class="menu-icon">🔒</span>
+                    <span class="menu-text">Seguridad y privacidad</span>
+                    <span class="menu-arrow">›</span>
+                </a>
+                <a href="ayuda.html" class="menu-item">
+                    <span class="menu-icon">❓</span>
+                    <span class="menu-text">Ayuda y soporte</span>
+                    <span class="menu-arrow">›</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-list">
+                <a href="../auth/login.html" class="menu-item danger">
+                    <span class="menu-icon">🚪</span>
+                    <span class="menu-text">Cerrar sesión</span>
+                    <span class="menu-arrow">›</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="../home/home.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Inicio</span>
+        </a>
+        <a href="buscar-profesores.html" class="nav-item">
+            <span class="nav-icon">🔍</span>
+            <span>Buscar</span>
+        </a>
+        <a href="mis-clases.html" class="nav-item">
+            <span class="nav-icon">📚</span>
+            <span>Clases</span>
+        </a>
+        <a href="mensajes.html" class="nav-item">
+            <span class="nav-icon">💬</span>
+            <span>Mensajes</span>
+        </a>
+        <a href="perfil.html" class="nav-item active">
+            <span class="nav-icon">👤</span>
+            <span>Perfil</span>
+        </a>
+    </nav>
+</body>
+</html>

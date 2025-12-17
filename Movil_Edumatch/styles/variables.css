@@ -1,0 +1,62 @@
+/* ============================================
+   EDUMATCH - VARIABLES GLOBALES MÓVIL
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
+:root {
+  /* --- PALETA DE COLORES UNIFICADA --- */
+  
+  /* Cyan (Color Principal) */
+  --em-primary: #00bcd4;       
+  --em-primary-dark: #00acc1;  
+  --em-primary-light: #b2ebf2; 
+
+  /* Secundarios */
+  --em-secondary: #ffb300;     
+  --em-danger: #e53935;        
+  --em-success: #4caf50;       
+
+  /* Fondos */
+  --em-bg-body: #f5f7fa;       
+  --em-bg-card: #ffffff;       
+
+  /* Texto */
+  --em-text-main: #333333;     
+  --em-text-muted: #777777;    
+  --em-text-light: #ffffff;    
+  
+  /* Bordes y sombras */
+  --em-border-radius: 12px;    
+  --em-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  
+  /* Espaciado móvil */
+  --em-spacing-xs: 8px;
+  --em-spacing-sm: 12px;
+  --em-spacing-md: 16px;
+  --em-spacing-lg: 24px;
+  --em-spacing-xl: 32px;
+  
+  /* Tipografía móvil */
+  --em-font-xs: 12px;
+  --em-font-sm: 14px;
+  --em-font-md: 16px;
+  --em-font-lg: 18px;
+  --em-font-xl: 24px;
+  --em-font-xxl: 32px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--em-bg-body);
+  color: var(--em-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMatch - Perfil del Profesor</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/teacher-profile.css">
+</head>
+<body>
+    <div class="mobile-header">
+        <div class="mobile-header-content">
+            <a href="../student/buscar-profesores.html" class="back-link">←</a>
+            <h1>Perfil del Profesor</h1>
+            <span class="mobile-header-icon">♥</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Profile header -->
+        <div class="teacher-profile-header">
+            <img src="https://via.placeholder.com/100" alt="Profesor" class="avatar avatar-lg">
+            <h2>María González</h2>
+            <p class="specialty">Profesora de Matemáticas</p>
+            <div class="rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span>5.0 (120 reseñas)</span>
+            </div>
+            <div class="profile-badges">
+                <span class="badge badge-success">✓ Verificada</span>
+                <span class="badge badge-primary">Top Rated</span>
+            </div>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="quick-stats">
+            <div class="stat-item">
+                <span class="stat-icon">📚</span>
+                <span class="stat-value">156</span>
+                <span class="stat-label">Clases</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">👥</span>
+                <span class="stat-value">45</span>
+                <span class="stat-label">Estudiantes</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">⏱️</span>
+                <span class="stat-value">98%</span>
+                <span class="stat-label">Puntualidad</span>
+            </div>
+        </div>
+
+        <!-- About -->
+        <section class="profile-section">
+            <h3>Sobre mí</h3>
+            <p class="about-text">
+                Soy licenciada en Matemáticas con más de 10 años de experiencia enseñando álgebra, cálculo y geometría. Me apasiona ayudar a los estudiantes a superar sus dificultades y alcanzar sus metas académicas.
+            </p>
+        </section>
+
+        <!-- Subjects -->
+        <section class="profile-section">
+            <h3>Materias</h3>
+            <div class="subjects-list">
+                <span class="subject-tag">Álgebra</span>
+                <span class="subject-tag">Cálculo</span>
+                <span class="subject-tag">Geometría</span>
+                <span class="subject-tag">Trigonometría</span>
+                <span class="subject-tag">Estadística</span>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="profile-section">
+            <h3>Formación académica</h3>
+            <div class="education-item">
+                <span class="edu-icon">🎓</span>
+                <div class="edu-details">
+                    <h4>Licenciatura en Matemáticas</h4>
+                    <p>Universidad Central del Ecuador</p>
+                    <p class="edu-year">2010 - 2014</p>
+                </div>
+            </div>
+            <div class="education-item">
+                <span class="edu-icon">🎓</span>
+                <div class="edu-details">
+                    <h4>Maestría en Educación Matemática</h4>
+                    <p>PUCE</p>
+                    <p class="edu-year">2015 - 2017</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="profile-section">
+            <div class="section-header">
+                <h3>Reseñas (120)</h3>
+                <a href="resenas.html" class="see-all">Ver todas</a>
+            </div>
+            <div class="reviews-preview">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://via.placeholder.com/40" alt="Estudiante" class="avatar">
+                        <div class="review-info">
+                            <h4>Juan Pérez</h4>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                        <span class="review-date">Hace 1 semana</span>
+                    </div>
+                    <p class="review-text">
+                        Excelente profesora, muy paciente y clara en sus explicaciones. Me ayudó mucho con el cálculo.
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://via.placeholder.com/40" alt="Estudiante" class="avatar">
+                        <div class="review-info">
+                            <h4>Ana Torres</h4>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                        <span class="review-date">Hace 2 semanas</span>
+                    </div>
+                    <p class="review-text">
+                        Muy recomendada. Las clases son dinámicas y fáciles de entender.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Price and availability -->
+        <div class="booking-info">
+            <div class="price-info">
+                <span class="price-label">Desde</span>
+                <span class="price-value">$15/hora</span>
+            </div>
+            <a href="../booking/agendar-clase.html" class="btn btn-primary btn-full">
+                Agendar clase
+            </a>
+        </div>
+    </div>
+</body>
+</html>

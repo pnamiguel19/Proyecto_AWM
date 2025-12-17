@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMatch - Mis Clases</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/profesor.css">
+</head>
+<body>
+    <div class="mobile-header">
+        <div class="mobile-header-content">
+            <h1>Mis Clases</h1>
+            <span class="mobile-header-icon">🔔</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active">Hoy</button>
+            <button class="tab-btn">Próximas</button>
+            <button class="tab-btn">Completadas</button>
+        </div>
+
+        <!-- Today's classes -->
+        <div class="classes-list">
+            <div class="class-card-prof confirmed">
+                <div class="class-header">
+                    <div class="class-time-block">
+                        <span class="time-main">10:00 AM</span>
+                        <span class="duration">1 hora</span>
+                    </div>
+                    <div class="class-info">
+                        <h3>Álgebra Lineal</h3>
+                        <p class="student-name">👤 Juan Pérez</p>
+                        <div class="class-type">
+                            <span class="badge badge-primary">Virtual</span>
+                            <span class="badge badge-success">Confirmada</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="class-actions">
+                    <button class="btn btn-primary btn-sm">Iniciar clase</button>
+                    <button class="btn btn-outline btn-sm">Ver detalles</button>
+                </div>
+            </div>
+
+            <div class="class-card-prof pending">
+                <div class="class-header">
+                    <div class="class-time-block">
+                        <span class="time-main">2:00 PM</span>
+                        <span class="duration">1.5 horas</span>
+                    </div>
+                    <div class="class-info">
+                        <h3>Cálculo Diferencial</h3>
+                        <p class="student-name">👤 María López</p>
+                        <div class="class-type">
+                            <span class="badge badge-primary">Virtual</span>
+                            <span class="badge badge-warning">Pendiente</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="class-actions">
+                    <button class="btn btn-success btn-sm">Confirmar</button>
+                    <button class="btn btn-danger btn-sm">Rechazar</button>
+                </div>
+            </div>
+
+            <div class="class-card-prof confirmed">
+                <div class="class-header">
+                    <div class="class-time-block">
+                        <span class="time-main">4:00 PM</span>
+                        <span class="duration">1 hora</span>
+                    </div>
+                    <div class="class-info">
+                        <h3>Geometría Analítica</h3>
+                        <p class="student-name">👤 Carlos Ruiz</p>
+                        <div class="class-type">
+                            <span class="badge badge-success">Presencial</span>
+                            <span class="badge badge-success">Confirmada</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="class-actions">
+                    <button class="btn btn-outline btn-sm">Ver detalles</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="dashboard-prof.html" class="nav-item">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="mis-clases-prof.html" class="nav-item active">
+            <span class="nav-icon">📚</span>
+            <span>Clases</span>
+        </a>
+        <a href="mis-cursos.html" class="nav-item">
+            <span class="nav-icon">📖</span>
+            <span>Cursos</span>
+        </a>
+        <a href="mensajes-prof.html" class="nav-item">
+            <span class="nav-icon">💬</span>
+            <span>Mensajes</span>
+        </a>
+        <a href="perfil-prof.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>Perfil</span>
+        </a>
+    </nav>
+</body>
+</html>
