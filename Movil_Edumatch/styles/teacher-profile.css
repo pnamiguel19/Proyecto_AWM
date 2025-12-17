@@ -1,0 +1,219 @@
+/* ============================================
+   ESTILOS DE PERFIL DEL PROFESOR
+   ============================================ */
+
+/* Teacher profile header */
+.teacher-profile-header {
+  text-align: center;
+  background: var(--em-bg-card);
+  border-radius: var(--em-border-radius);
+  padding: var(--em-spacing-xl);
+  margin-bottom: var(--em-spacing-lg);
+  box-shadow: var(--em-shadow);
+}
+
+.teacher-profile-header h2 {
+  margin: var(--em-spacing-sm) 0 4px 0;
+  font-size: var(--em-font-xl);
+  color: var(--em-text-main);
+}
+
+.specialty {
+  color: var(--em-text-muted);
+  font-size: var(--em-font-md);
+  margin-bottom: var(--em-spacing-sm);
+}
+
+.teacher-profile-header .rating {
+  justify-content: center;
+  margin: var(--em-spacing-sm) 0;
+}
+
+.profile-badges {
+  display: flex;
+  gap: var(--em-spacing-xs);
+  justify-content: center;
+  margin-top: var(--em-spacing-sm);
+}
+
+/* Quick stats */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--em-spacing-sm);
+  margin-bottom: var(--em-spacing-lg);
+}
+
+.quick-stats .stat-item {
+  background: var(--em-bg-card);
+  border-radius: var(--em-border-radius);
+  padding: var(--em-spacing-md);
+  text-align: center;
+  box-shadow: var(--em-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-icon {
+  font-size: 24px;
+}
+
+.stat-value {
+  font-size: var(--em-font-lg);
+  font-weight: 700;
+  color: var(--em-primary);
+}
+
+.stat-label {
+  font-size: var(--em-font-xs);
+  color: var(--em-text-muted);
+}
+
+/* Profile section */
+.profile-section {
+  background: var(--em-bg-card);
+  border-radius: var(--em-border-radius);
+  padding: var(--em-spacing-md);
+  margin-bottom: var(--em-spacing-md);
+  box-shadow: var(--em-shadow);
+}
+
+.profile-section h3 {
+  margin: 0 0 var(--em-spacing-md) 0;
+  font-size: var(--em-font-md);
+  color: var(--em-text-main);
+}
+
+.about-text {
+  margin: 0;
+  font-size: var(--em-font-sm);
+  color: var(--em-text-main);
+  line-height: 1.6;
+}
+
+/* Subjects */
+.subjects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--em-spacing-xs);
+}
+
+.subject-tag {
+  background: var(--em-primary-light);
+  color: var(--em-primary-dark);
+  padding: var(--em-spacing-xs) var(--em-spacing-md);
+  border-radius: 20px;
+  font-size: var(--em-font-sm);
+  font-weight: 600;
+}
+
+/* Education */
+.education-item {
+  display: flex;
+  gap: var(--em-spacing-md);
+  padding: var(--em-spacing-sm) 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.education-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.edu-icon {
+  font-size: 32px;
+}
+
+.edu-details h4 {
+  margin: 0 0 4px 0;
+  font-size: var(--em-font-sm);
+  color: var(--em-text-main);
+}
+
+.edu-details p {
+  margin: 2px 0;
+  font-size: var(--em-font-xs);
+  color: var(--em-text-muted);
+}
+
+.edu-year {
+  font-weight: 600;
+  color: var(--em-primary);
+}
+
+/* Reviews preview */
+.reviews-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--em-spacing-md);
+}
+
+.review-card {
+  padding: var(--em-spacing-sm) 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.review-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.review-card .review-header {
+  display: flex;
+  gap: var(--em-spacing-sm);
+  margin-bottom: var(--em-spacing-sm);
+}
+
+.review-card .review-info {
+  flex: 1;
+}
+
+.review-card h4 {
+  margin: 0 0 4px 0;
+  font-size: var(--em-font-sm);
+  color: var(--em-text-main);
+}
+
+.review-card .review-date {
+  font-size: var(--em-font-xs);
+  color: var(--em-text-muted);
+}
+
+.review-card .review-text {
+  margin: 0;
+  font-size: var(--em-font-sm);
+  color: var(--em-text-main);
+  line-height: 1.5;
+}
+
+/* Booking info */
+.booking-info {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--em-bg-card);
+  padding: var(--em-spacing-md);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: var(--em-spacing-md);
+  z-index: 999;
+}
+
+.price-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label {
+  font-size: var(--em-font-xs);
+  color: var(--em-text-muted);
+}
+
+.price-value {
+  font-size: var(--em-font-lg);
+  font-weight: 700;
+  color: var(--em-primary);
+}

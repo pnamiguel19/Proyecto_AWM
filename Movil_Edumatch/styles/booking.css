@@ -1,0 +1,168 @@
+/* ============================================
+   ESTILOS DE AGENDAMIENTO
+   ============================================ */
+
+.back-link {
+  color: var(--em-text-light);
+  text-decoration: none;
+  font-size: var(--em-font-xl);
+  font-weight: 700;
+}
+
+/* Booking teacher info */
+.booking-teacher-info {
+  background: var(--em-bg-card);
+  border-radius: var(--em-border-radius);
+  padding: var(--em-spacing-md);
+  margin-bottom: var(--em-spacing-lg);
+  display: flex;
+  gap: var(--em-spacing-md);
+  align-items: center;
+  box-shadow: var(--em-shadow);
+}
+
+.booking-teacher-info .teacher-details {
+  flex: 1;
+}
+
+.booking-teacher-info h3 {
+  margin: 0 0 4px 0;
+  font-size: var(--em-font-md);
+  color: var(--em-text-main);
+}
+
+.booking-teacher-info p {
+  margin: 0 0 4px 0;
+  font-size: var(--em-font-sm);
+  color: var(--em-text-muted);
+}
+
+.price-badge {
+  background: var(--em-primary);
+  color: var(--em-text-light);
+  padding: var(--em-spacing-xs) var(--em-spacing-sm);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: var(--em-font-sm);
+}
+
+/* Booking form */
+.booking-form {
+  background: var(--em-bg-card);
+  border-radius: var(--em-border-radius);
+  padding: var(--em-spacing-lg);
+  box-shadow: var(--em-shadow);
+}
+
+.booking-form h3 {
+  margin: 0 0 var(--em-spacing-lg) 0;
+  font-size: var(--em-font-lg);
+  color: var(--em-text-main);
+}
+
+/* Radio group */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--em-spacing-sm);
+}
+
+.radio-option {
+  display: block;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+.radio-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--em-spacing-xs);
+  padding: var(--em-spacing-md);
+  border: 2px solid #ddd;
+  border-radius: var(--em-border-radius);
+  transition: all 0.3s ease;
+  background: var(--em-bg-body);
+}
+
+.radio-option input[type="radio"]:checked + .radio-label {
+  border-color: var(--em-primary);
+  background: var(--em-primary-light);
+  color: var(--em-primary-dark);
+}
+
+.radio-icon {
+  font-size: 32px;
+}
+
+.radio-label span:last-child {
+  font-weight: 600;
+  font-size: var(--em-font-sm);
+}
+
+/* Time slots */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--em-spacing-xs);
+}
+
+.time-slot {
+  padding: var(--em-spacing-sm);
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: var(--em-bg-card);
+  color: var(--em-text-main);
+  font-size: var(--em-font-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.time-slot:hover:not(.disabled) {
+  border-color: var(--em-primary);
+}
+
+.time-slot.active {
+  background: var(--em-primary);
+  color: var(--em-text-light);
+  border-color: var(--em-primary);
+}
+
+.time-slot.disabled {
+  background: #f5f5f5;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Booking summary */
+.booking-summary {
+  background: var(--em-bg-body);
+  border-radius: var(--em-border-radius);
+  padding: var(--em-spacing-md);
+  margin: var(--em-spacing-lg) 0;
+}
+
+.booking-summary h4 {
+  margin: 0 0 var(--em-spacing-md) 0;
+  font-size: var(--em-font-md);
+  color: var(--em-text-main);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--em-spacing-sm);
+  font-size: var(--em-font-sm);
+  color: var(--em-text-main);
+}
+
+.summary-item.total {
+  margin-top: var(--em-spacing-md);
+  font-size: var(--em-font-md);
+  font-weight: 700;
+  color: var(--em-primary);
+}

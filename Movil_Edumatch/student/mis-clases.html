@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMatch - Mis Clases</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/student.css">
+</head>
+<body>
+    <div class="mobile-header">
+        <div class="mobile-header-content">
+            <h1>Mis Clases</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active">Próximas</button>
+            <button class="tab-btn">Pasadas</button>
+            <button class="tab-btn">Canceladas</button>
+        </div>
+
+        <!-- Próximas clases -->
+        <div class="classes-list">
+            <div class="class-card upcoming">
+                <div class="class-header">
+                    <div class="class-date">
+                        <span class="day">15</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="class-info">
+                        <h3>Matemáticas - Álgebra Lineal</h3>
+                        <p class="teacher-name">👨‍🏫 María González</p>
+                        <p class="class-time">🕐 10:00 AM - 11:00 AM</p>
+                        <span class="badge badge-primary">Virtual</span>
+                    </div>
+                </div>
+                <div class="class-actions">
+                    <button class="btn btn-primary btn-sm">Ingresar a clase</button>
+                    <button class="btn btn-outline btn-sm">Reagendar</button>
+                </div>
+            </div>
+
+            <div class="class-card upcoming">
+                <div class="class-header">
+                    <div class="class-date">
+                        <span class="day">17</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="class-info">
+                        <h3>Programación - Python Avanzado</h3>
+                        <p class="teacher-name">👨‍🏫 Carlos Ruiz</p>
+                        <p class="class-time">🕐 2:00 PM - 3:30 PM</p>
+                        <span class="badge badge-primary">Virtual</span>
+                    </div>
+                </div>
+                <div class="class-actions">
+                    <button class="btn btn-outline btn-sm">Ver detalles</button>
+                </div>
+            </div>
+
+            <div class="class-card upcoming">
+                <div class="class-header">
+                    <div class="class-date">
+                        <span class="day">18</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="class-info">
+                        <h3>Inglés - Conversación</h3>
+                        <p class="teacher-name">👩‍🏫 Ana Torres</p>
+                        <p class="class-time">🕐 4:00 PM - 5:00 PM</p>
+                        <span class="badge badge-success">Presencial</span>
+                    </div>
+                </div>
+                <div class="class-actions">
+                    <button class="btn btn-outline btn-sm">Ver detalles</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón flotante para agendar -->
+        <a href="agendar-clase.html" class="fab">
+            <span>+</span>
+        </a>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="../home/home.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Inicio</span>
+        </a>
+        <a href="buscar-profesores.html" class="nav-item">
+            <span class="nav-icon">🔍</span>
+            <span>Buscar</span>
+        </a>
+        <a href="mis-clases.html" class="nav-item active">
+            <span class="nav-icon">📚</span>
+            <span>Clases</span>
+        </a>
+        <a href="mensajes.html" class="nav-item">
+            <span class="nav-icon">💬</span>
+            <span>Mensajes</span>
+        </a>
+        <a href="perfil.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>Perfil</span>
+        </a>
+    </nav>
+</body>
+</html>

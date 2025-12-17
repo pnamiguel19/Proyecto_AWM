@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMatch - Dashboard Profesor</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/profesor.css">
+</head>
+<body>
+    <div class="mobile-header">
+        <div class="mobile-header-content">
+            <div>
+                <h1>Dashboard</h1>
+                <p class="header-subtitle">Bienvenida, María</p>
+            </div>
+            <span class="mobile-header-icon">🔔</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Overview cards -->
+        <div class="overview-grid">
+            <div class="overview-card">
+                <div class="overview-icon">💰</div>
+                <div class="overview-info">
+                    <span class="overview-label">Ingresos del mes</span>
+                    <span class="overview-value">$1,250</span>
+                </div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-icon">📚</div>
+                <div class="overview-info">
+                    <span class="overview-label">Clases este mes</span>
+                    <span class="overview-value">32</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="dashboard-stats">
+            <div class="stat-item-dash">
+                <span class="stat-label">Clases hoy</span>
+                <span class="stat-value">3</span>
+            </div>
+            <div class="stat-item-dash">
+                <span class="stat-label">Esta semana</span>
+                <span class="stat-value">12</span>
+            </div>
+            <div class="stat-item-dash">
+                <span class="stat-label">Solicitudes</span>
+                <span class="stat-value highlight">5</span>
+            </div>
+        </div>
+
+        <!-- Today's schedule -->
+        <section class="section">
+            <div class="section-header">
+                <h3>Clases de hoy</h3>
+                <a href="mis-clases-prof.html" class="see-all">Ver todas</a>
+            </div>
+            <div class="schedule-list">
+                <div class="schedule-item">
+                    <div class="schedule-time">
+                        <span class="time">10:00</span>
+                        <span class="period">AM</span>
+                    </div>
+                    <div class="schedule-details">
+                        <h4>Álgebra Lineal</h4>
+                        <p>Juan Pérez • Virtual</p>
+                    </div>
+                    <span class="badge badge-success">Confirmada</span>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">
+                        <span class="time">2:00</span>
+                        <span class="period">PM</span>
+                    </div>
+                    <div class="schedule-details">
+                        <h4>Cálculo Diferencial</h4>
+                        <p>María López • Virtual</p>
+                    </div>
+                    <span class="badge badge-warning">Pendiente</span>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">
+                        <span class="time">4:00</span>
+                        <span class="period">PM</span>
+                    </div>
+                    <div class="schedule-details">
+                        <h4>Geometría Analítica</h4>
+                        <p>Carlos Ruiz • Presencial</p>
+                    </div>
+                    <span class="badge badge-success">Confirmada</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent reviews -->
+        <section class="section">
+            <div class="section-header">
+                <h3>Reseñas recientes</h3>
+                <a href="resenas-prof.html" class="see-all">Ver todas</a>
+            </div>
+            <div class="reviews-list">
+                <div class="review-item">
+                    <div class="review-header">
+                        <img src="https://via.placeholder.com/40" alt="Estudiante" class="avatar">
+                        <div class="review-info">
+                            <h4>Juan Pérez</h4>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                        <span class="review-date">Hace 2 días</span>
+                    </div>
+                    <p class="review-text">Excelente profesora, muy clara en sus explicaciones</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-header">
+                        <img src="https://via.placeholder.com/40" alt="Estudiante" class="avatar">
+                        <div class="review-info">
+                            <h4>Ana Torres</h4>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                        <span class="review-date">Hace 5 días</span>
+                    </div>
+                    <p class="review-text">Muy paciente y dedicada. Recomendada 100%</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="dashboard-prof.html" class="nav-item active">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="mis-clases-prof.html" class="nav-item">
+            <span class="nav-icon">📚</span>
+            <span>Clases</span>
+        </a>
+        <a href="mis-cursos.html" class="nav-item">
+            <span class="nav-icon">📖</span>
+            <span>Cursos</span>
+        </a>
+        <a href="mensajes-prof.html" class="nav-item">
+            <span class="nav-icon">💬</span>
+            <span>Mensajes</span>
+        </a>
+        <a href="perfil-prof.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>Perfil</span>
+        </a>
+    </nav>
+</body>
+</html>
