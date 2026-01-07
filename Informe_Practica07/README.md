@@ -100,17 +100,6 @@ Se preparó una estructura de datos JSON de prueba que representa las entidades 
 
 **Implementar Testing Automatizado:** Establecer una suite de pruebas automatizadas tanto para el frontend (testing de componentes con React Testing Library) como para el backend (testing de endpoints con Jest/Supertest) garantizará que nuevas funcionalidades no rompan características existentes. En una aplicación como EduMatch, donde la lógica de agendamiento y pagos es crítica, las pruebas automatizadas son esenciales para mantener la calidad y confiabilidad del sistema a lo largo del tiempo.
 
-## 📸 Capturas de Pantalla
-
-*(En esta sección se deben incluir capturas de pantalla mostrando:)*
-
-- Carga dinámica de datos desde el backend (lista de profesores, cursos, etc.)
-- Envío de información desde formularios (registro, creación de perfil, agendamiento)
-- Actualización de la interfaz tras operaciones exitosas
-- Funcionamiento de operaciones GET, POST, DELETE
-- Manejo de estados de carga y errores
-- Pruebas en Postman de los endpoints implementados
-
 ## 📚 Referencias
 
 - MDN Web Docs. JavaScript Guide. Mozilla Foundation. Disponible en: https://developer.mozilla.org/es/docs/Web/JavaScript/Guide
