@@ -176,6 +176,48 @@ Borra permanentemente un registro del servidor.
     
 ## Capturas de Pantalla
 
+### 📸 Prueba del endpoint GET /api/health
+
+En la siguiente captura se evidencia que el servidor se encuentra activo
+y respondiendo correctamente al endpoint de verificación de estado.
+
+![Health Check](capturas/Captura de pantalla 2026-01-21 123619.png)
+
+### 📸 Prueba del endpoint GET /api/items
+
+La siguiente figura muestra la respuesta obtenida al listar todos los items
+disponibles en el sistema.
+
+![Listar items](capturas/Captura de pantalla 2026-01-21 123241.png)
+
+### 📸 Prueba del endpoint GET /api/items/:id
+
+En la siguiente captura se muestra el consumo del endpoint
+GET /api/items/:id, donde se solicita un item específico mediante su identificador.
+La respuesta confirma que el servidor retorna correctamente la información asociada
+al recurso solicitado.
+
+![Buscar item por ID](capturas/Captura de pantalla 2026-01-21 123255.png)
+
+
+### 📸 Prueba del endpoint POST /api/items
+
+La siguiente figura evidencia la creación de un nuevo item mediante el endpoint
+POST /api/items. Se observa el envío de los datos en formato JSON y la respuesta
+exitosa del servidor confirmando el registro del nuevo recurso.
+
+![Crear item](capturas/Captura de pantalla 2026-01-21 123442.png)
+
+### 📸 Prueba del endpoint DELETE /api/items/:id
+
+En la siguiente captura se presenta la eliminación de un item utilizando el endpoint
+DELETE /api/items/:id. La respuesta del servidor confirma que el recurso fue eliminado
+correctamente del sistema.
+
+![Eliminar item](capturas/Captura de pantalla 2026-01-21 123507.png)
+
+
+
 ## 📌 Conclusiones
 
 ### Miguel Avilez
