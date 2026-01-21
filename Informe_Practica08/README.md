@@ -174,6 +174,7 @@ Borra permanentemente un registro del servidor.
 | **404** | Not Found | Item no encontrado |
 | **500** | Internal Server Error | Error del servidor |
     
+## Capturas de Pantalla
 
 ## 📌 Conclusiones
 
