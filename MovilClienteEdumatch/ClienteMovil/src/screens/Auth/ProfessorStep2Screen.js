@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import * as DocumentPicker from 'expo-document-picker';
-// ELIMINADO: import * as MediaLibrary from 'expo-media-library';
 import Input from '../../components/common/Input/Input';
 import Button from '../../components/common/Button/Button';
 import Select from '../../components/common/Select/Select';
@@ -18,7 +17,12 @@ import Stepper from '../../components/common/Stepper/Stepper';
 import styles from './ProfessorStep2Screen.styles';
 
 const ProfessorStep2Screen = ({ navigation, route }) => {
-  const { formData: previousData } = route.params || {};
+  const { step1Data } = route.params || {};
+
+  console.log('📋 Step 2 - Datos recibidos del Step 1:', {
+    ...step1Data,
+    password: '***hidden***'
+  });
 
   const [formData, setFormData] = useState({
     universityDegree: '',
@@ -32,7 +36,6 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  // ELIMINADO: const [hasStoragePermission, setHasStoragePermission] = useState(false);
 
   const steps = [
     { label: 'Información Personal', icon: '👤' },
@@ -50,8 +53,6 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
     { label: 'Más de 10 años', value: '10+' },
   ];
 
-  // ELIMINADO: useEffect y requestStoragePermission completos
-
   const handleInputChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
     if (errors[field]) {
@@ -61,15 +62,16 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
 
   const pickDocument = async (field) => {
     try {
+      console.log(`📎 Seleccionando documento para: ${field}`);
+
       const result = await DocumentPicker.getDocumentAsync({
         type: 'application/pdf',
         copyToCacheDirectory: true,
         multiple: false,
       });
 
-      console.log('Document picker result:', result);
+      console.log('📄 Resultado del picker:', result);
 
-      // Manejar tanto el formato antiguo como el nuevo de expo-document-picker
       if (!result.canceled) {
         const file = result.assets ? result.assets[0] : result;
 
@@ -91,7 +93,17 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
           return;
         }
 
-        handleInputChange(field, file);
+        // Preparar archivo para el backend
+        const documentFile = {
+          uri: file.uri,
+          type: file.mimeType || 'application/pdf',
+          name: file.name || `${field}.pdf`,
+          size: file.size,
+        };
+
+        handleInputChange(field, documentFile);
+
+        console.log(`✅ Documento cargado: ${file.name}`);
 
         Alert.alert(
           'Documento cargado',
@@ -99,7 +111,7 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
         );
       }
     } catch (error) {
-      console.error('Error picking document:', error);
+      console.error('❌ Error al seleccionar documento:', error);
       Alert.alert(
         'Error',
         'No se pudo seleccionar el archivo. Por favor, intenta nuevamente.'
@@ -109,6 +121,8 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
 
   const addCertification = async () => {
     try {
+      console.log('📎 Agregando certificación adicional...');
+
       const result = await DocumentPicker.getDocumentAsync({
         type: 'application/pdf',
         copyToCacheDirectory: true,
@@ -130,8 +144,18 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
           return;
         }
 
-        const newCertifications = [...formData.additionalCertifications, file];
+        // Preparar certificación para el backend
+        const certificationFile = {
+          uri: file.uri,
+          type: file.mimeType || 'application/pdf',
+          name: file.name || `certification_${Date.now()}.pdf`,
+          size: file.size,
+        };
+
+        const newCertifications = [...formData.additionalCertifications, certificationFile];
         handleInputChange('additionalCertifications', newCertifications);
+
+        console.log(`✅ Certificación agregada: ${file.name}`);
 
         Alert.alert(
           'Certificación agregada',
@@ -139,7 +163,7 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
         );
       }
     } catch (error) {
-      console.error('Error adding certification:', error);
+      console.error('❌ Error al agregar certificación:', error);
       Alert.alert('Error', 'No se pudo agregar la certificación');
     }
   };
@@ -158,6 +182,7 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
               (_, i) => i !== index
             );
             handleInputChange('additionalCertifications', newCertifications);
+            console.log(`🗑️ Certificación eliminada en índice: ${index}`);
           },
         },
       ]
@@ -166,12 +191,19 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.universityDegree) {
+    console.log('🔍 Validando Step 2...');
+
+    // Validar título universitario
+    if (!formData.universityDegree.trim()) {
       newErrors.universityDegree = 'El título universitario es requerido';
     }
-    if (!formData.university) {
+
+    // Validar universidad
+    if (!formData.university.trim()) {
       newErrors.university = 'La universidad es requerida';
     }
+
+    // Validar año de graduación
     if (!formData.graduationYear) {
       newErrors.graduationYear = 'El año de graduación es requerido';
     } else {
@@ -181,20 +213,33 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
         newErrors.graduationYear = `Año inválido (1950-${currentYear})`;
       }
     }
+
+    // Validar experiencia docente
     if (!formData.teachingExperience) {
       newErrors.teachingExperience = 'La experiencia docente es requerida';
     }
+
+    // Validar documento de título universitario
     if (!formData.degreeDocument) {
       newErrors.degreeDocument = 'El título universitario (PDF) es obligatorio';
     }
+
+    // Validar cédula profesional
     if (!formData.professionalIdDocument) {
       newErrors.professionalIdDocument = 'La cédula profesional (PDF) es obligatoria';
     }
+
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+
+    const isValid = Object.keys(newErrors).length === 0;
+    console.log(isValid ? '✅ Validación exitosa' : '❌ Errores encontrados:', newErrors);
+
+    return isValid;
   };
 
   const handleNext = () => {
+    console.log('📝 Intentando avanzar al Step 3...');
+
     if (!validateForm()) {
       Alert.alert(
         'Campos incompletos',
@@ -203,13 +248,39 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
       return;
     }
 
-    const allFormData = {
-      ...previousData,
-      ...formData,
+    // Combinar datos del Step 1 y Step 2
+    const step2Data = {
+      // Formación Académica
+      universityDegree: formData.universityDegree.trim(),
+      university: formData.university.trim(),
+      graduationYear: parseInt(formData.graduationYear),
+      teachingExperience: formData.teachingExperience,
+      
+      // Documentos (estos se enviarán como FormData al backend)
+      degreeDocument: formData.degreeDocument,
+      professionalIdDocument: formData.professionalIdDocument,
+      certifications: formData.additionalCertifications, // Array de certificaciones
     };
 
-    console.log('Datos completos hasta paso 2:', allFormData);
-    navigation.navigate('ProfessorStep3', { formData: allFormData });
+    const allFormData = {
+      ...step1Data,
+      ...step2Data,
+    };
+
+    console.log('✅ Step 2 completado. Datos combinados:', {
+      ...allFormData,
+      password: '***hidden***',
+      degreeDocument: allFormData.degreeDocument ? '📄 Archivo cargado' : null,
+      professionalIdDocument: allFormData.professionalIdDocument ? '📄 Archivo cargado' : null,
+      certifications: `${allFormData.certifications.length} certificación(es)`,
+    });
+
+    // Navegar al paso 3 con todos los datos acumulados
+    navigation.navigate('ProfessorStep3', { 
+      step1Data: step1Data,
+      step2Data: step2Data,
+      allFormData: allFormData 
+    });
   };
 
   const handlePrevious = () => {
@@ -218,7 +289,13 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
       '¿Deseas volver al paso anterior? Los documentos cargados se mantendrán.',
       [
         { text: 'Cancelar', style: 'cancel' },
-        { text: 'Volver', onPress: () => navigation.goBack() },
+        { 
+          text: 'Volver', 
+          onPress: () => {
+            console.log('⬅️ Volviendo al Step 1');
+            navigation.goBack();
+          }
+        },
       ]
     );
   };
@@ -301,7 +378,7 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
               <View style={styles.halfWidth}>
                 <Select
                   label="Años de Experiencia Docente"
-                  placeholder="Selecciona tu experiencia"
+                  placeholder="Selecciona"
                   value={formData.teachingExperience}
                   onValueChange={(value) => handleInputChange('teachingExperience', value)}
                   options={experienceOptions}
@@ -318,6 +395,9 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
               <Text style={styles.sectionTitleIcon}>📄</Text>
               Documentos de Respaldo
             </Text>
+            <Text style={styles.sectionSubtitle}>
+              Los documentos deben ser PDF y no superar 5MB
+            </Text>
 
             {/* Título Universitario PDF */}
             <View style={styles.documentUploadContainer}>
@@ -331,7 +411,9 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
                 style={styles.uploadButton}
                 onPress={() => pickDocument('degreeDocument')}
               >
-                <Text style={styles.uploadButtonText}>Seleccionar archivo</Text>
+                <Text style={styles.uploadButtonText}>
+                  {formData.degreeDocument ? 'Cambiar archivo' : 'Seleccionar archivo'}
+                </Text>
               </TouchableOpacity>
               {formData.degreeDocument ? (
                 <View style={styles.fileInfo}>
@@ -362,7 +444,9 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
                 style={styles.uploadButton}
                 onPress={() => pickDocument('professionalIdDocument')}
               >
-                <Text style={styles.uploadButtonText}>Seleccionar archivo</Text>
+                <Text style={styles.uploadButtonText}>
+                  {formData.professionalIdDocument ? 'Cambiar archivo' : 'Seleccionar archivo'}
+                </Text>
               </TouchableOpacity>
               {formData.professionalIdDocument ? (
                 <View style={styles.fileInfo}>
@@ -388,15 +472,17 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
               <Text style={styles.sectionTitleIcon}>⭐</Text>
-              Certificaciones Adicionales
+              Certificaciones Adicionales (Opcional)
             </Text>
             <Text style={styles.sectionSubtitle}>
-              Cursos, diplomados, especializaciones u otros documentos que fortalezcan tu perfil
+              Cursos, diplomados, especializaciones que fortalezcan tu perfil (máximo 5)
             </Text>
 
-            <TouchableOpacity style={styles.addButton} onPress={addCertification}>
-              <Text style={styles.addButtonText}>+ Agregar Otra Certificación</Text>
-            </TouchableOpacity>
+            {formData.additionalCertifications.length < 5 && (
+              <TouchableOpacity style={styles.addButton} onPress={addCertification}>
+                <Text style={styles.addButtonText}>+ Agregar Certificación</Text>
+              </TouchableOpacity>
+            )}
 
             {formData.additionalCertifications.length > 0 && (
               <View style={styles.certificationsContainer}>
@@ -415,13 +501,19 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
                 ))}
               </View>
             )}
+
+            {formData.additionalCertifications.length >= 5 && (
+              <Text style={styles.maxCertificationsWarning}>
+                Has alcanzado el máximo de 5 certificaciones
+              </Text>
+            )}
           </View>
 
-          {/* Resumen de Documentos Cargados */}
+          {/* Resumen de Documentos */}
           <View style={styles.summarySection}>
             <Text style={styles.summaryTitle}>
               <Text style={styles.summaryIcon}>📊</Text>
-              Resumen de Documentos Cargados
+              Resumen de Documentos
             </Text>
 
             <View style={styles.summaryItem}>
@@ -430,7 +522,7 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
                 style={[
                   styles.summaryStatus,
                   formData.degreeDocument
-                    ? styles.summaryStatusPending
+                    ? styles.summaryStatusSuccess
                     : styles.summaryStatusMissing,
                 ]}
               >
@@ -438,11 +530,11 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
                   style={[
                     styles.summaryStatusText,
                     formData.degreeDocument
-                      ? styles.summaryStatusTextPending
+                      ? styles.summaryStatusTextSuccess
                       : styles.summaryStatusTextMissing,
                   ]}
                 >
-                  {formData.degreeDocument ? '⏳ Pendiente' : '✕ Pendiente'}
+                  {formData.degreeDocument ? '✓ Cargado' : '✕ Pendiente'}
                 </Text>
               </View>
             </View>
@@ -453,7 +545,7 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
                 style={[
                   styles.summaryStatus,
                   formData.professionalIdDocument
-                    ? styles.summaryStatusPending
+                    ? styles.summaryStatusSuccess
                     : styles.summaryStatusMissing,
                 ]}
               >
@@ -461,20 +553,20 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
                   style={[
                     styles.summaryStatusText,
                     formData.professionalIdDocument
-                      ? styles.summaryStatusTextPending
+                      ? styles.summaryStatusTextSuccess
                       : styles.summaryStatusTextMissing,
                   ]}
                 >
-                  {formData.professionalIdDocument ? '⏳ Pendiente' : '✕ Pendiente'}
+                  {formData.professionalIdDocument ? '✓ Cargado' : '✕ Pendiente'}
                 </Text>
               </View>
             </View>
 
             <View style={styles.summaryItem}>
-              <Text style={styles.summaryLabel}>Certificaciones Adicionales:</Text>
+              <Text style={styles.summaryLabel}>Certificaciones:</Text>
               <View style={styles.summaryStatus}>
                 <Text style={styles.summaryStatusTextInfo}>
-                  {formData.additionalCertifications.length} documento(s)
+                  {formData.additionalCertifications.length} de 5 opcional(es)
                 </Text>
               </View>
             </View>
@@ -482,7 +574,7 @@ const ProfessorStep2Screen = ({ navigation, route }) => {
         </View>
       </ScrollView>
 
-      {/* Botones fijos en la parte inferior */}
+      {/* Botones fijos */}
       <View style={styles.buttonContainer}>
         <Button
           title="← ANTERIOR"

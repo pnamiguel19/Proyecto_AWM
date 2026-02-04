@@ -11,34 +11,39 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import Input from '../../components/common/Input/Input';
 import Button from '../../components/common/Button/Button';
+import { useAuth } from '../../context/AuthContext';
 import styles from './LoginScreen.styles';
 
 const LoginScreen = ({ navigation }) => {
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // Usuarios ficticios
-  const users = [
+  // Usuarios de prueba
+  const testUsers = [
     {
-      email: 'estudiante@edumatch.com',
-      password: '123456',
+      email: 'juan.perez@student.com',
+      password: 'Student123!',
       role: 'student',
       name: 'Juan Estudiante',
+      emoji: '🎒',
     },
     {
-      email: 'profesor@edumatch.com',
-      password: '123456',
+      email: 'maria.garcia@professor.com',
+      password: 'Professor123!',
       role: 'professor',
       name: 'María Profesora',
+      emoji: '👨‍🏫',
     },
     {
       email: 'admin@edumatch.com',
-      password: '123456',
+      password: 'Admin123!',
       role: 'admin',
-      name: 'Carlos Admin',
+      name: 'Admin',
+      emoji: '👔',
     },
   ];
 
@@ -62,6 +67,8 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const handleLogin = async () => {
+    setErrors({});
+
     if (!validateForm()) {
       return;
     }
@@ -69,65 +76,37 @@ const LoginScreen = ({ navigation }) => {
     setLoading(true);
 
     try {
-      // Simular delay de red
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log('🔐 Intentando login con:', email);
 
-      // Buscar usuario
-      const user = users.find(
-        (u) => u.email.toLowerCase() === email.toLowerCase() && u.password === password
-      );
+      const response = await login(email.toLowerCase().trim(), password);
 
-      if (!user) {
-        Alert.alert(
-          'Error de autenticación',
-          'Correo electrónico o contraseña incorrectos. Por favor, verifica tus credenciales.'
-        );
-        setLoading(false);
-        return;
+      if (response.success) {
+        const user = response.data.user;
+        const role = user.role;
+
+        console.log('✅ Login exitoso:', user.firstName, '-', role);
+
+        // ✅ NO NAVEGUES MANUALMENTE - El AppNavigator lo hace automáticamente
+        // Cuando el usuario se autentica, AuthContext actualiza isAuthenticated
+        // y AppNavigator renderiza automáticamente StudentTabs o ProfessorTabs
+        
+        console.log('🎯 Usuario autenticado. AppNavigator redirigirá automáticamente.');
+        
+      }
+    } catch (error) {
+      console.error('❌ Error en login:', error);
+
+      let errorMessage = 'Ocurrió un error al iniciar sesión. Intenta nuevamente.';
+      
+      if (error.message) {
+        errorMessage = error.message;
       }
 
-      // Login exitoso
-      console.log('Login exitoso:', user);
+      if (error.error === 'NETWORK_ERROR') {
+        errorMessage = 'No se pudo conectar con el servidor. Verifica tu conexión a internet y que el backend esté corriendo.';
+      }
 
-      // Mostrar mensaje de bienvenida
-      Alert.alert(
-        '¡Bienvenido! 🎉',
-        `Hola ${user.name}, has iniciado sesión como ${
-          user.role === 'student'
-            ? 'Estudiante'
-            : user.role === 'professor'
-            ? 'Profesor'
-            : 'Administrador'
-        }`,
-        [
-          {
-            text: 'Continuar',
-            onPress: () => {
-              // Navegar según el rol del usuario
-              switch (user.role) {
-                case 'student':
-                  navigation.navigate('StudentHome');
-                  break;
-                case 'professor':
-                  navigation.navigate('ProfessorProfile');
-                  break;
-                case 'admin':
-                  // TODO: Crear AdminHome
-                  Alert.alert(
-                    'Próximamente',
-                    'La interfaz de administrador estará disponible pronto.'
-                  );
-                  break;
-                default:
-                  navigation.navigate('StudentHome');
-              }
-            },
-          },
-        ]
-      );
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      Alert.alert('Error', 'Ocurrió un error al iniciar sesión. Intenta nuevamente.');
+      Alert.alert('Error de Autenticación', errorMessage);
     } finally {
       setLoading(false);
     }
@@ -148,10 +127,14 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const fillTestCredentials = (userType) => {
-    const user = users.find((u) => u.role === userType);
+    const user = testUsers.find((u) => u.role === userType);
     if (user) {
       setEmail(user.email);
       setPassword(user.password);
+      Alert.alert(
+        'Credenciales cargadas',
+        `Email: ${user.email}\nPassword: ${user.password}\n\nAhora presiona "Iniciar Sesión"`
+      );
     }
   };
 
@@ -181,29 +164,18 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.testUsersContainer}>
           <Text style={styles.testUsersTitle}>👤 Usuarios de prueba:</Text>
           <View style={styles.testUsersButtons}>
-            <TouchableOpacity
-              style={styles.testUserButton}
-              onPress={() => fillTestCredentials('student')}
-            >
-              <Text style={styles.testUserEmoji}>🎒</Text>
-              <Text style={styles.testUserText}>Estudiante</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.testUserButton}
-              onPress={() => fillTestCredentials('professor')}
-            >
-              <Text style={styles.testUserEmoji}>👨‍🏫</Text>
-              <Text style={styles.testUserText}>Profesor</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.testUserButton}
-              onPress={() => fillTestCredentials('admin')}
-            >
-              <Text style={styles.testUserEmoji}>👔</Text>
-              <Text style={styles.testUserText}>Admin</Text>
-            </TouchableOpacity>
+            {testUsers.map((user) => (
+              <TouchableOpacity
+                key={user.role}
+                style={styles.testUserButton}
+                onPress={() => fillTestCredentials(user.role)}
+              >
+                <Text style={styles.testUserEmoji}>{user.emoji}</Text>
+                <Text style={styles.testUserText}>
+                  {user.role === 'student' ? 'Estudiante' : user.role === 'professor' ? 'Profesor' : 'Admin'}
+                </Text>
+              </TouchableOpacity>
+            ))}
           </View>
           <Text style={styles.testUsersHint}>
             Toca un rol para autocompletar las credenciales
@@ -216,22 +188,31 @@ const LoginScreen = ({ navigation }) => {
             label="Correo electrónico"
             placeholder="correo@ejemplo.com"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={(text) => {
+              setEmail(text);
+              setErrors({ ...errors, email: '' });
+            }}
             keyboardType="email-address"
             autoCapitalize="none"
+            autoCorrect={false}
             required
             error={errors.email}
+            editable={!loading}
           />
 
           <Input
             label="Contraseña"
             placeholder="Ingresa tu contraseña"
             value={password}
-            onChangeText={setPassword}
+            onChangeText={(text) => {
+              setPassword(text);
+              setErrors({ ...errors, password: '' });
+            }}
             secureTextEntry
             showPasswordToggle
             required
             error={errors.password}
+            editable={!loading}
           />
 
           {/* Recordarme y Olvidaste contraseña */}
@@ -239,6 +220,7 @@ const LoginScreen = ({ navigation }) => {
             <TouchableOpacity
               style={styles.rememberMe}
               onPress={() => setRememberMe(!rememberMe)}
+              disabled={loading}
             >
               <View style={[styles.checkbox, rememberMe && styles.checkboxChecked]}>
                 {rememberMe && <Text style={styles.checkmark}>✓</Text>}
@@ -253,6 +235,7 @@ const LoginScreen = ({ navigation }) => {
                   'Esta funcionalidad estará disponible pronto.'
                 )
               }
+              disabled={loading}
             >
               <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
             </TouchableOpacity>
@@ -280,19 +263,24 @@ const LoginScreen = ({ navigation }) => {
               onPress={handleGoogleLogin}
               variant="secondary"
               style={styles.socialButton}
+              disabled={loading}
             />
             <Button
               title="FACEBOOK"
               onPress={handleFacebookLogin}
               variant="secondary"
               style={styles.socialButton}
+              disabled={loading}
             />
           </View>
 
           {/* Registro */}
           <View style={styles.register}>
             <Text style={styles.registerText}>¿No tienes cuenta? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Register')}
+              disabled={loading}
+            >
               <Text style={styles.registerLink}>Regístrate aquí</Text>
             </TouchableOpacity>
           </View>

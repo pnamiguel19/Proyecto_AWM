@@ -9,12 +9,22 @@ import {
   Alert,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { useAuth } from '../../context/AuthContext';
 import Button from '../../components/common/Button/Button';
 import Stepper from '../../components/common/Stepper/Stepper';
 import styles from './ProfessorStep5Screen.styles';
 
 const ProfessorStep5Screen = ({ navigation, route }) => {
-  const { formData: allFormData } = route.params || {};
+  const { step1Data, step2Data, step3Data, step4Data, allFormData } = route.params || {};
+  const { registerProfessor } = useAuth();
+
+  console.log('📋 Step 5 - Datos recibidos:', {
+    tieneStep1: !!step1Data,
+    tieneStep2: !!step2Data,
+    tieneStep3: !!step3Data,
+    tieneStep4: !!step4Data,
+    tieneAllFormData: !!allFormData,
+  });
 
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [acceptPrivacy, setAcceptPrivacy] = useState(false);
@@ -32,7 +42,7 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
 
   const getSubjectNames = () => {
     const subjectMap = {
-      math: 'Matemáticas',
+      mathematics: 'Matemáticas',
       physics: 'Física',
       chemistry: 'Química',
       biology: 'Biología',
@@ -44,21 +54,21 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
       art: 'Arte',
       music: 'Música',
       physical_education: 'Educación Física',
+      programming: 'Programación',
+      economics: 'Economía',
     };
     return allFormData?.subjects?.map((id) => subjectMap[id]).join(', ') || 'N/A';
   };
 
   const getEducationLevelNames = () => {
     const levelMap = {
-      primary: 'Primaria',
-      secondary: 'Secundaria',
+      elementary: 'Primaria',      // 👈 CAMBIADO
+      middle_school: 'Secundaria', // 👈 CAMBIADO
       high_school: 'Bachillerato',
       university: 'Universidad',
-      adult: 'Adultos',
+      postgraduate: 'Posgrado',
     };
-    return (
-      allFormData?.educationLevels?.map((id) => levelMap[id]).join(', ') || 'N/A'
-    );
+    return allFormData?.educationLevels?.map((id) => levelMap[id]).join(', ') || 'N/A';
   };
 
   const getModalityNames = () => {
@@ -67,41 +77,46 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
       online: 'En Línea',
       hybrid: 'Híbrido',
     };
-    return (
-      allFormData?.teachingModalities?.map((id) => modalityMap[id]).join(', ') ||
-      'N/A'
-    );
+    return allFormData?.teachingModalities?.map((id) => modalityMap[id]).join(', ') || 'N/A';
   };
 
   const getScheduleSummary = () => {
-    if (!allFormData?.schedule) return { slots: 0, days: 0 };
-    let slots = 0;
-    let days = 0;
-    Object.keys(allFormData.schedule).forEach((day) => {
-      const daySchedule = allFormData.schedule[day];
-      if (daySchedule.morning || daySchedule.afternoon || daySchedule.night) {
-        days++;
-        if (daySchedule.morning) slots++;
-        if (daySchedule.afternoon) slots++;
-        if (daySchedule.night) slots++;
-      }
+    if (!allFormData?.schedule || !Array.isArray(allFormData.schedule)) {
+      return { slots: 0, days: 0 };
+    }
+    
+    let totalSlots = 0;
+    const days = allFormData.schedule.length;
+    
+    allFormData.schedule.forEach((daySchedule) => {
+      totalSlots += daySchedule.timeSlots?.length || 0;
     });
-    return { slots, days };
+    
+    return { slots: totalSlots, days };
   };
 
   const validateForm = () => {
     const newErrors = {};
+    console.log('🔍 Validando confirmación final...');
+
     if (!acceptTerms) {
       newErrors.terms = 'Debes aceptar los términos y condiciones';
     }
     if (!acceptPrivacy) {
       newErrors.privacy = 'Debes autorizar el uso de tus datos personales';
     }
+
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+
+    const isValid = Object.keys(newErrors).length === 0;
+    console.log(isValid ? '✅ Validación exitosa' : '❌ Errores encontrados:', newErrors);
+
+    return isValid;
   };
 
   const handleSubmit = async () => {
+    console.log('🚀 Iniciando envío final de registro de profesor...');
+
     if (!validateForm()) {
       Alert.alert(
         'Confirmación requerida',
@@ -113,42 +128,130 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
     setLoading(true);
 
     try {
-      // Aquí iría la lógica para enviar los datos al backend
-      const finalData = {
-        ...allFormData,
+      // Preparar datos finales para el backend
+      const professorData = {
+        // Step 1: Información Personal
+        firstName: allFormData.firstName,
+        lastName: allFormData.lastName,
+        email: allFormData.email,
+        password: allFormData.password,
+        phone: allFormData.phone,
+        birthDate: allFormData.birthDate, // Ya está en formato YYYY-MM-DD
+        gender: allFormData.gender,
+        address: allFormData.address,
+        bio: allFormData.bio || '',
+
+        // Step 2: Formación Académica
+        universityDegree: allFormData.universityDegree,
+        university: allFormData.university,
+        graduationYear: allFormData.graduationYear,
+        teachingExperience: allFormData.teachingExperience,
+        
+        // Step 3: Materias y Modalidades
+        subjects: allFormData.subjects, // Array de strings
+        educationLevels: allFormData.educationLevels, // Array de strings
+        teachingModalities: allFormData.teachingModalities, // Array de strings
+        hourlyRate: allFormData.hourlyRate, // Número
+        currency: allFormData.currency,
+
+        // Step 4: Disponibilidad
+        schedule: allFormData.schedule, // Array de { day, timeSlots: [] }
+        maxStudentsPerClass: allFormData.maxStudentsPerClass,
+        minimumNoticeHours: allFormData.minimumNoticeHours,
+        additionalNotes: allFormData.additionalNotes || '',
+
+        // Step 5: Confirmaciones
         acceptTerms,
         acceptPrivacy,
         acceptNotifications,
       };
 
-      console.log('Datos finales del registro:', finalData);
+      // Documentos (se enviarán como FormData)
+      const documents = {
+        degreeDocument: allFormData.degreeDocument,
+        professionalIdDocument: allFormData.professionalIdDocument,
+        certifications: allFormData.certifications || [],
+        profileImage: allFormData.profileImage || null,
+      };
 
-      // Simular envío al servidor
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log('📦 Datos del profesor preparados:', {
+        ...professorData,
+        password: '***hidden***',
+      });
 
-      Alert.alert(
-        '¡Registro completado! 🎉',
-        'Tu perfil ha sido creado exitosamente. Nuestro equipo revisará tu información y te enviaremos una confirmación por correo electrónico en las próximas 24-48 horas.\n\nUna vez aprobado, podrás comenzar a recibir solicitudes de estudiantes y empezar a compartir tu conocimiento.',
-        [
-          {
-            text: 'Entendido',
-            onPress: () => navigation.navigate('Login'),
-          },
-        ]
-      );
+      console.log('📄 Documentos a enviar:', {
+        degreeDocument: documents.degreeDocument?.name || 'No cargado',
+        professionalIdDocument: documents.professionalIdDocument?.name || 'No cargado',
+        certifications: `${documents.certifications.length} archivo(s)`,
+        profileImage: documents.profileImage ? 'Imagen cargada' : 'Sin imagen',
+      });
+
+      // Llamar al servicio de registro del backend
+      const response = await registerProfessor(professorData, documents);
+
+      console.log('✅ Respuesta del servidor:', response);
+
+      if (response.success) {
+        // Registro exitoso
+        Alert.alert(
+          '¡Registro Completado! 🎉',
+          `¡Bienvenido ${allFormData.firstName}!\n\nTu perfil de profesor ha sido creado exitosamente. Nuestro equipo revisará tu información y te enviaremos una confirmación por correo electrónico en las próximas 24-48 horas.\n\nUna vez aprobado, podrás comenzar a recibir solicitudes de estudiantes y empezar a compartir tu conocimiento.`,
+          [
+            {
+              text: 'Entendido',
+              onPress: () => {
+                // Navegar al home del profesor o al login
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: 'Login' }],
+                });
+              },
+            },
+          ]
+        );
+      }
     } catch (error) {
-      console.error('Error al registrar:', error);
-      Alert.alert(
-        'Error',
-        'Hubo un problema al completar tu registro. Por favor, intenta nuevamente.'
-      );
+      console.error('❌ Error al registrar profesor:', error);
+
+      let errorMessage = 'Hubo un problema al completar tu registro. Por favor, intenta nuevamente.';
+
+      if (error.message) {
+        errorMessage = error.message;
+      }
+
+      // Errores específicos del backend
+      if (error.errors) {
+        const errorFields = Object.keys(error.errors);
+        if (errorFields.length > 0) {
+          errorMessage = Object.values(error.errors).join('\n');
+        }
+      }
+
+      if (error.error === 'NETWORK_ERROR') {
+        errorMessage = 'No se pudo conectar con el servidor. Verifica tu conexión a internet y que el backend esté corriendo.';
+      }
+
+      Alert.alert('Error en el Registro', errorMessage);
     } finally {
       setLoading(false);
     }
   };
 
   const handlePrevious = () => {
-    navigation.goBack();
+    Alert.alert(
+      'Volver al paso anterior',
+      '¿Deseas volver al paso anterior? Tus confirmaciones se mantendrán.',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Volver',
+          onPress: () => {
+            console.log('⬅️ Volviendo al Step 4');
+            navigation.goBack();
+          },
+        },
+      ]
+    );
   };
 
   const scheduleSummary = getScheduleSummary();
@@ -239,7 +342,9 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
                     ? 'Masculino'
                     : allFormData?.gender === 'female'
                     ? 'Femenino'
-                    : 'Otro'}
+                    : allFormData?.gender === 'other'
+                    ? 'Otro'
+                    : 'Prefiero no decir'}
                 </Text>
               </View>
               <View style={styles.reviewRow}>
@@ -300,12 +405,12 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
                   ✓ {allFormData?.professionalIdDocument?.name}
                 </Text>
               </View>
-              {allFormData?.additionalCertifications?.length > 0 && (
+              {allFormData?.certifications?.length > 0 && (
                 <View style={styles.reviewRow}>
                   <Text style={styles.reviewLabel}>CERTIFICACIONES ADICIONALES:</Text>
                   <Text style={styles.reviewValue}>
-                    {allFormData?.additionalCertifications?.length} certificación
-                    {allFormData?.additionalCertifications?.length !== 1 ? 'es' : ''}
+                    {allFormData?.certifications?.length} certificación
+                    {allFormData?.certifications?.length !== 1 ? 'es' : ''}
                   </Text>
                 </View>
               )}
@@ -334,7 +439,7 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
               <View style={styles.reviewRow}>
                 <Text style={styles.reviewLabel}>TARIFA POR HORA:</Text>
                 <Text style={styles.reviewValue}>
-                  {allFormData?.hourlyRate} {allFormData?.currency}
+                  {allFormData?.currency} ${allFormData?.hourlyRate}
                 </Text>
               </View>
             </View>
@@ -362,8 +467,8 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
                   ESTUDIANTES MÁXIMO POR CLASE:
                 </Text>
                 <Text style={styles.reviewValue}>
-                  {allFormData?.maxStudents} estudiante
-                  {allFormData?.maxStudents !== '1' ? 's' : ''}
+                  {allFormData?.maxStudentsPerClass} estudiante
+                  {allFormData?.maxStudentsPerClass !== 1 ? 's' : ''}
                 </Text>
               </View>
               <View style={styles.reviewRow}>
@@ -371,11 +476,11 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
                   TIEMPO DE ANTICIPACIÓN PARA RESERVAS:
                 </Text>
                 <Text style={styles.reviewValue}>
-                  {allFormData?.reservationTime === '1'
+                  {allFormData?.minimumNoticeHours === 1
                     ? '1 hora antes'
-                    : allFormData?.reservationTime === '168'
+                    : allFormData?.minimumNoticeHours === 168
                     ? '1 semana antes'
-                    : `${allFormData?.reservationTime} horas antes`}
+                    : `${allFormData?.minimumNoticeHours} horas antes`}
                 </Text>
               </View>
               {allFormData?.additionalNotes && (
@@ -395,6 +500,7 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
               style={styles.checkboxRow}
               onPress={() => setAcceptTerms(!acceptTerms)}
               activeOpacity={0.7}
+              disabled={loading}
             >
               <View
                 style={[styles.checkbox, acceptTerms && styles.checkboxSelected]}
@@ -416,6 +522,7 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
               style={styles.checkboxRow}
               onPress={() => setAcceptPrivacy(!acceptPrivacy)}
               activeOpacity={0.7}
+              disabled={loading}
             >
               <View
                 style={[styles.checkbox, acceptPrivacy && styles.checkboxSelected]}
@@ -435,6 +542,7 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
               style={styles.checkboxRow}
               onPress={() => setAcceptNotifications(!acceptNotifications)}
               activeOpacity={0.7}
+              disabled={loading}
             >
               <View
                 style={[
@@ -460,6 +568,7 @@ const ProfessorStep5Screen = ({ navigation, route }) => {
           onPress={handlePrevious}
           variant="secondary"
           style={styles.cancelButton}
+          disabled={loading}
         />
         <Button
           title="🎉 COMPLETAR REGISTRO"

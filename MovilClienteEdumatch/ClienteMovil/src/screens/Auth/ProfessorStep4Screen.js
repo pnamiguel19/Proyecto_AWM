@@ -16,7 +16,14 @@ import Stepper from '../../components/common/Stepper/Stepper';
 import styles from './ProfessorStep4Screen.styles';
 
 const ProfessorStep4Screen = ({ navigation, route }) => {
-  const { formData: previousData } = route.params || {};
+  const { step1Data, step2Data, step3Data, allFormData: previousData } = route.params || {};
+
+  console.log('📋 Step 4 - Datos recibidos:', {
+    tieneStep1: !!step1Data,
+    tieneStep2: !!step2Data,
+    tieneStep3: !!step3Data,
+    tienePreviousData: !!previousData,
+  });
 
   const [schedule, setSchedule] = useState({
     monday: { morning: false, afternoon: false, night: false, allDay: false },
@@ -135,9 +142,33 @@ const ProfessorStep4Screen = ({ navigation, route }) => {
     return count;
   };
 
+  // Convertir el horario del frontend al formato del backend
+  const formatScheduleForBackend = () => {
+    const formattedSchedule = [];
+
+    Object.keys(schedule).forEach((day) => {
+      const daySchedule = schedule[day];
+      const slots = [];
+
+      if (daySchedule.morning) slots.push('morning');
+      if (daySchedule.afternoon) slots.push('afternoon');
+      if (daySchedule.night) slots.push('night');
+
+      if (slots.length > 0) {
+        formattedSchedule.push({
+          day: day, // monday, tuesday, etc.
+          timeSlots: slots, // ['morning', 'afternoon', 'night']
+        });
+      }
+    });
+
+    return formattedSchedule;
+  };
+
   const validateForm = () => {
     const newErrors = {};
     const slotsCount = getSelectedSlotsCount();
+    console.log('🔍 Validando Step 4...');
 
     if (slotsCount === 0) {
       newErrors.schedule = 'Debes seleccionar al menos un horario disponible';
@@ -152,10 +183,16 @@ const ProfessorStep4Screen = ({ navigation, route }) => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+
+    const isValid = Object.keys(newErrors).length === 0;
+    console.log(isValid ? '✅ Validación exitosa' : '❌ Errores encontrados:', newErrors);
+
+    return isValid;
   };
 
   const handleNext = () => {
+    console.log('📝 Intentando avanzar al Step 5...');
+
     if (!validateForm()) {
       Alert.alert(
         'Campos incompletos',
@@ -164,21 +201,64 @@ const ProfessorStep4Screen = ({ navigation, route }) => {
       return;
     }
 
-    const allFormData = {
-      ...previousData,
-      schedule,
-      maxStudents,
-      reservationTime,
-      additionalNotes,
+    // Formatear horario para el backend
+    const formattedSchedule = formatScheduleForBackend();
+
+    console.log('📅 Horario formateado para backend:', formattedSchedule);
+
+    // Preparar datos del Step 4 para el backend
+    const step4Data = {
+      schedule: formattedSchedule, // Array de objetos: [{ day: 'monday', timeSlots: ['morning', 'afternoon'] }]
+      maxStudentsPerClass: parseInt(maxStudents), // Convertir a número
+      minimumNoticeHours: parseInt(reservationTime), // Convertir a número
+      additionalNotes: additionalNotes.trim() || '', // Notas opcionales
     };
 
-    console.log('Datos completos hasta paso 4:', allFormData);
-    // Navegar al paso 5
-    navigation.navigate('ProfessorStep5', { formData: allFormData });
+    // Combinar todos los datos acumulados
+    const allFormData = {
+      ...previousData,
+      ...step4Data,
+    };
+
+    console.log('✅ Step 4 completado. Datos combinados:', {
+      ...allFormData,
+      password: '***hidden***',
+      degreeDocument: allFormData.degreeDocument ? '📄 Cargado' : null,
+      professionalIdDocument: allFormData.professionalIdDocument ? '📄 Cargado' : null,
+      certifications: `${allFormData.certifications?.length || 0} archivo(s)`,
+    });
+
+    console.log('📊 Resumen del horario:');
+    console.log(`- Días disponibles: ${getAvailableDaysCount()}`);
+    console.log(`- Franjas horarias: ${getSelectedSlotsCount()}`);
+    console.log(`- Estudiantes máx: ${maxStudents}`);
+    console.log(`- Anticipación: ${reservationTime} horas`);
+
+    // Navegar al paso 5 (Confirmación) con todos los datos
+    navigation.navigate('ProfessorStep5', {
+      step1Data: step1Data,
+      step2Data: step2Data,
+      step3Data: step3Data,
+      step4Data: step4Data,
+      allFormData: allFormData,
+    });
   };
 
   const handlePrevious = () => {
-    navigation.goBack();
+    Alert.alert(
+      'Volver al paso anterior',
+      '¿Deseas volver al paso anterior? Tu horario se mantendrá.',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Volver',
+          onPress: () => {
+            console.log('⬅️ Volviendo al Step 3');
+            navigation.goBack();
+          },
+        },
+      ]
+    );
   };
 
   return (
@@ -351,13 +431,16 @@ const ProfessorStep4Screen = ({ navigation, route }) => {
             </Text>
 
             <TextArea
-              label="Notas Adicionales sobre tu Disponibilidad"
+              label="Notas Adicionales sobre tu Disponibilidad (Opcional)"
               placeholder="Ej: Tengo mayor disponibilidad durante vacaciones escolares, puedo ajustar horarios para grupos, etc."
               value={additionalNotes}
               onChangeText={setAdditionalNotes}
               maxLength={300}
               numberOfLines={4}
             />
+            <Text style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+              {additionalNotes.length}/300 caracteres
+            </Text>
           </View>
 
           {/* Resumen de Disponibilidad */}
@@ -394,10 +477,32 @@ const ProfessorStep4Screen = ({ navigation, route }) => {
                 <Text style={styles.summaryCardValue}>
                   {maxStudents === '1'
                     ? '1 estudiante'
+                    : maxStudents.includes('-') || maxStudents.includes('+')
+                    ? maxStudents
                     : `${maxStudents} estudiantes`}
                 </Text>
               </View>
+
+              <View style={styles.summaryCard}>
+                <Text style={styles.summaryCardIcon}>⏰</Text>
+                <Text style={styles.summaryCardLabel}>
+                  ANTICIPACIÓN MÍNIMA
+                </Text>
+                <Text style={styles.summaryCardValue}>
+                  {reservationTime === '168'
+                    ? '1 semana'
+                    : `${reservationTime} horas`}
+                </Text>
+              </View>
             </View>
+
+            {getSelectedSlotsCount() > 0 && (
+              <View style={styles.summarySuccess}>
+                <Text style={styles.summarySuccessText}>
+                  ✅ ¡Excelente! Has configurado tu disponibilidad
+                </Text>
+              </View>
+            )}
           </View>
         </View>
       </ScrollView>
