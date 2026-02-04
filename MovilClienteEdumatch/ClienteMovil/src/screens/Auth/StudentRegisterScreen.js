@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -14,9 +15,12 @@ import Button from '../../components/common/Button/Button';
 import Select from '../../components/common/Select/Select';
 import TextArea from '../../components/common/TextArea/TextArea';
 import FileUpload from '../../components/common/FileUpload/FileUpload';
+import { useAuth } from '../../context/AuthContext';
 import styles from './StudentRegisterScreen.styles';
 
 const StudentRegisterScreen = ({ navigation }) => {
+  const { registerStudent } = useAuth();
+  
   const [formData, setFormData] = useState({
     profileImage: null,
     firstName: '',
@@ -25,7 +29,7 @@ const StudentRegisterScreen = ({ navigation }) => {
     phone: '',
     password: '',
     confirmPassword: '',
-    birthDate: new Date(),
+    birthDate: new Date(2000, 0, 1),
     gender: '',
     educationLevel: '',
     address: '',
@@ -41,15 +45,15 @@ const StudentRegisterScreen = ({ navigation }) => {
     { label: 'Masculino', value: 'male' },
     { label: 'Femenino', value: 'female' },
     { label: 'Otro', value: 'other' },
-    { label: 'Prefiero no decir', value: 'not_say' },
+    { label: 'Prefiero no decir', value: 'prefer_not_to_say' },
   ];
 
-  const educationLevelOptions = [
-    { label: 'Primaria', value: 'primary' },
-    { label: 'Secundaria', value: 'secondary' },
-    { label: 'Preparatoria', value: 'high_school' },
+  const educationLevels = [
+    { label: 'Primaria', value: 'elementary' },
+    { label: 'Secundaria', value: 'middle_school' },
+    { label: 'Bachillerato', value: 'high_school' },
     { label: 'Universidad', value: 'university' },
-    { label: 'Posgrado', value: 'postgraduate' },
+    { label: 'Postgrado', value: 'postgraduate' },
     { label: 'Otro', value: 'other' },
   ];
 
@@ -78,56 +82,152 @@ const StudentRegisterScreen = ({ navigation }) => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.firstName) newErrors.firstName = 'El nombre es requerido';
-    if (!formData.lastName) newErrors.lastName = 'El apellido es requerido';
+    // Nombre y apellido
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'El nombre es requerido';
+    } else if (formData.firstName.trim().length < 2) {
+      newErrors.firstName = 'El nombre debe tener al menos 2 caracteres';
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'El apellido es requerido';
+    } else if (formData.lastName.trim().length < 2) {
+      newErrors.lastName = 'El apellido debe tener al menos 2 caracteres';
+    }
     
-    if (!formData.email) {
+    // Email
+    if (!formData.email.trim()) {
       newErrors.email = 'El correo electrónico es requerido';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Correo electrónico inválido';
     }
 
-    if (!formData.phone) {
+    // Teléfono
+    if (!formData.phone.trim()) {
       newErrors.phone = 'El teléfono es requerido';
-    } else if (!/^\+?[\d\s-]{8,}$/.test(formData.phone)) {
-      newErrors.phone = 'Teléfono inválido';
     }
 
+    // Contraseña
     if (!formData.password) {
       newErrors.password = 'La contraseña es requerida';
     } else if (formData.password.length < 8) {
-      newErrors.password = 'Mínimo 8 caracteres';
+      newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
     }
 
-    if (formData.password !== formData.confirmPassword) {
+    // Confirmar contraseña
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = 'Debes confirmar tu contraseña';
+    } else if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Las contraseñas no coinciden';
     }
 
-    if (!formData.gender) newErrors.gender = 'El género es requerido';
-    if (!formData.educationLevel) newErrors.educationLevel = 'El nivel educativo es requerido';
+    // Género
+    if (!formData.gender) {
+      newErrors.gender = 'El género es requerido';
+    }
+
+    // Nivel educativo
+    if (!formData.educationLevel) {
+      newErrors.educationLevel = 'El nivel educativo es requerido';
+    }
+
+    // Dirección
+    if (!formData.address.trim()) {
+      newErrors.address = 'La dirección es requerida';
+    }
+
+    // Fecha de nacimiento (mínimo 10 años)
+    const today = new Date();
+    const age = today.getFullYear() - formData.birthDate.getFullYear();
+    if (age < 10) {
+      newErrors.birthDate = 'Debes tener al menos 10 años';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleRegister = async () => {
-    if (!validateForm()) return;
+    console.log('📝 Validando formulario...');
+    
+    if (!validateForm()) {
+      Alert.alert(
+        'Formulario incompleto',
+        'Por favor completa todos los campos requeridos correctamente'
+      );
+      return;
+    }
 
     setLoading(true);
+
     try {
-      console.log('Registro de estudiante:', formData);
-      // TODO: Implementar llamada a API
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      // navigation.navigate('Home');
+      console.log('🚀 Enviando datos al backend...');
+
+      const studentData = {
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        email: formData.email.toLowerCase().trim(),
+        password: formData.password,
+        phone: formData.phone.trim(),
+        birthDate: formData.birthDate.toISOString().split('T')[0], // YYYY-MM-DD
+        gender: formData.gender,
+        address: formData.address.trim(),
+        educationLevel: formData.educationLevel,
+        aboutMe: formData.aboutMe.trim() || '',
+        learningGoals: formData.learningGoals.trim() || '',
+      };
+
+      console.log('📦 Datos a enviar:', {
+        ...studentData,
+        password: '***hidden***'
+      });
+
+      const response = await registerStudent(studentData);
+
+      console.log('✅ Respuesta del servidor:', response);
+
+      if (response.success) {
+        // ✅ Redirigir directo al Login sin Alert
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        });
+      }
     } catch (error) {
-      console.error('Error en registro:', error);
+      console.error('❌ Error en registro:', error);
+
+      let errorMessage = 'No se pudo completar el registro. Por favor intenta nuevamente.';
+      
+      if (error.message) {
+        errorMessage = error.message;
+      }
+
+      if (error.errors) {
+        const errorFields = Object.keys(error.errors);
+        if (errorFields.length > 0) {
+          errorMessage = Object.values(error.errors).join('\n');
+        }
+      }
+
+      if (error.error === 'NETWORK_ERROR') {
+        errorMessage = 'No se pudo conectar con el servidor. Verifica tu conexión a internet y que el backend esté corriendo.';
+      }
+
+      Alert.alert('Error en el Registro', errorMessage);
     } finally {
       setLoading(false);
     }
   };
 
   const handleCancel = () => {
-    navigation.goBack();
+    Alert.alert(
+      'Cancelar Registro',
+      '¿Estás seguro de que deseas cancelar? Se perderán todos los datos ingresados.',
+      [
+        { text: 'No', style: 'cancel' },
+        { text: 'Sí, cancelar', onPress: () => navigation.goBack() },
+      ]
+    );
   };
 
   return (
@@ -145,9 +245,9 @@ const StudentRegisterScreen = ({ navigation }) => {
         <Text style={styles.title}>Registro de Estudiante</Text>
         <Text style={styles.subtitle}>Únete a nuestra comunidad de aprendizaje</Text>
 
-        {/* Foto de perfil */}
+        {/* Foto de perfil (Opcional) */}
         <FileUpload
-          label="Foto de Perfil"
+          label="Foto de Perfil (Opcional)"
           image={formData.profileImage}
           onImageSelect={(image) => handleInputChange('profileImage', image)}
           error={errors.profileImage}
@@ -155,6 +255,7 @@ const StudentRegisterScreen = ({ navigation }) => {
 
         {/* Formulario */}
         <View style={styles.form}>
+          {/* Nombre y Apellido */}
           <View style={styles.row}>
             <View style={styles.halfWidth}>
               <Input
@@ -164,6 +265,7 @@ const StudentRegisterScreen = ({ navigation }) => {
                 onChangeText={(value) => handleInputChange('firstName', value)}
                 required
                 error={errors.firstName}
+                editable={!loading}
               />
             </View>
             <View style={styles.halfWidth}>
@@ -174,10 +276,12 @@ const StudentRegisterScreen = ({ navigation }) => {
                 onChangeText={(value) => handleInputChange('lastName', value)}
                 required
                 error={errors.lastName}
+                editable={!loading}
               />
             </View>
           </View>
 
+          {/* Email y Teléfono */}
           <View style={styles.row}>
             <View style={styles.halfWidth}>
               <Input
@@ -187,8 +291,10 @@ const StudentRegisterScreen = ({ navigation }) => {
                 onChangeText={(value) => handleInputChange('email', value)}
                 keyboardType="email-address"
                 autoCapitalize="none"
+                autoCorrect={false}
                 required
                 error={errors.email}
+                editable={!loading}
               />
             </View>
             <View style={styles.halfWidth}>
@@ -200,10 +306,12 @@ const StudentRegisterScreen = ({ navigation }) => {
                 keyboardType="phone-pad"
                 required
                 error={errors.phone}
+                editable={!loading}
               />
             </View>
           </View>
 
+          {/* Contraseñas */}
           <View style={styles.row}>
             <View style={styles.halfWidth}>
               <Input
@@ -215,6 +323,7 @@ const StudentRegisterScreen = ({ navigation }) => {
                 showPasswordToggle
                 required
                 error={errors.password}
+                editable={!loading}
               />
             </View>
             <View style={styles.halfWidth}>
@@ -227,10 +336,12 @@ const StudentRegisterScreen = ({ navigation }) => {
                 showPasswordToggle
                 required
                 error={errors.confirmPassword}
+                editable={!loading}
               />
             </View>
           </View>
 
+          {/* Fecha de nacimiento y Género */}
           <View style={styles.row}>
             <View style={styles.halfWidth}>
               <Text style={styles.label}>
@@ -238,7 +349,8 @@ const StudentRegisterScreen = ({ navigation }) => {
               </Text>
               <TouchableOpacity
                 style={[styles.dateButton, errors.birthDate && styles.dateButtonError]}
-                onPress={() => setShowDatePicker(true)}
+                onPress={() => !loading && setShowDatePicker(true)}
+                disabled={loading}
               >
                 <Text style={styles.dateButtonText}>{formatDate(formData.birthDate)}</Text>
               </TouchableOpacity>
@@ -262,46 +374,56 @@ const StudentRegisterScreen = ({ navigation }) => {
                 options={genderOptions}
                 required
                 error={errors.gender}
+                enabled={!loading}
               />
             </View>
           </View>
 
+          {/* Nivel Educativo */}
           <Select
             label="Nivel Educativo"
             placeholder="Selecciona tu nivel educativo"
             value={formData.educationLevel}
             onValueChange={(value) => handleInputChange('educationLevel', value)}
-            options={educationLevelOptions}
+            options={educationLevels}
             required
             error={errors.educationLevel}
+            enabled={!loading}
           />
 
+          {/* Dirección */}
           <Input
             label="Dirección"
             placeholder="Calle, ciudad, país"
             value={formData.address}
             onChangeText={(value) => handleInputChange('address', value)}
+            required
             error={errors.address}
+            editable={!loading}
           />
 
+          {/* Sobre ti */}
           <TextArea
-            label="Cuéntanos sobre ti"
-            placeholder="Tus intereses, hobbies, objetivos de aprendizaje..."
+            label="Cuéntanos sobre ti (Opcional)"
+            placeholder="Tus intereses, hobbies, pasatiempos..."
             value={formData.aboutMe}
             onChangeText={(value) => handleInputChange('aboutMe', value)}
             maxLength={500}
             numberOfLines={4}
             error={errors.aboutMe}
+            editable={!loading}
           />
 
+          {/* Objetivos de aprendizaje */}
           <TextArea
-            label="Objetivos de Aprendizaje"
+            label="Objetivos de Aprendizaje (Opcional)"
             placeholder="¿Qué te gustaría aprender? ¿Cuáles son tus metas académicas?"
             value={formData.learningGoals}
             onChangeText={(value) => handleInputChange('learningGoals', value)}
             maxLength={500}
             numberOfLines={4}
             error={errors.learningGoals}
+            editable={!loading}
           />
 
           {/* Botones */}
@@ -311,6 +433,7 @@ const StudentRegisterScreen = ({ navigation }) => {
               onPress={handleCancel}
               variant="secondary"
               style={styles.cancelButton}
+              disabled={loading}
             />
             <Button
               title="REGISTRARSE"

@@ -3,22 +3,25 @@ import {
   View,
   Text,
   ScrollView,
+  TouchableOpacity, // 👈 ASEGÚRATE QUE ESTÉ IMPORTADO
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import Input from '../../components/common/Input/Input';
 import Button from '../../components/common/Button/Button';
 import Select from '../../components/common/Select/Select';
 import TextArea from '../../components/common/TextArea/TextArea';
 import FileUpload from '../../components/common/FileUpload/FileUpload';
-import Stepper from '../../components/common/Stepper/Stepper';
+import { useAuth } from '../../context/AuthContext';
 import styles from './ProfessorRegisterScreen.styles';
 
 const ProfessorRegisterScreen = ({ navigation }) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const { registerProfessor } = useAuth();
+  
   const [formData, setFormData] = useState({
-    // Paso 1: Información Personal
     profileImage: null,
     firstName: '',
     lastName: '',
@@ -26,28 +29,22 @@ const ProfessorRegisterScreen = ({ navigation }) => {
     phone: '',
     password: '',
     confirmPassword: '',
-    birthDate: '',
+    birthDate: new Date(1990, 0, 1),
     gender: '',
     address: '',
     bio: '',
   });
 
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const steps = [
-    { label: 'Información Personal', icon: '👤' },
-    { label: 'Formación', icon: '🎓' },
-    { label: 'Clases', icon: '📚' },
-    { label: 'Horario', icon: '📅' },
-    { label: 'Confirmación', icon: '✓' },
-  ];
-
+  // ✅ CORREGIDO: Valores compatibles con el backend
   const genderOptions = [
     { label: 'Masculino', value: 'male' },
     { label: 'Femenino', value: 'female' },
     { label: 'Otro', value: 'other' },
-    { label: 'Prefiero no decir', value: 'not_say' },
+    { label: 'Prefiero no decir', value: 'prefer_not_to_say' }, // 👈 CAMBIADO
   ];
 
   const handleInputChange = (field, value) => {
@@ -57,216 +54,113 @@ const ProfessorRegisterScreen = ({ navigation }) => {
     }
   };
 
-  const validateStep1 = () => {
+  const handleDateChange = (event, selectedDate) => {
+    setShowDatePicker(false);
+    if (selectedDate) {
+      setFormData({ ...formData, birthDate: selectedDate });
+    }
+  };
+
+  const formatDate = (date) => {
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+  };
+
+  const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.firstName) newErrors.firstName = 'El nombre es requerido';
-    if (!formData.lastName) newErrors.lastName = 'El apellido es requerido';
-    
-    if (!formData.email) {
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'El nombre es requerido';
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'El apellido es requerido';
+    }
+
+    if (!formData.email.trim()) {
       newErrors.email = 'El correo electrónico es requerido';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Correo electrónico inválido';
     }
 
-    if (!formData.phone) {
+    if (!formData.phone.trim()) {
       newErrors.phone = 'El teléfono es requerido';
-    } else if (!/^\+?[\d\s-]{8,}$/.test(formData.phone)) {
-      newErrors.phone = 'Teléfono inválido';
     }
 
+    // ✅ Validación: mínimo 8 caracteres
     if (!formData.password) {
       newErrors.password = 'La contraseña es requerida';
     } else if (formData.password.length < 8) {
-      newErrors.password = 'Mínimo 8 caracteres';
+      newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
     }
 
-    if (formData.password !== formData.confirmPassword) {
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = 'Debes confirmar tu contraseña';
+    } else if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Las contraseñas no coinciden';
     }
 
-    if (!formData.gender) newErrors.gender = 'El género es requerido';
+    if (!formData.gender) {
+      newErrors.gender = 'El género es requerido';
+    }
+
+    if (!formData.address.trim()) {
+      newErrors.address = 'La dirección es requerida';
+    }
+
+    const today = new Date();
+    const age = today.getFullYear() - formData.birthDate.getFullYear();
+    if (age < 18) {
+      newErrors.birthDate = 'Debes tener al menos 18 años para ser profesor';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
-    if (!validateStep1()) return;
+  const handleContinue = () => {
+    console.log('📝 Validando formulario Step 1...');
     
-    // Navegar al paso 2 con los datos del paso 1
-    navigation.navigate('ProfessorStep2', { formData });
+    if (!validateForm()) {
+      Alert.alert(
+        'Formulario incompleto',
+        'Por favor completa todos los campos requeridos correctamente'
+      );
+      return;
+    }
+
+    console.log('✅ Formulario Step 1 válido, navegando a Step 2');
+
+    // Preparar datos para pasar al siguiente paso
+    const step1Data = {
+      profileImage: formData.profileImage,
+      firstName: formData.firstName.trim(),
+      lastName: formData.lastName.trim(),
+      email: formData.email.toLowerCase().trim(),
+      phone: formData.phone.trim(),
+      password: formData.password,
+      birthDate: formData.birthDate.toISOString().split('T')[0],
+      gender: formData.gender,
+      address: formData.address.trim(),
+      bio: formData.bio.trim() || '',
+    };
+
+    navigation.navigate('ProfessorStep2', { step1Data });
   };
 
   const handleCancel = () => {
-    navigation.goBack();
+    Alert.alert(
+      'Cancelar Registro',
+      '¿Estás seguro de que deseas cancelar? Se perderán todos los datos ingresados.',
+      [
+        { text: 'No', style: 'cancel' },
+        { text: 'Sí, cancelar', onPress: () => navigation.goBack() },
+      ]
+    );
   };
-
-  const renderStep1 = () => (
-    <View style={styles.form}>
-      {/* Sección: Foto de Perfil */}
-      <View style={styles.photoSection}>
-        <Text style={styles.photoTitle}>📸 Foto de Perfil</Text>
-        <FileUpload
-          image={formData.profileImage}
-          onImageSelect={(image) => handleInputChange('profileImage', image)}
-          error={errors.profileImage}
-        />
-      </View>
-
-      {/* Sección: Datos Personales */}
-      <View style={styles.section}>
-        <View style={styles.sectionTitle}>
-          <Text style={styles.sectionTitleIcon}>👤</Text>
-          <Text style={styles.sectionTitle}>Datos Personales</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          Información básica para tu perfil
-        </Text>
-
-        <View style={styles.row}>
-          <View style={styles.halfWidth}>
-            <Input
-              label="Nombre"
-              placeholder="Ej: Juan"
-              value={formData.firstName}
-              onChangeText={(value) => handleInputChange('firstName', value)}
-              required
-              error={errors.firstName}
-            />
-          </View>
-          <View style={styles.halfWidth}>
-            <Input
-              label="Apellido"
-              placeholder="Ej: Pérez"
-              value={formData.lastName}
-              onChangeText={(value) => handleInputChange('lastName', value)}
-              required
-              error={errors.lastName}
-            />
-          </View>
-        </View>
-
-        <View style={styles.row}>
-          <View style={styles.halfWidth}>
-            <Input
-              label="Fecha de Nacimiento"
-              placeholder="dd/mm/aaaa"
-              value={formData.birthDate}
-              onChangeText={(value) => handleInputChange('birthDate', value)}
-              required
-              error={errors.birthDate}
-            />
-          </View>
-          <View style={styles.halfWidth}>
-            <Select
-              label="Género"
-              placeholder="Selecciona"
-              value={formData.gender}
-              onValueChange={(value) => handleInputChange('gender', value)}
-              options={genderOptions}
-              required
-              error={errors.gender}
-            />
-          </View>
-        </View>
-      </View>
-
-      {/* Sección: Contacto */}
-      <View style={styles.section}>
-        <View style={styles.sectionTitle}>
-          <Text style={styles.sectionTitleIcon}>📧</Text>
-          <Text style={styles.sectionTitle}>Información de Contacto</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          Datos para que los estudiantes puedan comunicarse contigo
-        </Text>
-
-        <Input
-          label="Correo Electrónico"
-          placeholder="ejemplo@correo.com"
-          value={formData.email}
-          onChangeText={(value) => handleInputChange('email', value)}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          required
-          error={errors.email}
-        />
-
-        <Input
-          label="Teléfono"
-          placeholder="+593 99 123 4567"
-          value={formData.phone}
-          onChangeText={(value) => handleInputChange('phone', value)}
-          keyboardType="phone-pad"
-          required
-          error={errors.phone}
-        />
-
-        <Input
-          label="Dirección"
-          placeholder="Calle, número, ciudad, país"
-          value={formData.address}
-          onChangeText={(value) => handleInputChange('address', value)}
-          error={errors.address}
-        />
-      </View>
-
-      {/* Sección: Seguridad */}
-      <View style={styles.section}>
-        <View style={styles.sectionTitle}>
-          <Text style={styles.sectionTitleIcon}>🔒</Text>
-          <Text style={styles.sectionTitle}>Seguridad</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          Crea una contraseña segura para tu cuenta
-        </Text>
-
-        <Input
-          label="Contraseña"
-          placeholder="Mínimo 8 caracteres"
-          value={formData.password}
-          onChangeText={(value) => handleInputChange('password', value)}
-          secureTextEntry
-          showPasswordToggle
-          required
-          error={errors.password}
-        />
-
-        <Input
-          label="Confirmar Contraseña"
-          placeholder="Repite tu contraseña"
-          value={formData.confirmPassword}
-          onChangeText={(value) => handleInputChange('confirmPassword', value)}
-          secureTextEntry
-          showPasswordToggle
-          required
-          error={errors.confirmPassword}
-        />
-      </View>
-
-      {/* Sección: Sobre Ti */}
-      <View style={styles.section}>
-        <View style={styles.sectionTitle}>
-          <Text style={styles.sectionTitleIcon}>✍️</Text>
-          <Text style={styles.sectionTitle}>Sobre Ti</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          Comparte tu experiencia y pasión por la enseñanza
-        </Text>
-
-        <TextArea
-          label="Biografía"
-          placeholder="Cuéntanos sobre tu experiencia, tus pasiones por la enseñanza y qué te hace un gran profesor..."
-          value={formData.bio}
-          onChangeText={(value) => handleInputChange('bio', value)}
-          maxLength={500}
-          numberOfLines={5}
-          error={errors.bio}
-        />
-      </View>
-    </View>
-  );
 
   return (
     <KeyboardAvoidingView
@@ -274,74 +168,195 @@ const ProfessorRegisterScreen = ({ navigation }) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <StatusBar style="dark" />
-      
-      {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.logoContainer}>
-          <Text style={styles.logoIcon}>🎓</Text>
-          <Text style={styles.logoText}>EduMatch</Text>
-        </View>
-        <Text style={styles.headerTitle}>Únete como Profesor</Text>
-        <Text style={styles.headerSubtitle}>
-          Comparte tu conocimiento y ayuda a estudiantes a alcanzar sus metas
-        </Text>
-      </View>
-
-      {/* Stepper - Solo muestra el paso actual */}
-      <Stepper steps={steps} currentStep={currentStep} />
-
       <ScrollView
-        style={{ flex: 1 }}
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
-        {currentStep === 1 && renderStep1()}
-        {currentStep === 2 && (
-          <View style={styles.form}>
-            <Text style={{ textAlign: 'center', padding: 40 }}>
-              Paso 2 - Formación (Próximamente)
-            </Text>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.title}>Registro de Profesor</Text>
+          <Text style={styles.subtitle}>Paso 1 de 5: Información Personal</Text>
+          <View style={styles.progressContainer}>
+            <View style={[styles.progressBar, { width: '20%' }]} />
           </View>
-        )}
-        {currentStep === 3 && (
-          <View style={styles.form}>
-            <Text style={{ textAlign: 'center', padding: 40 }}>
-              Paso 3 - Clases (Próximamente)
-            </Text>
-          </View>
-        )}
-        {currentStep === 4 && (
-          <View style={styles.form}>
-            <Text style={{ textAlign: 'center', padding: 40 }}>
-              Paso 4 - Horario (Próximamente)
-            </Text>
-          </View>
-        )}
-        {currentStep === 5 && (
-          <View style={styles.form}>
-            <Text style={{ textAlign: 'center', padding: 40 }}>
-              Paso 5 - Confirmación (Próximamente)
-            </Text>
-          </View>
-        )}
-      </ScrollView>
+        </View>
 
-      {/* Botones fijos en la parte inferior */}
-      <View style={styles.buttonContainer}>
-        <Button
-          title="CANCELAR"
-          onPress={handleCancel}
-          variant="secondary"
-          style={styles.cancelButton}
+        {/* Foto de perfil */}
+        <FileUpload
+          label="Foto de Perfil (Opcional)"
+          image={formData.profileImage}
+          onImageSelect={(image) => handleInputChange('profileImage', image)}
+          error={errors.profileImage}
         />
-        <Button
-          title={currentStep === 5 ? 'FINALIZAR' : 'SIGUIENTE →'}
-          onPress={handleNext}
-          loading={loading}
-          style={styles.nextButton}
-        />
-      </View>
+
+        {/* Formulario */}
+        <View style={styles.form}>
+          {/* Nombre y Apellido */}
+          <View style={styles.row}>
+            <View style={styles.halfWidth}>
+              <Input
+                label="Nombre"
+                placeholder="Ej: María"
+                value={formData.firstName}
+                onChangeText={(value) => handleInputChange('firstName', value)}
+                required
+                error={errors.firstName}
+                editable={!loading}
+              />
+            </View>
+            <View style={styles.halfWidth}>
+              <Input
+                label="Apellido"
+                placeholder="Ej: García"
+                value={formData.lastName}
+                onChangeText={(value) => handleInputChange('lastName', value)}
+                required
+                error={errors.lastName}
+                editable={!loading}
+              />
+            </View>
+          </View>
+
+          {/* Email y Teléfono */}
+          <View style={styles.row}>
+            <View style={styles.halfWidth}>
+              <Input
+                label="Correo Electrónico"
+                placeholder="ejemplo@correo.com"
+                value={formData.email}
+                onChangeText={(value) => handleInputChange('email', value)}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                required
+                error={errors.email}
+                editable={!loading}
+              />
+            </View>
+            <View style={styles.halfWidth}>
+              <Input
+                label="Teléfono"
+                placeholder="+593 99 123 4567"
+                value={formData.phone}
+                onChangeText={(value) => handleInputChange('phone', value)}
+                keyboardType="phone-pad"
+                required
+                error={errors.phone}
+                editable={!loading}
+              />
+            </View>
+          </View>
+
+          {/* Contraseñas */}
+          <View style={styles.row}>
+            <View style={styles.halfWidth}>
+              <Input
+                label="Contraseña"
+                placeholder="Mínimo 8 caracteres"
+                value={formData.password}
+                onChangeText={(value) => handleInputChange('password', value)}
+                secureTextEntry
+                showPasswordToggle
+                required
+                error={errors.password}
+                editable={!loading}
+              />
+            </View>
+            <View style={styles.halfWidth}>
+              <Input
+                label="Confirmar Contraseña"
+                placeholder="Repite tu contraseña"
+                value={formData.confirmPassword}
+                onChangeText={(value) => handleInputChange('confirmPassword', value)}
+                secureTextEntry
+                showPasswordToggle
+                required
+                error={errors.confirmPassword}
+                editable={!loading}
+              />
+            </View>
+          </View>
+
+          {/* Fecha de nacimiento y Género */}
+          <View style={styles.row}>
+            <View style={styles.halfWidth}>
+              <Text style={styles.label}>
+                Fecha de Nacimiento <Text style={styles.required}>*</Text>
+              </Text>
+              <TouchableOpacity
+                style={[styles.dateButton, errors.birthDate && styles.dateButtonError]}
+                onPress={() => !loading && setShowDatePicker(true)}
+                disabled={loading}
+              >
+                <Text style={styles.dateButtonText}>{formatDate(formData.birthDate)}</Text>
+              </TouchableOpacity>
+              {showDatePicker && (
+                <DateTimePicker
+                  value={formData.birthDate}
+                  mode="date"
+                  display="default"
+                  onChange={handleDateChange}
+                  maximumDate={new Date()}
+                />
+              )}
+              {errors.birthDate && <Text style={styles.errorText}>{errors.birthDate}</Text>}
+            </View>
+            <View style={styles.halfWidth}>
+              <Select
+                label="Género"
+                placeholder="Selecciona tu género"
+                value={formData.gender}
+                onValueChange={(value) => handleInputChange('gender', value)}
+                options={genderOptions}
+                required
+                error={errors.gender}
+                enabled={!loading}
+              />
+            </View>
+          </View>
+
+          {/* Dirección */}
+          <Input
+            label="Dirección"
+            placeholder="Calle, ciudad, país"
+            value={formData.address}
+            onChangeText={(value) => handleInputChange('address', value)}
+            required
+            error={errors.address}
+            editable={!loading}
+          />
+
+          {/* Biografía */}
+          <TextArea
+            label="Biografía (Opcional)"
+            placeholder="Cuéntanos sobre ti, tu experiencia y por qué quieres enseñar..."
+            value={formData.bio}
+            onChangeText={(value) => handleInputChange('bio', value)}
+            maxLength={1000}
+            numberOfLines={4}
+            error={errors.bio}
+            editable={!loading}
+          />
+
+          {/* Botones */}
+          <View style={styles.buttonContainer}>
+            <Button
+              title="CANCELAR"
+              onPress={handleCancel}
+              variant="secondary"
+              style={styles.cancelButton}
+              disabled={loading}
+            />
+            <Button
+              title="CONTINUAR"
+              onPress={handleContinue}
+              style={styles.continueButton}
+              disabled={loading}
+            />
+          </View>
+        </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };
