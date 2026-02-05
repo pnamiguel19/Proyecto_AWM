@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Student = require('../models/Student.model');
 const Professor = require('../models/Professor.model');
+const User = require('../models/User.model');
 
 // Verificar que JWT_SECRET esté configurado
 if (!process.env.JWT_SECRET) {
@@ -26,22 +27,37 @@ const login = async (req, res) => {
       });
     }
 
-    // Buscar en ambas colecciones
-    let user = await Student.findOne({ email: email.toLowerCase() }).select('+password');
+    console.log('🔍 Buscando en User...');
+    // Buscar en todas las colecciones (User incluye admin, Student, Professor)
+    let user = await User.findOne({ email: email.toLowerCase() }).select('+password');
+    console.log('User result:', user ? `✅ Encontrado (${user.role})` : '❌ No encontrado');
     
     if (!user) {
+      console.log('🔍 Buscando en Student...');
+      user = await Student.findOne({ email: email.toLowerCase() }).select('+password');
+      console.log('Student result:', user ? `✅ Encontrado` : '❌ No encontrado');
+    }
+    
+    if (!user) {
+      console.log('🔍 Buscando en Professor...');
       user = await Professor.findOne({ email: email.toLowerCase() }).select('+password');
+      console.log('Professor result:', user ? `✅ Encontrado` : '❌ No encontrado');
     }
 
     if (!user) {
+      console.log('❌ Usuario no encontrado en ninguna colección');
       return res.status(401).json({
         success: false,
         message: 'Credenciales inválidas'
       });
     }
 
+    console.log('👤 Usuario encontrado:', { email: user.email, role: user.role });
+    console.log('🔑 Verificando password...');
+
     // Verificar contraseña
     const isPasswordValid = await user.comparePassword(password);
+    console.log('Password válido:', isPasswordValid ? '✅ SÍ' : '❌ NO');
 
     if (!isPasswordValid) {
       return res.status(401).json({
@@ -270,7 +286,11 @@ const registerProfessor = async (req, res) => {
       });
     }
 
-    if (acceptTerms !== 'true' || acceptPrivacy !== 'true') {
+    // Aceptar tanto boolean como string 'true'
+    const termsAccepted = acceptTerms === true || acceptTerms === 'true';
+    const privacyAccepted = acceptPrivacy === true || acceptPrivacy === 'true';
+    
+    if (!termsAccepted || !privacyAccepted) {
       return res.status(400).json({
         success: false,
         message: 'Debes aceptar los términos y condiciones'

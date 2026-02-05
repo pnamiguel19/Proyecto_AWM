@@ -6,6 +6,7 @@ import { NotificationContainer } from '../../../components/common/Notification';
 import { useForm } from '../../../hooks/useForm';
 import { useNotification } from '../../../hooks/useNotification';
 import { validators } from '../../../utils/validators';
+import { authService } from '../../../services/api';
 import './Register.css';
 
 const Register = () => {
@@ -54,16 +55,9 @@ const Register = () => {
     }
 
     try {
-      console.log('Datos a enviar:', {
-        nombre: values.nombre,
-        apellido: values.apellido,
-        email: values.email,
-        telefono: values.telefono,
-        ciudad: values.ciudad,
-        password: values.password
-      });
-
-      showSuccess('¡Registro exitoso! Redirigiendo...');
+      await authService.registerStudent(values);
+      
+      showSuccess('¡Registro exitoso! Redirigiendo al login...');
       
       setTimeout(() => {
         navigate('/login');
@@ -71,7 +65,7 @@ const Register = () => {
 
       resetForm();
     } catch (error) {
-      showError('Error al registrar usuario. Por favor, intenta nuevamente.');
+      showError(error.message || 'Error al registrar usuario. Por favor, intenta nuevamente.');
       console.error('Error:', error);
     }
   };

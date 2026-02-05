@@ -7,6 +7,7 @@ import EducationStep from '../../components/registration/EducationStep';
 import ClassesStep from '../../components/registration/ClassesStep';
 import ScheduleStep from '../../components/registration/ScheduleStep';
 import ConfirmationStep from '../../components/registration/ConfirmationStep';
+import { authService } from '../../services/api';
 import './TeacherRegistration.css';
 
 const TeacherRegistration = () => {
@@ -40,7 +41,7 @@ const TeacherRegistration = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!formData.termsAccept) {
@@ -48,8 +49,56 @@ const TeacherRegistration = () => {
       return;
     }
     
-    console.log('Formulario enviado:', formData);
-    setShowSuccess(true);
+    try {
+      // Mapear valores del frontend al formato del backend
+      const dataToSend = {
+        email: formData.email,
+        password: formData.password || 'Temp123!',
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        address: formData.address,
+        birthDate: formData.birthDate,
+        gender: mapGender(formData.gender),
+        educationLevel: mapEducationLevel(formData.educationLevel),
+        university: formData.university,
+        degree: formData.degree,
+        graduationYear: parseInt(formData.graduationYear),
+        subjects: formData.subjects || [],
+        experience: formData.experience || '',
+        aboutMe: formData.bio || '',
+        teachingPhilosophy: formData.teachingPhilosophy || '',
+        schedule: formData.schedule || {},
+        acceptTerms: true
+      };
+
+      await authService.registerProfessor(dataToSend);
+      setShowSuccess(true);
+    } catch (error) {
+      alert(error.message || 'Error al enviar el formulario. Por favor, intenta nuevamente.');
+      console.error('Error:', error);
+    }
+  };
+
+  // Funciones para mapear valores del frontend al backend
+  const mapGender = (gender) => {
+    const mapping = {
+      'masculino': 'male',
+      'femenino': 'female',
+      'otro': 'other',
+      'prefiero-no-decir': 'prefer_not_to_say'
+    };
+    return mapping[gender] || 'prefer_not_to_say';
+  };
+
+  const mapEducationLevel = (level) => {
+    const mapping = {
+      'bachillerato': 'high_school',
+      'universidad': 'university',
+      'maestria': 'postgraduate',
+      'doctorado': 'postgraduate'
+    };
+    return mapping[level] || 'university';
   };
 
   const renderStep = () => {

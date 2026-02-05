@@ -97,7 +97,7 @@ const studentSchema = new mongoose.Schema({
   },
   bookings: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Booking'
+    ref: 'Professor'
   }],
   completedClasses: {
     type: Number,

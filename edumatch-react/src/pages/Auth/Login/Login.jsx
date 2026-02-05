@@ -6,6 +6,7 @@ import { NotificationContainer } from '../../../components/common/Notification';
 import { useForm } from '../../../hooks/useForm';
 import { useNotification } from '../../../hooks/useNotification';
 import { validators } from '../../../utils/validators';
+import { authService } from '../../../services/api';
 import './Login.css';
 
 const Login = () => {
@@ -47,22 +48,28 @@ const Login = () => {
     }
 
     try {
-      console.log('Datos de login:', {
-        email: values.email,
-        password: values.password,
-        rememberMe: rememberMe
-      });
-
-      // Aquí irá la llamada a la API
+      const response = await authService.login(values.email, values.password);
+      
+      // Guardar token y datos del usuario
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(response.data));
+      
       showSuccess('¡Inicio de sesión exitoso!');
       
       setTimeout(() => {
-        navigate('/Admin/Dashboard');
+        // Redirigir según el rol
+        if (response.data.role === 'admin') {
+          navigate('/Admin/Dashboard');
+        } else if (response.data.role === 'professor') {
+          navigate('/professor/dashboard');
+        } else {
+          navigate('/student/dashboard');
+        }
       }, 1500);
 
       resetForm();
     } catch (error) {
-      showError('Error al iniciar sesión. Verifica tus credenciales.');
+      showError(error.message || 'Error al iniciar sesión. Verifica tus credenciales.');
       console.error('Error:', error);
     }
   };
