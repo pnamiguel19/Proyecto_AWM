@@ -173,6 +173,34 @@ const PersonalInfoStep = ({ formData, onChange }) => {
         />
         <small className="input-hint">Mínimo 100 caracteres</small>
       </div>
+
+      {/* Contraseña y Confirmación */}
+      <div className="form-row">
+        <div className="input-group">
+          <label htmlFor="password">Contraseña *</label>
+          <input
+            type="password"
+            id="password"
+            value={formData.password || ''}
+            onChange={(e) => onChange('password', e.target.value)}
+            placeholder="Mínimo 8 caracteres"
+            required
+            minLength="8"
+          />
+          <small className="input-hint">Debe tener al menos 8 caracteres, una mayúscula y un número</small>
+        </div>
+        <div className="input-group">
+          <label htmlFor="confirmPassword">Confirmar Contraseña *</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={formData.confirmPassword || ''}
+            onChange={(e) => onChange('confirmPassword', e.target.value)}
+            placeholder="Repite tu contraseña"
+            required
+          />
+        </div>
+      </div>
     </section>
   );
 };

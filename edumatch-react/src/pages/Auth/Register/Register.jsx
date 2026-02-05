@@ -55,13 +55,27 @@ const Register = () => {
     }
 
     try {
+      // Registrar al estudiante
       await authService.registerStudent(values);
       
-      showSuccess('¡Registro exitoso! Redirigiendo al login...');
+      showSuccess('¡Registro exitoso! Iniciando sesión...');
       
-      setTimeout(() => {
-        navigate('/login');
-      }, 2000);
+      // Hacer login automáticamente después del registro
+      setTimeout(async () => {
+        try {
+          const loginResponse = await authService.login(values.email, values.password);
+          
+          // Guardar token y usuario
+          localStorage.setItem('token', loginResponse.token);
+          localStorage.setItem('user', JSON.stringify(loginResponse.user));
+          
+          // Redirigir al home
+          navigate('/');
+        } catch (loginError) {
+          // Si falla el login automático, redirigir a login manual
+          navigate('/login');
+        }
+      }, 1500);
 
       resetForm();
     } catch (error) {

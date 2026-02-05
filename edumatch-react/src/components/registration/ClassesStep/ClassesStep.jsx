@@ -4,8 +4,8 @@ import './checkbox-grid.css';
 
 const ClassesStep = ({ formData, onChange }) => {
   const [selectedSubjects, setSelectedSubjects] = useState(formData.subjects || []);
-  const [selectedLevels, setSelectedLevels] = useState(formData.levels || []);
-  const [selectedModalities, setSelectedModalities] = useState(formData.modalities || []);
+  const [selectedLevels, setSelectedLevels] = useState(formData.educationLevels || []);
+  const [selectedModalities, setSelectedModalities] = useState(formData.teachingModalities || []);
 
   const subjects = [
     { id: 'matematicas', name: 'Matemáticas', icon: '🔢' },
@@ -23,17 +23,17 @@ const ClassesStep = ({ formData, onChange }) => {
   ];
 
   const levels = [
-    { id: 'primaria', name: 'Primaria', description: '1° a 6° grado' },
-    { id: 'secundaria', name: 'Secundaria', description: '7° a 10° grado' },
-    { id: 'bachillerato', name: 'Bachillerato', description: '1° a 3° año' },
-    { id: 'universidad', name: 'Universidad', description: 'Nivel superior' },
-    { id: 'adultos', name: 'Adultos', description: 'Educación continua' }
+    { id: 'elementary', name: 'Primaria', description: '1° a 6° grado' },
+    { id: 'middle_school', name: 'Secundaria', description: '7° a 10° grado' },
+    { id: 'high_school', name: 'Bachillerato', description: '1° a 3° año' },
+    { id: 'university', name: 'Universidad', description: 'Nivel superior' },
+    { id: 'postgraduate', name: 'Posgrado', description: 'Maestría y Doctorado' }
   ];
 
   const modalities = [
-    { id: 'presencial', name: 'Presencial', icon: '🏫', description: 'En un lugar físico' },
+    { id: 'in_person', name: 'Presencial', icon: '🏫', description: 'En un lugar físico' },
     { id: 'online', name: 'En Línea', icon: '💻', description: 'Clases virtuales' },
-    { id: 'hibrido', name: 'Híbrido', icon: '🔄', description: 'Combinación de ambas' }
+    { id: 'hybrid', name: 'Híbrido', icon: '🔄', description: 'Combinación de ambas' }
   ];
 
   const handleSubjectToggle = (subjectId) => {
@@ -49,7 +49,7 @@ const ClassesStep = ({ formData, onChange }) => {
       ? selectedLevels.filter(id => id !== levelId)
       : [...selectedLevels, levelId];
     setSelectedLevels(updated);
-    onChange('levels', updated);
+    onChange('educationLevels', updated);
   };
 
   const handleModalityToggle = (modalityId) => {
@@ -57,7 +57,7 @@ const ClassesStep = ({ formData, onChange }) => {
       ? selectedModalities.filter(id => id !== modalityId)
       : [...selectedModalities, modalityId];
     setSelectedModalities(updated);
-    onChange('modalities', updated);
+    onChange('teachingModalities', updated);
   };
 
   return (

@@ -35,15 +35,15 @@ export const authService = {
       body: JSON.stringify({
         email: userData.email,
         password: userData.password,
-        firstName: userData.nombre,
-        lastName: userData.apellido,
-        phone: userData.telefono,
-        address: userData.ciudad,
-        birthDate: userData.birthDate || '2000-01-01',
-        gender: userData.gender || 'prefer_not_to_say',
-        educationLevel: userData.educationLevel || 'university',
-        learningGoals: userData.learningGoals || '',
-        acceptTerms: true
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        phone: userData.phone,
+        address: userData.address,
+        birthDate: userData.birthDate,
+        gender: userData.gender,
+        educationLevel: userData.educationLevel,
+        aboutMe: userData.aboutMe || '',
+        learningGoals: userData.learningGoals || ''
       })
     });
     return handleResponse(response);
@@ -62,16 +62,25 @@ export const authService = {
         address: formData.address,
         birthDate: formData.birthDate,
         gender: formData.gender,
-        educationLevel: formData.educationLevel,
+        bio: formData.bio,
+        // Formación académica
+        universityDegree: formData.universityDegree,
         university: formData.university,
-        degree: formData.degree,
         graduationYear: formData.graduationYear,
+        teachingExperience: formData.teachingExperience,
+        // Enseñanza
         subjects: formData.subjects || [],
-        experience: formData.experience || '',
-        aboutMe: formData.aboutMe || '',
-        teachingPhilosophy: formData.teachingPhilosophy || '',
+        educationLevels: formData.educationLevels || [],
+        teachingModalities: formData.teachingModalities || [],
+        hourlyRate: formData.hourlyRate || 0,
+        currency: formData.currency || 'USD',
         schedule: formData.schedule || {},
-        acceptTerms: formData.acceptTerms || true
+        maxStudentsPerClass: formData.maxStudentsPerClass || 1,
+        minimumNoticeHours: formData.minimumNoticeHours || 24,
+        additionalNotes: formData.additionalNotes || '',
+        acceptTerms: formData.acceptTerms || true,
+        acceptPrivacy: formData.acceptPrivacy || true,
+        acceptNotifications: formData.acceptNotifications || true
       })
     });
     return handleResponse(response);
@@ -86,11 +95,11 @@ export const studentService = {
     return handleResponse(response);
   },
 
-  updateProfile: async (data) => {
+  updateProfile: async (profileData) => {
     const response = await fetch(`${API_URL}/students/profile`, {
       method: 'PUT',
       headers: getAuthHeaders(),
-      body: JSON.stringify(data)
+      body: JSON.stringify(profileData)
     });
     return handleResponse(response);
   },
@@ -132,6 +141,15 @@ export const studentService = {
     return handleResponse(response);
   },
 
+  bookClass: async (professorId, bookingData) => {
+    const response = await fetch(`${API_URL}/students/bookings/${professorId}`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(bookingData)
+    });
+    return handleResponse(response);
+  },
+
   addBooking: async (professorId) => {
     const response = await fetch(`${API_URL}/students/bookings/${professorId}`, {
       method: 'POST',
@@ -140,10 +158,11 @@ export const studentService = {
     return handleResponse(response);
   },
 
-  cancelBooking: async (professorId) => {
+  cancelBooking: async (professorId, bookingId) => {
     const response = await fetch(`${API_URL}/students/bookings/${professorId}`, {
       method: 'DELETE',
-      headers: getAuthHeaders()
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ bookingId })
     });
     return handleResponse(response);
   }
@@ -153,6 +172,14 @@ export const professorService = {
   getAll: async () => {
     const response = await fetch(`${API_URL}/professors`, {
       headers: getAuthHeaders()
+    });
+    return handleResponse(response);
+  },
+
+  getApproved: async () => {
+    // No requiere autenticación ya que es público
+    const response = await fetch(`${API_URL}/professors?limit=100`, {
+      headers: { 'Content-Type': 'application/json' }
     });
     return handleResponse(response);
   },
@@ -205,6 +232,13 @@ export const adminService = {
     return handleResponse(response);
   },
 
+  getApprovedProfessors: async () => {
+    const response = await fetch(`${API_URL}/admin/professors/approved`, {
+      headers: getAuthHeaders()
+    });
+    return handleResponse(response);
+  },
+
   approveProfessor: async (id) => {
     const response = await fetch(`${API_URL}/admin/professors/${id}/approve`, {
       method: 'PUT',
@@ -213,28 +247,28 @@ export const adminService = {
     return handleResponse(response);
   },
 
-  rejectProfessor: async (id) => {
+  rejectProfessor: async (id, reason) => {
     const response = await fetch(`${API_URL}/admin/professors/${id}/reject`, {
       method: 'PUT',
-      headers: getAuthHeaders()
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ reason })
     });
     return handleResponse(response);
   },
 
-  deactivateUser: async (id, role) => {
+  deactivateUser: async (id, reason) => {
     const response = await fetch(`${API_URL}/admin/users/${id}/deactivate`, {
       method: 'PUT',
       headers: getAuthHeaders(),
-      body: JSON.stringify({ role })
+      body: JSON.stringify({ reason })
     });
     return handleResponse(response);
   },
 
-  activateUser: async (id, role) => {
+  activateUser: async (id) => {
     const response = await fetch(`${API_URL}/admin/users/${id}/activate`, {
       method: 'PUT',
-      headers: getAuthHeaders(),
-      body: JSON.stringify({ role })
+      headers: getAuthHeaders()
     });
     return handleResponse(response);
   },
@@ -249,6 +283,52 @@ export const adminService = {
   getLogs: async () => {
     const response = await fetch(`${API_URL}/admin/logs`, {
       headers: getAuthHeaders()
+    });
+    return handleResponse(response);
+  }
+};
+
+export const professorServiceProfile = {
+  updateProfile: async (profileData) => {
+    const response = await fetch(`${API_URL}/professors/profile`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(profileData)
+    });
+    return handleResponse(response);
+  },
+
+  updateSchedule: async (scheduleData) => {
+    const response = await fetch(`${API_URL}/professors/schedule`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(scheduleData)
+    });
+    return handleResponse(response);
+  },
+
+  getSchedule: async (professorId) => {
+    const response = await fetch(`${API_URL}/professors/${professorId}/schedule`, {
+      headers: getAuthHeaders()
+    });
+    return handleResponse(response);
+  },
+
+  getStats: async () => {
+    const response = await fetch(`${API_URL}/professors/stats`, {
+      headers: getAuthHeaders()
+    });
+    return handleResponse(response);
+  },
+
+  addCertification: async (formData) => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${API_URL}/professors/certifications`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formData
     });
     return handleResponse(response);
   }

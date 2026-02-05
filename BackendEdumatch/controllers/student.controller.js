@@ -131,22 +131,32 @@ const removeFavoriteProfessor = async (req, res, next) => {
  */
 const getFavoriteProfessors = async (req, res, next) => {
   try {
+    console.log('🔍 getFavoriteProfessors - userId:', req.userId);
+    
     const student = await Student.findById(req.userId)
-      .populate('favoriteProfessors')
+      .populate({
+        path: 'favoriteProfessors',
+        select: '-password'
+      })
       .select('-password');
 
     if (!student) {
+      console.error('❌ Estudiante no encontrado:', req.userId);
       return res.status(404).json({
         success: false,
         message: 'Estudiante no encontrado'
       });
     }
 
+    console.log('✅ Favoritos encontrados:', student.favoriteProfessors?.length || 0);
+    console.log('📚 Favoritos:', student.favoriteProfessors);
+
     res.status(200).json({
       success: true,
-      data: student.favoriteProfessors
+      data: student.favoriteProfessors || []
     });
   } catch (error) {
+    console.error('❌ Error en getFavoriteProfessors:', error);
     next(error);
   }
 };
@@ -156,25 +166,45 @@ const getFavoriteProfessors = async (req, res, next) => {
  */
 const getBookedClasses = async (req, res, next) => {
   try {
+    console.log('🔍 getBookedClasses - userId:', req.userId);
+    
     const student = await Student.findById(req.userId)
       .populate({
         path: 'bookings',
-        match: { approvalStatus: 'approved' }
+        select: '-password'
       })
       .select('-password');
 
     if (!student) {
+      console.error('❌ Estudiante no encontrado:', req.userId);
       return res.status(404).json({
         success: false,
         message: 'Estudiante no encontrado'
       });
     }
 
+    console.log('✅ Clases encontradas:', student.bookings?.length || 0);
+    
+    // Transformar bookings a formato de clases con información del profesor
+    const classes = (student.bookings || []).map(professor => ({
+      _id: professor._id,
+      professorId: professor._id,
+      professorName: `${professor.firstName} ${professor.lastName}`,
+      subject: professor.subjects?.[0] || 'Sin materia',
+      date: new Date().toISOString().split('T')[0], // Fecha de hoy por defecto
+      time: '10:00 AM', // Hora por defecto
+      status: 'confirmed', // Estado por defecto
+      hourlyRate: professor.hourlyRate || 0
+    }));
+
+    console.log('📅 Clases formateadas:', classes);
+
     res.status(200).json({
       success: true,
-      data: student.bookings || []
+      data: classes
     });
   } catch (error) {
+    console.error('❌ Error en getBookedClasses:', error);
     next(error);
   }
 };

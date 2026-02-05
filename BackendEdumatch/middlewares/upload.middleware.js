@@ -30,7 +30,7 @@ const storage = multer.diskStorage({
       folder += 'profiles/';
     } else if (file.fieldname === 'degreeDocument' || file.fieldname === 'professionalIdDocument') {
       folder += 'documents/';
-    } else if (file.fieldname === 'certifications') {
+    } else if (file.fieldname === 'certification' || file.fieldname === 'certifications') {
       folder += 'certifications/';
     }
 
@@ -57,7 +57,7 @@ const fileFilter = (req, file, cb) => {
   }
 
   // Permitir PDFs para documentos
-  if (file.fieldname === 'degreeDocument' || file.fieldname === 'professionalIdDocument' || file.fieldname === 'certifications') {
+  if (file.fieldname === 'degreeDocument' || file.fieldname === 'professionalIdDocument' || file.fieldname === 'certification' || file.fieldname === 'certifications') {
     if (file.mimetype === 'application/pdf') {
       return cb(null, true);
     }

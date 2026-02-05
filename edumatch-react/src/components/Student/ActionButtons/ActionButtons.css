@@ -1,0 +1,135 @@
+/* ================================
+   ACTION BUTTONS
+==================================*/
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #00D9E1;
+    color: white;
+}
+
+.btn-primary:not(:disabled):hover {
+    background: #008B8B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background: #ECF0F1;
+    color: #2C3E50;
+}
+
+.btn-secondary:hover {
+    background: #BDC3C7;
+    transform: translateY(-2px);
+}
+
+.btn-favorite-active {
+    background: linear-gradient(135deg, #FF6B9D 0%, #C06C84 100%);
+    color: white;
+}
+
+.btn-favorite-active:hover {
+    background: linear-gradient(135deg, #E5567F 0%, #AA5B73 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 107, 157, 0.4);
+}
+
+.btn-outline {
+    background: white;
+    color: #2C3E50;
+    border: 2px solid #ECF0F1;
+}
+
+.btn-outline:hover {
+    background: #ECF0F1;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   BOOKING SUCCESS NOTIFICATION
+==================================*/
+.booking-success-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    text-align: center;
+    min-width: 400px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.booking-success-notification h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #2C3E50;
+    margin: 0 0 1rem 0;
+}
+
+.booking-success-notification p {
+    color: #7F8C8D;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .booking-success-notification {
+        min-width: 90%;
+        padding: 2rem 1.5rem;
+    }
+}

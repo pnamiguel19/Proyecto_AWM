@@ -1,0 +1,204 @@
+/* ================================
+   USER TYPE SELECTION PAGE
+==================================*/
+.user-type-selection {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.selection-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.selection-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.selection-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.selection-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.95;
+  margin: 0;
+}
+
+.selection-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.selection-card {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.selection-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #00BCD4, #00ACC1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.selection-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.selection-card:hover::before {
+  transform: scaleX(1);
+}
+
+.student-card::before {
+  background: linear-gradient(90deg, #00BCD4, #00ACC1);
+}
+
+.professor-card::before {
+  background: linear-gradient(90deg, #FF6B9D, #C06C84);
+}
+
+.card-icon {
+  font-size: 5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #2C3E50;
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+.card-description {
+  text-align: center;
+  color: #7F8C8D;
+  font-size: 1.1rem;
+  margin: 0 0 2rem 0;
+}
+
+.card-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.card-benefits li {
+  padding: 0.75rem 0;
+  color: #2C3E50;
+  font-size: 1rem;
+  border-bottom: 1px solid #ECF0F1;
+}
+
+.card-benefits li:last-child {
+  border-bottom: none;
+}
+
+.card-button {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.student-button {
+  background: linear-gradient(135deg, #00BCD4, #00ACC1);
+  color: white;
+}
+
+.student-button:hover {
+  background: linear-gradient(135deg, #00ACC1, #0097A7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4);
+}
+
+.professor-button {
+  background: linear-gradient(135deg, #FF6B9D, #C06C84);
+  color: white;
+}
+
+.professor-button:hover {
+  background: linear-gradient(135deg, #E5567F, #AA5B73);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+}
+
+.selection-footer {
+  text-align: center;
+  color: white;
+  margin-top: 3rem;
+}
+
+.selection-footer p {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.login-link {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.login-link:hover {
+  background: white;
+  color: #667eea;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .selection-cards {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+
+  .selection-title {
+    font-size: 2rem;
+  }
+
+  .selection-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .selection-card {
+    padding: 2rem 1.5rem;
+  }
+}

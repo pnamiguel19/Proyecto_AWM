@@ -33,6 +33,18 @@ router.get(
 );
 
 /**
+ * @route   GET /api/admin/professors/approved
+ * @desc    Obtener profesores aprobados
+ * @access  Private (Solo admin)
+ */
+router.get(
+  '/professors/approved',
+  authenticate,
+  isAdmin,
+  adminController.getApprovedProfessors
+);
+
+/**
  * @route   PUT /api/admin/professors/:professorId/approve
  * @desc    Aprobar profesor
  * @access  Private (Solo admin)

@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const [activeFilter, setActiveFilter] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Verificar si hay un usuario logueado
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -18,6 +29,28 @@ const Header = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    navigate('/login');
+  };
+
+  const getProfileLink = () => {
+    if (!user) return '/login';
+    
+    switch(user.role) {
+      case 'admin':
+        return '/Admin/Dashboard';
+      case 'professor':
+        return '/professor/profile';
+      case 'student':
+        return '/student/profile';
+      default:
+        return '/login';
+    }
   };
 
   const filters = [
@@ -91,15 +124,28 @@ const Header = () => {
             className={`header__actions ${mobileMenuOpen ? 'mobile-open' : ''}`}
             aria-label="Acciones de usuario"
           >
-            <a href="#funcionamiento" className="header__link">
-              ¿Cómo funciona?
-            </a>
-            <a href="#registro" className="header__link">
-              Regístrate
-            </a>
-            <a href="#postula" className="header__link">
-              Postúlate
-            </a>
+            {user ? (
+              <>
+                <a href={getProfileLink()} className="header__link header__user">
+                  👤 {user.firstName || user.email}
+                </a>
+                <button onClick={handleLogout} className="header__link header__logout">
+                  Cerrar Sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <a href="#funcionamiento" className="header__link">
+                  ¿Cómo funciona?
+                </a>
+                <a href="/register" className="header__link">
+                  Regístrate
+                </a>
+                <a href="/teacher-registration" className="header__link">
+                  Postúlate
+                </a>
+              </>
+            )}
           </nav>
         </div>
 

@@ -364,9 +364,46 @@ const getAdminLogs = async (req, res, next) => {
   }
 };
 
+/**
+ * Obtener profesores aprobados
+ */
+const getApprovedProfessors = async (req, res, next) => {
+  try {
+    const { page = 1, limit = 50 } = req.query;
+    const skip = (page - 1) * limit;
+
+    const professors = await Professor.find({ 
+      approvalStatus: 'approved',
+      isActive: true 
+    })
+      .select('-password')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(Number(limit));
+
+    const total = await Professor.countDocuments({ 
+      approvalStatus: 'approved',
+      isActive: true 
+    });
+
+    res.status(200).json({
+      success: true,
+      data: professors,
+      pagination: {
+        page: Number(page),
+        limit: Number(limit),
+        total
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getPendingProfessors,
+  getApprovedProfessors,
   approveProfessor,
   rejectProfessor,
   deactivateUser,

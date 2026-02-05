@@ -75,6 +75,10 @@ const ConfirmationStep = ({ formData, onChange }) => {
             <span className="review-value">{formData.email}</span>
           </div>
           <div className="review-row">
+            <span className="review-label">Contraseña:</span>
+            <span className="review-value">••••••••</span>
+          </div>
+          <div className="review-row">
             <span className="review-label">Teléfono:</span>
             <span className="review-value">{formData.phone}</span>
           </div>

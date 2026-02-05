@@ -11,8 +11,13 @@ const authenticate = async (req, res, next) => {
   try {
     // Obtener el token del header
     const token = req.header('Authorization')?.replace('Bearer ', '');
+    
+    console.log('🔐 [AUTH] Verificando autenticación...');
+    console.log('   - Ruta:', req.method, req.path);
+    console.log('   - Token presente:', token ? '✅ Sí' : '❌ No');
 
     if (!token) {
+      console.error('❌ [AUTH] Token no proporcionado');
       return res.status(401).json({
         success: false,
         message: 'No se proporcionó token de autenticación'
@@ -21,6 +26,7 @@ const authenticate = async (req, res, next) => {
 
     // Verificar y decodificar el token
     const decoded = jwt.verify(token, JWT_SECRET);
+    console.log('   - Token decodificado:', decoded);
 
     // Buscar el usuario en todas las colecciones
     let user = await User.findById(decoded.userId);
@@ -34,6 +40,7 @@ const authenticate = async (req, res, next) => {
     }
 
     if (!user) {
+      console.error('❌ [AUTH] Usuario no encontrado:', decoded.userId);
       return res.status(401).json({
         success: false,
         message: 'Usuario no encontrado'
@@ -42,11 +49,14 @@ const authenticate = async (req, res, next) => {
 
     // Verificar si el usuario está activo
     if (!user.isActive) {
+      console.error('❌ [AUTH] Cuenta desactivada');
       return res.status(401).json({
         success: false,
         message: 'Cuenta desactivada'
       });
     }
+
+    console.log('✅ [AUTH] Usuario autenticado:', user.email, '| Role:', user.role);
 
     // Agregar el usuario al request
     req.user = user;
@@ -55,6 +65,7 @@ const authenticate = async (req, res, next) => {
 
     next();
   } catch (error) {
+    console.error('❌ [AUTH] Error:', error.message);
     if (error.name === 'JsonWebTokenError') {
       return res.status(401).json({
         success: false,

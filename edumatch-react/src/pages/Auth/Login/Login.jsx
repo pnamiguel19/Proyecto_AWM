@@ -52,18 +52,17 @@ const Login = () => {
       
       // Guardar token y datos del usuario
       localStorage.setItem('token', response.token);
-      localStorage.setItem('user', JSON.stringify(response.data));
+      localStorage.setItem('user', JSON.stringify(response.user));
       
       showSuccess('¡Inicio de sesión exitoso!');
       
       setTimeout(() => {
         // Redirigir según el rol
-        if (response.data.role === 'admin') {
+        if (response.user.role === 'admin') {
           navigate('/Admin/Dashboard');
-        } else if (response.data.role === 'professor') {
-          navigate('/professor/dashboard');
         } else {
-          navigate('/student/dashboard');
+          // Estudiantes y profesores van al home
+          navigate('/');
         }
       }, 1500);
 

@@ -27,6 +27,50 @@ const TeacherRegistration = () => {
     e.preventDefault();
     console.log('Avanzando al siguiente paso desde:', currentStep);
     
+    // Validar contraseñas en el primer paso
+    if (currentStep === 1) {
+      if (!formData.password || formData.password.length < 8) {
+        alert('La contraseña debe tener al menos 8 caracteres');
+        return;
+      }
+      if (formData.password !== formData.confirmPassword) {
+        alert('Las contraseñas no coinciden');
+        return;
+      }
+    }
+    
+    // Validar formación académica en el paso 2
+    if (currentStep === 2) {
+      if (!formData.degree || !formData.university || !formData.graduationYear || !formData.experience) {
+        alert('Por favor completa todos los campos de formación académica');
+        return;
+      }
+      if (!formData.degreeFile || !formData.professionalIdFile) {
+        alert('Por favor sube los documentos requeridos (Título Universitario y Cédula Profesional)');
+        return;
+      }
+    }
+    
+    // Validar materias y modalidades en el paso 3
+    if (currentStep === 3) {
+      if (!formData.subjects || formData.subjects.length === 0) {
+        alert('Por favor selecciona al menos una materia que enseñas');
+        return;
+      }
+      if (!formData.educationLevels || formData.educationLevels.length === 0) {
+        alert('Por favor selecciona al menos un nivel educativo');
+        return;
+      }
+      if (!formData.teachingModalities || formData.teachingModalities.length === 0) {
+        alert('Por favor selecciona al menos una modalidad de enseñanza');
+        return;
+      }
+      if (!formData.hourlyRate || parseFloat(formData.hourlyRate) < 5) {
+        alert('Por favor establece una tarifa por hora válida (mínimo $5)');
+        return;
+      }
+    }
+    
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -48,30 +92,72 @@ const TeacherRegistration = () => {
       alert('Debes aceptar los términos y condiciones');
       return;
     }
+
+    // Validación final de contraseña
+    if (!formData.password || formData.password.length < 8) {
+      alert('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
+    if (formData.password !== formData.confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
     
     try {
+      // Convertir schedule de objeto a array para el backend
+      const scheduleArray = [];
+      if (formData.schedule && typeof formData.schedule === 'object') {
+        Object.entries(formData.schedule).forEach(([day, slots]) => {
+          const selectedSlots = [];
+          if (slots.morning) selectedSlots.push('morning');
+          if (slots.afternoon) selectedSlots.push('afternoon');
+          if (slots.evening) selectedSlots.push('evening');
+          
+          if (selectedSlots.length > 0) {
+            scheduleArray.push({
+              day: day,
+              timeSlots: selectedSlots
+            });
+          }
+        });
+      }
+
       // Mapear valores del frontend al formato del backend
       const dataToSend = {
         email: formData.email,
-        password: formData.password || 'Temp123!',
+        password: formData.password,
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
         address: formData.address,
         birthDate: formData.birthDate,
         gender: mapGender(formData.gender),
-        educationLevel: mapEducationLevel(formData.educationLevel),
+        bio: formData.bio || '',
+        // Campos de formación académica
+        universityDegree: formData.degree,
         university: formData.university,
-        degree: formData.degree,
         graduationYear: parseInt(formData.graduationYear),
+        teachingExperience: formData.experience,
+        // Archivos (en siguiente fase con FormData)
+        degreeFile: formData.degreeFile,
+        professionalIdFile: formData.professionalIdFile,
+        certificates: formData.certificates || [],
+        // Datos de enseñanza
         subjects: formData.subjects || [],
-        experience: formData.experience || '',
-        aboutMe: formData.bio || '',
-        teachingPhilosophy: formData.teachingPhilosophy || '',
-        schedule: formData.schedule || {},
-        acceptTerms: true
+        educationLevels: formData.educationLevels || [],
+        teachingModalities: formData.teachingModalities || [],
+        hourlyRate: parseFloat(formData.hourlyRate) || 0,
+        currency: formData.currency || 'USD',
+        schedule: scheduleArray,
+        maxStudentsPerClass: parseInt(formData.maxStudentsPerClass) || 1,
+        minimumNoticeHours: parseInt(formData.advanceNotice) || 24,
+        additionalNotes: formData.additionalNotes || '',
+        acceptTerms: formData.termsAccept || true,
+        acceptPrivacy: formData.termsAccept || true,
+        acceptNotifications: true
       };
 
+      console.log('📤 Enviando datos al backend:', dataToSend);
       await authService.registerProfessor(dataToSend);
       setShowSuccess(true);
     } catch (error) {
