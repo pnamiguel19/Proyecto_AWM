@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User } = require('../models');
+const { User, Student, Professor } = require('../models');
 
 // Secreto JWT (moverlo a variables de entorno después)
 const JWT_SECRET = process.env.JWT_SECRET || 'edumatch_secret_key_2024';
@@ -22,8 +22,16 @@ const authenticate = async (req, res, next) => {
     // Verificar y decodificar el token
     const decoded = jwt.verify(token, JWT_SECRET);
 
-    // Buscar el usuario en la base de datos
-    const user = await User.findById(decoded.userId);
+    // Buscar el usuario en todas las colecciones
+    let user = await User.findById(decoded.userId);
+    
+    if (!user) {
+      user = await Student.findById(decoded.userId);
+    }
+    
+    if (!user) {
+      user = await Professor.findById(decoded.userId);
+    }
 
     if (!user) {
       return res.status(401).json({
@@ -68,7 +76,16 @@ const authenticate = async (req, res, next) => {
 };
 
 /**
- * Middleware opcional - permite el acceso sin autenticación
+ * Mid
+      let user = await User.findById(decoded.userId);
+      
+      if (!user) {
+        user = await Student.findById(decoded.userId);
+      }
+      
+      if (!user) {
+        user = await Professor.findById(decoded.userId);
+      }ación
  */
 const optionalAuthenticate = async (req, res, next) => {
   try {

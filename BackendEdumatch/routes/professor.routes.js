@@ -22,6 +22,18 @@ router.get(
 );
 
 /**
+ * @route   GET /api/professors/stats
+ * @desc    Obtener estadísticas del profesor
+ * @access  Private (Solo profesor)
+ */
+router.get(
+  '/stats',
+  authenticate,
+  isProfessor,
+  professorController.getProfessorStats
+);
+
+/**
  * @route   GET /api/professors/:id
  * @desc    Obtener profesor por ID
  * @access  Public
@@ -65,18 +77,6 @@ router.get(
   '/:id/schedule',
   validateObjectId('id'),
   professorController.getSchedule
-);
-
-/**
- * @route   GET /api/professors/stats
- * @desc    Obtener estadísticas del profesor
- * @access  Private (Solo profesor)
- */
-router.get(
-  '/stats',
-  authenticate,
-  isProfessor,
-  professorController.getProfessorStats
 );
 
 /**

@@ -1,33 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../../components/layout/Header';
 import Sidebar from '../../../components/layout/Sidebar';
 import { StatsCard } from '../../../components/common/Card';
+import { adminService, professorService } from '../../../services/api';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const statsData = [
-    { title: 'Usuarios Totales', value: '1,247', icon: '👥', trend: '↑ +12.5% este mes', bgColor: 'blue' },
-    { title: 'Profesores Activos', value: '389', icon: '👨‍🏫', trend: '↑ +8.3% este mes', bgColor: 'yellow' },
-    { title: 'Clases Realizadas', value: '2,456', icon: '📚', trend: '↑ +15.7% este mes', bgColor: 'green' },
-    { title: 'Ingresos del Mes', value: '$8,945', icon: '💰', trend: '↑ +23.1% este mes', bgColor: 'red' }
-  ];
+  const [stats, setStats] = useState(null);
+  const [professors, setProfessors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const recentProfessors = [
-    { name: 'María González', subject: 'Matemáticas', status: 'Activo', rating: 4.8 },
-    { name: 'Carlos Ramírez', subject: 'Física', status: 'Pendiente', rating: 4.5 },
-    { name: 'Ana Martínez', subject: 'Química', status: 'Activo', rating: 4.9 },
-    { name: 'Luis Torres', subject: 'Inglés', status: 'Inactivo', rating: 4.3 },
-    { name: 'Patricia López', subject: 'Historia', status: 'Activo', rating: 4.7 }
-  ];
+  useEffect(() => {
+    loadDashboardData();
+  }, []);
 
-  const recentActivities = [
-    { icon: '👤', text: 'Nuevo usuario registrado', time: 'Hace 5 minutos' },
-    { icon: '✓', text: 'Profesor verificado', time: 'Hace 15 minutos' },
-    { icon: '💰', text: 'Nueva transacción: $45', time: 'Hace 32 minutos' },
-    { icon: '📚', text: 'Contenido publicado', time: 'Hace 1 hora' },
-    { icon: '⭐', text: 'Nueva reseña recibida', time: 'Hace 2 horas' },
-    { icon: '📅', text: 'Clase agendada', time: 'Hace 3 horas' }
-  ];
+  const loadDashboardData = async () => {
+    try {
+      const [statsData, professorsData] = await Promise.all([
+        adminService.getStats(),
+        professorService.getAll()
+      ]);
+      
+      setStats(statsData.data);
+      setProfessors(professorsData.data.slice(0, 5)); // Solo los primeros 5
+      setLoading(false);
+    } catch (error) {
+      console.error('Error al cargar datos:', error);
+      setLoading(false);
+    }
+  };
+
+  const statsData = stats ? [
+    { title: 'Usuarios Totales', value: stats.totalUsers || 0, icon: '👥', trend: 'Total en plataforma', bgColor: 'blue' },
+    { title: 'Profesores Activos', value: stats.totalProfessors || 0, icon: '👨‍🏫', trend: `${stats.pendingProfessors || 0} pendientes`, bgColor: 'yellow' },
+    { title: 'Estudiantes', value: stats.totalStudents || 0, icon: '📚', trend: 'Total registrados', bgColor: 'green' },
+    { title: 'Administradores', value: stats.totalAdmins || 0, icon: '💼', trend: 'Activos', bgColor: 'red' }
+  ] : [];
+
+  const mapApprovalStatus = (status) => {
+    const mapping = {
+      'approved': 'Activo',
+      'pending': 'Pendiente',
+      'rejected': 'Rechazado'
+    };
+    return mapping[status] || status;
+  };
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -56,85 +73,66 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Stats Cards */}
-          <div className="stats-grid">
-            {statsData.map((stat, index) => (
-              <StatsCard
-                key={index}
-                title={stat.title}
-                value={stat.value}
-                icon={stat.icon}
-                trend={stat.trend}
-                bgColor={stat.bgColor}
-              />
-            ))}
-          </div>
-
-          {/* Content Grid */}
-          <div className="content-grid">
-            {/* Recent Professors */}
-            <div className="dashboard-card">
-              <div className="dashboard-card__header">
-                <h2 className="dashboard-card__title">Profesores Recientes</h2>
-                <a href="#" className="dashboard-card__link">Ver todos →</a>
-              </div>
-              <div className="table-container">
-                <table className="data-table">
-                  <thead>
-                    <tr>
-                      <th>NOMBRE</th>
-                      <th>MATERIA</th>
-                      <th>ESTADO</th>
-                      <th>CALIFICACIÓN</th>
-                      <th>ACCIONES</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentProfessors.map((prof, index) => (
-                      <tr key={index}>
-                        <td>{prof.name}</td>
-                        <td>{prof.subject}</td>
-                        <td>
-                          <span className={getStatusClass(prof.status)}>
-                            {prof.status}
-                          </span>
-                        </td>
-                        <td>
-                          <span className="rating">⭐ {prof.rating}</span>
-                        </td>
-                        <td>
-                          <div className="action-buttons">
-                            <button className="action-btn action-btn--view" title="Ver">👁️</button>
-                            <button className="action-btn action-btn--edit" title="Editar">✏️</button>
-                            <button className="action-btn action-btn--delete" title="Eliminar">🗑️</button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className="dashboard-card">
-              <div className="dashboard-card__header">
-                <h2 className="dashboard-card__title">Actividad Reciente</h2>
-                <a href="#" className="dashboard-card__link">Ver todo →</a>
-              </div>
-              <div className="activity-list">
-                {recentActivities.map((activity, index) => (
-                  <div key={index} className="activity-item">
-                    <div className="activity-icon">{activity.icon}</div>
-                    <div className="activity-content">
-                      <p className="activity-text">{activity.text}</p>
-                      <span className="activity-time">{activity.time}</span>
-                    </div>
-                  </div>
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '40px' }}>Cargando...</div>
+          ) : (
+            <>
+              {/* Stats Cards */}
+              <div className="stats-grid">
+                {statsData.map((stat, index) => (
+                  <StatsCard
+                    key={index}
+                    title={stat.title}
+                    value={stat.value}
+                    icon={stat.icon}
+                    trend={stat.trend}
+                    bgColor={stat.bgColor}
+                  />
                 ))}
               </div>
-            </div>
-          </div>
+
+              {/* Content Grid */}
+              <div className="content-grid">
+                {/* Recent Professors */}
+                <div className="dashboard-card">
+                  <div className="dashboard-card__header">
+                    <h2 className="dashboard-card__title">Profesores Recientes</h2>
+                    <a href="#" className="dashboard-card__link">Ver todos →</a>
+                  </div>
+                  <div className="table-container">
+                    <table className="data-table">
+                      <thead>
+                        <tr>
+                          <th>NOMBRE</th>
+                          <th>EMAIL</th>
+                          <th>ESTADO</th>
+                          <th>ACCIONES</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {professors.map((prof) => (
+                          <tr key={prof._id}>
+                            <td>{prof.firstName} {prof.lastName}</td>
+                            <td>{prof.email}</td>
+                            <td>
+                              <span className={getStatusClass(mapApprovalStatus(prof.approvalStatus))}>
+                                {mapApprovalStatus(prof.approvalStatus)}
+                              </span>
+                            </td>
+                            <td>
+                              <div className="action-buttons">
+                                <button className="action-btn action-btn--view" title="Ver">👁️</button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </main>
     </div>

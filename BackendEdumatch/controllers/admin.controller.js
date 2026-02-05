@@ -9,17 +9,52 @@ const getAllUsers = async (req, res, next) => {
     const { role, isActive, page = 1, limit = 10 } = req.query;
 
     const filters = {};
-    if (role) filters.role = role;
     if (isActive !== undefined) filters.isActive = isActive === 'true';
 
     const skip = (page - 1) * limit;
-    const users = await User.find(filters)
-      .select('-password')
-      .skip(skip)
-      .limit(Number(limit))
-      .sort({ createdAt: -1 });
+    
+    let users = [];
+    let total = 0;
 
-    const total = await User.countDocuments(filters);
+    // Si se filtra por rol específico
+    if (role) {
+      if (role === 'admin') {
+        users = await User.find(filters)
+          .select('-password')
+          .skip(skip)
+          .limit(Number(limit))
+          .sort({ createdAt: -1 });
+        total = await User.countDocuments(filters);
+      } else if (role === 'student') {
+        users = await Student.find(filters)
+          .select('-password')
+          .skip(skip)
+          .limit(Number(limit))
+          .sort({ createdAt: -1 });
+        total = await Student.countDocuments(filters);
+      } else if (role === 'professor') {
+        users = await Professor.find(filters)
+          .select('-password')
+          .skip(skip)
+          .limit(Number(limit))
+          .sort({ createdAt: -1 });
+        total = await Professor.countDocuments(filters);
+      }
+    } else {
+      // Si no hay filtro de rol, traer de todas las colecciones
+      const [admins, students, professors] = await Promise.all([
+        User.find(filters).select('-password').sort({ createdAt: -1 }),
+        Student.find(filters).select('-password').sort({ createdAt: -1 }),
+        Professor.find(filters).select('-password').sort({ createdAt: -1 })
+      ]);
+
+      // Combinar y ordenar por fecha
+      users = [...admins, ...students, ...professors]
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .slice(skip, skip + Number(limit));
+
+      total = admins.length + students.length + professors.length;
+    }
 
     res.status(200).json({
       success: true,
@@ -44,13 +79,13 @@ const getPendingProfessors = async (req, res, next) => {
     const { page = 1, limit = 10 } = req.query;
 
     const skip = (page - 1) * limit;
-    const professors = await Professor.find({ isApproved: false })
-      .populate('userId', '-password')
+    const professors = await Professor.find({ approvalStatus: 'pending' })
+      .select('-password')
       .skip(skip)
       .limit(Number(limit))
       .sort({ createdAt: -1 });
 
-    const total = await Professor.countDocuments({ isApproved: false });
+    const total = await Professor.countDocuments({ approvalStatus: 'pending' });
 
     res.status(200).json({
       success: true,
@@ -77,11 +112,11 @@ const approveProfessor = async (req, res, next) => {
     const professor = await Professor.findByIdAndUpdate(
       professorId,
       {
-        isApproved: true,
-        approvalDate: new Date()
+        approvalStatus: 'approved',
+        isVerified: true
       },
       { new: true }
-    ).populate('userId', '-password');
+    ).select('-password');
 
     if (!professor) {
       return res.status(404).json({
@@ -117,11 +152,11 @@ const rejectProfessor = async (req, res, next) => {
     const professor = await Professor.findByIdAndUpdate(
       professorId,
       {
-        isApproved: false,
+        approvalStatus: 'rejected',
         rejectionReason: reason
       },
       { new: true }
-    ).populate('userId', '-password');
+    ).select('-password');
 
     if (!professor) {
       return res.status(404).json({
@@ -154,11 +189,28 @@ const deactivateUser = async (req, res, next) => {
     const { userId } = req.params;
     const { reason } = req.body;
 
-    const user = await User.findByIdAndUpdate(
+    // Buscar en todas las colecciones
+    let user = await User.findByIdAndUpdate(
       userId,
       { isActive: false },
       { new: true }
     ).select('-password');
+
+    if (!user) {
+      user = await Student.findByIdAndUpdate(
+        userId,
+        { isActive: false },
+        { new: true }
+      ).select('-password');
+    }
+
+    if (!user) {
+      user = await Professor.findByIdAndUpdate(
+        userId,
+        { isActive: false },
+        { new: true }
+      ).select('-password');
+    }
 
     if (!user) {
       return res.status(404).json({
@@ -171,6 +223,7 @@ const deactivateUser = async (req, res, next) => {
     const admin = await Admin.findOne({ userId: req.userId });
     if (admin) {
       await admin.logAction('deactivate_user', userId, `Desactivó usuario: ${reason}`);
+      await admin.save();
     }
 
     res.status(200).json({
@@ -190,11 +243,28 @@ const activateUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
-    const user = await User.findByIdAndUpdate(
+    // Buscar en todas las colecciones
+    let user = await User.findByIdAndUpdate(
       userId,
       { isActive: true },
       { new: true }
     ).select('-password');
+
+    if (!user) {
+      user = await Student.findByIdAndUpdate(
+        userId,
+        { isActive: true },
+        { new: true }
+      ).select('-password');
+    }
+
+    if (!user) {
+      user = await Professor.findByIdAndUpdate(
+        userId,
+        { isActive: true },
+        { new: true }
+      ).select('-password');
+    }
 
     if (!user) {
       return res.status(404).json({
@@ -207,6 +277,7 @@ const activateUser = async (req, res, next) => {
     const admin = await Admin.findOne({ userId: req.userId });
     if (admin) {
       await admin.logAction('activate_user', userId, 'Activó usuario');
+      await admin.save();
     }
 
     res.status(200).json({
@@ -227,13 +298,14 @@ const getPlatformStats = async (req, res, next) => {
     const totalUsers = await User.countDocuments();
     const totalStudents = await Student.countDocuments();
     const totalProfessors = await Professor.countDocuments();
-    const approvedProfessors = await Professor.countDocuments({ isApproved: true });
-    const pendingProfessors = await Professor.countDocuments({ isApproved: false });
+    const approvedProfessors = await Professor.countDocuments({ approvalStatus: 'approved' });
+    const pendingProfessors = await Professor.countDocuments({ approvalStatus: 'pending' });
+    const rejectedProfessors = await Professor.countDocuments({ approvalStatus: 'rejected' });
     const activeUsers = await User.countDocuments({ isActive: true });
 
     const stats = {
       users: {
-        total: totalUsers,
+        total: totalUsers + totalStudents + totalProfessors,
         active: activeUsers,
         inactive: totalUsers - activeUsers
       },
@@ -243,6 +315,7 @@ const getPlatformStats = async (req, res, next) => {
       professors: {
         total: totalProfessors,
         approved: approvedProfessors,
+        rejected: rejectedProfessors,
         pending: pendingProfessors
       }
     };

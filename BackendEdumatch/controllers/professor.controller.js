@@ -19,7 +19,7 @@ const getAllProfessors = async (req, res, next) => {
     } = req.query;
 
     // Construir filtros
-    const filters = { isApproved: true };
+    const filters = { approvalStatus: 'approved' };
 
     if (subject) filters.subjects = subject;
     if (educationLevel) filters.educationLevels = educationLevel;
@@ -32,21 +32,15 @@ const getAllProfessors = async (req, res, next) => {
     if (minRating) filters.averageRating = { $gte: Number(minRating) };
 
     // Buscar profesores
-    let query = Professor.find(filters).populate('userId', '-password');
+    let query = Professor.find(filters).select('-password');
 
     // Si hay búsqueda por texto, buscar en nombre
     if (search) {
-      const users = await User.find({
-        role: 'professor',
-        $or: [
-          { firstName: { $regex: search, $options: 'i' } },
-          { lastName: { $regex: search, $options: 'i' } }
-        ]
-      }).select('_id');
-
-      const userIds = users.map(u => u._id);
-      filters.userId = { $in: userIds };
-      query = Professor.find(filters).populate('userId', '-password');
+      filters.$or = [
+        { firstName: { $regex: search, $options: 'i' } },
+        { lastName: { $regex: search, $options: 'i' } }
+      ];
+      query = Professor.find(filters).select('-password');
     }
 
     // Paginación
@@ -76,7 +70,7 @@ const getProfessorById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const professor = await Professor.findById(id).populate('userId', '-password');
+    const professor = await Professor.findById(id).select('-password');
 
     if (!professor) {
       return res.status(404).json({
@@ -99,31 +93,18 @@ const getProfessorById = async (req, res, next) => {
  */
 const updateProfessor = async (req, res, next) => {
   try {
-    const userId = req.userId;
     const updates = req.body;
 
-    // Actualizar información del usuario base si está incluida
-    if (updates.firstName || updates.lastName || updates.phone || updates.address || updates.birthDate || updates.gender) {
-      await User.findByIdAndUpdate(userId, {
-        ...(updates.firstName && { firstName: updates.firstName }),
-        ...(updates.lastName && { lastName: updates.lastName }),
-        ...(updates.phone && { phone: updates.phone }),
-        ...(updates.address && { address: updates.address }),
-        ...(updates.birthDate && { birthDate: updates.birthDate }),
-        ...(updates.gender && { gender: updates.gender })
-      });
-    }
-
     // Campos que no se pueden actualizar directamente
-    const protectedFields = ['isApproved', 'approvalDate', 'averageRating', 'totalReviews', 'totalClassesTaught'];
+    const protectedFields = ['approvalStatus', 'rating', 'totalClasses'];
     protectedFields.forEach(field => delete updates[field]);
 
     // Actualizar perfil de profesor
-    const professor = await Professor.findOneAndUpdate(
-      { userId },
+    const professor = await Professor.findByIdAndUpdate(
+      req.userId,
       { $set: updates },
       { new: true, runValidators: true }
-    ).populate('userId', '-password');
+    ).select('-password');
 
     if (!professor) {
       return res.status(404).json({
@@ -147,11 +128,10 @@ const updateProfessor = async (req, res, next) => {
  */
 const updateSchedule = async (req, res, next) => {
   try {
-    const userId = req.userId;
     const { schedule } = req.body;
 
-    const professor = await Professor.findOneAndUpdate(
-      { userId },
+    const professor = await Professor.findByIdAndUpdate(
+      req.userId,
       { $set: { schedule } },
       { new: true, runValidators: true }
     );
@@ -207,9 +187,7 @@ const getSchedule = async (req, res, next) => {
  */
 const getProfessorStats = async (req, res, next) => {
   try {
-    const userId = req.userId;
-
-    const professor = await Professor.findOne({ userId });
+    const professor = await Professor.findById(req.userId);
 
     if (!professor) {
       return res.status(404).json({
@@ -219,12 +197,13 @@ const getProfessorStats = async (req, res, next) => {
     }
 
     const stats = {
-      averageRating: professor.averageRating,
-      totalReviews: professor.totalReviews,
-      totalClassesTaught: professor.totalClassesTaught,
-      totalHoursTaught: professor.totalHoursTaught,
-      availableSlots: professor.getAvailableSlots(),
-      availableDays: professor.getAvailableDays()
+      rating: professor.rating || { average: 0, count: 0 },
+      totalClasses: professor.totalClasses || 0,
+      approvalStatus: professor.approvalStatus,
+      subjects: professor.subjects || [],
+      educationLevels: professor.educationLevels || [],
+      hourlyRate: professor.hourlyRate,
+      maxStudentsPerClass: professor.maxStudentsPerClass
     };
 
     res.status(200).json({
@@ -241,7 +220,6 @@ const getProfessorStats = async (req, res, next) => {
  */
 const addCertification = async (req, res, next) => {
   try {
-    const userId = req.userId;
     const { name } = req.body;
 
     if (!req.file) {
@@ -253,19 +231,26 @@ const addCertification = async (req, res, next) => {
 
     const certification = {
       name,
-      fileUrl: req.file.path
+      url: req.file.path
     };
 
-    const professor = await Professor.findOneAndUpdate(
-      { userId },
-      { $push: { additionalCertifications: certification } },
+    const professor = await Professor.findByIdAndUpdate(
+      req.userId,
+      { $push: { certifications: certification } },
       { new: true }
     );
+
+    if (!professor) {
+      return res.status(404).json({
+        success: false,
+        message: 'Profesor no encontrado'
+      });
+    }
 
     res.status(200).json({
       success: true,
       message: 'Certificación agregada exitosamente',
-      data: professor.additionalCertifications
+      data: professor.certifications
     });
   } catch (error) {
     next(error);

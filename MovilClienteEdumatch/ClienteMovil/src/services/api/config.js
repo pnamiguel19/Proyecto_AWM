@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // ⚠️ CAMBIA ESTA IP POR LA TUYA (ejecuta: ipconfig en Windows)
-const LOCAL_IP = '192.168.100.224'; // 👈 CAMBIAR AQUÍ
+const LOCAL_IP = '172.29.21.56'; // 👈 CAMBIAR AQUÍ
 
 // Exportar como constante nombrada
 export const API_BASE_URL = Platform.OS === 'web' 

@@ -8,7 +8,7 @@ const getStudentById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const student = await Student.findOne({ userId: id }).populate('userId', '-password');
+    const student = await Student.findById(id).select('-password');
 
     if (!student) {
       return res.status(404).json({
@@ -31,34 +31,26 @@ const getStudentById = async (req, res, next) => {
  */
 const updateStudent = async (req, res, next) => {
   try {
-    const userId = req.userId;
     const updates = req.body;
 
-    // Actualizar información del usuario base si está incluida
-    if (updates.firstName || updates.lastName || updates.phone || updates.address || updates.birthDate || updates.gender) {
-      await User.findByIdAndUpdate(userId, {
-        ...(updates.firstName && { firstName: updates.firstName }),
-        ...(updates.lastName && { lastName: updates.lastName }),
-        ...(updates.phone && { phone: updates.phone }),
-        ...(updates.address && { address: updates.address }),
-        ...(updates.birthDate && { birthDate: updates.birthDate }),
-        ...(updates.gender && { gender: updates.gender })
-      });
-    }
-
-    // Actualizar perfil de estudiante
-    const studentUpdates = {
+    // Campos que se pueden actualizar
+    const allowedUpdates = {
+      ...(updates.firstName && { firstName: updates.firstName }),
+      ...(updates.lastName && { lastName: updates.lastName }),
+      ...(updates.phone && { phone: updates.phone }),
+      ...(updates.address && { address: updates.address }),
+      ...(updates.birthDate && { birthDate: updates.birthDate }),
+      ...(updates.gender && { gender: updates.gender }),
       ...(updates.educationLevel && { educationLevel: updates.educationLevel }),
       ...(updates.aboutMe && { aboutMe: updates.aboutMe }),
-      ...(updates.learningGoals && { learningGoals: updates.learningGoals }),
-      ...(updates.subjectsOfInterest && { subjectsOfInterest: updates.subjectsOfInterest })
+      ...(updates.learningGoals && { learningGoals: updates.learningGoals })
     };
 
-    const student = await Student.findOneAndUpdate(
-      { userId },
-      { $set: studentUpdates },
+    const student = await Student.findByIdAndUpdate(
+      req.userId,
+      { $set: allowedUpdates },
       { new: true, runValidators: true }
-    ).populate('userId', '-password');
+    ).select('-password');
 
     if (!student) {
       return res.status(404).json({
@@ -95,11 +87,11 @@ const addFavoriteProfessor = async (req, res, next) => {
     }
 
     // Agregar a favoritos
-    const student = await Student.findOneAndUpdate(
-      { userId },
+    const student = await Student.findByIdAndUpdate(
+      req.userId,
       { $addToSet: { favoriteProfessors: professorId } },
       { new: true }
-    );
+    ).select('-password');
 
     res.status(200).json({
       success: true,
@@ -116,14 +108,13 @@ const addFavoriteProfessor = async (req, res, next) => {
  */
 const removeFavoriteProfessor = async (req, res, next) => {
   try {
-    const userId = req.userId;
     const { professorId } = req.params;
 
-    const student = await Student.findOneAndUpdate(
-      { userId },
+    const student = await Student.findByIdAndUpdate(
+      req.userId,
       { $pull: { favoriteProfessors: professorId } },
       { new: true }
-    );
+    ).select('-password');
 
     res.status(200).json({
       success: true,
@@ -140,16 +131,9 @@ const removeFavoriteProfessor = async (req, res, next) => {
  */
 const getFavoriteProfessors = async (req, res, next) => {
   try {
-    const userId = req.userId;
-
-    const student = await Student.findOne({ userId })
-      .populate({
-        path: 'favoriteProfessors',
-        populate: {
-          path: 'userId',
-          select: '-password'
-        }
-      });
+    const student = await Student.findById(req.userId)
+      .populate('favoriteProfessors')
+      .select('-password');
 
     if (!student) {
       return res.status(404).json({
@@ -172,16 +156,12 @@ const getFavoriteProfessors = async (req, res, next) => {
  */
 const getBookedClasses = async (req, res, next) => {
   try {
-    const userId = req.userId;
-
-    const student = await Student.findOne({ userId })
+    const student = await Student.findById(req.userId)
       .populate({
-        path: 'bookedClasses',
-        populate: {
-          path: 'professorId',
-          populate: { path: 'userId', select: '-password' }
-        }
-      });
+        path: 'bookings',
+        match: { approvalStatus: 'approved' }
+      })
+      .select('-password');
 
     if (!student) {
       return res.status(404).json({
@@ -192,7 +172,7 @@ const getBookedClasses = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: student.bookedClasses
+      data: student.bookings || []
     });
   } catch (error) {
     next(error);
@@ -204,9 +184,7 @@ const getBookedClasses = async (req, res, next) => {
  */
 const getStudentStats = async (req, res, next) => {
   try {
-    const userId = req.userId;
-
-    const student = await Student.findOne({ userId });
+    const student = await Student.findById(req.userId).select('-password');
 
     if (!student) {
       return res.status(404).json({
@@ -216,15 +194,73 @@ const getStudentStats = async (req, res, next) => {
     }
 
     const stats = {
-      totalClassesAttended: student.totalClassesAttended,
-      totalHoursLearned: student.totalHoursLearned,
-      favoriteProfessorsCount: student.favoriteProfessors.length,
-      reviewsCount: student.reviews.length
+      completedClasses: student.completedClasses || 0,
+      totalBookings: student.bookings?.length || 0,
+      favoriteProfessorsCount: student.favoriteProfessors?.length || 0
     };
 
     res.status(200).json({
       success: true,
       data: stats
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * Agregar una reserva simple (solo guarda el ID del profesor en bookings)
+ */
+const addBooking = async (req, res, next) => {
+  try {
+    const { professorId } = req.params;
+
+    // Verificar que el profesor existe y está aprobado
+    const professor = await Professor.findOne({ 
+      _id: professorId, 
+      approvalStatus: 'approved' 
+    });
+    
+    if (!professor) {
+      return res.status(404).json({
+        success: false,
+        message: 'Profesor no encontrado o no aprobado'
+      });
+    }
+
+    const student = await Student.findByIdAndUpdate(
+      req.userId,
+      { $addToSet: { bookings: professorId } },
+      { new: true }
+    ).select('-password');
+
+    res.status(200).json({
+      success: true,
+      message: 'Reserva agregada exitosamente',
+      data: student
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * Cancelar una reserva
+ */
+const cancelBooking = async (req, res, next) => {
+  try {
+    const { professorId } = req.params;
+
+    const student = await Student.findByIdAndUpdate(
+      req.userId,
+      { $pull: { bookings: professorId } },
+      { new: true }
+    ).select('-password');
+
+    res.status(200).json({
+      success: true,
+      message: 'Reserva cancelada',
+      data: student
     });
   } catch (error) {
     next(error);
@@ -238,5 +274,7 @@ module.exports = {
   removeFavoriteProfessor,
   getFavoriteProfessors,
   getBookedClasses,
-  getStudentStats
+  getStudentStats,
+  addBooking,
+  cancelBooking
 };
